@@ -1,13 +1,17 @@
 import './index.css';
+import App from './App';
 import React from 'react';
-import HomeOne from './HomeTwo';
 import ReactDOM from 'react-dom/client';
-
+import NavigationBar from './components/NavigationBar';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
-    <HomeOne/>
+    <Router>
+      <NavigationBar />
+      <App/>
+    </Router>
   </React.StrictMode>
 );
