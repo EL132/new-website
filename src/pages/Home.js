@@ -15,13 +15,13 @@ function Home () {
                 <p className='text-blurb'>{text_blurbs.second_blurb}</p>
             </div>
             <div className='bottom'>
-                <img className='photo' src="./assets/chicago.jpg" alt="not work"></img>
-                <img className='photo' src="./assets/walton.jpg" alt="not work"></img>
-                <img className='photo' src="./assets/blue-checker.jpg" alt="not work"></img>
-                <img className='photo' src="./assets/ann-arbor.jpg" alt="not work"></img>
-                <img className='photo' src="./assets/detroit.jpg" alt="not work"></img>
-                <img className='photo' src="./assets/soccer.jpg" alt="not work"></img>
-                <img className='photo' src="./assets/orange-fit.jpg" alt="not work"></img>
+                <img className='photo' src="./assets/home/chicago.jpg" alt="not work"></img>
+                <img className='photo' src="./assets/home/walton.jpg" alt="not work"></img>
+                <img className='photo' src="./assets/home/blue-checker.jpg" alt="not work"></img>
+                <img className='photo' src="./assets/home/ann-arbor.jpg" alt="not work"></img>
+                <img className='photo' src="./assets/home/detroit.jpg" alt="not work"></img>
+                <img className='photo' src="./assets/home/soccer.jpg" alt="not work"></img>
+                <img className='photo' src="./assets/home/orange-fit.jpg" alt="not work"></img>
             </div>
         </div>
     );

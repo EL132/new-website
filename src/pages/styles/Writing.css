@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@700&display=swap');
+
+.writing-container {
+    gap: 5vh 15vw;
+    width: 50vw;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 25vw;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.title-font {
+    font-family: 'Familjen Grotesk', sans-serif;
+    font-size: 14vh;
+    color: black;
+}
