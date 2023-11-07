@@ -1,8 +1,8 @@
-import Work from './components/Work';
-import Home from './components/Home';
-import Writing from './components/Writing';
-import Contact from './components/Contact';
-import Projects from './components/Projects';
+import Work from './pages/Work';
+import Home from './pages/Home';
+import Writing from './pages/Writing';
+import Contact from './pages/Contact';
+import Projects from './pages/Projects';
 import { Routes, Route } from 'react-router-dom';
 
 

@@ -1,10 +1,10 @@
-import './styles/NavigationBar.css'
+import './component-styles/NavigationBar.css'
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 function NavigationBar() {
     return (
-        <div className='container'>
+        <div className='nav-container'>
             <div className='left-side'>
                 <Link to='/' className='home'>
                     <div className='rectangle'></div>
