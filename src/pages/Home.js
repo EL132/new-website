@@ -1,6 +1,5 @@
 import React from 'react';
 import './styles/Home.css';
-import Photo from '../components/Photo';
 import { text_blurbs } from '../text/homeText';
 
 function Home () {
@@ -16,7 +15,13 @@ function Home () {
                 <p className='text-blurb'>{text_blurbs.second_blurb}</p>
             </div>
             <div className='bottom'>
-                <Photo source='../../public/assets/ann-arbor.jpg'/>
+                <img className='photo' src="./assets/chicago.jpg" alt="not work"></img>
+                <img className='photo' src="./assets/walton.jpg" alt="not work"></img>
+                <img className='photo' src="./assets/blue-checker.jpg" alt="not work"></img>
+                <img className='photo' src="./assets/ann-arbor.jpg" alt="not work"></img>
+                <img className='photo' src="./assets/detroit.jpg" alt="not work"></img>
+                <img className='photo' src="./assets/soccer.jpg" alt="not work"></img>
+                <img className='photo' src="./assets/orange-fit.jpg" alt="not work"></img>
             </div>
         </div>
     );
