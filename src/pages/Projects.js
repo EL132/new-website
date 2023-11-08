@@ -14,7 +14,7 @@ function Projects () {
                     <ProjectBox source='./assets/projects/Platformer.png' title='Platformer' description='This is filler text because I am lazy and dont want to create a text file for these yet.'/>
                 </a>
                 <a className='project-link' href='https://memory-assistant-97ft.vercel.app/' rel='noreferrer' target='_blank'>
-                    <ProjectBox source='./assets/projects/Memory-assistant.png' title='Memory Assistant' description='This is filler text because I am lazy and dont want to create a text file for these yet.'/>
+                    <ProjectBox source='./assets/projects/Memory-assistant.png' title='Mesmory Assistant' description='This is filler text because I am lazy and dont want to create a text file for these yet.'/>
                 </a>
             </div>
         </div>

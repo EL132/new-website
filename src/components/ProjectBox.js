@@ -27,13 +27,13 @@ function ProjectBox ({ source, title, description }) {
         );
     } else {
         return (
-            <div className='project-block-container'>
-                <h2 className='project-title'>{title}</h2>
-                <p className='project-description'>{description} </p>
-                <div className='project-image-group'>
-                    <div className='image-dotted-circle'></div>
-                    <img className='project-image' src={source} alt="Writing cover"></img>
-                </div>
+            <div class="card">
+                <p>
+                    Similar post
+                </p>
+                <h2>
+                    How I recreated a Polaroid camera with CSS gradients only
+                </h2>
             </div>
         );
     }

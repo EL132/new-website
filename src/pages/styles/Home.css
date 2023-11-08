@@ -44,6 +44,7 @@
 
 .bottom {
     display: flex;
+    height: 50vh;
     flex-direction: row;
     gap: 3vw;
     justify-content: center;
@@ -51,9 +52,8 @@
 }
 
 .photo {
-    width: 179px;
-    height: 454px;
-    border-radius: 200px 200px 0 0;
+    height: 100%;
+    border-radius: 20vh 20vh 0 0;
     overflow: hidden;
     transition: transform 0.3s ease-in-out;
 }
