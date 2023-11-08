@@ -10,8 +10,23 @@
     justify-content: center;
 }
 
+.title-font-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: top;
+    height: 20vh;
+}
+
 .title-font {
     font-family: 'Familjen Grotesk', sans-serif;
-    font-size: 14vh;
+    color: black;
+    height: 20vh;
+    font-size: 12vh;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
     color: black;
 }

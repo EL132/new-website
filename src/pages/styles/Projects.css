@@ -1,0 +1,10 @@
+.project-link {
+    display: inline;
+}
+
+.projects-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}

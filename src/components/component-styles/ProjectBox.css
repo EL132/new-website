@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@500&display=swap');
+
+.platformer-container {
+    background-color: #4a6274;
+    color: #b1dd7e;
+}
+
+.memory-assistant-container {
+    background-color: #4a6274;
+    color: #fea858;
+}
+
+.project-block-container {
+    display: flex;
+    width: 22vw;
+    height: 55vh;
+    flex-direction: column;
+    padding: 3vh;
+    border-radius: 50px;
+}
+
+.project-title {
+    font-size: 3.5vh;
+    font-weight: bold;
+    margin-bottom: 1vh;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.project-image-group {
+    margin-top: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+}
+
+.project-image {
+    width: 18vw;
+    height: 18vw;
+    border-radius: 50%;
+}
+
+.image-dotted-circle {
+    position: absolute;
+    width: 16.5vw;
+    height: 16.5vw;
+    border-radius: 50%;
+    border: 0.3vh dashed #8b97a3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
