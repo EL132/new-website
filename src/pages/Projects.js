@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './styles/Projects.css';
 import { text_blurbs } from '../text/projectText';
 import ProjectBox from '../components/ProjectBox';
 
 
 function Projects () {
+    useEffect(() => {
+        document.title = 'Projects';
+    }, []);
+
     const [isModalOpen, setModalOpen] = useState(false);
 
     const openModal = () => {

@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './styles/Home.css';
 import { text_blurbs } from '../text/homeText';
 
 function Home () {
+    useEffect(() => {
+        document.title = 'Elias Lind';
+    }, []);
+
     return (
         <div className='home-container'>
             <div className='top'>

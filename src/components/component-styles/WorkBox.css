@@ -1,0 +1,8 @@
+.work-box-container {
+    display: flex;
+    flex-direction: column;
+    color: black;
+    gap: 2vh;
+    padding: 2vh;
+    border: 3px solid black;
+}

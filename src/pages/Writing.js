@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './styles/Writing.css';
 import WritingBlock from '../components/WritingBlock';
 
 function Writing () {
+    useEffect(() => {
+        document.title = 'Writing';
+    }, []);
+
     return (
         <div>
             <div className='title-font-container'>

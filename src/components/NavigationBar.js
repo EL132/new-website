@@ -20,9 +20,9 @@ function NavigationBar() {
                 <Link to='/projects' className='link'>
                     Projects
                 </Link>
-                <Link to='/contact' className='link'>
+                <a target='_blank' rel='noopener noreferrer' className='link' href="https://www.linkedin.com/in/elias-lind-431546221/">
                     Contact
-                </Link>
+                </a>
             </div>
         </div>
     );

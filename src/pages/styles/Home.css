@@ -44,10 +44,10 @@
 
 .bottom {
     display: flex;
-    height: 54vh;
+    margin-top: 5vh;
+    height: 50vh;
     flex-direction: row;
-    gap: 3vw;
-    justify-content: center;
+    justify-content: space-around;
     align-items: bottom;
 }
 
