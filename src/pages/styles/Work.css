@@ -4,3 +4,14 @@
     align-items: center;
     justify-content: space-around;
 }
+
+.work-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.resume-link {
+    margin-top: 10vh;
+    text-align: center;
+}
