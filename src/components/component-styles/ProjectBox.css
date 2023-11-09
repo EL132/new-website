@@ -1,86 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@500&display=swap');
 
-.platformer-container {
-    background-color: #4a6274;
-    color: #b1dd7e;
-}
-
-.memory-assistant-container {
-    background-color: #4a6274;
-    color: #fea858;
-}
-
-.project-block-container {
-    display: flex;
-    width: 22vw;
-    height: 55vh;
-    flex-direction: column;
-    padding: 3vh;
-    border-radius: 50px;
-}
-
-.project-title {
-    font-size: 3.5vh;
-    font-weight: bold;
-    margin-bottom: 1vh;
-    font-family: 'Roboto Condensed', sans-serif;
-}
-
-.project-image-group {
-    margin-top: 5vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-
-}
-
-.project-image {
-    width: 18vw;
-    height: 18vw;
-    border-radius: 50%;
-}
-
-.image-dotted-circle {
-    position: absolute;
-    width: 16.5vw;
-    height: 16.5vw;
-    border-radius: 50%;
-    border: 0.3vh dashed #8b97a3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-.card {
-    background-color: var(--background);
-    display: block;
-    width: 30vw;
-    min-height: 16vh;
-    border: 3px solid var(--primary);
-    padding: 15px;
-    box-shadow: 10px -10px 0 -3px var(--background), 10px -10px var(--green),
-            20px -20px 0 -3px var(--background), 20px -20px var(--yellow), 
-            30px -30px 0 -3px var(--background), 30px -30px var(--orange), 
-            40px -40px 0 -3px var(--background), 40px -40px var(--red); 
-    transition: box-shadow 1s, top 1s, left 1s;
-    position: relative;
-    top: 0;
-    left: 0;
-    cursor: pointer;
-}
-
-.card:hover {
-    top: -40px;
-    left: 40px;
-    box-shadow: 0 0 0 -3px var(--background), 0 0 0 0 var(--green),
-        0 0 0 -3px var(--background), 0 0 0 0  var(--yellow),
-        0 0 0 -3px var(--background), 0 0 0 0  var(--orange),
-        0 0 0 -3px  var(--background), 0 0 0 0  var(--red);
-}
 :root {
     --primary: #555BFF;
+    
+    --one-plat: #555BFF;
+    --two-plat: #1FC11B;
+    --three-plat: #FFD913;
+    --four-plat: #FF9C55;
+    --five-plat: #FF5555;
+
+
+    --one-mem: #555BFF;
+    --two-mem: #1FC11B;
+    --three-mem: #FFD913;
+    --four-mem: #FF9C55;
+    --five-mem: #FF5555;
+
     --secondary: #22D2A0;
     --background: white;
     --green: #1FC11B;
@@ -89,21 +24,134 @@
     --red: #FF5555;
 } 
 
-  *{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-.card p {
-    font-size: 11px;
+.card-mem {
+    background-color: var(--background);
+    margin-top: 5vh;
+    display: block;
+    width: 30vw;
+    min-height: 16vh;
+    border: 3px solid var(--one-mem);
+    padding: 2vh;
+
+    box-shadow: 10px -10px 0 -3px var(--background), 10px -10px var(--two-mem),
+            20px -20px 0 -3px var(--background), 20px -20px var(--three-mem), 
+            30px -30px 0 -3px var(--background), 30px -30px var(--four-mem), 
+            40px -40px 0 -3px var(--background), 40px -40px var(--five-mem); 
+    transition: box-shadow 1s, top 1s, left 1s;
+    position: relative;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+.card-mem:hover {
+    top: -40px;
+    left: 40px;
+    box-shadow: 0 0 0 -3px var(--background), 0 0 0 0 var(--green),
+        0 0 0 -3px var(--background), 0 0 0 0  var(--yellow),
+        0 0 0 -3px var(--background), 0 0 0 0  var(--orange),
+        0 0 0 -3px  var(--background), 0 0 0 0  var(--red);
+}
+
+.card-platformer {
+    background-color: var(--background);
+    margin-top: 5vh;
+    display: block;
+    width: 30vw;
+    min-height: 16vh;
+    border: 3px solid var(--one-plat);
+    padding: 2vh;
+    box-shadow: -10px -10px 0 -3px var(--background), -10px -10px var(--two-plat),
+                -20px -20px 0 -3px var(--background), -20px -20px var(--three-plat),
+                -30px -30px 0 -3px var(--background), -30px -30px var(--four-plat), 
+                -40px -40px 0 -3px var(--background), -40px -40px var(--five-plat);
+    transition: box-shadow 1s, top 1s, left 1s;
+    position: relative;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+.card-platformer:hover {
+    top: -40px;
+    left: -40px;
+    box-shadow: 0 0 0 -3px var(--background), 0 0 0 0 var(--green),
+        0 0 0 -3px var(--background), 0 0 0 0  var(--yellow),
+        0 0 0 -3px var(--background), 0 0 0 0  var(--orange),
+        0 0 0 -3px  var(--background), 0 0 0 0  var(--red);
+}
+
+.card-ka {
+    background-color: var(--background);
+    margin-top: 5vh;
+    display: block;
+    width: 30vw;
+    min-height: 16vh;
+    border: 3px solid var(--one-mem);
+    padding: 2vh;
+
+    box-shadow: 10px 10px 0 -3px var(--background), 10px 10px var(--two-mem),
+            -20px 20px 0 -3px var(--background), -20px 20px var(--three-mem), 
+            30px -30px 0 -3px var(--background), 30px -30px var(--four-mem), 
+            -40px -40px 0 -3px var(--background), -40px -40px var(--five-mem); 
+
+    /* -40px -40px 0 -3px var(--background), -40px -40px */
+    transition: box-shadow 1s, top 1s, left 1s;
+    position: relative;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+.card-ka:hover {
+    top: -40px;
+    box-shadow: 0 0 0 -3px var(--background), 0 0 0 0 var(--green),
+        0 0 0 -3px var(--background), 0 0 0 0  var(--yellow),
+        0 0 0 -3px var(--background), 0 0 0 0  var(--orange),
+        0 0 0 -3px  var(--background), 0 0 0 0  var(--red);
+}
+
+
+.card-title {
+    font-size: 2vh;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 10px;
 }
 
-.card h2 {
-    font-size: 14px;
+.card-description {
+    font-size: 1.6vh;
+    margin: 2vh 0;
     font-family: "Archivo Black", "Archivo", sans-serif;
     font-weight: normal;
+}
+
+.cover-image-container {
+    display: flex;
+    justify-content: center;
+    margin: 4vh 0;
+}
+
+.cover-image {
+    width: 20vw;
+    height: 28vh;
+    object-fit: cover;
+}
+
+.project-tools {
+    display: flex;
+    margin: 3vh 0;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.tech-image {
+    height: 7vh;
 }

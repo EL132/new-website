@@ -2,9 +2,19 @@
     display: inline;
 }
 
+.project-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .projects-container {
     display: flex;
     flex-direction: row;
+    gap: 10vh;
+    width: 85vw;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    margin-bottom: 15vh;
 }

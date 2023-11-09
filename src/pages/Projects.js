@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './styles/Projects.css';
+import { text_blurbs } from '../text/projectText';
 import ProjectBox from '../components/ProjectBox';
 
 
 function Projects () {
+    const [isModalOpen, setModalOpen] = useState(false);
+
+    const openModal = () => {
+        setModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalOpen(false);
+    };
+
+
     return (
         <div className='project-page-container'>
             <div className='title-font-container'>
@@ -11,11 +23,43 @@ function Projects () {
             </div>
             <div className='projects-container'>
                 <a className='project-link' href='https://el132.github.io/platformer/' rel='noreferrer' target='_blank'>
-                    <ProjectBox source='./assets/projects/Platformer.png' title='Platformer' description='This is filler text because I am lazy and dont want to create a text file for these yet.'/>
+                    <ProjectBox 
+                        techs={['./assets/projects/platformer/github.png', 
+                                './assets/projects/platformer/python.png', 
+                                './assets/projects/platformer/console.png']}
+                        cover='./assets/projects/platformer/cover.png'
+                        title='Platformer' 
+                        description={text_blurbs.platformer}
+                    />
                 </a>
                 <a className='project-link' href='https://memory-assistant-97ft.vercel.app/' rel='noreferrer' target='_blank'>
-                    <ProjectBox source='./assets/projects/Memory-assistant.png' title='Mesmory Assistant' description='This is filler text because I am lazy and dont want to create a text file for these yet.'/>
+                    <ProjectBox 
+                        techs={['./assets/projects/memory-assistant/express.png', 
+                                './assets/projects/memory-assistant/react.png', 
+                                './assets/projects/memory-assistant/Vercel.png']}
+                        cover='./assets/projects/memory-assistant/cover.png'
+                        title='Memory Assistant' 
+                        description={text_blurbs.memory_assistant}
+                    />
                 </a>
+                <div className='project-link' onClick={openModal}>
+                    <ProjectBox
+                        techs={['./assets/projects/know-athens/figma.png', './assets/projects/know-athens/Google-cloud.png', './assets/projects/know-athens/Vue.png']}
+                        cover=''
+                        title='KnowAthens'
+                        description={text_blurbs.KnowAthens}
+                    />
+                </div>
+                {isModalOpen && (
+                    <div className='modal' onClick={closeModal}>
+                        <div className='modal-content' onClick={(e) => e.stopPropagation()}>
+                        {/* Your modal content goes here */}
+                        <h2>Memory Assistant Modal</h2>
+                        <p>This is the modal content for the Memory Assistant project.</p>
+                        <button onClick={closeModal}>Close Modal</button>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );

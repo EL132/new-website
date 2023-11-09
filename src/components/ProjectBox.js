@@ -1,39 +1,53 @@
 import React from 'react';
 import './component-styles/ProjectBox.css';
 
-
-function ProjectBox ({ source, title, description }) {
+function ProjectBox ({ techs, cover, title, description }) {
     if (title === 'Platformer') {
         return (
-            <div className='project-block-container platformer-container'>
-                <h2 className='project-title'>{title}</h2>
-                <p className='project-description'>{description} </p>
-                <div className='project-image-group'>
-                    <div className='image-dotted-circle'></div>
-                    <img className='project-image' src={source} alt="Writing cover"></img>
+            <div class="card-platformer">
+                <h2 className='card-title'>
+                    {title}
+                </h2>
+                <p className='card-description'>
+                    {description}
+                </p>
+                <div className='project-tools'>
+                    {techs.map((tech, index) => (
+                        <img key={index} className='tech-image' src={tech} alt='Technology used'></img>
+                    ))}
                 </div>
             </div>
         );        
     } else if (title === 'Memory Assistant') {
         return (
-            <div className='project-block-container memory-assistant-container'>
-                <h2 className='project-title'>{title}</h2>
-                <p className='project-description'>{description} </p>
-                <div className='project-image-group'>
-                    <div className='image-dotted-circle'></div>
-                    <img className='project-image' src={source} alt="Writing cover"></img>
+            <div class="card-mem">
+                <h2 className='card-title'>
+                    {title}
+                </h2>
+                <p className='card-description'>
+                    {description}
+                </p>
+                <div className='project-tools'>
+                    {techs.map((tech, index) => (
+                        <img key={index} className='tech-image' src={tech} alt='Technology used'></img>
+                    ))}
                 </div>
             </div>
         );
-    } else {
+    } else if (title === 'KnowAthens') {
         return (
-            <div class="card">
-                <p>
-                    Similar post
-                </p>
-                <h2>
-                    How I recreated a Polaroid camera with CSS gradients only
+            <div class="card-ka">
+                <h2 className='card-title'>
+                    {title}
                 </h2>
+                <p className='card-description'>
+                    {description}
+                </p>
+                <div className='project-tools'>
+                    {techs.map((tech, index) => (
+                        <img key={index} className='tech-image' src={tech} alt='Technology used'></img>
+                    ))}
+                </div>
             </div>
         );
     }
