@@ -18,3 +18,51 @@
     justify-content: space-evenly;
     margin-bottom: 15vh;
 }
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    padding: 5vh;
+    gap: 5vh;
+    width: 75vw;
+    height: 75vh;
+    background-color: white;
+    color: black;
+    border: 3px solid black;
+    position: absolute;
+    top: 45vh;
+    left: 15vw;
+}
+
+.close-button {
+    top: 2vh;
+    right: 2vh;
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.close-x {
+    height: 5vh;
+}
+
+.modal-title {
+    font-size: 3vh;
+    text-align: center;
+}
+
+.modal-body {
+    font-size: 2vh;
+}
+
+.modal-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-image {
+    height: 35vh;
+    width: 70vh;
+}

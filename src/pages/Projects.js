@@ -53,10 +53,14 @@ function Projects () {
                 {isModalOpen && (
                     <div className='modal' onClick={closeModal}>
                         <div className='modal-content' onClick={(e) => e.stopPropagation()}>
-                        {/* Your modal content goes here */}
-                        <h2>Memory Assistant Modal</h2>
-                        <p>This is the modal content for the Memory Assistant project.</p>
-                        <button onClick={closeModal}>Close Modal</button>
+                            <button className='close-button' onClick={closeModal}>
+                                <img className='close-x' src='./assets/projects/x.png' alt='close button'/>
+                            </button>
+                            <h2 className='modal-title'>KnowAthens</h2>
+                            <p className='modal-body'>{text_blurbs.KnowAthensModal}</p>
+                            <div className='modal-image-container'>
+                                <img className='modal-image' src='./assets/projects/know-athens/ka-cover.png' alt='KnowAthens cover'/>                                
+                            </div>
                         </div>
                     </div>
                 )}

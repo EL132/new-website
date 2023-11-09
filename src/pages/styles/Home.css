@@ -59,6 +59,6 @@
 }
 
 .photo:hover {
-    transform: scale(1.2);
-    /* transform: translateY(-3vh); */
+    /* transform: scale(1.2); */
+    transform: translateY(-3vh);
 }
