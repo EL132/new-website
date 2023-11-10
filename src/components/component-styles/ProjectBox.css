@@ -39,9 +39,9 @@
     border: 3px solid var(--one-mem);
     padding: 2vh;
 
-    box-shadow: 10px -10px 0 -3px var(--background), 10px -10px var(--two-mem),
-            20px -20px 0 -3px var(--background), 20px -20px var(--three-mem), 
-            30px -30px 0 -3px var(--background), 30px -30px var(--four-mem), 
+    box-shadow: 10px -30px 0 -3px var(--background), 10px -30px var(--two-mem),
+            -20px -20px 0 -3px var(--background), -20px -20px var(--three-mem), 
+            30px 30px 0 -3px var(--background), 30px 30px var(--four-mem), 
             40px -40px 0 -3px var(--background), 40px -40px var(--five-mem); 
     transition: box-shadow 1s, top 1s, left 1s;
     position: relative;
@@ -67,10 +67,10 @@
     min-height: 16vh;
     border: 3px solid var(--one-plat);
     padding: 2vh;
-    box-shadow: -10px -10px 0 -3px var(--background), -10px -10px var(--two-plat),
+    box-shadow: -50px -10px 0 -3px var(--background), -50px -10px var(--two-plat),
                 -20px -20px 0 -3px var(--background), -20px -20px var(--three-plat),
-                -30px -30px 0 -3px var(--background), -30px -30px var(--four-plat), 
-                -40px -40px 0 -3px var(--background), -40px -40px var(--five-plat);
+                -30px 30px 0 -3px var(--background), -30px 30px var(--four-plat), 
+                40px -40px 0 -3px var(--background), 40px -40px var(--five-plat);
     transition: box-shadow 1s, top 1s, left 1s;
     position: relative;
     top: 0;
