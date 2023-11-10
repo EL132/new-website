@@ -12,9 +12,27 @@
 }
 
 .writing-image {
-    width: 234px;
-    height: 351px;
-    border-radius: 56px;
+    width: 15vw;
+    height: 37vh;
+}
+
+.writing-image {
+    --m:
+        radial-gradient(circle farthest-side at right,#000 99%,#0000) 
+            0 100%/46% 92% no-repeat,
+        radial-gradient(circle farthest-side at left ,#000 99%,#0000) 
+            100% 0/46% 92% no-repeat;
+    -webkit-mask: var(--m);
+    mask: var(--m);
+    filter: grayscale(.5);
+    transition: .3s linear;
+    cursor: pointer;
+}
+
+.writing-image:hover {
+    -webkit-mask-position: 7.5% 50%,92.5% 50%;
+    mask-position: 7.5% 50%,92.5% 50%;
+    filter: grayscale(0);
 }
 
 .writing-title {

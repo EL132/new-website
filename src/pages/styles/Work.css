@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@500&display=swap');
+
 .work-container {
     display: flex;
     flex-direction: row-reverse;
@@ -14,4 +16,43 @@
 .resume-link {
     margin-top: 10vh;
     text-align: center;
+}
+
+.resume-button {
+    background: none;
+    border: none;
+}
+
+.line {
+    cursor: pointer;
+    font-family: 'Roboto Condensed', sans-serif;
+    position: relative;
+    font-size: 4vh;
+    font-weight: 700;
+}
+
+.line:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    bottom: -10px;
+    left: -4px;
+    transform: scaleX(0);
+    /* 
+        #7fd9ff
+        #EB0A1E
+        #708090
+    */
+    box-shadow:
+        0 5px 0 #7fd9ff,
+        0 10px 0 #EB0A1E;
+    background: #708090;
+    transform-origin: bottom right;
+    transition: transform 0.5s ease-out;
+}
+
+.line:hover:after {
+    transform: scaleX(1.07);
+    transform-origin: bottom left;
 }

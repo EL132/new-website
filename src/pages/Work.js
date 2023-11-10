@@ -18,7 +18,7 @@ function Work () {
                 <WorkBox company='Toyota Motor North America' title='Supply Chain Engineer' time='August 2023 - December 2023'/>
             </div>
             <a className='resume-link' href='https://drive.google.com/file/d/1NdEyEVinNChIxnBodFEeq4E_2_rjHBgK/view?usp=sharing' target='_blank' rel='noreferrer'>
-                <button className='resume-button'>Resume</button>
+                <button className='resume-button line'>Resume</button>
             </a>
         </div>
     );
