@@ -28,7 +28,7 @@ function Projects () {
             <div className='projects-container'>
                 <a className='project-link' href='https://el132.github.io/platformer/' rel='noreferrer' target='_blank'>
                     <ProjectBox 
-                        techs={['./assets/projects/platformer/github.png', 
+                        techs={[ './assets/projects/platformer/github.png', 
                                 './assets/projects/platformer/python.png', 
                                 './assets/projects/platformer/console.png']}
                         cover='./assets/projects/platformer/cover.png'
