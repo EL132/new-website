@@ -60,3 +60,41 @@
 .photo:hover {
     transform: translateY(-2rem);
 }
+
+@media screen and (max-width: 768px) {
+    .top {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        height: auto;
+    }
+
+    .title-word {
+        font-size: 4rem;
+    }
+
+    .middle {
+        padding: 1rem;
+        gap: 3rem;
+        flex-direction: column;
+    }
+
+    .text-blurb {
+        width: 100%;
+    }
+
+    .bottom {
+        flex-direction: row;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .photo {
+        width: 8rem;
+        height: 18.96rem;
+    }
+
+    .desktop-photo {
+        display: none;
+    }
+}

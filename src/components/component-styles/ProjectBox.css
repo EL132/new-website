@@ -129,3 +129,28 @@
 .tech-image {
     height: 3.5rem;
 }
+
+@media screen and (max-width: 768px) {
+    .card-platformer {
+        width: 15rem;
+        margin-left: 2rem;
+    }
+
+    .card-mem {
+        width: 15rem;
+        margin-left: 2rem;
+    }
+
+    .card-ka {
+        width: 15rem;
+        margin-left: 2rem;
+    }
+
+    .mobile-change-title-font {
+        font-size: 3.5rem;
+    }
+
+    .title-font-container {
+        height: 5rem;
+    }
+}

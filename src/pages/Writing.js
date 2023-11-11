@@ -10,7 +10,7 @@ function Writing () {
     return (
         <div>
             <div className='title-font-container'>
-                <h1 className='title-font'>WRITING</h1>
+                <h1 className='title-font mobile-change-title-font'>WRITING</h1>
             </div>
             <div className='writing-container'>
                 <a href="https://stillpointliterarymagazine.com/2022/10/10/selfishness-by-elias-lind/" rel='noreferrer' target='_blank'>

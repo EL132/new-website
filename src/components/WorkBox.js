@@ -2,9 +2,9 @@ import React from 'react';
 import './component-styles/WorkBox.css';
 
 
-function WorkBox ({ company, title, time }) {
+function WorkBox ({ company, title, time, website }) {
     return (
-        <a href='https://www.toyota.com/' target='_blank' rel="noreferror noreferrer">
+        <a href={website} target='_blank' rel="noreferror noreferrer">
             <div className='workbox'>
                 <h2 className='work-title'>{title}</h2>
                 <h3 className='work-company'>{company}</h3>

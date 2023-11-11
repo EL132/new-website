@@ -66,3 +66,23 @@
     height: 20rem;
     width: 40rem;
 }
+
+@media screen and (max-width: 768px) {
+    .projects-container {
+        flex-direction: column;
+        margin-left: 2rem; /* Adjust margin for better spacing on smaller screens */
+        width: auto; /* Allow projects to take full width on smaller screens */
+    }
+
+    .modal-content {
+        width: 20rem;
+        top: 50rem;
+        left: 2rem;
+        height: 70rem;
+    }
+
+    .modal-image {
+        width: 15rem;
+        height: 7.5rem;
+    }
+}

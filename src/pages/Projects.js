@@ -23,7 +23,7 @@ function Projects () {
     return (
         <div className='project-page-container'>
             <div className='title-font-container'>
-                <h1 className='title-font'>PROJECTS</h1>
+                <h1 className='title-font mobile-change-title-font'>PROJECTS</h1>
             </div>
             <div className='projects-container'>
                 <a className='project-link' href='https://el132.github.io/platformer/' rel='noreferrer' target='_blank'>
