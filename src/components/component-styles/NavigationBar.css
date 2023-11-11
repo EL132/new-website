@@ -18,7 +18,17 @@
     border-radius: 0 1.7rem 1.7rem 0;
     background-color: black;
     transition: background-color 0.3s ease, border-radius 0.3s ease;
+
+    /* Add the animation property */
+    animation: pulsate 1.5s infinite alternate;
 }
+
+@keyframes pulsate {
+    to {
+        transform: scale(1.2);
+    }
+}
+
 
 .right-side {
     display: flex;
@@ -33,6 +43,7 @@
 
 .nav-container:hover .rectangle {
     border-radius: 0;
+    animation: none;
 }
 
 .nav-container:hover .right-side {
