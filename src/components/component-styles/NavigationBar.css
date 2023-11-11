@@ -1,8 +1,8 @@
 .nav-container {
     display: flex;
     flex-direction: row;
-    width: 98vw;
-    padding: 3vw;
+    width: 98%;
+    padding: 2.81rem;
 }
 
 .left-side {
@@ -13,9 +13,9 @@
 }
 
 .rectangle {
-    height: 5vh;
-    width: 5vh;
-    border-radius: 0 2vw 2vw 0;
+    height: 2.82rem;
+    width: 2.85rem;
+    border-radius: 0 1.7rem 1.7rem 0;
     background-color: black;
     transition: background-color 0.3s ease, border-radius 0.3s ease;
 }
@@ -25,7 +25,7 @@
     flex-direction: row;
     width: 50%;
     justify-content: right;
-    gap: 3vw;
+    gap: 2.81rem;
     opacity: 0;
     transform: translateX(-100%);
     transition: opacity 1s ease, transform 1s ease;
@@ -41,7 +41,7 @@
 }
 
 .link {
-    font-size: 2.5vh;
+    font-size: 1.3rem;
     font-weight: 500;
     color: black;
     text-decoration: none;

@@ -2,20 +2,6 @@
 
 :root {
     --primary: #555BFF;
-    
-    --one-plat: #555BFF;
-    --two-plat: #1FC11B;
-    --three-plat: #FFD913;
-    --four-plat: #FF9C55;
-    --five-plat: #FF5555;
-
-
-    --one-mem: #555BFF;
-    --two-mem: #1FC11B;
-    --three-mem: #FFD913;
-    --four-mem: #FF9C55;
-    --five-mem: #FF5555;
-
     --secondary: #22D2A0;
     --background: white;
     --green: #1FC11B;
@@ -32,17 +18,17 @@
 
 .card-mem {
     background-color: var(--background);
-    margin-top: 5vh;
+    margin-top: 2.9rem;
     display: block;
-    width: 30vw;
-    min-height: 16vh;
-    border: 3px solid var(--one-mem);
-    padding: 2vh;
+    width: 28.75rem;
+    min-height: 13rem;
+    border: 3px solid var(--primary);
+    padding: 1.1rem;
 
-    box-shadow: 10px -30px 0 -3px var(--background), 10px -30px var(--two-mem),
-            -20px -20px 0 -3px var(--background), -20px -20px var(--three-mem), 
-            30px 30px 0 -3px var(--background), 30px 30px var(--four-mem), 
-            40px -40px 0 -3px var(--background), 40px -40px var(--five-mem); 
+    box-shadow: 10px -30px 0 -3px var(--background), 10px -30px var(--green),
+            -20px -20px 0 -3px var(--background), -20px -20px var(--yellow), 
+            30px 30px 0 -3px var(--background), 30px 30px var(--orange), 
+            40px -40px 0 -3px var(--background), 40px -40px var(--red); 
     transition: box-shadow 1s, top 1s, left 1s;
     position: relative;
     top: 0;
@@ -61,16 +47,16 @@
 
 .card-platformer {
     background-color: var(--background);
-    margin-top: 5vh;
+    margin-top: 2.9rem;
     display: block;
-    width: 30vw;
-    min-height: 16vh;
-    border: 3px solid var(--one-plat);
-    padding: 2vh;
-    box-shadow: -50px -10px 0 -3px var(--background), -50px -10px var(--two-plat),
-                -20px -20px 0 -3px var(--background), -20px -20px var(--three-plat),
-                -30px 30px 0 -3px var(--background), -30px 30px var(--four-plat), 
-                40px -40px 0 -3px var(--background), 40px -40px var(--five-plat);
+    width: 28.75rem;
+    min-height: 13rem;
+    border: 3px solid var(--primary);
+    padding: 1.1rem;
+    box-shadow: -50px -10px 0 -3px var(--background), -50px -10px var(--green),
+                -20px -20px 0 -3px var(--background), -20px -20px var(--yellow),
+                -30px 30px 0 -3px var(--background), -30px 30px var(--orange), 
+                40px -40px 0 -3px var(--background), 40px -40px var(--red);
     transition: box-shadow 1s, top 1s, left 1s;
     position: relative;
     top: 0;
@@ -89,17 +75,17 @@
 
 .card-ka {
     background-color: var(--background);
-    margin-top: 5vh;
+    margin-top: 2.9rem;
     display: block;
-    width: 30vw;
-    min-height: 16vh;
-    border: 3px solid var(--one-mem);
-    padding: 2vh;
+    width: 28.75rem;
+    min-height: 13rem;
+    border: 3px solid var(--primary);
+    padding: 1.1rem;
 
-    box-shadow: 10px 10px 0 -3px var(--background), 10px 10px var(--two-mem),
-            -20px 20px 0 -3px var(--background), -20px 20px var(--three-mem), 
-            30px -30px 0 -3px var(--background), 30px -30px var(--four-mem), 
-            -40px -40px 0 -3px var(--background), -40px -40px var(--five-mem); 
+    box-shadow: 10px 10px 0 -3px var(--background), 10px 10px var(--green),
+            -20px 20px 0 -3px var(--background), -20px 20px var(--yellow), 
+            30px -30px 0 -3px var(--background), 30px -30px var(--orange), 
+            -40px -40px 0 -3px var(--background), -40px -40px var(--red); 
 
     /* -40px -40px 0 -3px var(--background), -40px -40px */
     transition: box-shadow 1s, top 1s, left 1s;
@@ -119,39 +105,27 @@
 
 
 .card-title {
-    font-size: 2vh;
+    font-size: 1.1rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
 }
 
 .card-description {
-    font-size: 1.6vh;
-    margin: 2vh 0;
+    font-size: 0.95rem;
+    margin: 1.1rem 0;
     font-family: 'Lato', sans-serif;
     font-weight: normal;
 }
 
-.cover-image-container {
-    display: flex;
-    justify-content: center;
-    margin: 4vh 0;
-}
-
-.cover-image {
-    width: 20vw;
-    height: 28vh;
-    object-fit: cover;
-}
-
 .project-tools {
     display: flex;
-    margin: 3vh 0;
+    margin: 1.75rem 0;
     flex-direction: row;
     justify-content: space-evenly;
 }
 
 .tech-image {
-    height: 7vh;
+    height: 3.5rem;
 }

@@ -22,21 +22,21 @@
 .modal-content {
     display: flex;
     flex-direction: column;
-    padding: 5vh;
-    gap: 5vh;
-    width: 75vw;
-    height: 75vh;
+    padding: 4rem;
+    gap: 3rem;
+    width: 72rem;
+    height: 45rem;
     background-color: white;
     color: black;
     border: 3px solid black;
     position: absolute;
-    top: 45vh;
-    left: 15vw;
+    top: 25rem;
+    left: 15.5rem;
 }
 
 .close-button {
-    top: 2vh;
-    right: 2vh;
+    top: 1rem;
+    right: 1rem;
     position: absolute;
     background-color: transparent;
     border: none;
@@ -44,16 +44,16 @@
 }
 
 .close-x {
-    height: 5vh;
+    height: 3rem;
 }
 
 .modal-title {
-    font-size: 3vh;
+    font-size: 2rem;
     text-align: center;
 }
 
 .modal-body {
-    font-size: 2vh;
+    font-size: 1.15rem;
 }
 
 .modal-image-container {
@@ -63,6 +63,6 @@
 }
 
 .modal-image {
-    height: 35vh;
-    width: 70vh;
+    height: 20rem;
+    width: 40rem;
 }

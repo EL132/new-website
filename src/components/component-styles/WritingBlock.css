@@ -10,8 +10,8 @@
 }
 
 .writing-image {
-    width: 15vw;
-    height: 37vh;
+    width: 14.6rem;
+    height: 21rem;
 }
 
 .writing-image {
@@ -34,9 +34,9 @@
 }
 
 .writing-title {
-    margin-top: 2.5vh;
-    font-size: 2vh;
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
     text-align: center;
     font-family: 'Lato', sans-serif;
-    font-weight: 500;
+    font-weight: 600;
 }
