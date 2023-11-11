@@ -1,87 +1,29 @@
-.workbox-ka {
+.workbox {
     --g: 3vh;     /* the gap */
     --b: 1.5vh;    /* border thickness*/
-    --c: #7fd9ff; /* the color */
+    --c: #F24C62; /* the color */
+    --_p: 75%;
     display: flex;
     flex-direction: column;
     gap: 2vh;
     width: 22vw;
-    height: 30vh;    
+    height: 30vh; 
     
     padding: calc(var(--g) + var(--b));
     --_c: #0000 0 25%, var(--c) 0 50%;
-    --_g1: repeating-linear-gradient(90deg ,var(--_c)) repeat-x;
-    --_g2: repeating-linear-gradient(180deg,var(--_c)) repeat-y;
+    --_g1: repeating-linear-gradient(135deg ,var(--_c)) repeat-x;
+    --_g2: repeating-linear-gradient(135deg,var(--_c)) repeat-y;
     background:
         var(--_g1) var(--_p, 25%) 0   ,var(--_g2) 0    var(--_p,125%),
         var(--_g1) var(--_p,125%) 100%,var(--_g2) 100% var(--_p, 25%);
     background-size: 200% var(--b),var(--b) 200%;
     cursor: pointer;
-    filter: grayscale(50%);
     transition: .3s;
 }
 
-.workbox-ka:hover {
-    --_p: 75%;
-    filter: grayscale(0%);
+.workbox:hover {
+    --_p: 25%;
 }
-
-.workbox-toyota {
-    --g: 3vh;     /* the gap */
-    --b: 1.5vh;    /* border thickness*/
-    --c: #EB0A1E; /* the color */
-    display: flex;
-    flex-direction: column;
-    gap: 2vh;
-    width: 22vw;
-    height: 30vh;    
-    
-    padding: calc(var(--g) + var(--b));
-    --_c: #0000 0 25%, var(--c) 0 50%;
-    --_g1: repeating-linear-gradient(90deg ,var(--_c)) repeat-x;
-    --_g2: repeating-linear-gradient(180deg,var(--_c)) repeat-y;
-    background:
-        var(--_g1) var(--_p, 25%) 0   ,var(--_g2) 0    var(--_p,125%),
-        var(--_g1) var(--_p,125%) 100%,var(--_g2) 100% var(--_p, 25%);
-    background-size: 200% var(--b),var(--b) 200%;
-    cursor: pointer;
-    filter: grayscale(50%);
-    transition: .3s;
-}
-
-.workbox-tfs:hover {
-    --_p: 75%;
-    filter: grayscale(0%);
-}
-
-.workbox-tfs {
-    --g: 3vh;     /* the gap */
-    --b: 1.5vh;    /* border thickness*/
-    --c: #708090; /* the color */
-    display: flex;
-    flex-direction: column;
-    gap: 2vh;
-    width: 22vw;
-    height: 30vh;    
-    
-    padding: calc(var(--g) + var(--b));
-    --_c: #0000 0 25%, var(--c) 0 50%;
-    --_g1: repeating-linear-gradient(90deg ,var(--_c)) repeat-x;
-    --_g2: repeating-linear-gradient(180deg,var(--_c)) repeat-y;
-    background:
-        var(--_g1) var(--_p, 25%) 0   ,var(--_g2) 0    var(--_p,125%),
-        var(--_g1) var(--_p,125%) 100%,var(--_g2) 100% var(--_p, 25%);
-    background-size: 200% var(--b),var(--b) 200%;
-    cursor: pointer;
-    filter: grayscale(50%);
-    transition: .3s;
-}
-
-.workbox-toyota:hover {
-    --_p: 75%;
-    filter: grayscale(0%);
-}
-
 
 .work-title {
     font-size: 2.5vh;

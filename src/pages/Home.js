@@ -4,7 +4,7 @@ import { text_blurbs } from '../text/homeText';
 
 function Home () {
     useEffect(() => {
-        document.title = 'Elias Lind';
+        document.title = 'Home';
     }, []);
 
     return (
@@ -21,11 +21,11 @@ function Home () {
             <div className='bottom'>
                 <img className='photo' src="./assets/home/chicago.jpg" alt="not work"></img>
                 <img className='photo' src="./assets/home/walton.jpg" alt="not work"></img>
-                <img className='photo' src="./assets/home/blue-checker.jpg" alt="not work"></img>
                 <img className='photo' src="./assets/home/ann-arbor.jpg" alt="not work"></img>
+                <img className='photo' src="./assets/home/toyota.jpg" alt="not work"></img>
                 <img className='photo' src="./assets/home/detroit.jpg" alt="not work"></img>
                 <img className='photo' src="./assets/home/soccer.jpg" alt="not work"></img>
-                <img className='photo' src="./assets/home/orange-fit.jpg" alt="not work"></img>
+                <img className='photo' src="./assets/home/marietta.jpg" alt="not work"></img>
             </div>
         </div>
     );

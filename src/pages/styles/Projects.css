@@ -5,18 +5,18 @@
 .project-page-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    align-items: left;
 }
 
 .projects-container {
     display: flex;
     flex-direction: row;
-    gap: 10vh;
-    width: 85vw;
+    gap: 5rem;
+    margin-left: 5rem;
+    width: 85rem;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    margin-bottom: 15vh;
+    margin-bottom: 12rem;
 }
 
 .modal-content {

@@ -1,7 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@500&display=swap');
-
 .nav-container {
-    font-family: 'Roboto Condensed', sans-serif;
     display: flex;
     flex-direction: row;
     width: 98vw;
@@ -12,6 +9,7 @@
     display: flex;
     width: 50%;
     justify-content: left;
+    cursor: pointer;
 }
 
 .rectangle {
@@ -19,6 +17,7 @@
     width: 5vh;
     border-radius: 0 2vw 2vw 0;
     background-color: black;
+    transition: background-color 0.3s ease, border-radius 0.3s ease;
 }
 
 .right-side {
@@ -27,10 +26,24 @@
     width: 50%;
     justify-content: right;
     gap: 3vw;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.nav-container:hover .rectangle {
+    border-radius: 0;
+}
+
+.nav-container:hover .right-side {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .link {
-    font-size: 3vh;
+    font-size: 2.5vh;
+    font-weight: 500;
     color: black;
     text-decoration: none;
+    text-transform: uppercase;
 }
