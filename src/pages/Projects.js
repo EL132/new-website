@@ -46,6 +46,16 @@ function Projects () {
                         description={text_blurbs.memory_assistant}
                     />
                 </a>
+                <a className='project-link' href='https://mewkat36.wixstudio.io/spotifywrapped' rel='noreferrer' target='_blank'>
+                    <ProjectBox 
+                        techs={['./assets/projects/spotify-wrapped/spotify.png', 
+                                './assets/projects/spotify-wrapped/android_studio.png', 
+                                './assets/projects/spotify-wrapped/open_ai.png']}
+                        cover='./assets/projects/spotify-wrapped/cover.png'
+                        title='Spotify Wrapped' 
+                        description={text_blurbs.spotifyWrapped}
+                    />
+                </a>
                 <div className='project-link' onClick={openModal}>
                     <ProjectBox
                         techs={['./assets/projects/know-athens/figma.png', './assets/projects/know-athens/Google-cloud.png', './assets/projects/know-athens/Vue.png']}
