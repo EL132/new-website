@@ -9,7 +9,7 @@ function ProjectBox ({ techs, cover, title, description }) {
                     <img className="flip-card-image" src={cover} alt="Cover" />
                 </div>
                 <div className="flip-card-back">
-                    <h1>
+                    <h1 className='project-title'>
                         {title}
                     </h1>
                     <p className='project-description'>

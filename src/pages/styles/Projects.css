@@ -25,14 +25,14 @@
     flex-direction: column;
     padding: 4rem;
     gap: 3rem;
-    width: 72rem;
-    height: 45rem;
+    width: 34rem;
+    height: 55rem;
     background-color: white;
     color: black;
     border: 3px solid black;
     position: absolute;
     top: 25rem;
-    left: 15.5rem;
+    left: 15rem;
 }
 
 .close-button {
@@ -69,8 +69,13 @@
 }
 
 @media screen and (max-width: 1366px) {
+    .project-page-container {
+        width: 95%;
+    }
+
     .projects-container {
-        width: 60rem;
+        margin: 0 0;
+        width: 100%;
         flex-direction: row;
         gap: 3rem;
         flex-wrap: wrap;
@@ -80,7 +85,6 @@
 @media screen and (max-width: 768px) {
     .projects-container {
         flex-direction: column;
-        margin-left: 2rem; 
         width: auto; 
     }
 

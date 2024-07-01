@@ -63,7 +63,7 @@ function Projects () {
                             <h2 className='modal-title'>KnowAthens</h2>
                             <p className='modal-body'>{text_blurbs.KnowAthensModal}</p>
                             <div className='modal-image-container'>
-                                <img className='modal-image' src='./assets/projects/know-athens/ka-cover.png' alt='KnowAthens cover'/>                                
+                                <img className='modal-image' src='./assets/projects/know-athens/cover.png' alt='KnowAthens cover'/>                                
                             </div>
                         </div>
                     </div>

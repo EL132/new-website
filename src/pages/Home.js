@@ -12,7 +12,7 @@ function Home () {
             <div className='top'>
                 <h2 className='title-word'>EXPLORER</h2>
                 <p className='dot'></p>
-                <h2 className='title-word'>DEVELOPER</h2>
+                <h2 className='title-word disappear'>DEVELOPER</h2>
             </div>
             <div className='middle'>
                 <p className='text-blurb'>{text_blurbs.first_blurb}</p>

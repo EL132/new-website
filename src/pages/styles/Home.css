@@ -80,12 +80,18 @@
     .middle {
         padding: 1rem;
         gap: 3rem;
+        margin-top: 3rem;
         flex-direction: row;
         justify-content: space-around;
     }
 
     .text-blurb {
         width: 40%;
+        font-size: 1.5rem;
+    }
+
+    .disappear {
+        display: none;
     }
 
     .bottom {

@@ -2,15 +2,15 @@
 
 .flip-card {
     background-color: transparent;
-    width: 25rem;
-    height: 25rem;
+    width: 30rem;
+    height: 30rem;
     perspective: 1000px; 
     border-radius: 50%;
 }
 
 .flip-card-image {
-    width: 25rem;
-    height: 25rem;
+    width: 30rem;
+    height: 30rem;
     border-radius: 50%;
 }
   
@@ -25,10 +25,10 @@
     transform-style: preserve-3d;
 }
 
-/* Do an horizontal flip when you move the mouse over the flip box container */
+/* Do a horizontal flip when you move the mouse over the flip box container */
 .flip-card:hover .flip-card-inner {
-    width: 25rem;
-    height: 25rem;
+    width: 30rem;
+    height: 30rem;
     border-radius: 50%;
     transform: rotateY(180deg);
 }
@@ -39,25 +39,28 @@
     width: 100%;
     border-radius: 50%;
     height: 100%;
-    -webkit-backface-visibility: hidden; /* Safari */
     backface-visibility: hidden;
 }
 
 
 .flip-card-back {
     background-color: #9e9e9e;
-    width: 25rem;
-    height: 25rem;
-    padding: 3rem;
+    width: 30rem;
+    height: 30rem;
     color: white;
     transform: rotateY(180deg);
 }
 
 .project-description {
+    padding: 2rem;
     margin: 2rem 0;
 }
 
 .tech-image {
     height: 3.5rem;
     margin: 0.8rem;
+}
+
+.project-title {
+    padding: 1rem;
 }
