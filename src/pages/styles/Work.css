@@ -61,6 +61,15 @@
     --_p: 25%;
 }
 
+@media screen and (max-width: 1366px) {
+    .work-container {
+        margin-top: -5rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+}
+
 @media screen and (max-width: 768px) { 
     .work-container {
         margin-top: 2rem;
