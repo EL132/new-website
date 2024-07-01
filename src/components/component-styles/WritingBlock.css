@@ -40,3 +40,9 @@
     font-family: 'Lato', sans-serif;
     font-weight: 600;
 }
+
+@media screen and (max-width: 1366px) {
+    .writing-block-container {
+        margin: 0 4rem;
+    }
+}
