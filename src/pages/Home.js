@@ -20,12 +20,14 @@ function Home () {
             </div>
             <div className='bottom'>
                 <img className='photo desktop-photo' src="./assets/home/chicago.jpg" alt="not work"></img>
-                <img className='photo' src="./assets/home/walton.jpg" alt="not work"></img>
-                <img className='photo' src="./assets/home/ann-arbor.jpg" alt="not work"></img>
-                <img className='photo' src="./assets/home/toyota.jpg" alt="not work"></img>
+                <img className='photo desktop-photo' src="./assets/home/walton.jpg" alt="not work"></img>
+                <img className='photo desktop-photo' src="./assets/home/ann-arbor.jpg" alt="not work"></img>
+                <img className='photo desktop-photo' src="./assets/home/toyota.jpg" alt="not work"></img>
                 <img className='photo desktop-photo' src="./assets/home/detroit.jpg" alt="not work"></img>
-                <img className='photo' src="./assets/home/soccer.jpg" alt="not work"></img>
+                <img className='photo desktop-photo' src="./assets/home/soccer.jpg" alt="not work"></img>
                 <img className='photo desktop-photo' src="./assets/home/marietta.jpg" alt="not work"></img>
+                <img className='photo mac-photo' src="./assets/home/mac-photo-1.jpg" alt="not work"></img>
+                <img className='photo mac-photo' src="./assets/home/mac-photo-2.jpg" alt="not work"></img>
             </div>
         </div>
     );

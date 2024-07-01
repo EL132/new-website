@@ -61,6 +61,10 @@
     transform: translateY(-2rem);
 }
 
+.mac-photo {
+    display: none;
+}
+
 @media screen and (max-width: 1366px) {
     .top {
         flex-direction: column;
@@ -70,32 +74,33 @@
     }
 
     .title-word {
-        font-size: 4rem;
+        font-size: 8rem;
     }
 
     .middle {
         padding: 1rem;
         gap: 3rem;
-        flex-direction: column;
-        justify-content: center;
+        flex-direction: row;
+        justify-content: space-around;
     }
 
     .text-blurb {
-        width: 100%;
+        width: 40%;
     }
 
     .bottom {
         flex-direction: row;
-        gap: 2rem;
-        flex-wrap: wrap;
     }
 
     .photo {
-        width: 8rem;
-        height: 18.96rem;
+        border-radius: 100%;
     }
 
     .desktop-photo {
         display: none;
+    }
+
+    .mac-photo {
+        display: block;
     }
 }

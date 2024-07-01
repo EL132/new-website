@@ -14,11 +14,12 @@ function Work () {
             </div>
             <div className='work-container'>
                 <WorkBox company='KnowAthens' title='Web Developer' time='September 2022 - May 2023' website='https://www.instagram.com/knowathens/'/>
-                <WorkBox company='Toyota Financial Services' title='RPA Developer' time='May 2023 - August 2023' website='https://www.toyotafinancial.com/us/en.html'/>
-                <WorkBox company='Toyota Motor North America' title='Supply Chain Engineer' time='August 2023 - December 2023' website='https://www.toyota.com/'/>
+                <WorkBox company='Toyota Financial Services' title='Information & Digital Solutions Intern' time='May 2023 - August 2023' website='https://www.toyotafinancial.com/us/en.html'/>
+                <WorkBox company='Toyota' title='Supply Chain Engineering Intern' time='August 2023 - December 2023' website='https://www.toyota.com/'/>
+                <WorkBox company='Deloitte' title='Business Technology Solutions Summer Scholar' time='June 2024 - August 2024' website='https://www2.deloitte.com/us/en.html'/>
             </div>
             <div className='resume-container'>
-                <a className='resume-link' href='https://drive.google.com/file/d/1NdEyEVinNChIxnBodFEeq4E_2_rjHBgK/view?usp=sharing' target='_blank' rel='noreferrer'>
+                <a className='resume-link' href='https://drive.google.com/file/d/1wpVL8hfsk4OwiCRvmn5UcGVnVzugjVki/view?usp=sharing' target='_blank' rel='noreferrer'>
                     <button className='resume-button line'>Resume</button>
                 </a>
             </div>
