@@ -1,156 +1,63 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@500&display=swap');
 
-:root {
-    --primary: #555BFF;
-    --secondary: #22D2A0;
-    --background: white;
-    --green: #1FC11B;
-    --yellow: #FFD913;
-    --orange: #FF9C55;
-    --red: #FF5555;
-} 
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+.flip-card {
+    background-color: transparent;
+    width: 25rem;
+    height: 25rem;
+    perspective: 1000px; 
+    border-radius: 50%;
 }
 
-.card-mem {
-    background-color: var(--background);
-    margin-top: 2.9rem;
-    display: block;
-    width: 28.75rem;
-    min-height: 13rem;
-    border: 3px solid var(--primary);
-    padding: 1.1rem;
-
-    box-shadow: 10px -30px 0 -3px var(--background), 10px -30px var(--green),
-            -20px -20px 0 -3px var(--background), -20px -20px var(--yellow), 
-            30px 30px 0 -3px var(--background), 30px 30px var(--orange), 
-            40px -40px 0 -3px var(--background), 40px -40px var(--red); 
-    transition: box-shadow 1s, top 1s, left 1s;
+.flip-card-image {
+    width: 25rem;
+    height: 25rem;
+    border-radius: 50%;
+}
+  
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+    border-radius: 50%;
     position: relative;
-    top: 0;
-    left: 0;
-    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
 }
 
-.card-mem:hover {
-    top: -40px;
-    left: 40px;
-    box-shadow: 0 0 0 -3px var(--background), 0 0 0 0 var(--green),
-        0 0 0 -3px var(--background), 0 0 0 0  var(--yellow),
-        0 0 0 -3px var(--background), 0 0 0 0  var(--orange),
-        0 0 0 -3px  var(--background), 0 0 0 0  var(--red);
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+    width: 25rem;
+    height: 25rem;
+    border-radius: 50%;
+    transform: rotateY(180deg);
 }
 
-.card-platformer {
-    background-color: var(--background);
-    margin-top: 2.9rem;
-    display: block;
-    width: 28.75rem;
-    min-height: 13rem;
-    border: 3px solid var(--primary);
-    padding: 1.1rem;
-    box-shadow: -50px -10px 0 -3px var(--background), -50px -10px var(--green),
-                -20px -20px 0 -3px var(--background), -20px -20px var(--yellow),
-                -30px 30px 0 -3px var(--background), -30px 30px var(--orange), 
-                40px -40px 0 -3px var(--background), 40px -40px var(--red);
-    transition: box-shadow 1s, top 1s, left 1s;
-    position: relative;
-    top: 0;
-    left: 0;
-    cursor: pointer;
-}
-
-.card-platformer:hover {
-    top: -40px;
-    left: -40px;
-    box-shadow: 0 0 0 -3px var(--background), 0 0 0 0 var(--green),
-        0 0 0 -3px var(--background), 0 0 0 0  var(--yellow),
-        0 0 0 -3px var(--background), 0 0 0 0  var(--orange),
-        0 0 0 -3px  var(--background), 0 0 0 0  var(--red);
-}
-
-.card-ka {
-    background-color: var(--background);
-    margin-top: 2.9rem;
-    display: block;
-    width: 28.75rem;
-    min-height: 13rem;
-    border: 3px solid var(--primary);
-    padding: 1.1rem;
-
-    box-shadow: 10px 10px 0 -3px var(--background), 10px 10px var(--green),
-            -20px 20px 0 -3px var(--background), -20px 20px var(--yellow), 
-            30px -30px 0 -3px var(--background), 30px -30px var(--orange), 
-            -40px -40px 0 -3px var(--background), -40px -40px var(--red); 
-
-    /* -40px -40px 0 -3px var(--background), -40px -40px */
-    transition: box-shadow 1s, top 1s, left 1s;
-    position: relative;
-    top: 0;
-    left: 0;
-    cursor: pointer;
-}
-
-.card-ka:hover {
-    top: -40px;
-    box-shadow: 0 0 0 -3px var(--background), 0 0 0 0 var(--green),
-        0 0 0 -3px var(--background), 0 0 0 0  var(--yellow),
-        0 0 0 -3px var(--background), 0 0 0 0  var(--orange),
-        0 0 0 -3px  var(--background), 0 0 0 0  var(--red);
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    border-radius: 50%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
 }
 
 
-.card-title {
-    font-size: 1.1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 1rem;
+.flip-card-back {
+    background-color: #9e9e9e;
+    width: 25rem;
+    height: 25rem;
+    padding: 3rem;
+    color: white;
+    transform: rotateY(180deg);
 }
 
-.card-description {
-    font-size: 0.95rem;
-    margin: 1.1rem 0;
-    font-family: 'Lato', sans-serif;
-    font-weight: normal;
-}
-
-.project-tools {
-    display: flex;
-    margin: 1.75rem 0;
-    flex-direction: row;
-    justify-content: space-evenly;
+.project-description {
+    margin: 2rem 0;
 }
 
 .tech-image {
     height: 3.5rem;
-}
-
-@media screen and (max-width: 768px) {
-    .card-platformer {
-        width: 15rem;
-        margin-left: 2rem;
-    }
-
-    .card-mem {
-        width: 15rem;
-        margin-left: 2rem;
-    }
-
-    .card-ka {
-        width: 15rem;
-        margin-left: 2rem;
-    }
-
-    .mobile-change-title-font {
-        font-size: 3.5rem;
-    }
-
-    .title-font-container {
-        height: 5rem;
-    }
+    margin: 0.8rem;
 }

@@ -49,7 +49,7 @@ function Projects () {
                 <div className='project-link' onClick={openModal}>
                     <ProjectBox
                         techs={['./assets/projects/know-athens/figma.png', './assets/projects/know-athens/Google-cloud.png', './assets/projects/know-athens/Vue.png']}
-                        cover=''
+                        cover='./assets/projects/know-athens/cover.png'
                         title='KnowAthens'
                         description={text_blurbs.KnowAthens}
                     />

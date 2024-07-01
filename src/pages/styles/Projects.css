@@ -5,6 +5,7 @@
 .project-page-container {
     display: flex;
     flex-direction: column;
+    width: 80%;
     align-items: left;
 }
 
@@ -67,11 +68,20 @@
     width: 40rem;
 }
 
+@media screen and (max-width: 1366px) {
+    .projects-container {
+        width: 60rem;
+        flex-direction: row;
+        gap: 3rem;
+        flex-wrap: wrap;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .projects-container {
         flex-direction: column;
-        margin-left: 2rem; /* Adjust margin for better spacing on smaller screens */
-        width: auto; /* Allow projects to take full width on smaller screens */
+        margin-left: 2rem; 
+        width: auto; 
     }
 
     .modal-content {
