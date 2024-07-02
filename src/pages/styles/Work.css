@@ -66,6 +66,7 @@
 @media screen and (max-width: 1366px) {
     .work-container {
         margin-top: -5rem;
+        gap: 0rem;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-evenly;
