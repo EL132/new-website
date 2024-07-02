@@ -19,7 +19,7 @@ function Work () {
                 <WorkBox company='Toyota Financial Services' title='Information & Digital Solutions Intern' time='May 2023 - August 2023' website='https://www.toyotafinancial.com/us/en.html'/>
             </div>
             <div className='resume-container'>
-                <a className='resume-link' href='https://drive.google.com/file/d/1wpVL8hfsk4OwiCRvmn5UcGVnVzugjVki/view?usp=sharing' target='_blank' rel='noreferrer'>
+                <a className='resume-link' href='https://drive.google.com/file/d/1wc_6OfPuTRRg0cJh0vu9v6lDh6rclBgI/view?usp=sharing' target='_blank' rel='noreferrer'>
                     <button className='resume-button line'>Resume</button>
                 </a>
             </div>
