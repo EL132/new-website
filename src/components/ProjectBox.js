@@ -3,26 +3,14 @@ import './component-styles/ProjectBox.css';
 
 function ProjectBox ({ techs, cover, title, description }) {
     return (
-        <div className="flip-card">
-            <div className="flip-card-inner">
-                <div className="flip-card-front">
-                    <img className="flip-card-image" src={cover} alt="Cover" />
-                </div>
-                <div className="flip-card-back">
-                    <h1 className='project-title'>
-                        {title}
-                    </h1>
-                    <p className='project-description'>
-                        {description}
-                    </p>
-                    <div className='tech-container'>
-                        {techs.map((tech, index) => {
-                            return (
-                                <img key={index} className='tech-image' src={tech} alt='Tech'/>
-                            );
-                        })}
-                    </div>
-                </div>
+        <div className='project-box'>
+            <h2 className='title'>{title}</h2>
+            <hr className='hr-rule'></hr>
+            <p>{description}</p>
+            <div className='techs-container'>
+                {techs.map((tech, index) => {
+                    return <img className="tech-image" key={index} src={tech} alt='tech'></img>
+                })}
             </div>
         </div>
     );
