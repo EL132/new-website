@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './styles/Home.css';
 import { text_blurbs } from '../text/homeText';
 
@@ -9,6 +10,9 @@ function Home () {
 
     return (
         <div className='home-container'>
+            <Link to="/bridge-quiz" className="bridge-student-link">
+                Are you a 2.11 Bridge-building student?
+            </Link>
             <div className='top'>
                 <h2 className='title-word'>EXPLORER</h2>
                 <p className='dot'></p>

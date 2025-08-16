@@ -2,6 +2,7 @@ import Work from './pages/Work';
 import Home from './pages/Home';
 import Writing from './pages/Writing';
 import BlogPost from './components/BlogPost';
+import BridgeQuiz from './components/BridgeQuiz';
 import Projects from './pages/Projects';
 import Angelica from './pages/Angelica';
 import { useEffect } from 'react';
@@ -23,6 +24,7 @@ function App() {
             <Route path="/writing" element={<Writing />} />
             <Route path="/writing/blog/:id" element={<BlogPost />} />
             <Route path="/work" element={<Work />} />
+            <Route path="/bridge-quiz" element={<BridgeQuiz />} />
             <Route path="/211" element={<Angelica />} />
         </Routes>
     );

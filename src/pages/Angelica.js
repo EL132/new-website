@@ -28,8 +28,8 @@ function Angelica() {
                 <h2>Course Pictures</h2>
                 <div className="angelica-pictures-placeholder">
                     {/* Insert course images here */}
-                    <div className="picture-placeholder">[Course Image Placeholder]</div>
-                    <div className="picture-placeholder">[Course Image Placeholder]</div>
+                    <div className="picture-placeholder" style={{display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center'}}>[Looking forward to filling these in!]</div>
+                    <div className="picture-placeholder" style={{display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center'}}>[Maybe YOU will be here next...]</div>
                 </div>
             </section>
 
