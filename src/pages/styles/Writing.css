@@ -1,3 +1,51 @@
+/* Section header styles for Blogs and Poems */
+.section-header {
+    font-size: 1.7rem;
+    color: #2a3a5e;
+    margin: 32px 0 16px 0;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+/* Blog section styles */
+.blog-list {
+    margin-top: 32px;
+}
+.blog-preview {
+    border-bottom: 1px solid #eee;
+    padding: 12px 0;
+}
+.blog-post {
+    margin-top: 32px;
+}
+.comments-section {
+    margin-top: 24px;
+}
+.comment {
+    background: #f5f5f5;
+    margin-bottom: 12px;
+    padding: 8px;
+    border-radius: 6px;
+}
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+}
+.comment-form input, .comment-form textarea {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+.comment-form button {
+    align-self: flex-start;
+    padding: 8px 16px;
+    background: #2a3a5e;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
 .writing-container {
     gap: 3rem 9rem;
     width: 100%;
