@@ -15,16 +15,16 @@ function NavigationBar() {
                 <div className='rectangle'></div>
             </div>
             <div className='right-side'>
-                <Link to='/new-website/' className='link home-link'>
+                <Link to='/' className='link home-link'>
                     Home
                 </Link>
-                <Link to='/new-website/work' className='link'>
+                <Link to='/work' className='link'>
                     Work
                 </Link>
-                <Link to='/new-website/writing' className='link'>
+                <Link to='/writing' className='link'>
                     Writing
                 </Link>
-                <Link to='/new-website/projects' className='link'>
+                <Link to='/projects' className='link'>
                     Projects
                 </Link>
                 <a

@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
 import './styles/Writing.css';
+import React, { useEffect } from 'react';
 import WritingBlock from '../components/WritingBlock';
 
 function Writing () {

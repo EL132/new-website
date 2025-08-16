@@ -1,0 +1,53 @@
+/* Angelica course page styles */
+.angelica-container {
+	max-width: 800px;
+	margin: 40px auto;
+	padding: 24px;
+	background: #f9f9fc;
+	border-radius: 12px;
+	box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+	font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.angelica-section {
+	margin-bottom: 32px;
+	padding-bottom: 16px;
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.angelica-section:last-child {
+	border-bottom: none;
+}
+
+.intro h1 {
+	font-size: 2.2rem;
+	color: #2a3a5e;
+	margin-bottom: 12px;
+}
+
+.professor h2,
+.pictures h2,
+.semester h2 {
+	font-size: 1.4rem;
+	color: #3a4a6e;
+	margin-bottom: 8px;
+}
+
+.angelica-pictures-placeholder {
+	display: flex;
+	gap: 16px;
+	margin-top: 12px;
+}
+
+.picture-placeholder {
+	width: 160px;
+	height: 100px;
+	background: #dbeafe;
+	border: 2px dashed #7da0fa;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #3a4a6e;
+	font-size: 1rem;
+	border-radius: 8px;
+}
