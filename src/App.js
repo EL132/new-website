@@ -1,7 +1,6 @@
 import Work from './pages/Work';
 import Home from './pages/Home';
 import Writing from './pages/Writing';
-import BlogList from './components/BlogList';
 import BlogPost from './components/BlogPost';
 import Projects from './pages/Projects';
 import Angelica from './pages/Angelica';
