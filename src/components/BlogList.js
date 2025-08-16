@@ -11,15 +11,14 @@ function BlogList() {
     }, []);
 
     return (
-        <div className="blog-list">
-            <h2>Blog Posts</h2>
+        <div className="blog-list styled-blog-list">
             {posts.map(post => (
-                <div key={post._id} className="blog-preview">
-                    <Link to={`/writing/blog/${post._id}`}>
-                        <h3>{post.title}</h3>
+                <div key={post._id} className="blog-preview styled-blog-preview">
+                    <Link to={`/writing/blog/${post._id}`} className="blog-link">
+                        <h3 className="blog-title">{post.title}</h3>
                     </Link>
-                    <p>{new Date(post.date).toLocaleDateString()}</p>
-                    <p>{post.content[0].slice(0, 100)}...</p>
+                    <p className="blog-date">{new Date(post.date).toLocaleDateString()}</p>
+                    <p className="blog-snippet">{post.content[0].slice(0, 100)}...</p>
                 </div>
             ))}
         </div>

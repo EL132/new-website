@@ -8,6 +8,7 @@
     justify-content: center;
     width: 21rem;
     height: 16rem; 
+
     
     padding: calc(var(--g) + var(--b));
     --_c: #0000 0 25%, var(--c) 0 50%;
