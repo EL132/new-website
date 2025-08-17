@@ -47,7 +47,7 @@
 /* Absolutely positioned, obnoxious top-right link for 2.11 Bridge-building students */
 .bridge-student-link {
     position: absolute;
-    top: 24px;
+    top: 84px;
     right: 32px;
     z-index: 1000;
     background: #fffbe6;
