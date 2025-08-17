@@ -1,3 +1,58 @@
+/* Angelica page footer for syllabus link */
+.angelica-footer {
+	margin-top: 36px;
+	text-align: center;
+	color: #888;
+	font-size: 0.95rem;
+}
+.angelica-footer a {
+	color: #2a3a5e;
+	text-decoration: underline;
+	font-weight: 500;
+	transition: color 0.2s;
+}
+.angelica-footer a:hover {
+	color: #d7263d;
+}
+/* Hover image transition for Angelica page */
+.hover-image-container {
+	position: relative;
+	width: 160px;
+	height: 100px;
+	border-radius: 8px;
+	overflow: hidden;
+}
+.hover-image {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 8px;
+	transition: filter 1.5s ease, opacity 1.5s ease;
+	display: block;
+}
+.base-image {
+	z-index: 1;
+	filter: blur(0);
+	opacity: 1;
+	transition: filter 1.5s ease, opacity 1.5s ease;
+}
+.hover-image-top {
+	z-index: 2;
+	filter: blur(8px);
+	opacity: 0;
+	transition: filter 1.5s ease, opacity 1.5s ease;
+}
+.hover-image-container:hover .base-image {
+	filter: blur(8px);
+	opacity: 0;
+}
+.hover-image-container:hover .hover-image-top {
+	filter: blur(0);
+	opacity: 1;
+}
 /* Angelica course page styles */
 .angelica-container {
 	max-width: 800px;
@@ -27,6 +82,7 @@
 
 .professor h2,
 .pictures h2,
+.reading h2, 
 .semester h2 {
 	font-size: 1.4rem;
 	color: #3a4a6e;

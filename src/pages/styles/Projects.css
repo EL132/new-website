@@ -100,4 +100,27 @@
         width: 15rem;
         height: 7.5rem;
     }
+    .title-font-container {
+        margin: 0 0 1.2rem 0;
+        height: auto;
+        justify-content: center;
+        align-items: center;
+    }
+    .title-font {
+        font-size: 2.2rem;
+        text-align: center;
+        margin: 0 auto;
+    }
+    .project-page-container {
+        width: 98vw;
+        min-width: 0;
+        align-items: center;
+        padding: 0;
+    }
+    .projects-container {
+        gap: 1.2rem;
+        margin: 0 auto;
+        width: 100%;
+        align-items: center;
+    }
 }

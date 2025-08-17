@@ -5,6 +5,58 @@
     padding: 0px 0 32px 0;
 }
 
+@media screen and (max-width: 768px) {
+    .title-font-container {
+        margin: 0 0 1.2rem 0;
+        height: auto;
+        justify-content: center;
+        align-items: center;
+    }
+    .title-font {
+        font-size: 2.2rem;
+        text-align: center;
+        margin: 0 auto;
+    }
+    .styled-section {
+        width: 98vw;
+        min-width: 0;
+        padding: 12px 8px 12px 8px;
+        margin: 12px auto;
+        border-radius: 10px;
+    }
+    .custom-section-spacing {
+        margin-left: 0;
+    }
+    .section-header {
+        font-size: 1.2rem;
+        margin: 18px 0 10px 0;
+        text-align: center;
+    }
+    .styled-blog-list {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .styled-blog-preview {
+        padding: 12px 8px;
+        font-size: 1rem;
+    }
+    .poems-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        justify-items: center;
+    }
+    .poem-item {
+        max-width: 98vw;
+    }
+    .writing-container {
+        flex-direction: column;
+        gap: 1.2rem;
+        margin-bottom: 3rem;
+        width: 100%;
+        align-items: center;
+    }
+}
+
 .styled-section {
     background: #fff;
     border-radius: 16px;
