@@ -313,3 +313,38 @@ a {
     text-decoration: none;
     color: black;
 }
+
+/* Strong mobile overrides placed at the end so they win over earlier rules */
+@media screen and (max-width: 768px) {
+    /* Ensure no horizontal scrolling */
+    .writing-main-container, .styled-section, .blog-section, .writing-container {
+        overflow-x: hidden;
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 100vw;
+        min-width: 0;
+    }
+
+    /* Force blog list to single column on small screens */
+    .styled-blog-list {
+        display: grid;
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+        margin: 0;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .styled-blog-preview {
+        padding: 12px 14px !important;
+        font-size: 1rem !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box;
+    }
+
+    /* Reduce title size slightly on very small screens */
+    .blog-title {
+        font-size: 1.1rem;
+    }
+}

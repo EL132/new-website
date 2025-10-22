@@ -247,3 +247,67 @@
         display: block;
     }
 }
+
+/* Strong mobile overrides to ensure no wrapping/overflow and single centered image */
+@media screen and (max-width: 768px) {
+    .home-container, .top, .middle, .bottom {
+        width: 100vw;
+        max-width: 100vw;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+
+    /* Prevent title from wrapping and scale it down responsively */
+    .title-word {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: clamp(1.6rem, 6vw, 2.6rem);
+        text-align: center;
+        margin: 0 auto;
+        max-width: 94vw;
+    }
+
+    .top {
+        padding: 0.5rem 1rem;
+        justify-content: center;
+        align-items: center;
+        gap: 0.25rem;
+    }
+
+    /* Stack the blurbs vertically and make them full width */
+    .middle {
+        flex-direction: column;
+        padding: 0.8rem 1rem;
+        gap: 0.6rem;
+        align-items: center;
+    }
+    .text-blurb {
+        width: 94vw;
+        max-width: 640px;
+        font-size: 0.95rem;
+        margin: 0.2rem 0;
+        text-align: left;
+    }
+
+    /* Show only the first non-mac image and center it; make it small & circular */
+    .bottom {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        margin-top: 0.8rem;
+        padding-bottom: 1.2rem;
+    }
+    .bottom .photo { display: none; }
+    /* Select the first photo that is NOT a mac-photo */
+    .bottom .photo:not(.mac-photo):first-of-type {
+        display: block;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        margin: 0 auto;
+    }
+}
