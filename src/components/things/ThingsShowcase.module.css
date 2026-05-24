@@ -1,0 +1,313 @@
+.showcase {
+    --row-height: 54px;
+    --connector-width: clamp(2.25rem, 5vw, 4.75rem);
+    --showcase-height: max(460px, calc(var(--item-count) * var(--row-height)));
+    width: 100%;
+}
+
+.showcaseGrid {
+    display: grid;
+    grid-template-columns: minmax(320px, 1.15fr) var(--connector-width) minmax(280px, 0.78fr);
+    align-items: start;
+    min-height: var(--showcase-height);
+}
+
+.previewColumn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: var(--showcase-height);
+}
+
+.cardDeck {
+    position: relative;
+    width: min(100%, var(--showcase-height));
+    aspect-ratio: 1 / 1;
+}
+
+.previewCard {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    background:
+        radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.5), transparent 28%),
+        var(--card-background);
+    box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.16),
+        0 2px 10px rgba(0, 0, 0, 0.08);
+    opacity: var(--card-opacity);
+    pointer-events: none;
+    transform: translate3d(var(--card-x), var(--card-y), 0) scale(var(--card-scale));
+    transform-origin: center;
+    transition:
+        transform 340ms cubic-bezier(0.2, 0.7, 0.2, 1),
+        opacity 240ms ease;
+    z-index: var(--card-z);
+}
+
+.previewCardActive {
+    pointer-events: auto;
+}
+
+.previewCardImage {
+    color: #fff;
+}
+
+.previewImage {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.02);
+}
+
+.cardWash {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.44)),
+        linear-gradient(120deg, rgba(0, 0, 0, 0.32), transparent 52%);
+}
+
+.cardContent {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: clamp(1.4rem, 4vw, 2.7rem);
+    box-sizing: border-box;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 18px rgba(0, 0, 0, 0.32);
+}
+
+.cardKicker {
+    margin: 0 0 0.65rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.cardNumber {
+    margin: 0;
+    font-size: clamp(5rem, 14vw, 10rem);
+    font-weight: 800;
+    letter-spacing: 0;
+    line-height: 0.82;
+}
+
+.cardTitle {
+    max-width: 15ch;
+    margin: 1.1rem 0 0;
+    font-size: clamp(1.35rem, 3.2vw, 2.6rem);
+    line-height: 1.02;
+}
+
+.cardDescription {
+    max-width: 34ch;
+    margin: 1rem 0 0;
+    font-size: clamp(0.9rem, 1.55vw, 1.03rem);
+    line-height: 1.45;
+}
+
+.connectorColumn {
+    position: relative;
+    min-height: var(--showcase-height);
+}
+
+.connectorLine,
+.activeMarker {
+    position: absolute;
+    top: 0;
+    transform: translateY(calc((var(--active-index) * var(--row-height)) + (var(--row-height) / 2)));
+    transition: transform 260ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.connectorLine {
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #111;
+    opacity: 0.24;
+}
+
+.activeMarker {
+    left: -2.95rem;
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    color: #a34d2e;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    transform:
+        translateY(calc((var(--active-index) * var(--row-height)) + (var(--row-height) / 2)))
+        translateY(-50%);
+}
+
+.itemList {
+    display: grid;
+    grid-auto-rows: var(--row-height);
+    min-height: calc(var(--item-count) * var(--row-height));
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.itemRow {
+    min-width: 0;
+}
+
+.listControl {
+    display: grid;
+    grid-template-columns: 3.3rem minmax(0, 1fr);
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 0.75rem 0 0;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    box-sizing: border-box;
+    color: #3f3f3f;
+    cursor: pointer;
+    font: inherit;
+    text-align: left;
+    text-decoration: none;
+    transition:
+        background-color 180ms ease,
+        color 180ms ease,
+        transform 180ms ease;
+}
+
+.listControl:hover,
+.listControl:focus-visible,
+.listControlActive {
+    color: #a34d2e;
+}
+
+.listControlActive {
+    background: rgba(163, 77, 46, 0.08);
+}
+
+.listControl:focus-visible {
+    outline: 2px solid rgba(163, 77, 46, 0.5);
+    outline-offset: 3px;
+}
+
+.listNumber {
+    color: currentColor;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    opacity: 0.62;
+}
+
+.listText {
+    display: grid;
+    gap: 0.12rem;
+    min-width: 0;
+}
+
+.listKicker {
+    overflow: hidden;
+    color: currentColor;
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    line-height: 1;
+    opacity: 0.56;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.listTitle {
+    overflow: hidden;
+    font-size: clamp(0.98rem, 1.35vw, 1.08rem);
+    font-weight: 650;
+    line-height: 1.15;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@media screen and (max-width: 720px) {
+    .showcase {
+        --row-height: 58px;
+        --showcase-height: auto;
+    }
+
+    .showcaseGrid {
+        display: block;
+        min-height: 0;
+    }
+
+    .previewColumn {
+        min-height: 0;
+    }
+
+    .cardDeck {
+        width: min(100%, 430px);
+        margin: 0 auto;
+    }
+
+    .connectorColumn {
+        display: none;
+    }
+
+    .itemList {
+        grid-auto-rows: minmax(var(--row-height), auto);
+        min-height: 0;
+        margin-top: 1.4rem;
+    }
+
+    .listControl {
+        min-height: var(--row-height);
+        padding-right: 0.5rem;
+    }
+
+}
+
+@media screen and (max-width: 460px) {
+    .cardDescription {
+        display: none;
+    }
+
+    .cardNumber {
+        font-size: clamp(4.2rem, 24vw, 6.5rem);
+    }
+
+    .listControl {
+        grid-template-columns: 2.7rem minmax(0, 1fr);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .previewCard,
+    .connectorLine,
+    .activeMarker,
+    .listControl {
+        transition: none;
+    }
+
+    .previewCard {
+        transform: none;
+    }
+
+    .previewCard:not(.previewCardActive) {
+        opacity: 0 !important;
+    }
+}

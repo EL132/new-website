@@ -3,10 +3,10 @@
     gap: 1rem;
     min-width: 210px;
     padding: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 12px;
-    background: rgba(5, 12, 24, 0.68);
-    box-shadow: 0 16px 44px rgba(0, 0, 0, 0.28);
+    border: 1px solid rgba(17, 17, 17, 0.12);
+    border-radius: 8px;
+    background: rgba(247, 241, 232, 0.78);
+    box-shadow: 0 16px 44px rgba(17, 17, 17, 0.1);
     backdrop-filter: blur(14px);
 }
 
@@ -16,14 +16,14 @@
 }
 
 .statValue {
-    color: #ffffff;
+    color: #111;
     font-size: 1.65rem;
     font-weight: 700;
     line-height: 1;
 }
 
 .statLabel {
-    color: rgba(230, 243, 255, 0.68);
+    color: rgba(17, 17, 17, 0.58);
     font-size: 0.78rem;
     letter-spacing: 0.08em;
     margin-top: 0.35rem;

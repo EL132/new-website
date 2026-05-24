@@ -1,11 +1,8 @@
 .travelPage {
     min-height: calc(100vh - 80px);
     padding: 2.5rem clamp(1rem, 4vw, 4rem) 4rem;
-    background:
-        radial-gradient(circle at 22% 18%, rgba(255, 122, 190, 0.16), transparent 28%),
-        radial-gradient(circle at 80% 34%, rgba(103, 214, 255, 0.18), transparent 30%),
-        linear-gradient(135deg, #020712 0%, #06101f 48%, #0a1022 100%);
-    color: #f7fbff;
+    background: #fff;
+    color: #111;
     box-sizing: border-box;
     overflow: hidden;
 }
@@ -18,7 +15,7 @@
 
 .eyebrow {
     margin: 0 0 0.75rem;
-    color: rgba(130, 222, 255, 0.82);
+    color: rgba(17, 17, 17, 0.58);
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.18em;
@@ -34,7 +31,7 @@
 .subtitle {
     max-width: 520px;
     margin: 1rem auto 0;
-    color: rgba(237, 246, 255, 0.72);
+    color: rgba(17, 17, 17, 0.68);
     font-size: clamp(1rem, 2vw, 1.2rem);
 }
 
@@ -52,7 +49,7 @@
     right: 10%;
     bottom: 4%;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(132, 222, 255, 0.42), transparent);
+    background: linear-gradient(90deg, transparent, rgba(17, 17, 17, 0.18), transparent);
 }
 
 .statsOverlay {
@@ -68,7 +65,7 @@
     top: 50%;
     z-index: 4;
     transform: translate(-50%, -50%);
-    color: rgba(247, 251, 255, 0.72);
+    color: rgba(17, 17, 17, 0.58);
     font-size: 0.95rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;

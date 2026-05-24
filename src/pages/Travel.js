@@ -74,7 +74,7 @@ function Travel() {
                 <p className={styles.eyebrow}>travel log</p>
                 <h1>Flights I&apos;ve Taken</h1>
                 <p className={styles.subtitle}>
-                    A map of my travel history since 2022 :) 
+                    A map of my travel history since 2022 
                 </p>
             </section>
 

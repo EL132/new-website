@@ -37,6 +37,34 @@
     margin: 0 0 2rem;
 }
 
+.particleHeaderTitle {
+    position: relative;
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    line-height: 1;
+}
+
+.headerTitleFallback {
+    display: block;
+    color: inherit;
+}
+
+.particleHeaderTitleReady .headerTitleFallback {
+    color: transparent;
+}
+
+.particleNameCanvas {
+    position: absolute !important;
+    inset: 0;
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden;
+    pointer-events: auto;
+    touch-action: none;
+}
+
 .headerMeta {
     display: inline-flex;
     align-items: flex-start;

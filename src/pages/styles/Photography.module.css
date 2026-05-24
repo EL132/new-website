@@ -4,8 +4,8 @@
     z-index: 20;
     min-height: 100dvh;
     overflow: hidden;
-    background: #11100e;
-    color: #f7f1e8;
+    background: #f7f1e8;
+    color: #111;
 }
 
 .enterShell {
@@ -16,11 +16,11 @@
     min-height: 100dvh;
     overflow: hidden;
     background:
-        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px),
-        #11100e;
+        linear-gradient(rgba(17, 17, 17, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17, 17, 17, 0.026) 1px, transparent 1px),
+        #f7f1e8;
     background-size: 72px 72px;
-    color: #f7f1e8;
+    color: #111;
 }
 
 .enterShell::after {
@@ -30,13 +30,12 @@
     pointer-events: none;
     background-image: repeating-linear-gradient(
         0deg,
-        rgba(255, 255, 255, 0.03) 0,
-        rgba(255, 255, 255, 0.03) 1px,
+        rgba(17, 17, 17, 0.02) 0,
+        rgba(17, 17, 17, 0.02) 1px,
         transparent 1px,
         transparent 4px
     );
-    opacity: 0.22;
-    mix-blend-mode: screen;
+    opacity: 0.2;
 }
 
 .enterContent {
@@ -73,18 +72,19 @@
 
 .enterKicker {
     margin: 0;
-    color: rgba(247, 241, 232, 0.58);
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: clamp(1.25rem, 3vw, 2rem);
-    font-style: italic;
+    color: rgba(17, 17, 17, 0.58);
+    font-family: inherit;
+    font-size: clamp(1rem, 2.4vw, 1.45rem);
+    font-weight: 600;
+    letter-spacing: 0.08em;
 }
 
 .enterButton {
     appearance: none;
-    border: 1px solid rgba(247, 241, 232, 0.7);
+    border: 1px solid rgba(17, 17, 17, 0.72);
     border-radius: 999px;
-    background: rgba(247, 241, 232, 0.03);
-    color: #f7f1e8;
+    background: transparent;
+    color: #111;
     cursor: pointer;
     font: inherit;
     font-size: 0.8rem;
@@ -100,9 +100,9 @@
 
 .enterButton:hover,
 .enterButton:focus-visible {
-    background: #f7f1e8;
-    border-color: #f7f1e8;
-    color: #11100e;
+    background: #111;
+    border-color: #111;
+    color: #f7f1e8;
     transform: translateY(-2px);
 }
 
@@ -123,7 +123,7 @@
     background:
         linear-gradient(rgba(26, 24, 20, 0.035) 1px, transparent 1px),
         linear-gradient(90deg, rgba(26, 24, 20, 0.027) 1px, transparent 1px),
-        #eee8dc;
+        #f7f1e8;
     background-size: 120px 120px;
     color: #191713;
     cursor: grab;
@@ -202,7 +202,7 @@
     padding: 0.55rem 0.8rem;
     border: 1px solid rgba(25, 23, 19, 0.1);
     border-radius: 999px;
-    background: rgba(238, 232, 220, 0.72);
+    background: rgba(247, 241, 232, 0.72);
     box-shadow: 0 10px 30px rgba(22, 19, 15, 0.08);
     color: rgba(25, 23, 19, 0.56);
     font-size: 0.72rem;
@@ -315,9 +315,8 @@
     justify-content: center;
     gap: 0.8rem;
     color: rgba(247, 241, 232, 0.78);
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: inherit;
     font-size: clamp(0.92rem, 2vw, 1.08rem);
-    font-style: italic;
 }
 
 .lightboxClose {

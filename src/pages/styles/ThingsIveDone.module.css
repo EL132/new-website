@@ -1,0 +1,33 @@
+.thingsPage {
+    width: min(1120px, calc(100vw - 3rem));
+    margin: 3.2rem auto 4.5rem;
+    color: #111;
+}
+
+.pageHeader {
+    margin-bottom: clamp(2rem, 5vw, 3.4rem);
+}
+
+.eyebrow {
+    margin: 0 0 0.45rem;
+    color: #666;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1;
+    text-transform: lowercase;
+}
+
+.pageHeader h1 {
+    margin: 0;
+    font-size: clamp(2.5rem, 7vw, 5.75rem);
+    line-height: 0.92;
+    text-transform: lowercase;
+}
+
+@media screen and (max-width: 720px) {
+    .thingsPage {
+        width: min(100% - 2rem, 520px);
+        margin-top: 2rem;
+    }
+}

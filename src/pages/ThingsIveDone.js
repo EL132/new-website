@@ -1,4 +1,7 @@
 import { useEffect } from 'react';
+import ThingsShowcase from '../components/things/ThingsShowcase';
+import { thingsIveDoneItems } from '../data/thingsIveDone';
+import styles from './styles/ThingsIveDone.module.css';
 
 function ThingsIveDone() {
     useEffect(() => {
@@ -6,11 +9,13 @@ function ThingsIveDone() {
     }, []);
 
     return (
-        <main>
-            <h1>things i've done</h1>
-            <p>
-                Placeholder: 3-d carousel of photos for each; upon click, that item will show image to the left and title:description to the right.
-            </p>
+        <main className={styles.thingsPage}>
+            <header className={styles.pageHeader}>
+                <p className={styles.eyebrow}>friend</p>
+                <h1>things i've done</h1>
+            </header>
+
+            <ThingsShowcase items={thingsIveDoneItems} />
         </main>
     );
 }

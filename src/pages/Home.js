@@ -1,11 +1,22 @@
 // Home.js
-import { useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import ParticleName from '../components/home/ParticleName';
 import styles from './styles/Home.module.css';
 
 function Home() {
+    const [isParticleNameReady, setIsParticleNameReady] = useState(false);
+
     useEffect(() => {
         document.title = 'Home';
+    }, []);
+
+    const handleParticleNameReady = useCallback(() => {
+        setIsParticleNameReady(true);
+    }, []);
+
+    const handleParticleNameUnavailable = useCallback(() => {
+        setIsParticleNameReady(false);
     }, []);
 
     // pick random image from public folder
@@ -29,12 +40,25 @@ function Home() {
                 />
 
                 <div className={styles.headerSection}>
-                    <h1 className={styles.headerTitle}>Elias</h1>
+                    <h1
+                        className={`${styles.headerTitle} ${styles.particleHeaderTitle} ${
+                            isParticleNameReady ? styles.particleHeaderTitleReady : ''
+                        }`}
+                        aria-label="Elias"
+                    >
+                        <span className={styles.headerTitleFallback}>Elias</span>
+                        <ParticleName
+                            text="Elias"
+                            className={styles.particleNameCanvas}
+                            onReady={handleParticleNameReady}
+                            onError={handleParticleNameUnavailable}
+                        />
+                    </h1>
                     <div className={styles.headerMeta}>
                         <div className={styles.pronunciationGroup}>
                             <p className={styles.pronunciation}>ih-LY-s</p>
                             <Link className={styles.readAboutLink} to="/about">
-                                read about me
+                                definition
                             </Link>
                         </div>
                         <p className={styles.noun}>noun</p>

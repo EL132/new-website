@@ -11,10 +11,10 @@ function FlightGlobe({ arcs, airports }) {
 
     const globeMaterial = useMemo(() => (
         new THREE.MeshPhongMaterial({
-            color: '#08192f',
-            emissive: '#061222',
-            specular: '#67d6ff',
-            shininess: 10,
+            color: '#11100e',
+            emissive: '#050505',
+            specular: '#f7f1e8',
+            shininess: 6,
         })
     ), []);
 
@@ -70,13 +70,13 @@ function FlightGlobe({ arcs, airports }) {
                 backgroundColor="rgba(0,0,0,0)"
                 globeMaterial={globeMaterial}
                 showAtmosphere
-                atmosphereColor="#67d6ff"
-                atmosphereAltitude={0.22}
+                atmosphereColor="#11100e"
+                atmosphereAltitude={0.14}
                 polygonsData={countryFeatures}
                 polygonGeoJsonGeometry="geometry"
-                polygonCapColor={() => 'rgba(72, 169, 198, 0.18)'}
-                polygonSideColor={() => 'rgba(72, 169, 198, 0.06)'}
-                polygonStrokeColor={() => 'rgba(213, 244, 255, 0.32)'}
+                polygonCapColor={() => 'rgba(247, 241, 232, 0.16)'}
+                polygonSideColor={() => 'rgba(247, 241, 232, 0.05)'}
+                polygonStrokeColor={() => 'rgba(247, 241, 232, 0.34)'}
                 polygonAltitude={0.006}
                 polygonCapCurvatureResolution={5}
                 polygonsTransitionDuration={800}
@@ -87,8 +87,8 @@ function FlightGlobe({ arcs, airports }) {
                 arcEndLng="endLng"
                 arcAltitude="altitude"
                 arcColor={arc => arc.visualType === 'base'
-                    ? 'rgba(141, 221, 255, 0.34)'
-                    : ['rgba(116, 213, 255, 0.96)', 'rgba(255, 122, 190, 0.94)']}
+                    ? 'rgba(247, 241, 232, 0.34)'
+                    : ['rgba(247, 241, 232, 0.96)', 'rgba(17, 17, 17, 0.86)']}
                 arcDashLength={arc => arc.visualType === 'base' ? 1 : 0.36}
                 arcDashGap={arc => arc.visualType === 'base' ? 0 : 0.82}
                 arcDashInitialGap={arc => arc.visualType === 'base' ? 0 : (Number(arc.id) % 13) * 0.075}
@@ -102,8 +102,8 @@ function FlightGlobe({ arcs, airports }) {
                 pointLng="lng"
                 pointLabel="label"
                 pointColor={airport => airport.flightCount > 2
-                    ? 'rgba(255, 255, 255, 0.95)'
-                    : 'rgba(215, 244, 255, 0.9)'}
+                    ? 'rgba(247, 241, 232, 0.95)'
+                    : 'rgba(247, 241, 232, 0.82)'}
                 pointAltitude={0.035}
                 pointRadius={airport => Math.min(0.62, 0.34 + airport.flightCount * 0.025)}
                 pointResolution={14}
@@ -113,8 +113,8 @@ function FlightGlobe({ arcs, airports }) {
                 ringLng="lng"
                 ringAltitude={0.041}
                 ringColor={airport => airport.flightCount <= 2
-                    ? ['rgba(255, 255, 255, 0.9)', 'rgba(116, 213, 255, 0.18)', 'rgba(116, 213, 255, 0)']
-                    : ['rgba(116, 213, 255, 0.5)', 'rgba(116, 213, 255, 0.08)', 'rgba(116, 213, 255, 0)']}
+                    ? ['rgba(247, 241, 232, 0.9)', 'rgba(247, 241, 232, 0.18)', 'rgba(247, 241, 232, 0)']
+                    : ['rgba(247, 241, 232, 0.48)', 'rgba(247, 241, 232, 0.08)', 'rgba(247, 241, 232, 0)']}
                 ringResolution={48}
                 ringMaxRadius={airport => airport.flightCount <= 2 ? 1.4 : 0.95}
                 ringPropagationSpeed={0.55}

@@ -39,6 +39,154 @@
     text-underline-offset: 0.18em;
 }
 
+.workTimeline {
+    margin-top: 2.75rem;
+    max-width: 900px;
+}
+
+.timelineRail {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.35rem;
+    padding: 1.65rem 0 1.2rem;
+}
+
+.timelineRail::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 2.25rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.2;
+}
+
+.timelinePoint {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    gap: 0.52rem;
+    min-width: 5.4rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+}
+
+.timelineYear {
+    color: #666;
+    font-size: 0.82rem;
+    line-height: 1;
+    transition: color 180ms ease;
+}
+
+.timelineDot {
+    width: 0.78rem;
+    height: 0.78rem;
+    border-radius: 999px;
+    background: #111;
+    transform: scale(0.72);
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.timelinePointLens {
+    color: #777;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: lowercase;
+    transition:
+        color 180ms ease,
+        transform 180ms ease;
+}
+
+.timelinePoint:hover .timelineDot,
+.timelinePoint:focus-visible .timelineDot,
+.timelinePointActive .timelineDot {
+    box-shadow: 0 0 0 8px rgba(0, 0, 0, 0.08);
+    transform: scale(1.25);
+}
+
+.timelinePoint:hover .timelineYear,
+.timelinePoint:focus-visible .timelineYear,
+.timelinePointActive .timelineYear,
+.timelinePoint:hover .timelinePointLens,
+.timelinePoint:focus-visible .timelinePointLens,
+.timelinePointActive .timelinePointLens {
+    color: #111;
+}
+
+.timelinePointActive .timelinePointLens {
+    transform: translateY(2px);
+}
+
+.timelinePoint:focus-visible {
+    outline: none;
+}
+
+.timelinePoint:focus-visible .timelineDot {
+    box-shadow:
+        0 0 0 8px rgba(0, 0, 0, 0.08),
+        0 0 0 11px rgba(0, 0, 0, 0.18);
+}
+
+.timelineCard {
+    position: relative;
+    min-height: 8rem;
+    margin-top: 1.3rem;
+    padding: 1.3rem 1.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+    background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.03), transparent 42%),
+        rgba(255, 255, 255, 0.72);
+    box-sizing: border-box;
+}
+
+.timelineCard::before {
+    content: '';
+    position: absolute;
+    top: 1.35rem;
+    right: 1.35rem;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 999px;
+    background: #111;
+    opacity: 0.2;
+}
+
+.timelineCard h3 {
+    margin: 0.3rem 0 0.4rem;
+    max-width: calc(100% - 2rem);
+    font-size: clamp(1.35rem, 3vw, 2rem);
+    line-height: 1.1;
+}
+
+.timelineCard p {
+    margin: 0;
+}
+
+.timelineLens {
+    color: #666;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    text-transform: lowercase;
+}
+
+.timelineMeta {
+    color: #555;
+    font-size: 0.96rem;
+}
+
 .builderCard {
     position: relative;
     width: min(960px, calc(100vw - 3rem));
@@ -179,5 +327,45 @@
     .copyMark {
         top: 1.25rem;
         right: 1.35rem;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .workTimeline {
+        max-width: none;
+    }
+
+    .timelineRail {
+        justify-content: flex-start;
+        gap: 2.35rem;
+        margin: 0 -1.5rem;
+        padding: 1.65rem 1.5rem 1.35rem;
+        overflow-x: auto;
+        scroll-padding: 1.5rem;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .timelineRail::before {
+        left: 1.5rem;
+        right: auto;
+        width: calc(6 * 7.75rem);
+    }
+
+    .timelinePoint {
+        min-width: 5.8rem;
+        scroll-snap-align: center;
+    }
+
+    .timelineCard {
+        padding: 1.1rem 1.2rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .timelineYear,
+    .timelineDot,
+    .timelinePointLens {
+        transition: none;
     }
 }
