@@ -13,6 +13,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 function App() {
     const location = useLocation();
     const showHomeNav = location.pathname !== '/';
+    const isTravelPage = location.pathname === '/artist/travel';
 
     // function to wake up free-instance backend 
     useEffect(() => {
@@ -23,7 +24,7 @@ function App() {
 
     return (
         <>
-            {showHomeNav && <HomeNav />}
+            {showHomeNav && <HomeNav variant={isTravelPage ? 'travel' : 'default'} />}
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />

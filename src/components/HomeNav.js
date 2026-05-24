@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom';
 import styles from './component-styles/HomeNav.module.css';
 
-function HomeNav() {
+function HomeNav({ variant = 'default' }) {
+    const navClassName = variant === 'travel'
+        ? `${styles.homeNav} ${styles.travelNav}`
+        : styles.homeNav;
+
     return (
-        <nav className={styles.homeNav} aria-label="Home navigation">
+        <nav className={navClassName} aria-label="Home navigation">
             <Link to="/" className={styles.homeLink}>
                 <img
                     src="/pixelated-image.png"

@@ -1,0 +1,25 @@
+.globeFrame {
+    position: relative;
+    width: 100%;
+    min-height: 640px;
+}
+
+.globeFrame::before {
+    content: '';
+    position: absolute;
+    inset: 12% 18%;
+    background: radial-gradient(circle, rgba(103, 214, 255, 0.18), transparent 68%);
+    filter: blur(28px);
+    pointer-events: none;
+}
+
+.globeFrame canvas {
+    position: relative;
+    z-index: 1;
+}
+
+@media screen and (max-width: 768px) {
+    .globeFrame {
+        min-height: 500px;
+    }
+}

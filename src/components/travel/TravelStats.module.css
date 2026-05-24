@@ -1,0 +1,48 @@
+.statsCard {
+    display: grid;
+    gap: 1rem;
+    min-width: 210px;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+    background: rgba(5, 12, 24, 0.68);
+    box-shadow: 0 16px 44px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(14px);
+}
+
+.statsCard div {
+    display: flex;
+    flex-direction: column;
+}
+
+.statValue {
+    color: #ffffff;
+    font-size: 1.65rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.statLabel {
+    color: rgba(230, 243, 255, 0.68);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    margin-top: 0.35rem;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 768px) {
+    .statsCard {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        min-width: 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .statValue {
+        font-size: 1.3rem;
+    }
+
+    .statLabel {
+        font-size: 0.65rem;
+    }
+}
