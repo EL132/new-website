@@ -45,17 +45,21 @@ function ShowcaseControl({ item, index, isActive, onActivate }) {
 
     if (item.href) {
         const isExternal = /^https?:\/\//i.test(item.href);
+        const newWindowProps = {
+            target: '_blank',
+            rel: 'noreferrer',
+        };
 
         if (isExternal) {
             return (
-                <a href={item.href} {...commonProps}>
+                <a href={item.href} {...newWindowProps} {...commonProps}>
                     {controlContent}
                 </a>
             );
         }
 
         return (
-            <Link to={item.href} {...commonProps}>
+            <Link to={item.href} {...newWindowProps} {...commonProps}>
                 {controlContent}
             </Link>
         );
