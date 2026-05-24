@@ -1,15 +1,19 @@
-import Work from './pages/Work';
 import Home from './pages/Home';
-import Writing from './pages/Writing';
-import BlogPost from './components/BlogPost';
-import BridgeQuiz from './components/BridgeQuiz';
-import Projects from './pages/Projects';
-import Angelica from './pages/Angelica';
+import About from './pages/About';
+import Photography from './pages/Photography';
+import Travel from './pages/Travel';
+import MakingThings from './pages/MakingThings';
+import Education from './pages/Education';
+import ThingsIveDone from './pages/ThingsIveDone';
+import HomeNav from './components/HomeNav';
 import { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
 
 function App() {
+    const location = useLocation();
+    const showHomeNav = location.pathname !== '/';
+
     // function to wake up free-instance backend 
     useEffect(() => {
             fetch("https://new-website-backend-j4bh.onrender.com/")
@@ -18,15 +22,18 @@ function App() {
     }, []);
 
     return (
-        <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/writing" element={<Writing />} />
-            <Route path="/writing/blog/:id" element={<BlogPost />} />
-            <Route path="/work" element={<Work />} />
-            <Route path="/bridge-quiz" element={<BridgeQuiz />} />
-            <Route path="/211" element={<Angelica />} />
-        </Routes>
+        <>
+            {showHomeNav && <HomeNav />}
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/artist/photography" element={<Photography />} />
+                <Route path="/artist/travel" element={<Travel />} />
+                <Route path="/engineer/making-things" element={<MakingThings />} />
+                <Route path="/engineer/education" element={<Education />} />
+                <Route path="/friend/things-ive-done" element={<ThingsIveDone />} />
+            </Routes>
+        </>
     );
 }
 

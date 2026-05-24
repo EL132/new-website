@@ -1,0 +1,73 @@
+.aboutContainer {
+    max-width: 760px;
+    margin: 4rem auto;
+    padding: 0 1.5rem;
+    color: #111;
+    line-height: 1.7;
+}
+
+.aboutTitle {
+    margin: 0 0 1.5rem;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.aboutIntro {
+    margin: 0 0 2.5rem;
+    font-size: 1.15rem;
+}
+
+.aboutSection {
+    margin-top: 2rem;
+}
+
+.aboutSubheader {
+    margin: 0 0 0.75rem;
+    font-size: 1.35rem;
+    font-weight: 600;
+    text-transform: lowercase;
+}
+
+.aboutSection p {
+    margin: 0;
+}
+
+.aboutSection a {
+    color: inherit;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+}
+
+.professionalList {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 1.75rem;
+}
+
+.professionalItem h3 {
+    margin: 0 0 0.2rem;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.professionalItem p {
+    margin: 0;
+}
+
+.professionalDate {
+    color: #555;
+    font-size: 0.92rem;
+    font-style: italic;
+    margin-bottom: 0.45rem !important;
+}
+
+@media screen and (max-width: 768px) {
+    .aboutContainer {
+        margin: 2.5rem auto;
+    }
+
+    .aboutTitle {
+        font-size: 2.25rem;
+    }
+}
