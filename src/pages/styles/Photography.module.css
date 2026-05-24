@@ -1,0 +1,406 @@
+.photographyPage {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    min-height: 100dvh;
+    overflow: hidden;
+    background: #11100e;
+    color: #f7f1e8;
+}
+
+.enterShell {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    min-height: 100dvh;
+    overflow: hidden;
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+        #11100e;
+    background-size: 72px 72px;
+    color: #f7f1e8;
+}
+
+.enterShell::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.03) 0,
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 1px,
+        transparent 4px
+    );
+    opacity: 0.22;
+    mix-blend-mode: screen;
+}
+
+.enterContent {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    justify-items: center;
+    gap: 1.1rem;
+}
+
+.enterHomeLink {
+    position: fixed;
+    top: max(1rem, env(safe-area-inset-top));
+    left: 50%;
+    z-index: 3;
+    display: inline-flex;
+    border-radius: 999px;
+    transform: translateX(-50%);
+}
+
+.enterHomeImage {
+    display: block;
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    object-fit: cover;
+    transition: transform 180ms ease;
+}
+
+.enterHomeLink:hover .enterHomeImage,
+.enterHomeLink:focus-visible .enterHomeImage {
+    transform: scale(1.18);
+}
+
+.enterKicker {
+    margin: 0;
+    color: rgba(247, 241, 232, 0.58);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    font-style: italic;
+}
+
+.enterButton {
+    appearance: none;
+    border: 1px solid rgba(247, 241, 232, 0.7);
+    border-radius: 999px;
+    background: rgba(247, 241, 232, 0.03);
+    color: #f7f1e8;
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    padding: 0.95rem 2rem;
+    text-transform: lowercase;
+    transition:
+        background-color 180ms ease,
+        border-color 180ms ease,
+        color 180ms ease,
+        transform 180ms ease;
+}
+
+.enterButton:hover,
+.enterButton:focus-visible {
+    background: #f7f1e8;
+    border-color: #f7f1e8;
+    color: #11100e;
+    transform: translateY(-2px);
+}
+
+.enterButton:focus-visible,
+.photoTile:focus-visible,
+.lightboxClose:focus-visible,
+.enterHomeLink:focus-visible,
+.explorerExit:focus-visible {
+    outline: 2px solid #d56b41;
+    outline-offset: 5px;
+}
+
+.explorer {
+    position: fixed;
+    inset: 0;
+    min-height: 100dvh;
+    overflow: hidden;
+    background:
+        linear-gradient(rgba(26, 24, 20, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26, 24, 20, 0.027) 1px, transparent 1px),
+        #eee8dc;
+    background-size: 120px 120px;
+    color: #191713;
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+}
+
+.explorerDragging {
+    cursor: grabbing;
+}
+
+.explorerExit {
+    position: fixed;
+    top: max(1rem, env(safe-area-inset-top));
+    right: max(1rem, env(safe-area-inset-right));
+    z-index: 12;
+    width: 46px;
+    height: 46px;
+    border: 1px solid rgba(25, 23, 19, 0.16);
+    border-radius: 999px;
+    background: rgba(238, 232, 220, 0.76);
+    box-shadow: 0 10px 30px rgba(22, 19, 15, 0.1);
+    cursor: pointer;
+    transition:
+        background-color 160ms ease,
+        border-color 160ms ease,
+        transform 160ms ease;
+}
+
+.explorerExit::before,
+.explorerExit::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 18px;
+    height: 2px;
+    border-radius: 999px;
+    background: #191713;
+}
+
+.explorerExit::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.explorerExit::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.explorerExit:hover,
+.explorerExit:focus-visible {
+    background: rgba(255, 250, 241, 0.94);
+    border-color: rgba(25, 23, 19, 0.3);
+    transform: scale(1.04);
+}
+
+.visuallyHidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.explorerHint {
+    position: fixed;
+    top: clamp(1rem, 3vh, 2rem);
+    left: 50%;
+    z-index: 8;
+    width: max-content;
+    max-width: calc(100vw - 2rem);
+    padding: 0.55rem 0.8rem;
+    border: 1px solid rgba(25, 23, 19, 0.1);
+    border-radius: 999px;
+    background: rgba(238, 232, 220, 0.72);
+    box-shadow: 0 10px 30px rgba(22, 19, 15, 0.08);
+    color: rgba(25, 23, 19, 0.56);
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    pointer-events: none;
+    text-transform: lowercase;
+    transform: translateX(-50%);
+}
+
+.photoCanvas {
+    --photo-scale: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate3d(0, 0, 0);
+    transform-origin: 0 0;
+    will-change: transform;
+}
+
+.photoCanvas::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(25, 23, 19, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(25, 23, 19, 0.03) 1px, transparent 1px);
+    background-size: 240px 240px;
+}
+
+.photoTile {
+    position: absolute;
+    left: var(--tile-x);
+    top: var(--tile-y);
+    z-index: 1;
+    width: calc(var(--tile-w) * var(--photo-scale));
+    height: calc(var(--tile-h) * var(--photo-scale));
+    padding: 8px;
+    border: 0;
+    border-radius: 7px;
+    background: #fffaf1;
+    box-shadow:
+        0 18px 42px rgba(35, 28, 20, 0.18),
+        0 3px 10px rgba(35, 28, 20, 0.12);
+    cursor: pointer;
+    transform-origin: 50% 50%;
+}
+
+.photoTile::after {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.photoTile img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    object-fit: cover;
+    pointer-events: none;
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+.explorerDragging .photoTile {
+    cursor: grabbing;
+}
+
+.lightboxBackdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    display: grid;
+    place-items: center;
+    padding: clamp(1rem, 4vw, 3rem);
+    background: rgba(12, 11, 10, 0.74);
+    backdrop-filter: blur(10px);
+    cursor: default;
+}
+
+.lightboxFigure {
+    display: grid;
+    justify-items: center;
+    gap: 0.85rem;
+    max-width: min(1120px, 92vw);
+    max-height: 86dvh;
+    margin: 0;
+}
+
+.lightboxImage {
+    display: block;
+    max-width: min(1120px, 92vw);
+    max-height: min(78dvh, 820px);
+    border-radius: 8px;
+    background: #11100e;
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.42),
+        0 8px 24px rgba(0, 0, 0, 0.25);
+    object-fit: contain;
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+.lightboxCaption {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    color: rgba(247, 241, 232, 0.78);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(0.92rem, 2vw, 1.08rem);
+    font-style: italic;
+}
+
+.lightboxClose {
+    position: fixed;
+    top: max(1rem, env(safe-area-inset-top));
+    right: max(1rem, env(safe-area-inset-right));
+    z-index: 31;
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(247, 241, 232, 0.28);
+    border-radius: 999px;
+    background: rgba(247, 241, 232, 0.11);
+    color: #f7f1e8;
+    cursor: pointer;
+    font: inherit;
+    font-size: 1rem;
+    line-height: 1;
+    transition:
+        background-color 160ms ease,
+        border-color 160ms ease,
+        transform 160ms ease;
+}
+
+.lightboxClose:hover,
+.lightboxClose:focus-visible {
+    background: rgba(247, 241, 232, 0.24);
+    border-color: rgba(247, 241, 232, 0.56);
+    transform: scale(1.04);
+}
+
+@media screen and (max-width: 768px) {
+    .explorerHint {
+        top: auto;
+        bottom: max(1rem, env(safe-area-inset-bottom));
+        font-size: 0.64rem;
+        letter-spacing: 0.11em;
+    }
+
+    .photoCanvas {
+        --photo-scale: 0.78;
+    }
+
+    .photoTile {
+        padding: 6px;
+        border-radius: 6px;
+    }
+
+    .photoTile::after {
+        inset: 6px;
+    }
+
+    .lightboxBackdrop {
+        padding: 1rem;
+    }
+
+    .lightboxImage {
+        max-width: 94vw;
+        max-height: 74dvh;
+    }
+
+    .lightboxClose {
+        width: 52px;
+        height: 52px;
+    }
+
+    .explorerExit {
+        width: 52px;
+        height: 52px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .enterButton,
+    .enterHomeImage,
+    .lightboxClose,
+    .explorerExit {
+        transition: none;
+    }
+
+    .photoCanvas,
+    .photoTile {
+        will-change: auto;
+    }
+}

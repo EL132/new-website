@@ -1,17 +1,35 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { AnimatePresence, useReducedMotion } from 'react-magic-motion';
+import PhotographyEnter from '../components/photography/PhotographyEnter';
+import PhotoExplorer from '../components/photography/PhotoExplorer';
+import styles from './styles/Photography.module.css';
 
 function Photography() {
+    const [hasEntered, setHasEntered] = useState(false);
+    const shouldReduceMotion = useReducedMotion();
+
     useEffect(() => {
         document.title = 'Photography';
     }, []);
 
     return (
-        <main>
-            <h1>photography</h1>
-            <p>
-                Placeholder: a single button in the middle called "enter"; upon click, it should take users to an image exploration page where they can drag to move around and discover other photos. Website inspo: <a href="https://veleyross.wedding/" target="_blank" rel="noopener noreferrer">https://veleyross.wedding/</a>
-            </p>
-        </main>
+        <div className={styles.photographyPage}>
+            <AnimatePresence mode="wait">
+                {hasEntered ? (
+                    <PhotoExplorer
+                        key="explorer"
+                        onExit={() => setHasEntered(false)}
+                        shouldReduceMotion={shouldReduceMotion}
+                    />
+                ) : (
+                    <PhotographyEnter
+                        key="enter"
+                        onEnter={() => setHasEntered(true)}
+                        shouldReduceMotion={shouldReduceMotion}
+                    />
+                )}
+            </AnimatePresence>
+        </div>
     );
 }
 

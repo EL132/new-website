@@ -39,6 +39,101 @@
     text-underline-offset: 0.18em;
 }
 
+.builderCard {
+    position: relative;
+    width: min(960px, calc(100vw - 3rem));
+    margin: 2rem 0 2.4rem 50%;
+    padding: clamp(1.5rem, 3vw, 2rem);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 30px;
+    background: #181818;
+    box-shadow:
+        0 22px 70px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    color: #f7f7f7;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.88rem, 1.6vw, 1.05rem);
+    line-height: 1.45;
+    transform: translateX(-50%);
+}
+
+.builderIntro {
+    max-width: calc(100% - 3rem);
+    margin: 0 !important;
+}
+
+.builderList {
+    display: grid;
+    gap: clamp(1.45rem, 3vw, 2rem);
+    margin-top: clamp(2rem, 4vw, 2.7rem);
+}
+
+.builderItem p {
+    margin: 0 !important;
+}
+
+.builderTrack {
+    margin-bottom: 0.35rem !important;
+}
+
+.copyMark {
+    position: absolute;
+    top: 1.45rem;
+    right: 1.7rem;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #f7f7f7;
+    border-radius: 5px;
+    background: #181818;
+    box-sizing: border-box;
+}
+
+.copyMark::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #f7f7f7;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background: #181818;
+}
+
+.cardArrow {
+    position: absolute;
+    left: 50%;
+    bottom: -11px;
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 999px;
+    background: rgba(24, 24, 24, 0.92);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+    transform: translateX(-50%);
+}
+
+.cardArrow::before {
+    content: '';
+    width: 13px;
+    height: 13px;
+    border-right: 2px solid #f7f7f7;
+    border-bottom: 2px solid #f7f7f7;
+    transform: translateY(-2px) rotate(45deg);
+}
+
+.cardArrow::after {
+    content: '';
+    position: absolute;
+    top: 14px;
+    width: 2px;
+    height: 21px;
+    background: #f7f7f7;
+}
+
 .professionalList {
     display: grid;
     gap: 1.5rem;
@@ -69,5 +164,20 @@
 
     .aboutTitle {
         font-size: 2.25rem;
+    }
+
+    .builderCard {
+        width: calc(100vw - 2rem);
+        margin-top: 1.5rem;
+        margin-bottom: 2rem;
+        padding: 1.35rem;
+        border-radius: 22px;
+        font-size: 0.82rem;
+        overflow-wrap: anywhere;
+    }
+
+    .copyMark {
+        top: 1.25rem;
+        right: 1.35rem;
     }
 }
