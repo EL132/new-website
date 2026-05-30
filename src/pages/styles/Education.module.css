@@ -2,614 +2,559 @@
     min-height: calc(100vh - 80px);
     overflow: hidden;
     background:
-        linear-gradient(180deg, #fff 0%, #fff 56%, #f8f4ed 56%, #fff 100%);
+        linear-gradient(180deg, #fff 0%, #fff 42%, #f8f4ed 42%, #f8f4ed 100%);
     color: #111;
 }
 
-.hero,
-.syllabusSection,
-.openQuestion {
-    width: min(1180px, calc(100vw - 3rem));
+.introSection,
+.rippleSection,
+.syllabusSection {
+    width: min(1120px, calc(100vw - 3rem));
     margin: 0 auto;
 }
 
-.hero {
-    position: relative;
+.introSection {
     display: grid;
-    align-content: space-between;
-    gap: clamp(3rem, 7vw, 6rem);
-    min-height: calc(100vh - 80px);
-    padding: clamp(2.4rem, 5vw, 5rem) 0 clamp(3rem, 5vw, 5.5rem);
-    box-sizing: border-box;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: clamp(2rem, 5vw, 5rem);
-    bottom: clamp(2rem, 5vw, 5rem);
-    left: 28%;
-    width: 1px;
-    background: linear-gradient(180deg, transparent, rgba(17, 17, 17, 0.14), transparent);
-    pointer-events: none;
-}
-
-.heroIntro {
-    position: relative;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.43fr);
-    gap: clamp(2rem, 7vw, 6rem);
-    align-items: start;
-}
-
-.manifestoCopy {
-    max-width: 760px;
+    align-content: center;
+    min-height: min(72vh, 620px);
+    padding: clamp(3rem, 7vw, 6rem) 0 clamp(2rem, 5vw, 4rem);
 }
 
 .eyebrow {
-    margin: 0 0 0.8rem;
-    color: rgba(17, 17, 17, 0.58);
+    margin: 0 0 0.85rem;
+    color: rgba(17, 17, 17, 0.55);
     font-size: 0.74rem;
-    font-weight: 700;
-    letter-spacing: 0.18em;
+    font-weight: 750;
+    letter-spacing: 0.17em;
     line-height: 1;
     text-transform: uppercase;
 }
 
-.manifestoCopy h1 {
-    max-width: 12ch;
+.introSection h1 {
+    max-width: 15ch;
     margin: 0;
-    font-size: clamp(3.05rem, 8.8vw, 7.9rem);
+    font-size: clamp(3rem, 8.6vw, 7.8rem);
     letter-spacing: 0;
     line-height: 0.9;
     text-transform: lowercase;
 }
 
-.manifestoCopy p:not(.eyebrow) {
-    max-width: 680px;
-    margin: clamp(1.2rem, 2.6vw, 1.8rem) 0 0;
-    color: rgba(17, 17, 17, 0.72);
-    font-size: clamp(1.03rem, 1.7vw, 1.24rem);
-    line-height: 1.58;
+.introSection p:not(.eyebrow) {
+    max-width: 650px;
+    margin: 1.6rem 0 0;
+    color: rgba(17, 17, 17, 0.68);
+    font-size: clamp(1.02rem, 1.7vw, 1.22rem);
+    line-height: 1.62;
 }
 
-.progressPanel {
-    position: relative;
-    padding: 1.15rem;
-    border: 1px solid rgba(17, 17, 17, 0.1);
-    border-radius: 8px;
-    background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.62), transparent 46%),
-        rgba(247, 241, 232, 0.72);
-    box-shadow: 0 16px 40px rgba(17, 17, 17, 0.07);
+.rippleSection {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.34fr) minmax(0, 1fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: center;
+    min-height: min(calc(100vh - 80px), 700px);
+    padding: clamp(0.75rem, 2.5vw, 2rem) 0 clamp(2.5rem, 6vw, 5rem);
 }
 
-.progressPanel::after {
-    content: '';
-    position: absolute;
-    inset: 0.6rem;
-    border: 1px solid rgba(17, 17, 17, 0.055);
-    border-radius: 6px;
-    pointer-events: none;
-}
-
-.progressLabel {
-    position: relative;
-    z-index: 1;
-    margin: 0 0 1.25rem;
-    color: rgba(17, 17, 17, 0.55);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-}
-
-.rippleProgress {
-    position: relative;
-    z-index: 1;
+.rippleCopy {
     display: grid;
     gap: 1rem;
+}
+
+.rippleCopy h2 {
+    max-width: 12ch;
     margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.rippleProgress::before {
-    content: '';
-    position: absolute;
-    top: 0.45rem;
-    bottom: 0.45rem;
-    left: 0.42rem;
-    width: 1px;
-    background: linear-gradient(180deg, rgba(17, 17, 17, 0.12), rgba(163, 77, 46, 0.42));
-}
-
-.rippleStep {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1.8rem minmax(0, 1fr);
-    align-items: center;
-    min-height: 1.35rem;
-    color: rgba(17, 17, 17, 0.62);
-    font-size: clamp(0.9rem, 1.4vw, 1rem);
-    line-height: 1.2;
+    font-size: clamp(2rem, 4.6vw, 4.2rem);
+    line-height: 0.94;
     text-transform: lowercase;
 }
 
-.rippleStepFinal {
-    color: #111;
-    font-weight: 800;
+.rippleCopy p:not(.eyebrow) {
+    margin: 0;
+    color: rgba(17, 17, 17, 0.66);
+    font-size: 1rem;
+    line-height: 1.55;
 }
 
-.rippleDot {
-    position: relative;
-    z-index: 1;
-    display: block;
-    width: 0.82rem;
-    height: 0.82rem;
-    border: 1px solid rgba(17, 17, 17, 0.42);
-    border-radius: 999px;
-    background: #f8f4ed;
-}
-
-.rippleDot::after {
-    content: '';
-    position: absolute;
-    inset: -0.42rem;
-    border: 1px solid rgba(163, 77, 46, 0.22);
-    border-radius: 999px;
-    opacity: 0;
-    transform: scale(0.65);
-    animation: stepRipple 5200ms ease-out infinite;
-    animation-delay: calc(var(--step-index) * 420ms);
-}
-
-.differenceMoment {
+.rippleStage {
     position: relative;
     display: grid;
-    align-items: end;
-    min-height: clamp(14rem, 28vw, 24rem);
+    place-items: center;
+    min-height: clamp(360px, 58vw, 620px);
     isolation: isolate;
 }
 
-.rippleField {
+.rippleRings {
     position: absolute;
-    inset: -24% -8% -16%;
+    inset: 4%;
     z-index: 0;
     pointer-events: none;
 }
 
-.rippleField span {
+.rippleRings span {
     position: absolute;
     left: 50%;
-    top: 56%;
-    width: 50vw;
-    max-width: 760px;
-    aspect-ratio: 1 / 0.42;
-    border: 1px solid rgba(163, 77, 46, 0.2);
+    top: 50%;
+    width: calc(20% + (var(--ring-index) * 16%));
+    aspect-ratio: 1;
+    border: 1px solid rgba(17, 17, 17, 0.13);
     border-radius: 999px;
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.62);
-    animation: differenceRipple 7600ms cubic-bezier(0.2, 0.7, 0.2, 1) infinite;
+    transform: translate(-50%, -50%) scale(0.88);
 }
 
-.ringTwo {
-    animation-delay: 1500ms !important;
+.rippleRings span:nth-child(1) {
+    --ring-index: 0;
 }
 
-.ringThree {
-    animation-delay: 3000ms !important;
+.rippleRings span:nth-child(2) {
+    --ring-index: 1;
 }
 
-.makeLine {
-    position: relative;
+.rippleRings span:nth-child(3) {
+    --ring-index: 2;
+}
+
+.rippleRings span:nth-child(4) {
+    --ring-index: 3;
+}
+
+.rippleRings span:nth-child(5) {
+    --ring-index: 4;
+}
+
+.rippleWords {
+    position: absolute;
+    inset: 0;
     z-index: 1;
-    margin: 0 0 0.25rem;
-    color: rgba(17, 17, 17, 0.62);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: clamp(0.78rem, 1.7vw, 1rem);
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-}
-
-.differenceWord {
-    position: relative;
-    z-index: 1;
-    margin: 0;
-    font-size: clamp(4.6rem, 19vw, 17rem);
-    font-weight: 850;
-    letter-spacing: 0;
-    line-height: 0.76;
-    text-transform: lowercase;
-}
-
-.syllabusSection {
-    padding: clamp(4rem, 8vw, 7rem) 0;
-}
-
-.syllabusHeader {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(260px, 0.42fr);
-    gap: clamp(2rem, 6vw, 5rem);
-    align-items: end;
-    padding-bottom: clamp(2rem, 4vw, 3.25rem);
-}
-
-.syllabusHeader h2 {
-    max-width: 12ch;
-    margin: 0;
-    font-size: clamp(2.8rem, 8vw, 6.9rem);
-    line-height: 0.9;
-    text-transform: lowercase;
-}
-
-.courseMeta,
-.moduleNotes dl {
-    display: grid;
-    gap: 1rem;
-    margin: 0;
-}
-
-.courseMeta div,
-.moduleNotes dl div {
-    display: grid;
-    gap: 0.25rem;
-}
-
-.courseMeta dt,
-.moduleNotes dt,
-.noteLabel,
-.lesson span {
-    color: rgba(17, 17, 17, 0.52);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    line-height: 1;
-    text-transform: uppercase;
-}
-
-.courseMeta dd,
-.moduleNotes dd {
-    margin: 0;
-    color: rgba(17, 17, 17, 0.76);
-    font-size: 0.98rem;
-    line-height: 1.45;
-}
-
-.moduleList {
-    border-top: 1px solid rgba(17, 17, 17, 0.18);
-}
-
-.module {
-    display: grid;
-    grid-template-columns: minmax(210px, 0.34fr) minmax(0, 1fr);
-    gap: clamp(1.5rem, 5vw, 4rem);
-    padding: clamp(2rem, 5vw, 4.25rem) 0;
-    border-bottom: 1px solid rgba(17, 17, 17, 0.18);
-    transition:
-        background-color 180ms ease,
-        padding-left 180ms ease,
-        padding-right 180ms ease;
-}
-
-.module:hover {
-    padding-right: clamp(0.65rem, 1.4vw, 1.1rem);
-    padding-left: clamp(0.65rem, 1.4vw, 1.1rem);
-    background: rgba(255, 250, 241, 0.74);
-}
-
-.moduleLead {
-    position: relative;
-}
-
-.moduleNumber {
-    margin: 0 0 0.85rem;
-    color: #a34d2e;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.74rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-}
-
-.moduleLead h3 {
-    max-width: 9ch;
-    margin: 0;
-    font-size: clamp(2rem, 5.4vw, 4.6rem);
-    letter-spacing: 0;
-    line-height: 0.92;
-}
-
-.modulePeriod {
-    margin: 1rem 0 0;
-    color: rgba(17, 17, 17, 0.58);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.86rem;
-    line-height: 1.35;
-}
-
-.moduleContent {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(210px, 0.36fr);
-    gap: clamp(1.5rem, 4vw, 3rem);
-    align-items: start;
-}
-
-.moduleCopy {
-    display: grid;
-    gap: 1.15rem;
-}
-
-.moduleCopy p {
-    margin: 0;
-    color: rgba(17, 17, 17, 0.78);
-    font-size: clamp(1rem, 1.45vw, 1.12rem);
-    line-height: 1.64;
-}
-
-.lesson {
-    display: grid;
-    gap: 0.55rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(17, 17, 17, 0.12);
-}
-
-.exampleBlock {
-    display: grid;
-    gap: 0.8rem;
-    margin-top: 0.3rem;
-    padding: 1rem;
-    border-left: 2px solid rgba(163, 77, 46, 0.34);
-    background: rgba(247, 241, 232, 0.72);
-}
-
-.noteLabel {
-    margin: 0;
-}
-
-.exampleBlock ul {
-    display: grid;
-    gap: 0.55rem;
-    margin: 0;
-    padding-left: 1.1rem;
-    color: rgba(17, 17, 17, 0.78);
-    font-size: 0.98rem;
-    line-height: 1.5;
-}
-
-.moduleNotes {
-    display: grid;
-    gap: 1.3rem;
-    padding-top: 0.18rem;
-}
-
-.detailChips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.45rem;
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-.detailChips li {
-    padding: 0.38rem 0.5rem;
-    border: 1px solid rgba(17, 17, 17, 0.13);
-    border-radius: 4px;
-    background: rgba(255, 255, 255, 0.64);
-    color: rgba(17, 17, 17, 0.62);
-    font-size: 0.76rem;
+.rippleWord {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    color: rgba(17, 17, 17, 0.58);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.74rem, 1.4vw, 0.9rem);
     font-weight: 700;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.12em;
+    opacity: 0;
+    text-transform: uppercase;
+    transform: translate(-50%, -50%) translateY(10px);
+}
+
+.differenceWord {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    color: #111;
+    font-size: clamp(3.4rem, 10.5vw, 10rem);
+    font-weight: 850;
+    letter-spacing: 0;
+    line-height: 0.78;
+    opacity: 0;
+    text-transform: lowercase;
+    transform: translateY(18px) scale(0.96);
+}
+
+.rippleSectionActive .rippleRings span {
+    animation: ringReveal 3200ms ease-out forwards;
+    animation-delay: calc(var(--ring-index) * 600ms);
+}
+
+.rippleSectionActive .rippleWord {
+    animation: wordReveal 1800ms ease-out forwards;
+    animation-delay: calc(var(--stage-index) * 760ms + 900ms);
+}
+
+.rippleSectionActive .differenceWord {
+    animation: differenceReveal 2400ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation-delay: 5200ms;
+}
+
+.syllabusSection {
+    padding: clamp(4rem, 8vw, 7rem) 0 clamp(5rem, 9vw, 8rem);
+}
+
+.syllabusDocument {
+    border: 1px solid rgba(17, 17, 17, 0.13);
+    border-radius: 18px;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.72)),
+        #f8f4ed;
+    box-shadow: 0 24px 70px rgba(17, 17, 17, 0.08);
+}
+
+.syllabusHeader {
+    display: grid;
+    grid-template-columns: minmax(140px, 0.22fr) minmax(0, 1fr);
+    gap: clamp(1.5rem, 5vw, 4rem);
+    align-items: flex-start;
+    padding: clamp(1.3rem, 4vw, 2.4rem);
+    border-bottom: 1px solid rgba(17, 17, 17, 0.12);
+}
+
+.syllabusHeader > p,
+.blockLabel span {
+    margin: 0;
+    color: #a34d2e;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.76rem;
+    font-weight: 750;
+    letter-spacing: 0.15em;
     line-height: 1;
     text-transform: uppercase;
 }
 
-.openQuestion {
-    padding: clamp(4rem, 8vw, 7rem) 0 clamp(4.5rem, 9vw, 8rem);
-}
-
-.questionGrid {
-    display: grid;
-    grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.62fr);
-    gap: clamp(2rem, 6vw, 5rem);
-    align-items: start;
-    padding: clamp(1.4rem, 3vw, 2rem) 0 0;
-    border-top: 1px solid rgba(17, 17, 17, 0.18);
-}
-
-.questionGrid h2 {
-    max-width: 10ch;
+.syllabusHeader h2 {
     margin: 0;
-    font-size: clamp(2.9rem, 7.5vw, 7rem);
+    font-size: clamp(2.6rem, 6.8vw, 6.4rem);
     line-height: 0.9;
     text-transform: lowercase;
 }
 
-.questionGrid p {
-    margin: 0;
-    color: rgba(17, 17, 17, 0.72);
-    font-size: clamp(1rem, 1.5vw, 1.16rem);
-    line-height: 1.6;
+.syllabusHeader div > p {
+    max-width: 560px;
+    margin: 1rem 0 0;
+    color: rgba(17, 17, 17, 0.62);
+    font-size: 1.02rem;
+    line-height: 1.5;
 }
 
-.questionGrid p + p {
-    margin-top: 1.25rem;
+.courseInfo {
+    padding: clamp(1rem, 3vw, 1.6rem) clamp(1.3rem, 4vw, 2.4rem);
+    border-bottom: 1px solid rgba(17, 17, 17, 0.12);
+    background: rgba(255, 250, 241, 0.58);
+}
+
+.metadataList {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem 1.3rem;
+    margin: 0;
+}
+
+.metadataList div {
+    display: grid;
+    gap: 0.2rem;
+}
+
+.metadataList dt {
+    color: rgba(17, 17, 17, 0.48);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.72rem;
+    font-weight: 750;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+}
+
+.metadataList dd {
+    margin: 0;
+    color: rgba(17, 17, 17, 0.76);
+    font-size: 0.95rem;
+    line-height: 1.45;
+}
+
+.syllabusBlock {
+    display: grid;
+    grid-template-columns: minmax(150px, 0.24fr) minmax(0, 1fr);
+    gap: clamp(1.3rem, 4vw, 3rem);
+    padding: clamp(1.35rem, 4vw, 2.4rem);
+    border-bottom: 1px solid rgba(17, 17, 17, 0.12);
+}
+
+.syllabusBlock:last-child {
+    border-bottom: 0;
+}
+
+.blockLabel {
+    display: grid;
+    align-content: flex-start;
+    gap: 0.7rem;
+}
+
+.blockLabel h3 {
+    margin: 0;
+    font-size: clamp(1.2rem, 2.4vw, 1.65rem);
+    line-height: 1.05;
+    text-transform: lowercase;
+}
+
+.blockBody {
+    min-width: 0;
+}
+
+.blockBody > p {
+    max-width: 760px;
+    margin: 0;
+    color: rgba(17, 17, 17, 0.74);
+    font-size: clamp(1rem, 1.4vw, 1.12rem);
+    line-height: 1.62;
+}
+
+.recordList {
+    display: grid;
+    gap: 1rem;
+}
+
+.recordRow {
+    display: grid;
+    grid-template-columns: minmax(190px, 0.32fr) minmax(0, 1fr);
+    gap: clamp(1rem, 3vw, 2rem);
+    padding: clamp(1rem, 2.5vw, 1.35rem);
+    border: 1px solid rgba(17, 17, 17, 0.12);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.62);
+}
+
+.recordHeading {
+    display: grid;
+    grid-template-columns: 2.1rem minmax(0, 1fr);
+    gap: 0.75rem;
+    align-items: flex-start;
+}
+
+.recordHeading > span {
+    color: rgba(163, 77, 46, 0.72);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.82rem;
+    font-weight: 750;
+}
+
+.recordHeading h4 {
+    margin: 0;
+    font-size: clamp(1.22rem, 2.7vw, 1.85rem);
+    line-height: 1.03;
+}
+
+.recordHeading p {
+    margin: 0.45rem 0 0;
+    color: rgba(17, 17, 17, 0.54);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.78rem;
+    line-height: 1.3;
+}
+
+.recordContent {
+    display: grid;
+    gap: 1rem;
+}
+
+.recordContent .metadataList {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.8rem;
+}
+
+.recordContent > p {
+    margin: 0;
+    color: rgba(17, 17, 17, 0.72);
+    font-size: 0.98rem;
+    line-height: 1.58;
+}
+
+.detailSection {
+    display: grid;
+    gap: 0.65rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid rgba(17, 17, 17, 0.1);
+}
+
+.detailSection p {
+    margin: 0;
+    color: rgba(17, 17, 17, 0.5);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.72rem;
+    font-weight: 750;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+}
+
+.detailSection ul {
+    display: grid;
+    gap: 0.45rem;
+    margin: 0;
+    padding-left: 1.1rem;
+    color: rgba(17, 17, 17, 0.74);
+    font-size: 0.96rem;
+    line-height: 1.5;
+}
+
+.topicList {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.65rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.topicList li {
+    padding: 0.72rem 0.8rem;
+    border: 1px solid rgba(17, 17, 17, 0.12);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.58);
+    color: rgba(17, 17, 17, 0.68);
+    font-size: 0.9rem;
+    line-height: 1.25;
+    text-align: center;
+}
+
+.openQuestion {
+    display: grid;
+    gap: 1rem;
+}
+
+.openQuestion p {
+    max-width: 760px;
+    margin: 0;
+    color: rgba(17, 17, 17, 0.72);
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
 .questionText {
     color: #111 !important;
-    font-size: clamp(1.5rem, 3vw, 2.6rem) !important;
-    font-weight: 800;
-    line-height: 1.05 !important;
+    font-size: clamp(1.55rem, 3.2vw, 2.7rem) !important;
+    font-weight: 850;
+    letter-spacing: 0;
+    line-height: 1.04 !important;
 }
 
-@keyframes stepRipple {
+@keyframes ringReveal {
     0% {
         opacity: 0;
-        transform: scale(0.65);
-    }
-
-    18% {
-        opacity: 1;
-    }
-
-    52% {
-        opacity: 0;
-        transform: scale(1.9);
-    }
-
-    100% {
-        opacity: 0;
-        transform: scale(1.9);
-    }
-}
-
-@keyframes differenceRipple {
-    0% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.62);
-    }
-
-    20% {
-        opacity: 0.52;
+        transform: translate(-50%, -50%) scale(0.82);
     }
 
     70% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(1.28);
+        opacity: 1;
     }
 
     100% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(1.28);
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
     }
 }
 
-@media screen and (max-width: 960px) {
-    .educationPage {
-        background:
-            linear-gradient(180deg, #fff 0%, #fff 48%, #f8f4ed 48%, #fff 100%);
+@keyframes wordReveal {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) translateY(10px);
     }
 
-    .hero {
-        min-height: auto;
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) translateY(0);
+    }
+}
+
+@keyframes differenceReveal {
+    from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.96);
     }
 
-    .hero::before {
-        display: none;
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
     }
+}
 
-    .heroIntro,
+@media screen and (max-width: 900px) {
+    .rippleSection,
     .syllabusHeader,
-    .module,
-    .moduleContent,
-    .questionGrid {
+    .syllabusBlock,
+    .recordRow {
         grid-template-columns: 1fr;
     }
 
-    .progressPanel {
-        max-width: 520px;
+    .rippleCopy {
+        max-width: 560px;
     }
 
-    .moduleLead h3 {
-        max-width: 13ch;
+    .metadataList,
+    .recordContent .metadataList {
+        grid-template-columns: 1fr 1fr;
     }
 
-    .moduleContent {
-        gap: 1.5rem;
-    }
-
-    .moduleNotes {
-        max-width: 640px;
+    .topicList {
+        grid-template-columns: 1fr 1fr;
     }
 }
 
 @media screen and (max-width: 640px) {
-    .hero,
-    .syllabusSection,
-    .openQuestion {
+    .introSection,
+    .rippleSection,
+    .syllabusSection {
         width: min(100% - 2rem, 520px);
     }
 
-    .hero {
+    .introSection {
+        min-height: auto;
         padding-top: 2rem;
     }
 
-    .manifestoCopy h1 {
-        max-width: 11ch;
-        font-size: clamp(2.8rem, 14vw, 4.65rem);
+    .introSection h1 {
+        max-width: 12ch;
+        font-size: clamp(2.75rem, 13vw, 4.65rem);
     }
 
-    .manifestoCopy p:not(.eyebrow) {
-        font-size: 1rem;
+    .rippleSection {
+        min-height: auto;
+        padding-top: 0.75rem;
     }
 
-    .differenceMoment {
-        min-height: 11rem;
+    .rippleStage {
+        min-height: 330px;
     }
 
-    .rippleField {
-        inset: -24% -30% -8%;
-    }
-
-    .rippleField span {
-        width: 120vw;
+    .rippleWord {
+        font-size: 0.64rem;
+        letter-spacing: 0.08em;
     }
 
     .differenceWord {
-        font-size: clamp(4.1rem, 22vw, 7.2rem);
-        line-height: 0.8;
+        font-size: clamp(3rem, 14vw, 5.3rem);
     }
 
-    .syllabusSection {
-        padding-top: 3.5rem;
+    .syllabusDocument {
+        border-radius: 14px;
     }
 
-    .syllabusHeader h2,
-    .questionGrid h2 {
-        font-size: clamp(2.55rem, 13vw, 4.6rem);
+    .metadataList,
+    .recordContent .metadataList,
+    .topicList {
+        grid-template-columns: 1fr;
     }
 
-    .module {
-        padding: 2.2rem 0;
+    .recordHeading {
+        grid-template-columns: 1fr;
+        gap: 0.35rem;
     }
 
-    .module:hover {
-        padding-right: 0;
-        padding-left: 0;
-        background: transparent;
-    }
-
-    .moduleLead h3 {
-        font-size: clamp(2.1rem, 12vw, 3.5rem);
-    }
-
-    .exampleBlock {
-        padding: 0.9rem;
-    }
-
-    .questionText {
-        font-size: clamp(1.45rem, 8vw, 2.25rem) !important;
+    .topicList li {
+        text-align: left;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .module,
-    .rippleDot::after,
-    .rippleField span {
+    .rippleSectionActive .rippleRings span,
+    .rippleSectionActive .rippleWord,
+    .rippleSectionActive .differenceWord {
         animation: none;
-        transition: none;
     }
 
-    .rippleDot::after {
-        opacity: 0.45;
-        transform: scale(1.35);
+    .rippleRings span,
+    .rippleWord,
+    .differenceWord {
+        opacity: 1;
+        transform: translate(-50%, -50%);
     }
 
-    .rippleField span {
-        opacity: 0.18;
-        transform: translate(-50%, -50%) scale(1);
+    .differenceWord {
+        transform: none;
     }
 }

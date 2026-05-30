@@ -96,7 +96,10 @@ function About() {
             <h1 className={styles.aboutTitle}>who am i?</h1>
 
             <p className={styles.aboutIntro}>
-                I am Elias, a product manager, builder, writer, and friend trying to understand the world through the things I make and the people I meet.
+                heyo :) i'd be smiling if i knew you were here (maybe i do...) - that's so cool that you are! anywho, 
+                my name is elias and i'm an artist, engineer, and friend - as the home page says ;)
+                i'm just starting out life - i'll be in the bay area starting sept 2026 as an associate product manager with google. 
+                there's so much i could say, but i'll leave it at that for now - please reach out to me via <a href="https://www.linkedin.com/in/elias-lind/overlay/contact-info/">email</a> if you want to chat :D
             </p>
 
             <section className={styles.aboutSection}>

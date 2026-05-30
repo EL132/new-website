@@ -2,8 +2,12 @@ import { Link } from 'react-router-dom';
 import styles from './component-styles/HomeNav.module.css';
 
 function HomeNav({ variant = 'default' }) {
-    const navClassName = variant === 'travel'
-        ? `${styles.homeNav} ${styles.travelNav}`
+    const variantClassName = {
+        travel: styles.travelNav,
+        dark: styles.darkNav,
+    }[variant];
+    const navClassName = variantClassName
+        ? `${styles.homeNav} ${variantClassName}`
         : styles.homeNav;
 
     return (

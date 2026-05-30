@@ -13,6 +13,7 @@ export const thingsIveDoneItems = [
     {
         title: 'Hiked in Guatemala',
         kicker: 'adventure - 2026',
+        href: 'https://photos.app.goo.gl/3kTVWNGejmRhhivs7',
         image: thingsAsset('guatemala.jpg'),
         description: 'I did a 4k hike in Guatemala.',
         background: '#e5eadf',
@@ -44,6 +45,7 @@ export const thingsIveDoneItems = [
     {
         title: 'Published poetry',
         kicker: 'literature - 2022',
+        href: 'https://drive.google.com/drive/folders/1w9bFAqsEYTOsDa4AwcA8y-dICR0mCH-g',
         image: writingAsset('Selfishness.jpg'),
         description: 'I published poetry through UGA\'s Stillpoint Literary Magazine. The publication is no longer available online.',
         background: '#e8eadf',
@@ -51,6 +53,7 @@ export const thingsIveDoneItems = [
     {
         title: 'Taught English in Colombia',
         kicker: 'volunteer teaching - 2022',
+        href: 'https://photos.app.goo.gl/urxekXCbGBhufuy77',
         image: thingsAsset('colombia.jpg'),
         description: 'After graduating high school, I volunteered as an English teacher in Colombia through Workaway.',
         background: '#e4ebee',

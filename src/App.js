@@ -14,6 +14,7 @@ function App() {
     const location = useLocation();
     const isPhotographyPage = location.pathname === '/artist/photography';
     const showHomeNav = location.pathname !== '/' && !isPhotographyPage;
+    const homeNavVariant = location.pathname === '/engineer/making-things' ? 'dark' : 'default';
 
     // function to wake up free-instance backend 
     useEffect(() => {
@@ -24,7 +25,7 @@ function App() {
 
     return (
         <>
-            {showHomeNav && <HomeNav />}
+            {showHomeNav && <HomeNav variant={homeNavVariant} />}
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
