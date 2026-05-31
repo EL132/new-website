@@ -438,7 +438,7 @@ function EducationWorkSection() {
     return (
         <section className={styles.experienceSection} aria-labelledby="education-work-title">
             <header className={styles.experienceHeader}>
-                <p className={styles.eyebrow}>what i have done inside education?</p>
+                <p className={styles.eyebrow}>what have i done inside education?</p>
                 <div>
                     <h2 id="education-work-title">three ways i learned education</h2>
                     <p>
