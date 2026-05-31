@@ -22,9 +22,14 @@ function Home() {
     // pick random image from public folder
     const randomImage = useMemo(() => {
         const images = [
-            "/assets/home/option_one.jpg",
             "/assets/home/option_two.jpg",
-            "/assets/home/option_three.jpg"
+            "/assets/home/option_three.jpg",
+            "/assets/home/amor.JPG",
+            "/assets/home/elias-thomas.jpg",
+            "/assets/home/grad.jpg",
+            "/assets/home/lecture.jpg",
+            "/assets/home/mason-elias.jpg",
+            "/assets/home/mason-simi-elias.JPG"
         ];
         return images[Math.floor(Math.random() * images.length)];
     }, []);
