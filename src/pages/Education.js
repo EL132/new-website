@@ -467,9 +467,20 @@ function EducationWorkSection() {
     );
 }
 
-function OrbitingContributionSphere({ paths, activeIndex, onActivate }) {
+function OrbitingContributionSphere({
+    paths,
+    activeIndex,
+    selectedIndex,
+    onPreview,
+    onClearPreview,
+    onSelect,
+}) {
     return (
-        <div className={styles.orbitSphere} aria-label="Possible future education contribution paths">
+        <div
+            className={styles.orbitSphere}
+            aria-label="Possible future education contribution paths"
+            onMouseLeave={onClearPreview}
+        >
             <div className={styles.orbitCore} aria-hidden="true">
                 ?
             </div>
@@ -487,10 +498,12 @@ function OrbitingContributionSphere({ paths, activeIndex, onActivate }) {
                         <button
                             type="button"
                             className={`${styles.orbitChipButton} ${index === activeIndex ? styles.orbitChipButtonActive : ''}`}
-                            onMouseEnter={() => onActivate(index)}
-                            onFocus={() => onActivate(index)}
-                            onClick={() => onActivate(index)}
-                            aria-label={`${path.label}: ${path.description}`}
+                            onMouseEnter={() => onPreview(index)}
+                            onFocus={() => onPreview(index)}
+                            onBlur={onClearPreview}
+                            onClick={() => onSelect(index)}
+                            aria-label={`${path.label}: ${path.description}. Click to ${selectedIndex === index ? 'deselect' : 'select'}.`}
+                            aria-pressed={selectedIndex === index}
                         >
                             {path.label}
                         </button>
@@ -501,19 +514,48 @@ function OrbitingContributionSphere({ paths, activeIndex, onActivate }) {
     );
 }
 
-function ActiveContributionDetails({ path }) {
+function ActiveContributionDetails({ path, isPinned, onDeselect }) {
+    if (!path) return null;
+
     return (
-        <aside className={styles.orbitDetails} aria-live="polite">
+        <aside
+            className={`${styles.orbitDetails} ${isPinned ? styles.orbitDetailsPinned : ''}`}
+            aria-live="polite"
+        >
             <p>currently orbiting</p>
             <h3>{path.label}</h3>
             <span>{path.description}</span>
+            {isPinned ? (
+                <button type="button" onClick={onDeselect}>
+                    deselect
+                </button>
+            ) : null}
         </aside>
     );
 }
 
 function EducationNextSection() {
-    const [activeContributionIndex, setActiveContributionIndex] = useState(0);
-    const activeContribution = contributionPaths[activeContributionIndex];
+    const [hoveredContributionIndex, setHoveredContributionIndex] = useState(null);
+    const [selectedContributionIndex, setSelectedContributionIndex] = useState(null);
+    const activeContributionIndex = selectedContributionIndex ?? hoveredContributionIndex;
+    const activeContribution = activeContributionIndex === null ? null : contributionPaths[activeContributionIndex];
+    const isContributionPinned = selectedContributionIndex !== null;
+
+    const handleClearPreview = useCallback(() => {
+        if (selectedContributionIndex === null) {
+            setHoveredContributionIndex(null);
+        }
+    }, [selectedContributionIndex]);
+
+    const handleSelectContribution = useCallback((index) => {
+        setSelectedContributionIndex(currentIndex => (currentIndex === index ? null : index));
+        setHoveredContributionIndex(index);
+    }, []);
+
+    const handleDeselectContribution = useCallback(() => {
+        setSelectedContributionIndex(null);
+        setHoveredContributionIndex(null);
+    }, []);
 
     return (
         <section className={styles.nextEducationSection} aria-labelledby="education-next-title">
@@ -523,21 +565,30 @@ function EducationNextSection() {
 
             <div className={styles.nextEducationLayout}>
                 <div className={styles.nextEducationCopy}>
-                    <p className={styles.nextQuestion}>
+                    <h2 id="education-next-title" className={styles.nextQuestion}>
                         how do you think I can contribute best?
-                    </p>
+                    </h2>
                     <a href={contactUrl} target="_blank" rel="noopener noreferrer">
                         tell me what you think
                     </a>
-                    <ActiveContributionDetails path={activeContribution} />
                 </div>
 
                 <div className={styles.orbitColumn}>
-                    <OrbitingContributionSphere
-                        paths={contributionPaths}
-                        activeIndex={activeContributionIndex}
-                        onActivate={setActiveContributionIndex}
-                    />
+                    <div className={styles.orbitShowcase}>
+                        <OrbitingContributionSphere
+                            paths={contributionPaths}
+                            activeIndex={activeContributionIndex}
+                            selectedIndex={selectedContributionIndex}
+                            onPreview={setHoveredContributionIndex}
+                            onClearPreview={handleClearPreview}
+                            onSelect={handleSelectContribution}
+                        />
+                        <ActiveContributionDetails
+                            path={activeContribution}
+                            isPinned={isContributionPinned}
+                            onDeselect={handleDeselectContribution}
+                        />
+                    </div>
                 </div>
             </div>
         </section>

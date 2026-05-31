@@ -568,7 +568,7 @@
 
 .nextEducationSection {
     display: grid;
-    gap: clamp(0.75rem, 2vw, 1.35rem);
+    gap: clamp(1.1rem, 2.6vw, 2rem);
     margin-bottom: clamp(4rem, 8vw, 7rem);
     padding: clamp(0.75rem, 2vw, 1.5rem) 0 clamp(2.5rem, 6vw, 4.8rem);
     border-top: 1px solid rgba(17, 17, 17, 0.12);
@@ -581,6 +581,8 @@
 .nextEducationHeader {
     display: grid;
     gap: 0.75rem;
+    justify-items: center;
+    text-align: center;
 }
 
 .nextEducationHeader h2 {
@@ -593,15 +595,19 @@
 
 .nextEducationLayout {
     display: grid;
-    grid-template-columns: minmax(260px, 1fr) minmax(0, 2fr);
-    gap: clamp(2rem, 6vw, 5rem);
+    grid-template-columns: 1fr;
+    gap: clamp(0.35rem, 1.2vw, 0.9rem);
     align-items: start;
+    justify-items: center;
 }
 
 .nextEducationCopy {
     display: grid;
-    gap: 1.1rem;
+    gap: clamp(1rem, 2vw, 1.35rem);
     align-content: start;
+    justify-items: center;
+    width: min(840px, 100%);
+    text-align: center;
 }
 
 .nextEducationCopy p {
@@ -612,16 +618,19 @@
 }
 
 .nextQuestion {
+    margin: 0;
     color: #111 !important;
-    font-size: clamp(1.6rem, 3.2vw, 2.8rem) !important;
+    width: min(75vw, 840px);
+    max-width: 100%;
+    font-size: clamp(2rem, 4.4vw, 3.65rem) !important;
     font-weight: 850;
     line-height: 1.05 !important;
 }
 
 .nextEducationCopy a {
-    justify-self: start;
-    margin-top: clamp(0.35rem, 1vw, 0.75rem);
-    margin-bottom: clamp(0.8rem, 2vw, 1.4rem);
+    justify-self: center;
+    margin-top: clamp(0.1rem, 0.8vw, 0.45rem);
+    margin-bottom: 0;
     color: #111;
     font-family: 'Courier New', Courier, monospace;
     font-size: 0.78rem;
@@ -635,14 +644,25 @@
 .orbitColumn {
     display: grid;
     place-items: center;
+    width: 100%;
     min-width: 0;
+}
+
+.orbitShowcase {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: min(800px, 100%);
+    min-height: clamp(420px, 52vw, 620px);
+    margin: clamp(-3.25rem, -4.4vw, -1.5rem) auto 0;
 }
 
 .orbitSphere {
     position: relative;
     display: grid;
     place-items: center;
-    min-height: clamp(390px, 52vw, 600px);
+    width: 100%;
+    min-height: clamp(390px, 50vw, 590px);
     perspective: 980px;
     isolation: isolate;
 }
@@ -772,14 +792,26 @@
 }
 
 .orbitDetails {
+    position: absolute;
+    left: 50%;
+    bottom: clamp(0.5rem, 4vw, 2.3rem);
+    z-index: 8;
     display: grid;
     gap: 0.35rem;
+    width: min(390px, calc(100% - 2rem));
     min-height: 8.3rem;
     padding: 1rem 1.1rem;
     border: 1px solid rgba(17, 17, 17, 0.12);
     border-radius: 18px;
-    background: rgba(255, 255, 255, 0.72);
-    box-shadow: 0 16px 44px rgba(17, 17, 17, 0.055);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 18px 54px rgba(17, 17, 17, 0.1);
+    pointer-events: none;
+    transform: translateX(-50%);
+    animation: orbitDetailsIn 180ms ease-out both;
+}
+
+.orbitDetailsPinned {
+    pointer-events: auto;
 }
 
 .orbitDetails p,
@@ -808,6 +840,41 @@
     color: rgba(17, 17, 17, 0.68);
     font-size: 0.98rem;
     line-height: 1.5;
+}
+
+.orbitDetails button {
+    appearance: none;
+    justify-self: start;
+    margin-top: 0.4rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #111;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.72rem;
+    font-weight: 750;
+    letter-spacing: 0.12em;
+    text-decoration: underline;
+    text-underline-offset: 0.22em;
+    text-transform: uppercase;
+}
+
+.orbitDetails button:focus-visible {
+    outline: 1px solid #111;
+    outline-offset: 4px;
+}
+
+@keyframes orbitDetailsIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
 }
 
 @keyframes ringReveal {
@@ -895,6 +962,10 @@
 
     .modalFacts {
         max-width: none;
+    }
+
+    .orbitShowcase {
+        min-height: clamp(390px, 76vw, 560px);
     }
 
     .orbitSphere {
@@ -985,6 +1056,16 @@
         font-size: clamp(2.75rem, 13vw, 4.7rem);
     }
 
+    .nextQuestion {
+        width: 100%;
+        font-size: clamp(2rem, 10vw, 3.25rem) !important;
+    }
+
+    .orbitShowcase {
+        width: 100%;
+        min-height: auto;
+    }
+
     .orbitSphere {
         justify-items: stretch;
         min-height: auto;
@@ -1032,7 +1113,13 @@
     }
 
     .orbitDetails {
+        position: static;
+        width: 100%;
         min-height: auto;
+        margin-top: 1rem;
+        pointer-events: auto;
+        transform: none;
+        animation: none;
     }
 }
 
@@ -1056,6 +1143,7 @@
 
     .experienceCard,
     .experienceCard::after,
+    .orbitDetails,
     .orbitChipButton,
     .storyModal {
         animation: none;
