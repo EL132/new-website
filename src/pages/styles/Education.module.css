@@ -1,14 +1,14 @@
 .educationPage {
     min-height: calc(100vh - 80px);
     overflow-x: hidden;
-    background:
-        linear-gradient(180deg, #fff 0%, #fff 42%, #f8f4ed 42%, #f8f4ed 100%);
+    background: #fff;
     color: #111;
 }
 
 .introSection,
 .rippleSection,
-.blackboardSection {
+.experienceSection,
+.nextEducationSection {
     width: min(1120px, calc(100vw - 3rem));
     margin: 0 auto;
 }
@@ -175,180 +175,383 @@
     animation-delay: 5200ms;
 }
 
-.blackboardSection {
-    padding: clamp(4rem, 8vw, 7rem) 0 clamp(5rem, 9vw, 8rem);
+.experienceSection {
+    padding: clamp(4rem, 8vw, 7rem) 0 clamp(3.5rem, 7vw, 6rem);
 }
 
-.blackboardIntro {
+.experienceHeader {
     display: grid;
-    gap: 0.85rem;
-    max-width: 760px;
+    grid-template-columns: minmax(150px, 0.22fr) minmax(0, 1fr);
+    gap: clamp(1.5rem, 5vw, 4rem);
+    align-items: start;
     margin-bottom: clamp(1.6rem, 4vw, 3rem);
 }
 
-.blackboardIntro h2 {
+.experienceHeader h2 {
+    max-width: 11ch;
     margin: 0;
-    font-size: clamp(2.8rem, 7.6vw, 7rem);
+    font-size: clamp(2.7rem, 7.4vw, 6.9rem);
     line-height: 0.9;
     text-transform: lowercase;
 }
 
-.blackboardGrid {
-    display: grid;
-    grid-template-columns: minmax(300px, 0.42fr) minmax(0, 1fr);
-    gap: clamp(1.2rem, 3vw, 2rem);
-    align-items: start;
+.experienceHeader div > p {
+    max-width: 620px;
+    margin: 1rem 0 0;
+    color: rgba(17, 17, 17, 0.62);
+    font-size: clamp(1rem, 1.45vw, 1.12rem);
+    line-height: 1.58;
 }
 
-.stickyBoard {
-    position: sticky;
-    top: 1.2rem;
+.experienceGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1rem, 2.4vw, 1.45rem);
+}
+
+.experienceCard {
+    position: relative;
     display: grid;
     align-content: start;
-    gap: 1.3rem;
-    min-height: 540px;
-    padding: clamp(1.2rem, 3vw, 1.8rem);
-    border: 1px solid rgba(244, 241, 232, 0.2);
-    border-radius: 18px;
-    background:
-        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-        #11110f;
-    background-size: 28px 28px;
-    box-shadow: 0 24px 60px rgba(17, 17, 17, 0.22);
-    color: #f8f4ed;
-}
-
-.boardProgress {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    color: rgba(248, 244, 237, 0.58);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-}
-
-.boardLabel,
-.claimHeader p,
-.evidenceBlock > p,
-.claimNotes p,
-.proofPrompt p {
-    margin: 0;
-    color: rgba(248, 244, 237, 0.52);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.72rem;
-    font-weight: 750;
-    letter-spacing: 0.14em;
-    line-height: 1;
-    text-transform: uppercase;
-}
-
-.stickyBoard h3 {
-    margin: 0;
-    font-size: clamp(2.3rem, 5vw, 4.6rem);
-    line-height: 0.9;
-    text-transform: lowercase;
-}
-
-.boardRule {
+    gap: 1.1rem;
+    min-height: 430px;
     width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, rgba(248, 244, 237, 0.15), rgba(248, 244, 237, 0.5), rgba(248, 244, 237, 0.08));
-}
-
-.claimStack {
-    display: grid;
-    gap: clamp(1rem, 2vw, 1.4rem);
-}
-
-.claimArticle {
-    display: grid;
-    gap: 1.2rem;
-    min-height: 520px;
-    padding: clamp(1.2rem, 3vw, 2rem);
-    border: 1px solid rgba(248, 244, 237, 0.16);
-    border-radius: 18px;
-    background: #151513;
-    color: #f8f4ed;
-    opacity: 0.72;
-    transform: translateY(12px);
+    padding: clamp(1.1rem, 2.4vw, 1.55rem);
+    overflow: hidden;
+    border: 1px solid rgba(17, 17, 17, 0.14);
+    border-radius: 20px;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 250, 241, 0.74)),
+        #f8f4ed;
+    box-shadow: 0 12px 34px rgba(17, 17, 17, 0.055);
+    color: #111;
     transition:
         border-color 260ms ease,
+        box-shadow 260ms ease,
+        transform 260ms ease;
+}
+
+.experienceCard::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 4px;
+    background: var(--experience-accent);
+    opacity: 0.52;
+}
+
+.experienceCard::after {
+    content: '';
+    position: absolute;
+    inset: 0.8rem;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 14px;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.985);
+    transition:
         opacity 260ms ease,
         transform 260ms ease;
 }
 
-.claimArticleActive {
-    border-color: rgba(248, 244, 237, 0.36);
+.experienceCard:hover,
+.experienceCard:focus-within {
+    border-color: rgba(17, 17, 17, 0.34);
+    box-shadow:
+        0 18px 44px rgba(17, 17, 17, 0.1),
+        0 0 0 5px rgba(183, 138, 85, 0.08);
+    transform: translateY(-7px) scale(1.012);
+}
+
+.experienceCard:hover::after,
+.experienceCard:focus-within::after {
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1);
 }
 
-.claimHeader {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    align-items: center;
+.experienceCard:focus-within {
+    outline: 2px solid #111;
+    outline-offset: 4px;
 }
 
-.claimHeader span {
-    color: rgba(248, 244, 237, 0.58);
+.cardHitArea {
+    appearance: none;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    border: 0;
+    border-radius: inherit;
+    background: transparent;
+    cursor: pointer;
+}
+
+.cardHitArea:focus {
+    outline: none;
+}
+
+.cardNumber {
+    color: var(--experience-accent);
     font-family: 'Courier New', Courier, monospace;
-    font-size: 0.76rem;
+    font-size: 0.8rem;
+    font-weight: 750;
+    letter-spacing: 0.14em;
+}
+
+.cardTitleGroup {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.cardTitleGroup h3 {
+    margin: 0;
+    font-size: clamp(1.7rem, 3vw, 2.55rem);
+    line-height: 0.96;
+    text-transform: lowercase;
+}
+
+.cardTitleGroup p {
+    margin: 0;
+    color: rgba(17, 17, 17, 0.58);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.75rem;
+    line-height: 1.35;
+}
+
+.cardSummary {
+    margin: 0;
+    color: rgba(17, 17, 17, 0.72);
+    font-size: 0.98rem;
+    line-height: 1.55;
+}
+
+.cardThemes,
+.modalThemes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.cardThemes li,
+.modalThemes li {
+    border: 1px solid rgba(17, 17, 17, 0.12);
+    border-radius: 999px;
+    color: rgba(17, 17, 17, 0.62);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.cardThemes li {
+    padding: 0.42rem 0.55rem;
+    background: rgba(255, 255, 255, 0.46);
+}
+
+.cardAction {
+    align-self: end;
+    justify-self: start;
+    margin-top: auto;
+    padding-top: 0.9rem;
+    border-top: 1px solid rgba(17, 17, 17, 0.1);
+    color: rgba(17, 17, 17, 0.72);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.74rem;
+    font-weight: 750;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.modalBackdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: grid;
+    place-items: center;
+    padding: clamp(1rem, 3vw, 2rem);
+    background: rgba(17, 17, 17, 0.46);
+}
+
+.storyModal {
+    position: relative;
+    width: min(960px, 100%);
+    max-height: min(86vh, 780px);
+    overflow: auto;
+    padding: clamp(1.2rem, 4vw, 2.4rem);
+    border: 1px solid rgba(17, 17, 17, 0.16);
+    border-radius: 24px;
+    background:
+        linear-gradient(180deg, #fff 0%, #fffaf1 100%);
+    box-shadow: 0 28px 90px rgba(17, 17, 17, 0.28);
+    outline: none;
+    animation: modalReveal 220ms ease-out both;
+}
+
+.modalClose {
+    appearance: none;
+    position: absolute;
+    right: clamp(1rem, 3vw, 1.5rem);
+    top: clamp(1rem, 3vw, 1.5rem);
+    border: 1px solid rgba(17, 17, 17, 0.16);
+    border-radius: 999px;
+    background: #fff;
+    color: rgba(17, 17, 17, 0.72);
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.72rem;
+    font-weight: 750;
+    letter-spacing: 0.12em;
+    padding: 0.55rem 0.75rem;
+    text-transform: uppercase;
+}
+
+.modalClose:hover,
+.modalClose:focus-visible {
+    border-color: rgba(17, 17, 17, 0.36);
+    color: #111;
+    outline: none;
+}
+
+.modalHeader {
+    display: grid;
+    gap: 0.9rem;
+    padding-right: 5.6rem;
+}
+
+.modalHeader h2 {
+    max-width: 10ch;
+    margin: 0;
+    font-size: clamp(2.6rem, 7vw, 6.2rem);
+    line-height: 0.88;
+    text-transform: lowercase;
+}
+
+.modalHeader > p:not(.eyebrow) {
+    max-width: 700px;
+    margin: 0;
+    color: rgba(17, 17, 17, 0.68);
+    font-size: clamp(1rem, 1.5vw, 1.14rem);
+    line-height: 1.55;
+}
+
+.modalMetaLine {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    color: rgba(17, 17, 17, 0.58);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
 }
 
-.claimArticle h3 {
-    max-width: 12ch;
-    margin: 0;
-    color: #fffaf1;
-    font-size: clamp(2rem, 4.4vw, 4.2rem);
-    line-height: 0.94;
-    text-transform: lowercase;
+.modalThemes {
+    margin-top: clamp(1.3rem, 3vw, 2rem);
 }
 
-.evidenceBlock {
+.modalThemes li {
+    padding: 0.5rem 0.62rem;
+    background: rgba(248, 244, 237, 0.78);
+}
+
+.modalLayout {
     display: grid;
-    grid-template-columns: minmax(92px, 0.18fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) minmax(210px, 0.32fr);
+    gap: clamp(1.4rem, 4vw, 3rem);
+    align-items: start;
+    margin-top: clamp(1.4rem, 4vw, 2.5rem);
+    padding-top: clamp(1.2rem, 3vw, 2rem);
+    border-top: 1px solid rgba(17, 17, 17, 0.1);
+}
+
+.modalNarrative {
+    display: grid;
     gap: 1rem;
-    align-items: baseline;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(248, 244, 237, 0.12);
 }
 
-.evidenceBlock h4 {
+.modalNarrative p {
     margin: 0;
-    color: #f8f4ed;
-    font-size: clamp(1.15rem, 2vw, 1.55rem);
-    line-height: 1.1;
+    color: rgba(17, 17, 17, 0.72);
+    font-size: clamp(1rem, 1.35vw, 1.09rem);
+    line-height: 1.68;
 }
 
-.evidenceBlock span {
-    display: block;
-    margin-top: 0.28rem;
-    color: rgba(248, 244, 237, 0.56);
+.modalNarrative a {
+    color: inherit;
+    font-weight: 750;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+}
+
+.lectureList {
+    display: grid;
+    gap: 0.65rem;
+    margin-top: 1rem;
+    padding: 0.95rem 1rem;
+    border: 1px solid rgba(17, 17, 17, 0.1);
+    border-radius: 14px;
+    background: rgba(248, 244, 237, 0.52);
+}
+
+.lectureList p {
+    color: rgba(17, 17, 17, 0.52);
     font-family: 'Courier New', Courier, monospace;
-    font-size: 0.78rem;
+    font-size: 0.72rem;
+    font-weight: 750;
+    letter-spacing: 0.12em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.lectureList ul {
+    display: grid;
+    gap: 0.45rem;
+    margin: 0;
+    padding-left: 1.1rem;
+    color: rgba(17, 17, 17, 0.74);
+    font-size: 0.98rem;
+    line-height: 1.45;
+}
+
+.modalFacts {
+    display: grid;
+    gap: 0.9rem;
+    padding: 1rem;
+    border: 1px solid rgba(17, 17, 17, 0.1);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.55);
+}
+
+.modalFacts > p {
+    margin: 0;
+    color: rgba(17, 17, 17, 0.48);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.72rem;
+    font-weight: 750;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
 }
 
 .metadataList {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.8rem;
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
     margin: 0;
 }
 
 .metadataList div {
     display: grid;
-    gap: 0.25rem;
+    gap: 0.22rem;
 }
 
 .metadataList dt {
-    color: rgba(248, 244, 237, 0.48);
+    color: rgba(17, 17, 17, 0.48);
     font-family: 'Courier New', Courier, monospace;
     font-size: 0.7rem;
     font-weight: 750;
@@ -358,198 +561,253 @@
 
 .metadataList dd {
     margin: 0;
-    color: rgba(248, 244, 237, 0.78);
+    color: rgba(17, 17, 17, 0.74);
     font-size: 0.92rem;
     line-height: 1.45;
 }
 
-.claimWriting {
+.nextEducationSection {
     display: grid;
-    gap: 1rem;
+    gap: clamp(0.75rem, 2vw, 1.35rem);
+    margin-bottom: clamp(4rem, 8vw, 7rem);
+    padding: clamp(0.75rem, 2vw, 1.5rem) 0 clamp(2.5rem, 6vw, 4.8rem);
+    border-top: 1px solid rgba(17, 17, 17, 0.12);
+    border-bottom: 1px solid rgba(17, 17, 17, 0.12);
+    background:
+        radial-gradient(circle at 72% 42%, rgba(248, 244, 237, 0.86), transparent 34%),
+        #fff;
 }
 
-.claimWriting p {
-    max-width: 760px;
+.nextEducationHeader {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.nextEducationHeader h2 {
+    max-width: 10ch;
     margin: 0;
-    color: rgba(248, 244, 237, 0.78);
-    font-size: clamp(1rem, 1.35vw, 1.09rem);
-    line-height: 1.62;
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 0.9;
+    text-transform: lowercase;
 }
 
-.openProblemText {
-    color: #fffaf1 !important;
-    font-size: clamp(1.45rem, 2.8vw, 2.35rem) !important;
+.nextEducationLayout {
+    display: grid;
+    grid-template-columns: minmax(260px, 1fr) minmax(0, 2fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+}
+
+.nextEducationCopy {
+    display: grid;
+    gap: 1.1rem;
+    align-content: start;
+}
+
+.nextEducationCopy p {
+    margin: 0;
+    color: rgba(17, 17, 17, 0.68);
+    font-size: clamp(1rem, 1.45vw, 1.12rem);
+    line-height: 1.6;
+}
+
+.nextQuestion {
+    color: #111 !important;
+    font-size: clamp(1.6rem, 3.2vw, 2.8rem) !important;
     font-weight: 850;
     line-height: 1.05 !important;
 }
 
-.claimNotes {
-    display: grid;
-    gap: 0.75rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(248, 244, 237, 0.12);
-}
-
-.claimNotes ul {
-    display: grid;
-    gap: 0.45rem;
-    margin: 0;
-    padding-left: 1.1rem;
-    color: rgba(248, 244, 237, 0.76);
-    font-size: 0.95rem;
-    line-height: 1.48;
-}
-
-.mobileAnnotation {
-    display: none;
-}
-
-.arrowAnnotation,
-.exchangeAnnotation,
-.systemAnnotation,
-.proofPrompt {
-    color: rgba(248, 244, 237, 0.88);
-    font-family: 'Courier New', Courier, monospace;
-}
-
-.arrowAnnotation {
-    display: grid;
-    grid-template-columns: auto minmax(84px, 1fr) auto;
-    gap: 0.8rem;
-    align-items: center;
-}
-
-.arrowAnnotation > span {
-    font-size: clamp(0.95rem, 2vw, 1.1rem);
-}
-
-.annotationArrow {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    gap: 0.65rem;
-    min-height: 2.8rem;
-    border-bottom: 1px solid rgba(248, 244, 237, 0.62);
-}
-
-.annotationArrow::after {
-    content: '';
-    position: absolute;
-    right: -1px;
-    bottom: -5px;
-    width: 10px;
-    height: 10px;
-    border-right: 1px solid rgba(248, 244, 237, 0.62);
-    border-bottom: 1px solid rgba(248, 244, 237, 0.62);
-    transform: rotate(-45deg);
-}
-
-.annotationArrow em {
-    color: rgba(248, 244, 237, 0.58);
-    font-size: 0.72rem;
-    font-style: normal;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
-.exchangeAnnotation {
-    display: grid;
-    gap: 0.8rem;
-}
-
-.exchangeAnnotation div {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 56px minmax(0, 1fr);
-    gap: 0.7rem;
-    align-items: center;
-}
-
-.exchangeAnnotation b {
-    position: relative;
-    height: 1px;
-    background: rgba(248, 244, 237, 0.62);
-}
-
-.exchangeAnnotation b::before,
-.exchangeAnnotation b::after {
-    content: '';
-    position: absolute;
-    top: -4px;
-    width: 8px;
-    height: 8px;
-    border-top: 1px solid rgba(248, 244, 237, 0.62);
-}
-
-.exchangeAnnotation b::before {
-    left: 0;
-    border-left: 1px solid rgba(248, 244, 237, 0.62);
-    transform: rotate(-45deg);
-}
-
-.exchangeAnnotation b::after {
-    right: 0;
-    border-right: 1px solid rgba(248, 244, 237, 0.62);
-    transform: rotate(45deg);
-}
-
-.systemAnnotation {
-    display: grid;
-    gap: 1rem;
-}
-
-.systemAnnotation div {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.45rem;
-}
-
-.systemAnnotation span,
-.systemAnnotation strong {
-    padding: 0.42rem 0.55rem;
-    border: 1px solid rgba(248, 244, 237, 0.28);
-    border-radius: 999px;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
-.systemAnnotation b {
-    width: min(220px, 70%);
-    height: 1px;
-    background: rgba(248, 244, 237, 0.56);
-}
-
-.systemAnnotation strong {
+.nextEducationCopy a {
     justify-self: start;
+    margin-top: clamp(0.35rem, 1vw, 0.75rem);
+    margin-bottom: clamp(0.8rem, 2vw, 1.4rem);
     color: #111;
-    background: #f8f4ed;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.78rem;
+    font-weight: 750;
+    letter-spacing: 0.12em;
+    text-decoration: underline;
+    text-underline-offset: 0.22em;
+    text-transform: uppercase;
 }
 
-.proofPrompt {
+.orbitColumn {
     display: grid;
-    gap: 1.1rem;
+    place-items: center;
+    min-width: 0;
 }
 
-.proofPrompt div {
+.orbitSphere {
+    position: relative;
     display: grid;
-    gap: 0.55rem;
+    place-items: center;
+    min-height: clamp(390px, 52vw, 600px);
+    perspective: 980px;
+    isolation: isolate;
 }
 
-.proofPrompt ul {
+.orbitCore {
+    position: absolute;
+    z-index: 2;
     display: grid;
-    gap: 0.4rem;
+    place-items: center;
+    width: clamp(5.4rem, 11vw, 8rem);
+    aspect-ratio: 1;
+    border: 1px solid rgba(17, 17, 17, 0.16);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow:
+        0 18px 60px rgba(17, 17, 17, 0.08),
+        inset 0 0 0 10px rgba(248, 244, 237, 0.52);
+    color: rgba(17, 17, 17, 0.86);
+    font-size: clamp(4.4rem, 9vw, 7rem);
+    font-weight: 850;
+    line-height: 1;
+    transition:
+        box-shadow 240ms ease,
+        transform 240ms ease,
+        opacity 240ms ease;
+}
+
+.orbitSphere:hover .orbitCore,
+.orbitSphere:focus-within .orbitCore {
+    box-shadow:
+        0 22px 72px rgba(17, 17, 17, 0.13),
+        inset 0 0 0 10px rgba(248, 244, 237, 0.72);
+    opacity: 0.94;
+    transform: scale(1.035);
+}
+
+.orbitShell {
+    position: relative;
+    z-index: 3;
+    width: clamp(310px, 48vw, 530px);
+    aspect-ratio: 1;
+    transform-style: preserve-3d;
+    animation: orbitTurn 34s linear infinite;
+}
+
+.orbitSphere:hover .orbitShell,
+.orbitSphere:focus-within .orbitShell {
+    animation-play-state: running;
+}
+
+.orbitRing {
+    position: absolute;
+    inset: 14%;
+    border: 4px solid rgba(17, 17, 17, 0.11);
+    border-radius: 999px;
+    pointer-events: none;
+}
+
+.orbitRing:nth-child(1) {
+    border-color: rgba(183, 138, 85, 0.3);
+    transform: rotateX(72deg);
+}
+
+.orbitRing:nth-child(2) {
+    border-color: rgba(138, 114, 93, 0.28);
+    transform: rotateY(67deg);
+}
+
+.orbitRing:nth-child(3) {
+    inset: 9%;
+    border-color: rgba(110, 119, 99, 0.26);
+    transform: rotateX(18deg) rotateY(38deg);
+}
+
+.orbitChip {
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    top: 50%;
+    transform:
+        translate(-50%, -50%)
+        rotateY(var(--orbit-y))
+        rotateX(var(--orbit-x))
+        translateZ(var(--orbit-depth));
+    transform-style: preserve-3d;
+}
+
+.orbitChipButton {
+    appearance: none;
+    display: block;
+    max-width: 11rem;
+    padding: 0.58rem 0.72rem;
+    border: 1px solid rgba(17, 17, 17, 0.18);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: 0 12px 32px rgba(17, 17, 17, 0.075);
+    color: rgba(17, 17, 17, 0.78);
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.68rem, 1.15vw, 0.78rem);
+    font-weight: 750;
+    letter-spacing: 0.08em;
+    line-height: 1.15;
+    opacity: var(--chip-opacity);
+    text-align: center;
+    text-transform: uppercase;
+    transform: scale(var(--chip-scale));
+    transition:
+        border-color 200ms ease,
+        box-shadow 200ms ease,
+        opacity 200ms ease,
+        transform 200ms ease;
+    white-space: normal;
+}
+
+.orbitChipButton:hover,
+.orbitChipButton:focus-visible,
+.orbitChipButtonActive {
+    border-color: rgba(17, 17, 17, 0.42);
+    box-shadow:
+        0 16px 38px rgba(17, 17, 17, 0.12),
+        0 0 0 5px rgba(248, 244, 237, 0.95);
+    color: #111;
+    opacity: 1;
+    outline: none;
+    transform: scale(calc(var(--chip-scale) + 0.12));
+}
+
+.orbitDetails {
+    display: grid;
+    gap: 0.35rem;
+    min-height: 8.3rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid rgba(17, 17, 17, 0.12);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 16px 44px rgba(17, 17, 17, 0.055);
+}
+
+.orbitDetails p,
+.orbitDetails h3,
+.orbitDetails span {
     margin: 0;
-    padding-left: 1.1rem;
-    color: rgba(248, 244, 237, 0.78);
-    font-size: 0.9rem;
-    line-height: 1.4;
 }
 
-.proofPrompt strong {
-    color: #fffaf1;
-    font-size: clamp(1.2rem, 2vw, 1.65rem);
-    line-height: 1.1;
+.orbitDetails p {
+    color: rgba(17, 17, 17, 0.48);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.72rem;
+    font-weight: 750;
+    letter-spacing: 0.12em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.orbitDetails h3 {
+    font-size: clamp(1.45rem, 3vw, 2.3rem);
+    line-height: 1;
+    text-transform: lowercase;
+}
+
+.orbitDetails span {
+    color: rgba(17, 17, 17, 0.68);
+    font-size: 0.98rem;
+    line-height: 1.5;
 }
 
 @keyframes ringReveal {
@@ -592,9 +850,31 @@
     }
 }
 
+@keyframes modalReveal {
+    from {
+        opacity: 0;
+        transform: translateY(14px) scale(0.985);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes orbitTurn {
+    from {
+        transform: rotateX(8deg) rotateY(0deg);
+    }
+
+    to {
+        transform: rotateX(8deg) rotateY(360deg);
+    }
+}
+
 @media screen and (max-width: 900px) {
     .rippleSection,
-    .blackboardGrid {
+    .experienceHeader {
         grid-template-columns: 1fr;
     }
 
@@ -602,31 +882,31 @@
         max-width: 560px;
     }
 
-    .stickyBoard {
-        display: none;
+    .experienceGrid,
+    .modalLayout,
+    .nextEducationLayout,
+    .orbitColumn {
+        grid-template-columns: 1fr;
     }
 
-    .claimArticle {
+    .experienceCard {
         min-height: auto;
-        opacity: 1;
-        transform: none;
     }
 
-    .metadataList {
-        grid-template-columns: 1fr 1fr;
+    .modalFacts {
+        max-width: none;
     }
 
-    .mobileAnnotation {
-        display: block;
-        padding-top: 1rem;
-        border-top: 1px solid rgba(248, 244, 237, 0.12);
+    .orbitSphere {
+        min-height: clamp(360px, 70vw, 520px);
     }
 }
 
 @media screen and (max-width: 640px) {
     .introSection,
     .rippleSection,
-    .blackboardSection {
+    .experienceSection,
+    .nextEducationSection {
         width: min(100% - 2rem, 520px);
     }
 
@@ -658,56 +938,101 @@
         font-size: clamp(3rem, 14vw, 5.3rem);
     }
 
-    .blackboardSection {
+    .experienceSection {
         padding-top: 3.25rem;
     }
 
-    .blackboardIntro h2 {
+    .experienceHeader h2 {
         font-size: clamp(2.7rem, 13vw, 4.6rem);
     }
 
-    .claimArticle {
-        gap: 1rem;
+    .experienceCard {
         padding: 1.15rem;
-        border-radius: 14px;
+        border-radius: 16px;
     }
 
-    .claimHeader {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.45rem;
+    .modalBackdrop {
+        padding: 0.75rem;
     }
 
-    .evidenceBlock {
-        grid-template-columns: 1fr;
-        align-items: flex-start;
+    .storyModal {
+        max-height: 88vh;
+        padding: 1.1rem;
+        border-radius: 18px;
     }
 
-    .claimArticle h3 {
-        max-width: 10ch;
-        font-size: clamp(2rem, 11vw, 3.25rem);
+    .modalClose {
+        right: 1rem;
+        top: 1rem;
     }
 
-    .metadataList {
-        grid-template-columns: 1fr;
+    .modalHeader {
+        padding-top: 2.8rem;
+        padding-right: 0;
     }
 
-    .arrowAnnotation {
-        grid-template-columns: 1fr;
-        gap: 0.45rem;
+    .modalHeader h2 {
+        max-width: 11ch;
+        font-size: clamp(2.25rem, 12vw, 4rem);
     }
 
-    .annotationArrow {
-        width: min(220px, 72%);
+    .nextEducationSection {
+        gap: 1.6rem;
+        padding-bottom: 3rem;
     }
 
-    .exchangeAnnotation div {
-        grid-template-columns: minmax(0, 1fr) 42px minmax(0, 1fr);
-        gap: 0.45rem;
+    .nextEducationHeader h2 {
+        font-size: clamp(2.75rem, 13vw, 4.7rem);
     }
 
-    .systemAnnotation b {
-        width: 62%;
+    .orbitSphere {
+        justify-items: stretch;
+        min-height: auto;
+        perspective: none;
+    }
+
+    .orbitCore {
+        position: relative;
+        justify-self: center;
+        width: 6.1rem;
+        margin: 0 0 1rem;
+        font-size: 5rem;
+    }
+
+    .orbitShell {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.55rem;
+        width: 100%;
+        aspect-ratio: auto;
+        animation: none;
+        transform: none;
+    }
+
+    .orbitRing {
+        display: none;
+    }
+
+    .orbitChip {
+        position: static;
+        transform: none;
+    }
+
+    .orbitChipButton {
+        max-width: none;
+        opacity: 1;
+        transform: none;
+    }
+
+    .orbitChipButton:hover,
+    .orbitChipButton:focus-visible,
+    .orbitChipButtonActive {
+        transform: translateY(-2px);
+    }
+
+    .orbitDetails {
+        min-height: auto;
     }
 }
 
@@ -726,6 +1051,26 @@
     }
 
     .differenceWord {
+        transform: none;
+    }
+
+    .experienceCard,
+    .experienceCard::after,
+    .orbitChipButton,
+    .storyModal {
+        animation: none;
+        transition: none;
+    }
+
+    .orbitShell {
+        animation: none;
+    }
+
+    .experienceCard:hover,
+    .experienceCard:focus-within,
+    .orbitChipButton:hover,
+    .orbitChipButton:focus-visible,
+    .orbitChipButtonActive {
         transform: none;
     }
 }

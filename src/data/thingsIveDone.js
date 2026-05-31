@@ -15,7 +15,7 @@ export const thingsIveDoneItems = [
         kicker: 'adventure - 2026',
         href: 'https://photos.app.goo.gl/3kTVWNGejmRhhivs7',
         image: thingsAsset('guatemala.jpg'),
-        description: 'I did a 4k hike in Guatemala.',
+        description: 'I did a 4km hike in Guatemala.',
         background: '#e5eadf',
     },
     {
@@ -37,7 +37,7 @@ export const thingsIveDoneItems = [
     {
         title: 'Co-founded a flash mob club',
         kicker: 'university - 2024',
-        href: 'https://www.instagram.com/flashmob_gt/',
+        href: 'https://www.instagram.com/p/DGYFhEOOaqm/',
         image: thingsAsset('flash_mob_school.JPG'),
         description: 'More than 20 flash mobs completed, 30+ members, three different choreographies, and performances in lecture halls and events.',
         background: '#eee4df',
@@ -47,7 +47,7 @@ export const thingsIveDoneItems = [
         kicker: 'literature - 2022',
         href: 'https://drive.google.com/drive/folders/1w9bFAqsEYTOsDa4AwcA8y-dICR0mCH-g',
         image: writingAsset('Selfishness.jpg'),
-        description: 'I published poetry through UGA\'s Stillpoint Literary Magazine. The publication is no longer available online.',
+        description: 'I published poetry through the University of Georgia\'s Stillpoint Literary Magazine. The publication is no longer available online.',
         background: '#e8eadf',
     },
     {
@@ -55,7 +55,7 @@ export const thingsIveDoneItems = [
         kicker: 'volunteer teaching - 2022',
         href: 'https://photos.app.goo.gl/urxekXCbGBhufuy77',
         image: thingsAsset('colombia.jpg'),
-        description: 'After graduating high school, I volunteered as an English teacher in Colombia through Workaway.',
+        description: 'After graduating high school, I worked as an English teacher in Colombia through a program called Workaway.',
         background: '#e4ebee',
     },
 ];

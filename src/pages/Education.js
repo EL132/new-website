@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './styles/Education.module.css';
 
 const rippleStages = [
@@ -9,102 +9,165 @@ const rippleStages = [
     { label: 'nation', position: { '--x': '74%', '--y': '70%' } },
 ];
 
-const teachingClaims = [
+const tutoringPostUrl = 'https://nextdoor.com/p/LzK5hQZhJz3x?utm_source=share&extras=Njc0MTIyMDQ%3D&utm_campaign=1780235089240&share_action_id=1a0d2c3d-db80-41d7-97e6-56c3cd0b2fc6';
+const learningPlusLectureUrl = 'https://docs.google.com/presentation/d/1CEUZE5kkTMOjXTteAYCwNuLRoGVvO8sN6_Xg2qut4sM/edit?usp=sharing';
+const cloudComputingLectureUrl = 'https://docs.google.com/presentation/d/13xCLsz5bCdRvmOiBrKQW3ttaI7W90Yi7IE7BwSDDmWk/edit?usp=sharing';
+const teachingAwardUrl = 'https://www.cc.gatech.edu/news/college-honors-excellence-sci-35th-annual-awards-celebration-0';
+const contactUrl = 'https://www.linkedin.com/in/elias-lind/overlay/contact-info/';
+
+const contributionPaths = [
     {
+        label: 'product',
+        description: 'Build learning products that make it easier for students to start, stay motivated, and see progress.',
+        orbit: { '--orbit-y': '0deg', '--orbit-x': '-8deg', '--orbit-depth': '188px', '--chip-scale': 1.04, '--chip-opacity': 0.98 },
+    },
+    {
+        label: 'research',
+        description: 'Study what actually helps people learn, persist, and believe they are capable.',
+        orbit: { '--orbit-y': '42deg', '--orbit-x': '19deg', '--orbit-depth': '164px', '--chip-scale': 0.92, '--chip-opacity': 0.74 },
+    },
+    {
+        label: 'teaching',
+        description: 'Keep creating rooms where students feel capable of learning difficult things.',
+        orbit: { '--orbit-y': '86deg', '--orbit-x': '-16deg', '--orbit-depth': '150px', '--chip-scale': 0.82, '--chip-opacity': 0.58 },
+    },
+    {
+        label: 'systems',
+        description: 'Design structures, feedback loops, and workflows that help people learn at scale.',
+        orbit: { '--orbit-y': '128deg', '--orbit-x': '13deg', '--orbit-depth': '170px', '--chip-scale': 0.9, '--chip-opacity': 0.66 },
+    },
+    {
+        label: 'tools',
+        description: 'Build practical tools that reduce friction between confusion and clarity.',
+        orbit: { '--orbit-y': '177deg', '--orbit-x': '-10deg', '--orbit-depth': '156px', '--chip-scale': 0.78, '--chip-opacity': 0.48 },
+    },
+    {
+        label: 'AI for education',
+        description: 'Use AI carefully as a way to enhance understanding, not to enable students to be lazy.',
+        orbit: { '--orbit-y': '218deg', '--orbit-x': '22deg', '--orbit-depth': '160px', '--chip-scale': 0.86, '--chip-opacity': 0.62 },
+    },
+    {
+        label: 'student motivation',
+        description: 'Explore how students keep caring when learning gets difficult.',
+        orbit: { '--orbit-y': '263deg', '--orbit-x': '-24deg', '--orbit-depth': '176px', '--chip-scale': 0.96, '--chip-opacity': 0.78 },
+    },
+    {
+        label: 'project-based learning',
+        description: 'Create learning experiences where students build real things and learn by doing.',
+        orbit: { '--orbit-y': '304deg', '--orbit-x': '12deg', '--orbit-depth': '184px', '--chip-scale': 1, '--chip-opacity': 0.92 },
+    },
+    {
+        label: 'confidence',
+        description: 'Focus on the emotional layer of learning: helping people believe they can get unstuck.',
+        orbit: { '--orbit-y': '68deg', '--orbit-x': '-42deg', '--orbit-depth': '122px', '--chip-scale': 0.88, '--chip-opacity': 0.64 },
+    },
+    {
+        label: 'access',
+        description: 'Make strong learning experiences easier to reach for more people.',
+        orbit: { '--orbit-y': '247deg', '--orbit-x': '-43deg', '--orbit-depth': '126px', '--chip-scale': 0.84, '--chip-opacity': 0.56 },
+    },
+];
+
+const educationExperiences = [
+    {
+        id: 'private-tutor',
         number: '01',
-        claim: 'Confidence precedes mastery.',
-        scale: 'one person',
-        evidence: 'Private Tutor',
         title: 'Private Tutor',
-        term: '2021-2024',
+        date: '2021-2024',
+        location: 'Atlanta / remote / private instruction',
+        accent: '#b78a55',
+        shortText: 'I started as a private tutor and grew to love helping students move from confusion to confidence.',
+        themes: [
+            'one-on-one instruction',
+            'confidence',
+            'patience',
+            'clarity',
+            'K-college',
+            '15-20 students year-round',
+        ],
         metadata: [
             ['Format', 'one-on-one instruction'],
             ['Scale', '15-20 students year-round'],
             ['Range', 'K-college, all subjects'],
         ],
-        writing: [
-            'I started as a private tutor and grew to love it. For around three years, I worked with 15-20 students year-round across subjects from kindergarten through college.',
-            'Tutoring taught me that a student usually does not just need the next step in a problem. They need someone to slow the room down, notice where the confusion started, and help them believe they are capable of getting unstuck. This was where I learned the patience and clarity required to help someone move from confusion to confidence.',
+        narrative: [
+            <>
+                I started as a private tutor and grew to love it. For around three years, I worked with 15-20 students year-round across subjects from kindergarten through college. I found my own <a href={tutoringPostUrl} target="_blank" rel="noopener noreferrer">clients</a>, tutored through various honor societies (English, Math, Science, Spanish), and worked with a tutoring company for staffing.
+            </>,
+            'It was during these experiences that I felt like I was immediately impacting people; I learned what it meant to truly touch a life.',
+            'I learned two fundamental abilities: how to understand when the person you are speaking to does not understand something and how to rephrase the same ideas again and again and again.',
         ],
-        annotation: {
-            start: 'confusion',
-            bridge: ['patience', 'clarity'],
-            end: 'confidence',
-        },
     },
     {
+        id: 'colombia',
         number: '02',
-        claim: 'Teaching is exchange.',
-        scale: 'one classroom',
-        evidence: 'Teaching English in Colombia',
         title: 'Teaching English in Colombia',
-        term: 'Summer 2022',
+        date: 'Summer 2022',
+        location: 'Barbosa, Santander, Colombia',
+        accent: '#8a725d',
+        shortText: 'I spent a month in Barbosa, Santander, Colombia teaching English and learning through cultural exchange.',
+        themes: [
+            'English instruction',
+            'cultural exchange',
+            'language',
+            'classroom',
+            'perspective',
+            'teaching as learning',
+        ],
         metadata: [
             ['Location', 'Barbosa, Santander, Colombia'],
             ['Format', 'English instruction / cultural exchange'],
             ['Duration', 'one month'],
         ],
-        writing: [
-            'I spent a month in Barbosa, Santander, Colombia teaching English. I loved the classroom, the culture, and the exchange.',
-            'The experience made teaching feel less like delivering information and more like building a shared language with people. I was there to help students practice English, but I was also learning constantly: how people communicate, what they value, how humor travels, and how culture shapes the way a classroom feels. It reminded me that teaching is never one-directional; it is one of the best ways to understand people, place, and perspective.',
-        ],
-        pairs: [
-            ['teacher', 'student'],
-            ['language', 'culture'],
-            ['helping', 'learning'],
+        narrative: [
+            'I spent a month in Barbosa, Santander, Colombia teaching English through a program called Workaway. I loved the responsibility of having a classroom, learning a new culture, and practicing my Spanish. It reminded me that teaching is never one-directional; it is one of the best ways to understand people, place, and perspective.',
+            'I designed curriculum, made activities, updated some textbooks, and sometimes struggled with teaching.',
+            'This experience was most valuable because it expanded my breadth of focus to outside the US. I began to understand how I could contribute beyond my state and country.',
         ],
     },
     {
+        id: 'cs2340',
         number: '03',
-        claim: 'Systems can teach, too.',
-        scale: 'many students',
-        evidence: 'CS2340 Teaching Assistant',
-        title: 'CS2340 Teaching Assistant',
-        term: 'Fall 2024-Spring 2026',
+        title: 'Head Teaching Assistant',
+        date: 'Fall 2024-Spring 2026',
+        location: 'Georgia Tech',
+        accent: '#6e7763',
+        shortText: 'As the head TA for CS2340 (Objects and Design), I helped guide students, give lectures, shape projects, and design learning experiences at scale.',
+        themes: [
+            'teaching assistant',
+            'project design',
+            'lectures',
+            'learning at scale',
+            'design principles',
+            'cloud computing',
+            'RAG-system project',
+        ],
         metadata: [
             ['Course', 'CS2340 Objects and Design'],
             ['Format', 'teaching assistant / project design / lectures'],
             ['Scale', 'larger groups of students'],
         ],
-        writing: [
-            'As a TA for CS2340: Objects and Design, I got to think about education at a larger scale. I loved being responsible for larger groups of students, helping shape projects, giving lectures, and designing learning experiences.',
-            'This was different from tutoring because the teaching was not only in the explanation. It was in the structure of the assignment, the clarity of the requirements, the lecture framing, the feedback loops, and the systems students used to collaborate.',
-            'I gave lectures on Learning++ - how to learn in the age of AI while retaining motivation and understanding - as well as design principles and cloud computing. I also helped design and create projects, including a RAG-system project for CS students. CS2340 taught me that educational systems can either make students feel lost or make learning feel possible.',
+        lectures: [
+            {
+                title: 'Learning++',
+                href: learningPlusLectureUrl,
+            },
+            {
+                title: 'Cloud Computing',
+                href: cloudComputingLectureUrl,
+            },
+            {
+                title: 'Design Principles',
+            },
         ],
-        notes: [
-            'Learning++: how to learn in the age of AI while retaining motivation and understanding',
-            'Design principles',
-            'Cloud computing',
-            'Designed and helped create projects, including a RAG-system project for CS students',
+        narrative: [
+            'As a TA for CS2340: Objects and Design, I got to think about education at a larger scale. I helped guide ~1000 students throughout my time as a TA: first as a TA, then section lead, then head TA. I built new projects based on my industry experience, gave lectures, and designed learning experiences. ',
+            'As for the projects, I built from scratch a RAG-system project for CS students to learn leading industry technologies first-hand.',
+            'In my last semester as head TA, I also introduced, for the first time in GT history, a hackathon for students for our class. A hackathon is a weekend-long (often 48 hours) event where students build a project based on a prompt. We focused on building a website to teach design principles. It was a wonderful success: ~25 students participated, 3 teams won an exemption from the final, and we plan to use those student submissions as a tool to help us teach curriculum in the future. ',
+            <>
+                In my tenure as head TA, I was privileged to receive the <a href={teachingAwardUrl} target="_blank" rel="noopener noreferrer">College of Computing&apos;s Outstanding Undergraduate Head Teaching Assistant Award</a>.
+            </>,
         ],
-        systemInputs: ['lecture', 'project', 'feedback', 'collaboration', 'tools'],
-        systemOutput: 'learning system',
-    },
-    {
-        number: '04',
-        claim: 'Open problem: how can I contribute best?',
-        scale: 'what comes next',
-        evidence: 'Future work in education',
-        title: 'Future work in education',
-        term: 'what comes next',
-        metadata: [
-            ['Given', 'I care about education.'],
-            ['Given', 'I understand technology.'],
-            ['Given', 'I want to build systems that help people learn.'],
-        ],
-        writing: [
-            'I know education is where I want to spend more of my life. I am still searching for the shape of that contribution: product, research, teaching, systems, tools, or something I have not seen yet.',
-            'I want to help build the systems, tools, and environments that make people believe they can learn.',
-        ],
-        openQuestion: 'I’m looking for what’s next — how do you think I can contribute best?',
-        proofPrompt: {
-            given: [
-                'I care about education.',
-                'I understand technology.',
-                'I want to build systems that help people learn.',
-            ],
-            find: 'where I can contribute best.',
-        },
     },
 ];
 
@@ -157,11 +220,12 @@ function RippleProgression() {
             aria-labelledby="ripple-title"
         >
             <div className={styles.rippleCopy}>
-                <p className={styles.eyebrow}>impact expands outward</p>
+                <p className={styles.eyebrow}>why do i care about education?</p>
                 <h2 id="ripple-title">Teach one person, and the circle grows.</h2>
                 <p>
                     Teach enough people, and those people shape communities,
-                    societies, and nations.
+                    societies, and nations. Education is the greatest mechanism
+                    for change - for difference - that we have.
                 </p>
             </div>
 
@@ -195,208 +259,285 @@ function RippleProgression() {
     );
 }
 
-function useActiveClaim(count) {
-    const claimRefs = useRef([]);
-    const [activeIndex, setActiveIndex] = useState(0);
-
-    useEffect(() => {
-        const nodes = claimRefs.current.slice(0, count).filter(Boolean);
-        if (!nodes.length) return undefined;
-
-        const observer = new IntersectionObserver(
-            entries => {
-                const visibleEntries = entries
-                    .filter(entry => entry.isIntersecting)
-                    .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-                if (visibleEntries[0]) {
-                    setActiveIndex(Number(visibleEntries[0].target.dataset.index));
-                }
-            },
-            {
-                rootMargin: '-24% 0px -38% 0px',
-                threshold: [0.25, 0.45, 0.65],
-            }
-        );
-
-        nodes.forEach(node => observer.observe(node));
-
-        return () => observer.disconnect();
-    }, [count]);
-
-    return [claimRefs, activeIndex];
-}
-
-function ArrowAnnotation({ annotation }) {
-    return (
-        <div className={styles.arrowAnnotation} aria-label={`${annotation.start} plus ${annotation.bridge.join(' and ')} leads to ${annotation.end}`}>
-            <span>{annotation.start}</span>
-            <div className={styles.annotationArrow}>
-                {annotation.bridge.map(item => (
-                    <em key={item}>{item}</em>
-                ))}
-            </div>
-            <span>{annotation.end}</span>
-        </div>
-    );
-}
-
-function ExchangeAnnotation({ pairs }) {
-    return (
-        <div className={styles.exchangeAnnotation}>
-            {pairs.map(([left, right]) => (
-                <div key={`${left}-${right}`}>
-                    <span>{left}</span>
-                    <b aria-hidden="true" />
-                    <span>{right}</span>
-                </div>
-            ))}
-        </div>
-    );
-}
-
-function SystemAnnotation({ inputs, output }) {
-    return (
-        <div className={styles.systemAnnotation}>
-            <div>
-                {inputs.map(input => (
-                    <span key={input}>{input}</span>
-                ))}
-            </div>
-            <b aria-hidden="true" />
-            <strong>{output}</strong>
-        </div>
-    );
-}
-
-function ProofPrompt({ prompt }) {
-    return (
-        <div className={styles.proofPrompt}>
-            <div>
-                <p>Given</p>
-                <ul>
-                    {prompt.given.map(item => (
-                        <li key={item}>{item}</li>
-                    ))}
-                </ul>
-            </div>
-            <div>
-                <p>Find</p>
-                <strong>{prompt.find}</strong>
-            </div>
-        </div>
-    );
-}
-
-function BlackboardAnnotation({ claim }) {
-    if (claim.annotation) {
-        return <ArrowAnnotation annotation={claim.annotation} />;
-    }
-
-    if (claim.pairs) {
-        return <ExchangeAnnotation pairs={claim.pairs} />;
-    }
-
-    if (claim.systemInputs) {
-        return <SystemAnnotation inputs={claim.systemInputs} output={claim.systemOutput} />;
-    }
-
-    if (claim.proofPrompt) {
-        return <ProofPrompt prompt={claim.proofPrompt} />;
-    }
-
-    return null;
-}
-
-function ClaimArticle({ claim, index, isActive, claimRefs }) {
+function EducationExperienceCard({ experience, onOpen }) {
     return (
         <article
-            ref={node => {
-                claimRefs.current[index] = node;
-            }}
-            data-index={index}
-            className={`${styles.claimArticle} ${isActive ? styles.claimArticleActive : ''}`}
+            className={styles.experienceCard}
+            style={{ '--experience-accent': experience.accent }}
         >
-            <div className={styles.claimHeader}>
-                <p>CLAIM {claim.number}</p>
-                <span>{claim.scale}</span>
+            <span className={styles.cardNumber}>{experience.number}</span>
+            <div className={styles.cardTitleGroup}>
+                <h3>{experience.title}</h3>
+                <p>{experience.date}</p>
+                <p>{experience.location}</p>
             </div>
-
-            <h3>{claim.claim}</h3>
-
-            <div className={styles.evidenceBlock}>
-                <p>EVIDENCE</p>
-                <div>
-                    <h4>{claim.evidence}</h4>
-                    <span>{claim.term}</span>
-                </div>
-            </div>
-
-            <MetadataList items={claim.metadata} />
-
-            <div className={styles.claimWriting}>
-                {claim.openQuestion ? (
-                    <p className={styles.openProblemText}>{claim.openQuestion}</p>
-                ) : null}
-                {claim.writing.map(paragraph => (
-                    <p key={paragraph}>{paragraph}</p>
+            <p className={styles.cardSummary}>{experience.shortText}</p>
+            <ul className={styles.cardThemes} aria-label={`${experience.title} themes`}>
+                {experience.themes.slice(0, 4).map(theme => (
+                    <li key={theme}>{theme}</li>
                 ))}
-            </div>
-
-            {claim.notes ? (
-                <div className={styles.claimNotes}>
-                    <p>Lecture / project notes</p>
-                    <ul>
-                        {claim.notes.map(note => (
-                            <li key={note}>{note}</li>
-                        ))}
-                    </ul>
-                </div>
-            ) : null}
-
-            <div className={styles.mobileAnnotation}>
-                <BlackboardAnnotation claim={claim} />
-            </div>
+            </ul>
+            <span className={styles.cardAction}>open story</span>
+            <button
+                type="button"
+                className={styles.cardHitArea}
+                onClick={() => onOpen(experience)}
+                aria-haspopup="dialog"
+                aria-label={`Open story for ${experience.title}`}
+            />
         </article>
     );
 }
 
-function BlackboardClaims() {
-    const [claimRefs, activeIndex] = useActiveClaim(teachingClaims.length);
-    const activeClaim = teachingClaims[activeIndex] ?? teachingClaims[0];
+function EducationStoryModal({ experience, onClose, modalRef }) {
+    if (!experience) return null;
 
     return (
-        <section className={styles.blackboardSection} aria-labelledby="blackboard-title">
-            <header className={styles.blackboardIntro}>
-                <p className={styles.eyebrow}>claims, evidence, and one open question</p>
-                <h2 id="blackboard-title">three scales of teaching</h2>
+        <div className={styles.modalBackdrop} onMouseDown={event => {
+            if (event.target === event.currentTarget) {
+                onClose();
+            }
+        }}>
+            <article
+                ref={modalRef}
+                className={styles.storyModal}
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="education-modal-title"
+                aria-describedby="education-modal-summary"
+                tabIndex={-1}
+            >
+                <button
+                    type="button"
+                    className={styles.modalClose}
+                    onClick={onClose}
+                    aria-label="Close education story"
+                >
+                    close
+                </button>
+
+                <header className={styles.modalHeader}>
+                    <p className={styles.eyebrow}>education record</p>
+                    <h2 id="education-modal-title">{experience.title}</h2>
+                    <div className={styles.modalMetaLine}>
+                        <span>{experience.date}</span>
+                        <span>{experience.location}</span>
+                    </div>
+                    <p id="education-modal-summary">{experience.shortText}</p>
+                </header>
+
+                <ul className={styles.modalThemes} aria-label="Key themes">
+                    {experience.themes.map(theme => (
+                        <li key={theme}>{theme}</li>
+                    ))}
+                </ul>
+
+                <div className={styles.modalLayout}>
+                    <div className={styles.modalNarrative}>
+                        {experience.narrative.map((paragraph, index) => (
+                            <div key={`${experience.id}-narrative-${index}`}>
+                                <p>{paragraph}</p>
+                                {index === 0 && experience.lectures ? (
+                                    <div className={styles.lectureList}>
+                                        <p>The lectures I gave:</p>
+                                        <ul>
+                                            {experience.lectures.map(lecture => (
+                                                <li key={lecture.title}>
+                                                    {lecture.href ? (
+                                                        <a href={lecture.href} target="_blank" rel="noopener noreferrer">
+                                                            {lecture.title}
+                                                        </a>
+                                                    ) : (
+                                                        lecture.title
+                                                    )}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ) : null}
+                            </div>
+                        ))}
+                    </div>
+                    <aside className={styles.modalFacts} aria-label="Experience facts">
+                        <p>details</p>
+                        <MetadataList items={experience.metadata} />
+                    </aside>
+                </div>
+            </article>
+        </div>
+    );
+}
+
+function EducationWorkSection() {
+    const [activeExperience, setActiveExperience] = useState(null);
+    const modalRef = useRef(null);
+    const previousFocusRef = useRef(null);
+
+    const closeModal = useCallback(() => {
+        setActiveExperience(null);
+    }, []);
+
+    const openModal = useCallback((experience) => {
+        setActiveExperience(experience);
+    }, []);
+
+    useEffect(() => {
+        if (!activeExperience) return undefined;
+
+        previousFocusRef.current = document.activeElement;
+        const originalOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+
+        const handleKeyDown = event => {
+            if (event.key === 'Escape') {
+                closeModal();
+                return;
+            }
+
+            if (event.key !== 'Tab' || !modalRef.current) return;
+
+            const focusableElements = modalRef.current.querySelectorAll(
+                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+            );
+            const focusable = Array.from(focusableElements);
+
+            if (!focusable.length) {
+                event.preventDefault();
+                return;
+            }
+
+            const firstElement = focusable[0];
+            const lastElement = focusable[focusable.length - 1];
+
+            if (event.shiftKey && document.activeElement === firstElement) {
+                event.preventDefault();
+                lastElement.focus();
+            } else if (!event.shiftKey && document.activeElement === lastElement) {
+                event.preventDefault();
+                firstElement.focus();
+            }
+        };
+
+        document.addEventListener('keydown', handleKeyDown);
+
+        const focusTimer = window.setTimeout(() => {
+            modalRef.current?.focus();
+        }, 0);
+
+        return () => {
+            window.clearTimeout(focusTimer);
+            document.removeEventListener('keydown', handleKeyDown);
+            document.body.style.overflow = originalOverflow;
+
+            if (previousFocusRef.current && typeof previousFocusRef.current.focus === 'function') {
+                previousFocusRef.current.focus();
+            }
+        };
+    }, [activeExperience, closeModal]);
+
+    return (
+        <section className={styles.experienceSection} aria-labelledby="education-work-title">
+            <header className={styles.experienceHeader}>
+                <p className={styles.eyebrow}>what i have done inside education?</p>
+                <div>
+                    <h2 id="education-work-title">three ways i learned education</h2>
+                    <p>
+                        Each experience changed the scale of the work: <br></br>
+                        one student &#8594; one classroom &#8594; one course.
+                    </p>
+                </div>
             </header>
 
-            <div className={styles.blackboardGrid}>
-                <aside className={styles.stickyBoard} aria-live="polite">
-                    <div className={styles.boardProgress}>
-                        <span>{activeClaim.number} / {String(teachingClaims.length).padStart(2, '0')}</span>
-                        <span>{activeClaim.scale}</span>
+            <div className={styles.experienceGrid}>
+                {educationExperiences.map(experience => (
+                    <EducationExperienceCard
+                        key={experience.id}
+                        experience={experience}
+                        onOpen={openModal}
+                    />
+                ))}
+            </div>
+
+            <EducationStoryModal
+                experience={activeExperience}
+                onClose={closeModal}
+                modalRef={modalRef}
+            />
+        </section>
+    );
+}
+
+function OrbitingContributionSphere({ paths, activeIndex, onActivate }) {
+    return (
+        <div className={styles.orbitSphere} aria-label="Possible future education contribution paths">
+            <div className={styles.orbitCore} aria-hidden="true">
+                ?
+            </div>
+            <div className={styles.orbitShell}>
+                <span className={styles.orbitRing} aria-hidden="true" />
+                <span className={styles.orbitRing} aria-hidden="true" />
+                <span className={styles.orbitRing} aria-hidden="true" />
+
+                {paths.map((path, index) => (
+                    <div
+                        key={path.label}
+                        className={styles.orbitChip}
+                        style={path.orbit}
+                    >
+                        <button
+                            type="button"
+                            className={`${styles.orbitChipButton} ${index === activeIndex ? styles.orbitChipButtonActive : ''}`}
+                            onMouseEnter={() => onActivate(index)}
+                            onFocus={() => onActivate(index)}
+                            onClick={() => onActivate(index)}
+                            aria-label={`${path.label}: ${path.description}`}
+                        >
+                            {path.label}
+                        </button>
                     </div>
+                ))}
+            </div>
+        </div>
+    );
+}
 
-                    <p className={styles.boardLabel}>CLAIM</p>
-                    <h3>{activeClaim.claim}</h3>
+function ActiveContributionDetails({ path }) {
+    return (
+        <aside className={styles.orbitDetails} aria-live="polite">
+            <p>currently orbiting</p>
+            <h3>{path.label}</h3>
+            <span>{path.description}</span>
+        </aside>
+    );
+}
 
-                    <div className={styles.boardRule} aria-hidden="true" />
+function EducationNextSection() {
+    const [activeContributionIndex, setActiveContributionIndex] = useState(0);
+    const activeContribution = contributionPaths[activeContributionIndex];
 
-                    <BlackboardAnnotation claim={activeClaim} />
-                </aside>
+    return (
+        <section className={styles.nextEducationSection} aria-labelledby="education-next-title">
+            <header className={styles.nextEducationHeader}>
+                <p className={styles.eyebrow}>what do i want to do next in education?</p>
+            </header>
 
-                <div className={styles.claimStack}>
-                    {teachingClaims.map((claim, index) => (
-                        <ClaimArticle
-                            key={claim.number}
-                            claim={claim}
-                            index={index}
-                            isActive={index === activeIndex}
-                            claimRefs={claimRefs}
-                        />
-                    ))}
+            <div className={styles.nextEducationLayout}>
+                <div className={styles.nextEducationCopy}>
+                    <p className={styles.nextQuestion}>
+                        how do you think I can contribute best?
+                    </p>
+                    <a href={contactUrl} target="_blank" rel="noopener noreferrer">
+                        tell me what you think
+                    </a>
+                    <ActiveContributionDetails path={activeContribution} />
+                </div>
+
+                <div className={styles.orbitColumn}>
+                    <OrbitingContributionSphere
+                        paths={contributionPaths}
+                        activeIndex={activeContributionIndex}
+                        onActivate={setActiveContributionIndex}
+                    />
                 </div>
             </div>
         </section>
@@ -410,10 +551,9 @@ function Education() {
 
     return (
         <main className={styles.educationPage}>
-
             <RippleProgression />
-
-            <BlackboardClaims />
+            <EducationWorkSection />
+            <EducationNextSection />
         </main>
     );
 }

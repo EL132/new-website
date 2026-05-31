@@ -2,12 +2,21 @@ import Papa from 'papaparse';
 import { airportCoordinates } from '../data/airportCoordinates';
 
 export function parseFlightsCsv(csvText) {
-    const result = Papa.parse(csvText, {
+    // The CSV can have mixed CRLF/LF endings when rows are appended from different editors.
+    // Papa auto-detects one newline style, so normalize first to avoid folding LF-only rows
+    // into the previous CRLF row.
+    const normalizedCsvText = csvText.replace(/\r\n?/g, '\n');
+    const result = Papa.parse(normalizedCsvText, {
         header: true,
-        skipEmptyLines: true,
+        newline: '\n',
+        skipEmptyLines: 'greedy',
         transformHeader: header => header.trim(),
         transform: value => (typeof value === 'string' ? value.trim() : value),
     });
+
+    if (result.errors.length) {
+        console.warn('Flight CSV parse errors:', result.errors);
+    }
 
     return result.data.filter(row => row.id || row.origin_iata || row.destination_iata);
 }
