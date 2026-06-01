@@ -121,7 +121,7 @@ function About() {
                     i am half swedish and half american, born in mexico. i speak fluent spanish and english, but unfortunately my nephew's (born in 2024) swedish is better than mine :0
                     <br></br>
                     <br></br>
-                    i have been fully financially independent since i was 18 (since moving to college). i covered all non-essential expenses while living with my parents in high-school by working part time jobs almost every weekend of high school. I then secured internships early in college and managed my finances carefully to get where i am today. 
+                    i have been fully financially independent since i was 18 (since moving to college). i covered all non-essential expenses while living with my parents in high-school by working part time jobs almost every weekend of high school. i then secured internships early in college and managed my finances carefully to get where i am today. 
                     <br></br>
                     <br></br>
                     i try never to accept "good" as an answer to "how are you?" and 
