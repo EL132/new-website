@@ -602,6 +602,8 @@
 }
 
 .nextEducationCopy {
+    position: relative;
+    z-index: 10;
     display: grid;
     gap: clamp(1rem, 2vw, 1.35rem);
     align-content: start;
@@ -627,7 +629,9 @@
     line-height: 1.05 !important;
 }
 
-.nextEducationCopy a {
+.contactLink {
+    position: relative;
+    z-index: 11;
     justify-self: center;
     margin-top: clamp(0.1rem, 0.8vw, 0.45rem);
     margin-bottom: 0;

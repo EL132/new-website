@@ -568,7 +568,12 @@ function EducationNextSection() {
                     <h2 id="education-next-title" className={styles.nextQuestion}>
                         how do you think I can contribute best?
                     </h2>
-                    <a href={contactUrl} target="_blank" rel="noopener noreferrer">
+                    <a
+                        className={styles.contactLink}
+                        href={contactUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         tell me what you think
                     </a>
                 </div>
