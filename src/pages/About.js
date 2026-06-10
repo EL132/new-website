@@ -132,7 +132,7 @@ function About() {
             <section className={styles.aboutSection}>
                 <h2 className={styles.aboutSubheader}>professional</h2>
                 <p>
-                    <a href="https://www.linkedin.com/in/elias-lind/" target="_blank" rel="noopener noreferrer">LinkedIn</a>. 
+                    <a href="https://www.linkedin.com/in/elias-lind/" target="_blank" rel="noopener noreferrer">LinkedIn</a> &middot; <a href="https://docs.google.com/document/d/13Wd4prqkyKvrzrj67d02MHCoG8hQI6dPJgBCnbnMqtY/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a>. 
                     I want to make a positive impact on spaces I care about: education and public transporation. To do so, I explored different types of work, companies, and parts of the world when possible. I found that I care less about the type of work and more about what I'm working towards. 
                     <br></br>
                     <br></br>
