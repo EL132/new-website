@@ -8,12 +8,13 @@ export const photoWorld = {
 };
 
 const assetPath = filename => `/assets/photography/${filename}`;
+const thumbnailPath = filename => `/assets/photography/thumbs/${filename}`;
 
-export const photos = [
+const photoDefinitions = [
     {
         id: 'spain-street',
         src: assetPath('Spain 2.jpg'),
-        thumb: assetPath('Spain 2.jpg'),
+        thumb: thumbnailPath('Spain 2.jpg'),
         alt: 'A sunlit street scene in Spain.',
         title: 'Spain',
         x: 320,
@@ -25,7 +26,7 @@ export const photos = [
     {
         id: 'dc-column',
         src: assetPath('DC 4.jpg'),
-        thumb: assetPath('DC 4.jpg'),
+        thumb: thumbnailPath('DC 4.jpg'),
         alt: 'A vertical architectural view in Washington DC.',
         title: 'DC',
         x: 860,
@@ -37,7 +38,7 @@ export const photos = [
     {
         id: 'peru-desert',
         src: assetPath('peru_desert_1.jpg'),
-        thumb: assetPath('peru_desert_1.jpg'),
+        thumb: thumbnailPath('peru_desert_1.jpg'),
         alt: 'A wide desert landscape in Peru.',
         title: 'Peru',
         x: 1320,
@@ -49,7 +50,7 @@ export const photos = [
     {
         id: 'korean-embrace',
         src: assetPath('Korean - embrace.jpg'),
-        thumb: assetPath('Korean - embrace.jpg'),
+        thumb: thumbnailPath('Korean - embrace.jpg'),
         alt: 'Two people embracing in a quiet street scene.',
         title: 'Embrace',
         x: 1890,
@@ -61,7 +62,7 @@ export const photos = [
     {
         id: 'golden-gate',
         src: assetPath('Golden gate bridge.jpg'),
-        thumb: assetPath('Golden gate bridge.jpg'),
+        thumb: thumbnailPath('Golden gate bridge.jpg'),
         alt: 'The Golden Gate Bridge rising through soft coastal light.',
         title: 'Golden Gate',
         x: 2440,
@@ -73,7 +74,7 @@ export const photos = [
     {
         id: 'switzerland',
         src: assetPath('Switzerland 1.jpg'),
-        thumb: assetPath('Switzerland 1.jpg'),
+        thumb: thumbnailPath('Switzerland 1.jpg'),
         alt: 'A mountain view in Switzerland.',
         title: 'Switzerland',
         x: 3050,
@@ -85,7 +86,7 @@ export const photos = [
     {
         id: 'emma',
         src: assetPath('Emma.JPG'),
-        thumb: assetPath('Emma.JPG'),
+        thumb: thumbnailPath('Emma.JPG'),
         alt: 'A candid portrait of Emma outdoors.',
         title: 'Emma',
         x: 3500,
@@ -97,7 +98,7 @@ export const photos = [
     {
         id: 'barcelona',
         src: assetPath('Barcelona 1.jpg'),
-        thumb: assetPath('Barcelona 1.jpg'),
+        thumb: thumbnailPath('Barcelona 1.jpg'),
         alt: 'A warm Barcelona city scene.',
         title: 'Barcelona',
         x: 540,
@@ -109,7 +110,7 @@ export const photos = [
     {
         id: 'mason',
         src: assetPath('Mason 2.jpg'),
-        thumb: assetPath('Mason 2.jpg'),
+        thumb: thumbnailPath('Mason 2.jpg'),
         alt: 'A candid portrait of Mason.',
         title: 'Mason',
         x: 1160,
@@ -121,7 +122,7 @@ export const photos = [
     {
         id: 'italy-window',
         src: assetPath('Italy 3.jpg'),
-        thumb: assetPath('Italy 3.jpg'),
+        thumb: thumbnailPath('Italy 3.jpg'),
         alt: 'A vertical Italian street detail.',
         title: 'Italy',
         x: 1700,
@@ -133,7 +134,7 @@ export const photos = [
     {
         id: 'harvard-bridge',
         src: assetPath('Harvard bridge 1.jpg'),
-        thumb: assetPath('Harvard bridge 1.jpg'),
+        thumb: thumbnailPath('Harvard bridge 1.jpg'),
         alt: 'A wide view from Harvard Bridge.',
         title: 'Harvard Bridge',
         x: 2220,
@@ -145,7 +146,7 @@ export const photos = [
     {
         id: 'peru-sunset',
         src: assetPath('peru_sunset_2.jpg'),
-        thumb: assetPath('peru_sunset_2.jpg'),
+        thumb: thumbnailPath('peru_sunset_2.jpg'),
         alt: 'A vertical sunset scene in Peru.',
         title: 'Peru Sunset',
         x: 2850,
@@ -157,7 +158,7 @@ export const photos = [
     {
         id: 'thomas',
         src: assetPath('Thomas 1.JPG'),
-        thumb: assetPath('Thomas 1.JPG'),
+        thumb: thumbnailPath('Thomas 1.JPG'),
         alt: 'A candid portrait of Thomas.',
         title: 'Thomas',
         x: 3450,
@@ -169,7 +170,7 @@ export const photos = [
     {
         id: 'charles-boats',
         src: assetPath('Charles river boats.jpg'),
-        thumb: assetPath('Charles river boats.jpg'),
+        thumb: thumbnailPath('Charles river boats.jpg'),
         alt: 'Boats on the Charles River.',
         title: 'Charles River',
         x: 260,
@@ -181,7 +182,7 @@ export const photos = [
     {
         id: 'mt-auburn',
         src: assetPath('Mt. Auburn 2.jpg'),
-        thumb: assetPath('Mt. Auburn 2.jpg'),
+        thumb: thumbnailPath('Mt. Auburn 2.jpg'),
         alt: 'A vertical scene from Mount Auburn.',
         title: 'Mount Auburn',
         x: 900,
@@ -193,7 +194,7 @@ export const photos = [
     {
         id: 'sahil-sf',
         src: assetPath('Sahil SF.jpg'),
-        thumb: assetPath('Sahil SF.jpg'),
+        thumb: thumbnailPath('Sahil SF.jpg'),
         alt: 'A candid San Francisco portrait of Sahil.',
         title: 'San Francisco',
         x: 1470,
@@ -205,7 +206,7 @@ export const photos = [
     {
         id: 'madrid',
         src: assetPath('Madrid.jpg'),
-        thumb: assetPath('Madrid.jpg'),
+        thumb: thumbnailPath('Madrid.jpg'),
         alt: 'A warm city view in Madrid.',
         title: 'Madrid',
         x: 2050,
@@ -217,7 +218,7 @@ export const photos = [
     {
         id: 'korea-palace',
         src: assetPath('Korea - palace 2.jpg'),
-        thumb: assetPath('Korea - palace 2.jpg'),
+        thumb: thumbnailPath('Korea - palace 2.jpg'),
         alt: 'A palace scene in Korea.',
         title: 'Korea',
         x: 2660,
@@ -229,7 +230,7 @@ export const photos = [
     {
         id: 'peru-bird',
         src: assetPath('peru_bird_1.jpg'),
-        thumb: assetPath('peru_bird_1.jpg'),
+        thumb: thumbnailPath('peru_bird_1.jpg'),
         alt: 'A bird photographed in Peru.',
         title: 'Peru',
         x: 3280,
@@ -241,7 +242,7 @@ export const photos = [
     {
         id: 'mamma',
         src: assetPath('Mamma.JPG'),
-        thumb: assetPath('Mamma.JPG'),
+        thumb: thumbnailPath('Mamma.JPG'),
         alt: 'A candid portrait in warm outdoor light.',
         title: 'Mamma',
         x: 620,
@@ -253,7 +254,7 @@ export const photos = [
     {
         id: 'milan',
         src: assetPath('Milan.jpg'),
-        thumb: assetPath('Milan.jpg'),
+        thumb: thumbnailPath('Milan.jpg'),
         alt: 'A vertical city scene in Milan.',
         title: 'Milan',
         x: 1260,
@@ -265,7 +266,7 @@ export const photos = [
     {
         id: 'gyeongju',
         src: assetPath('Gyeongju.jpg'),
-        thumb: assetPath('Gyeongju.jpg'),
+        thumb: thumbnailPath('Gyeongju.jpg'),
         alt: 'A quiet vertical scene in Gyeongju.',
         title: 'Gyeongju',
         x: 1920,
@@ -277,7 +278,7 @@ export const photos = [
     {
         id: 'sf-house',
         src: assetPath('SF House.jpg'),
-        thumb: assetPath('SF House.jpg'),
+        thumb: thumbnailPath('SF House.jpg'),
         alt: 'A vertical photograph of a San Francisco house.',
         title: 'San Francisco',
         x: 2540,
@@ -289,7 +290,7 @@ export const photos = [
     {
         id: 'pappas',
         src: assetPath('Pappas.JPG'),
-        thumb: assetPath('Pappas.JPG'),
+        thumb: thumbnailPath('Pappas.JPG'),
         alt: 'A candid portrait of Pappas.',
         title: 'Pappas',
         x: 3240,
@@ -299,3 +300,60 @@ export const photos = [
         rotate: 2,
     },
 ];
+
+// Keep the original full-resolution desktop presentation unchanged. The
+// lighter thumbnails are selected only by the mobile composition below.
+export const photos = photoDefinitions.map(photo => ({
+    ...photo,
+    thumb: photo.src,
+}));
+
+// Phones get a tighter, intentionally composed wall. The desktop coordinates above
+// remain the canonical wide-screen composition.
+export const mobilePhotoWorld = {
+    width: 1640,
+    height: 3440,
+    initialFocus: {
+        x: 820,
+        y: 740,
+    },
+};
+
+const mobilePhotoLayout = {
+    'spain-street': { x: 90, y: 110 },
+    'dc-column': { x: 700, y: 40 },
+    'peru-desert': { x: 1140, y: 150 },
+    'korean-embrace': { x: 310, y: 500 },
+    'golden-gate': {
+        x: 678,
+        y: 530,
+        width: 272,
+        height: 408,
+        rotate: -2,
+        mobilePriority: true,
+    },
+    switzerland: { x: 1090, y: 480 },
+    emma: { x: 1180, y: 850 },
+    barcelona: { x: 70, y: 1010 },
+    mason: { x: 180, y: 1420 },
+    'italy-window': { x: 590, y: 1410 },
+    'harvard-bridge': { x: 610, y: 1080 },
+    'peru-sunset': { x: 1050, y: 1290 },
+    thomas: { x: 1240, y: 1690 },
+    'charles-boats': { x: 90, y: 1750 },
+    'mt-auburn': { x: 140, y: 2280 },
+    'sahil-sf': { x: 470, y: 1900 },
+    madrid: { x: 940, y: 1810 },
+    'korea-palace': { x: 1250, y: 2130 },
+    'peru-bird': { x: 1210, y: 2600 },
+    mamma: { x: 510, y: 2400 },
+    milan: { x: 80, y: 2790 },
+    gyeongju: { x: 910, y: 2390 },
+    'sf-house': { x: 620, y: 2860 },
+    pappas: { x: 1120, y: 3060 },
+};
+
+export const mobilePhotos = photoDefinitions.map(photo => ({
+    ...photo,
+    ...mobilePhotoLayout[photo.id],
+}));

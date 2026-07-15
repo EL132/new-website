@@ -18,8 +18,54 @@
     z-index: 1;
 }
 
+.mobileHint {
+    display: none;
+}
+
 @media screen and (max-width: 768px) {
     .globeFrame {
         min-height: 500px;
+        overflow: hidden;
+        overscroll-behavior-x: contain;
+        touch-action: pan-y;
+    }
+
+    .globeFrame canvas {
+        display: block;
+        max-width: 100%;
+        touch-action: pan-y !important;
+    }
+
+    .mobileHint {
+        position: absolute;
+        left: 50%;
+        bottom: 0.75rem;
+        z-index: 2;
+        display: block;
+        width: max-content;
+        max-width: calc(100% - 2rem);
+        margin: 0;
+        padding: 0.42rem 0.68rem;
+        border: 1px solid rgba(17, 17, 17, 0.1);
+        border-radius: 999px;
+        background: rgba(247, 241, 232, 0.82);
+        color: rgba(17, 17, 17, 0.56);
+        font-size: 0.64rem;
+        letter-spacing: 0.08em;
+        pointer-events: none;
+        text-transform: uppercase;
+        transform: translateX(-50%);
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .globeFrame {
+        min-height: 460px;
+    }
+}
+
+@media screen and (max-width: 768px) and (prefers-reduced-motion: reduce) {
+    .globeFrame::before {
+        filter: none;
     }
 }

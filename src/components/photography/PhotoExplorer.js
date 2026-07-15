@@ -1,6 +1,11 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'react-magic-motion';
-import { photoWorld, photos } from '../../data/photos';
+import {
+    mobilePhotos,
+    mobilePhotoWorld,
+    photoWorld,
+    photos,
+} from '../../data/photos';
 import PhotoCanvas from './PhotoCanvas';
 import PhotoLightbox from './PhotoLightbox';
 import styles from '../../pages/styles/Photography.module.css';
@@ -9,6 +14,7 @@ const DRAG_THRESHOLD = 9;
 const EDGE_BREATHING_ROOM = 160;
 const INERTIA_FRICTION = 0.92;
 const MIN_INERTIA_VELOCITY = 0.025;
+const MOBILE_MEDIA_QUERY = '(max-width: 768px)';
 
 function clamp(value, min, max) {
     return Math.min(Math.max(value, min), max);
@@ -63,6 +69,33 @@ function PhotoExplorer({ shouldReduceMotion, onExit }) {
 
     const [isDragging, setIsDragging] = useState(false);
     const [selectedPhoto, setSelectedPhoto] = useState(null);
+    const [isMobile, setIsMobile] = useState(() => (
+        typeof window !== 'undefined'
+        && typeof window.matchMedia === 'function'
+        && window.matchMedia(MOBILE_MEDIA_QUERY).matches
+    ));
+
+    const activeWorld = isMobile ? mobilePhotoWorld : photoWorld;
+    const activePhotos = isMobile ? mobilePhotos : photos;
+
+    useEffect(() => {
+        if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+            return undefined;
+        }
+
+        const mediaQuery = window.matchMedia(MOBILE_MEDIA_QUERY);
+        const handleChange = event => setIsMobile(event.matches);
+
+        setIsMobile(mediaQuery.matches);
+
+        if (mediaQuery.addEventListener) {
+            mediaQuery.addEventListener('change', handleChange);
+            return () => mediaQuery.removeEventListener('change', handleChange);
+        }
+
+        mediaQuery.addListener(handleChange);
+        return () => mediaQuery.removeListener(handleChange);
+    }, []);
 
     const applyCanvasTransform = useCallback(position => {
         if (!canvasRef.current) return;
@@ -79,13 +112,13 @@ function PhotoExplorer({ shouldReduceMotion, onExit }) {
         });
     }, []);
 
-    const setPosition = useCallback((nextPosition, bounds = getBounds(photoWorld, getViewportSize())) => {
+    const setPosition = useCallback((nextPosition, bounds = getBounds(activeWorld, getViewportSize())) => {
         const clampedPosition = clampPosition(nextPosition, bounds);
         positionRef.current = clampedPosition;
         applyCanvasTransform(clampedPosition);
 
         return clampedPosition;
-    }, [applyCanvasTransform]);
+    }, [activeWorld, applyCanvasTransform]);
 
     const stopInertia = useCallback(() => {
         if (inertiaFrameRef.current) {
@@ -95,8 +128,8 @@ function PhotoExplorer({ shouldReduceMotion, onExit }) {
     }, []);
 
     useLayoutEffect(() => {
-        setPosition(getInitialPosition(photoWorld));
-    }, [setPosition]);
+        setPosition(getInitialPosition(activeWorld));
+    }, [activeWorld, setPosition]);
 
     useEffect(() => {
         const previousBodyOverflow = document.body.style.overflow;
@@ -158,7 +191,7 @@ function PhotoExplorer({ shouldReduceMotion, onExit }) {
             const delta = Math.min(time - lastTime, 32);
             lastTime = time;
 
-            const bounds = getBounds(photoWorld, getViewportSize());
+            const bounds = getBounds(activeWorld, getViewportSize());
             const currentPosition = positionRef.current;
             const nextPosition = clampPosition(
                 {
@@ -190,7 +223,7 @@ function PhotoExplorer({ shouldReduceMotion, onExit }) {
         if (Math.abs(vx) > MIN_INERTIA_VELOCITY || Math.abs(vy) > MIN_INERTIA_VELOCITY) {
             inertiaFrameRef.current = requestAnimationFrame(step);
         }
-    }, [setPosition, shouldReduceMotion]);
+    }, [activeWorld, setPosition, shouldReduceMotion]);
 
     const handlePointerDown = event => {
         if (selectedPhoto) return;
@@ -271,7 +304,7 @@ function PhotoExplorer({ shouldReduceMotion, onExit }) {
         }
 
         if (dragState.startingPhotoId) {
-            const photo = photos.find(item => item.id === dragState.startingPhotoId);
+            const photo = activePhotos.find(item => item.id === dragState.startingPhotoId);
 
             if (photo) {
                 openedFromPointerRef.current = true;
@@ -313,7 +346,9 @@ function PhotoExplorer({ shouldReduceMotion, onExit }) {
             ref={surfaceRef}
             className={`${styles.explorer} ${isDragging ? styles.explorerDragging : ''}`}
             data-photo-explorer
-            aria-label="Interactive photography explorer"
+            aria-label={isMobile
+                ? 'Interactive photography wall. Drag to explore and tap a photo to expand it.'
+                : 'Interactive photography explorer'}
             onPointerDown={handlePointerDown}
             onPointerMove={handlePointerMove}
             onPointerUp={handlePointerUp}
@@ -334,13 +369,18 @@ function PhotoExplorer({ shouldReduceMotion, onExit }) {
             </button>
 
             <div className={styles.explorerHint} aria-hidden="true">
-                drag to explore / tap to expand
+                {isMobile ? (
+                    <>
+                        <span className={styles.explorerHintPrimary}>drag the photo wall</span>
+                        <span className={styles.explorerHintSecondary}>tap any image to open</span>
+                    </>
+                ) : 'drag to explore / tap to expand'}
             </div>
 
             <PhotoCanvas
                 canvasRef={canvasRef}
-                photos={photos}
-                world={photoWorld}
+                photos={activePhotos}
+                world={activeWorld}
                 isDragging={isDragging}
                 onPhotoClick={handlePhotoClick}
                 shouldReduceMotion={shouldReduceMotion}
@@ -353,6 +393,7 @@ function PhotoExplorer({ shouldReduceMotion, onExit }) {
                         photo={selectedPhoto}
                         onClose={closePhoto}
                         shouldReduceMotion={shouldReduceMotion}
+                        isMobile={isMobile}
                     />
                 )}
             </AnimatePresence>

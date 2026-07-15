@@ -171,19 +171,112 @@
 
 @media screen and (max-width: 768px) {
     .homeContainer {
-        --home-content-width: calc(100% - 2rem);
+        --home-content-width: calc(100% - 2.5rem);
+        min-width: 0;
     }
 
     .headerWrapper {
         grid-template-columns: 1fr;
-        gap: 1.25rem;
+        gap: 1.4rem;
+        margin-top: clamp(1.75rem, 8vw, 2.75rem);
     }
 
     .headerImage {
         justify-self: start;
+        width: clamp(8.5rem, 42vw, 10.5rem);
+        height: auto;
+        aspect-ratio: 1;
     }
 
     .headerSection {
         grid-column: 1;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .headerTitle {
+        margin-bottom: 1.2rem;
+    }
+
+    .particleHeaderTitle {
+        max-width: 100%;
+        font-size: clamp(3.35rem, 18vw, 4.5rem);
+    }
+
+    .particleNameCanvas {
+        pointer-events: none;
+        touch-action: pan-y;
+    }
+
+    .headerMeta {
+        gap: 1rem;
+        margin-top: 0;
+    }
+
+    .pronunciation,
+    .noun {
+        font-size: 1.05rem;
+    }
+
+    .readAboutLink {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        margin-top: 0.15rem;
+        font-size: 1rem;
+    }
+
+    .divider {
+        margin: 1.75rem auto 0;
+    }
+
+    .definitionsRow {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0;
+        width: var(--home-content-width);
+        padding: 0;
+    }
+
+    .definitionCol {
+        min-width: 0;
+        padding: 1.5rem 0 1.65rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+    }
+
+    .definitionCol p {
+        max-width: 32ch;
+        margin: 0;
+        font-size: clamp(1.15rem, 5.4vw, 1.35rem);
+        line-height: 1.45;
+        overflow-wrap: anywhere;
+    }
+
+    .definitionLinks {
+        margin: 0.8rem 0 0 1.2rem;
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+
+    .definitionLinks li {
+        padding-left: 0.15rem;
+    }
+
+    .definitionLinks a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 0.1rem 0;
+        overflow-wrap: anywhere;
+    }
+
+    .impactSection {
+        padding: 2.25rem 1.25rem 3rem;
+    }
+
+    .impactHeader {
+        max-width: 19ch;
+        margin: 0 auto;
+        font-size: clamp(1.2rem, 6vw, 1.45rem);
+        line-height: 1.35;
     }
 }

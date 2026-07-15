@@ -921,6 +921,30 @@
     }
 }
 
+@keyframes mobileRippleWordReveal {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes mobileDifferenceReveal {
+    from {
+        opacity: 0;
+        transform: translateY(14px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
 @keyframes modalReveal {
     from {
         opacity: 0;
@@ -996,21 +1020,99 @@
     }
 
     .rippleSection {
+        gap: 1.4rem;
         min-height: auto;
         padding-top: 0.75rem;
     }
 
     .rippleStage {
-        min-height: 330px;
+        position: relative;
+        display: block;
+        min-height: 0;
+        overflow: hidden;
+        padding: 1rem;
+        border: 1px solid rgba(17, 17, 17, 0.1);
+        border-radius: 16px;
+        background:
+            radial-gradient(circle at 84% 12%, rgba(183, 138, 85, 0.12), transparent 32%),
+            #fbf8f2;
+        box-sizing: border-box;
     }
 
-    .rippleWord {
-        font-size: 0.64rem;
-        letter-spacing: 0.08em;
+    .rippleRings {
+        left: 50%;
+        right: auto;
+        top: auto;
+        bottom: -5.5rem;
+        display: block;
+        width: min(82vw, 310px);
+        aspect-ratio: 1;
+        opacity: 0.72;
+        transform: translateX(-50%);
     }
 
-    .differenceWord {
-        font-size: clamp(3rem, 14vw, 5.3rem);
+    .rippleWords {
+        position: relative;
+        inset: auto;
+        display: grid;
+        gap: 0.25rem;
+        counter-reset: ripple-stage;
+    }
+
+    .rippleStage .rippleWord {
+        position: relative;
+        left: auto;
+        top: auto;
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        min-height: 34px;
+        color: rgba(17, 17, 17, 0.68);
+        font-size: 0.7rem;
+        letter-spacing: 0.09em;
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    .rippleStage .rippleWord::before {
+        content: counter(ripple-stage, decimal-leading-zero);
+        display: grid;
+        flex: 0 0 auto;
+        place-items: center;
+        width: 28px;
+        height: 28px;
+        border: 1px solid rgba(17, 17, 17, 0.13);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+        color: #8a725d;
+        counter-increment: ripple-stage;
+        font-size: 0.62rem;
+    }
+
+    .rippleStage .differenceWord {
+        margin: 0.8rem 0 0;
+        padding-top: 0.85rem;
+        border-top: 1px solid rgba(17, 17, 17, 0.1);
+        font-size: clamp(2.65rem, 14vw, 4.6rem);
+        line-height: 0.88;
+        opacity: 0;
+        text-align: center;
+        transform: translateY(14px) scale(0.96);
+    }
+
+    .rippleSectionActive .rippleWord {
+        animation: mobileRippleWordReveal 520ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        animation-delay: calc(var(--stage-index) * 220ms + 180ms);
+    }
+
+    .rippleSectionActive .rippleRings span {
+        animation: ringReveal 950ms ease-out forwards;
+        animation-delay: calc(var(--ring-index) * 110ms + 820ms);
+    }
+
+    .rippleSectionActive .differenceWord {
+        animation: mobileDifferenceReveal 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        animation-delay: 1350ms;
     }
 
     .experienceSection {
@@ -1022,23 +1124,47 @@
     }
 
     .experienceCard {
+        width: 100%;
+        max-width: 100%;
         padding: 1.15rem;
         border-radius: 16px;
+        box-sizing: border-box;
     }
 
     .modalBackdrop {
-        padding: 0.75rem;
+        align-items: flex-end;
+        padding: 0;
+        box-sizing: border-box;
     }
 
     .storyModal {
-        max-height: 88vh;
+        width: 100%;
+        max-width: 100%;
+        max-height: 92vh;
+        max-height: 92dvh;
         padding: 1.1rem;
-        border-radius: 18px;
+        padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+        border-radius: 20px 20px 0 0;
+        box-sizing: border-box;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
     }
 
     .modalClose {
-        right: 1rem;
-        top: 1rem;
+        position: sticky;
+        right: auto;
+        top: 0.5rem;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: max-content;
+        min-width: 76px;
+        min-height: 44px;
+        margin-bottom: -44px;
+        margin-left: auto;
+        padding: 0.6rem 0.8rem;
+        box-sizing: border-box;
     }
 
     .modalHeader {
@@ -1106,6 +1232,9 @@
 
     .orbitChipButton {
         max-width: none;
+        min-height: 44px;
+        padding: 0.7rem 0.8rem;
+        box-sizing: border-box;
         opacity: 1;
         transform: none;
     }
@@ -1119,11 +1248,27 @@
     .orbitDetails {
         position: static;
         width: 100%;
+        max-width: 100%;
         min-height: auto;
         margin-top: 1rem;
+        box-sizing: border-box;
         pointer-events: auto;
         transform: none;
         animation: none;
+    }
+
+    .orbitDetails button {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        margin-top: 0.2rem;
+        padding: 0 0.2rem;
+    }
+
+    .contactLink {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
     }
 }
 
@@ -1142,6 +1287,12 @@
     }
 
     .differenceWord {
+        transform: none;
+    }
+
+    .rippleStage .rippleWord,
+    .rippleStage .differenceWord {
+        opacity: 1;
         transform: none;
     }
 

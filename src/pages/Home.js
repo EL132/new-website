@@ -42,6 +42,9 @@ function Home() {
                     src={randomImage}
                     alt="Elias portrait"
                     className={styles.headerImage}
+                    width="180"
+                    height="180"
+                    decoding="async"
                 />
 
                 <div className={styles.headerSection}>

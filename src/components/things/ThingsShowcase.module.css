@@ -118,6 +118,10 @@
     line-height: 1.45;
 }
 
+.mobileOpenLink {
+    display: none;
+}
+
 .connectorColumn {
     position: relative;
     min-height: var(--showcase-height);
@@ -256,12 +260,67 @@
     }
 
     .previewColumn {
-        min-height: 0;
+        display: none;
     }
 
     .cardDeck {
         width: min(100%, 430px);
+        aspect-ratio: 4 / 5;
         margin: 0 auto;
+    }
+
+    .cardContent {
+        padding: clamp(1.1rem, 5vw, 1.8rem);
+    }
+
+    .cardDescription {
+        display: -webkit-box;
+        max-width: 31ch;
+        margin-top: 0.75rem;
+        overflow: hidden;
+        font-size: clamp(0.84rem, 3.5vw, 0.98rem);
+        line-height: 1.38;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+    }
+
+    .mobileOpenLink {
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        min-height: 44px;
+        margin-top: 1rem;
+        padding: 0.65rem 0.85rem;
+        border: 1px solid rgba(255, 255, 255, 0.58);
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.3);
+        box-sizing: border-box;
+        color: #fff;
+        font-size: 0.72rem;
+        font-weight: 750;
+        letter-spacing: 0.1em;
+        line-height: 1;
+        text-decoration: none;
+        text-transform: uppercase;
+        touch-action: manipulation;
+    }
+
+    .mobileOpenLink:focus-visible {
+        outline: 2px solid #fff;
+        outline-offset: 3px;
+    }
+
+    .itemRow .mobileOpenLink {
+        width: 100%;
+        margin: 0;
+        border-color: rgba(163, 77, 46, 0.36);
+        background: rgba(163, 77, 46, 0.08);
+        color: #8d3f25;
+    }
+
+    .itemRow .mobileOpenLink:focus-visible {
+        outline-color: rgba(163, 77, 46, 0.7);
     }
 
     .connectorColumn {
@@ -269,29 +328,89 @@
     }
 
     .itemList {
-        grid-auto-rows: minmax(var(--row-height), auto);
+        display: flex;
+        flex-direction: column;
         min-height: 0;
-        margin-top: 1.4rem;
+        margin-top: 0;
+    }
+
+    .itemRow {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid rgba(17, 17, 17, 0.1);
+    }
+
+    .itemRow:last-child {
+        border-bottom: 0;
+    }
+
+    .mobileRowDetails {
+        display: grid;
+        gap: 0.75rem;
+        padding: 0.15rem 0 0.9rem 3.2rem;
+        animation: mobileRowReveal 180ms ease-out both;
+    }
+
+    .mobileRowImage {
+        display: block;
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+
+    .mobileRowDescription {
+        margin: 0;
+        color: #4d4d4d;
+        font-size: 0.9rem;
+        line-height: 1.45;
     }
 
     .listControl {
+        flex: 0 0 auto;
+        height: auto;
         min-height: var(--row-height);
         padding-right: 0.5rem;
+        touch-action: manipulation;
+    }
+
+    .listTitle {
+        overflow: visible;
+        text-overflow: clip;
+        white-space: normal;
     }
 
 }
 
 @media screen and (max-width: 460px) {
     .cardDescription {
-        display: none;
+        margin-top: 0.65rem;
+        font-size: 0.82rem;
+        -webkit-line-clamp: 3;
     }
 
     .cardNumber {
-        font-size: clamp(4.2rem, 24vw, 6.5rem);
+        font-size: clamp(3.8rem, 21vw, 5.8rem);
     }
 
     .listControl {
         grid-template-columns: 2.7rem minmax(0, 1fr);
+    }
+
+    .mobileRowDetails {
+        padding-left: 2.7rem;
+    }
+}
+
+@keyframes mobileRowReveal {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
@@ -301,6 +420,10 @@
     .activeMarker,
     .listControl {
         transition: none;
+    }
+
+    .mobileRowDetails {
+        animation: none;
     }
 
     .previewCard {

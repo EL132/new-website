@@ -353,12 +353,33 @@
     .explorerHint {
         top: auto;
         bottom: max(1rem, env(safe-area-inset-bottom));
-        font-size: 0.64rem;
-        letter-spacing: 0.11em;
+        display: grid;
+        justify-items: center;
+        gap: 0.18rem;
+        width: min(15rem, calc(100vw - 7rem));
+        padding: 0.68rem 0.9rem 0.62rem;
+        border-color: rgba(25, 23, 19, 0.16);
+        background: rgba(247, 241, 232, 0.9);
+        box-shadow: 0 12px 34px rgba(22, 19, 15, 0.14);
+        letter-spacing: 0;
+        text-align: center;
+    }
+
+    .explorerHintPrimary {
+        color: rgba(25, 23, 19, 0.82);
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+    }
+
+    .explorerHintSecondary {
+        color: rgba(25, 23, 19, 0.52);
+        font-size: 0.59rem;
+        letter-spacing: 0.07em;
     }
 
     .photoCanvas {
-        --photo-scale: 0.78;
+        --photo-scale: 1;
     }
 
     .photoTile {
@@ -371,22 +392,64 @@
     }
 
     .lightboxBackdrop {
-        padding: 1rem;
+        place-items: center;
+        padding:
+            max(4.75rem, calc(env(safe-area-inset-top) + 4rem))
+            0.75rem
+            max(0.75rem, env(safe-area-inset-bottom));
+        background: rgba(12, 11, 10, 0.88);
+        backdrop-filter: blur(14px);
+        box-sizing: border-box;
+    }
+
+    .lightboxFigure {
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        gap: 0.7rem;
     }
 
     .lightboxImage {
-        max-width: 94vw;
-        max-height: 74dvh;
+        max-width: 100%;
+        max-height: calc(100dvh - 9.5rem);
+        border-radius: 6px;
+        box-shadow:
+            0 24px 56px rgba(0, 0, 0, 0.46),
+            0 5px 18px rgba(0, 0, 0, 0.3);
+    }
+
+    .lightboxCaption {
+        flex-wrap: wrap;
+        gap: 0.45rem 0.7rem;
+        padding: 0.25rem 0.7rem;
+        font-size: 0.9rem;
+        text-align: center;
     }
 
     .lightboxClose {
+        top: max(0.75rem, env(safe-area-inset-top));
+        right: max(0.75rem, env(safe-area-inset-right));
         width: 52px;
         height: 52px;
+        background: rgba(247, 241, 232, 0.18);
     }
 
     .explorerExit {
         width: 52px;
         height: 52px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .explorerHint {
+        bottom: max(0.75rem, env(safe-area-inset-bottom));
+        width: min(13.5rem, calc(100vw - 6.5rem));
+        padding-inline: 0.7rem;
+    }
+
+    .lightboxBackdrop {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
     }
 }
 

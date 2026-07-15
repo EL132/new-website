@@ -39,7 +39,8 @@ function PhotoTile({ photo, isDragging, onPhotoClick, shouldReduceMotion }) {
                 src={photo.thumb || photo.src}
                 alt={photo.alt}
                 draggable="false"
-                loading="lazy"
+                loading={photo.mobilePriority ? 'eager' : 'lazy'}
+                decoding="async"
             />
         </motion.button>
     );

@@ -13,11 +13,14 @@ function HomeNav({ variant = 'default' }) {
     return (
         <nav className={navClassName} aria-label="Home navigation">
             <Link to="/" className={styles.homeLink}>
-                <img
-                    src="/pixelated-image.png"
-                    alt="Go home"
-                    className={styles.homeImage}
-                />
+                <picture className={styles.homePicture}>
+                    <source media="(max-width: 768px)" srcSet="/pixelated-image-128.png" />
+                    <img
+                        src="/pixelated-image.png"
+                        alt="Go home"
+                        className={styles.homeImage}
+                    />
+                </picture>
             </Link>
         </nav>
     );

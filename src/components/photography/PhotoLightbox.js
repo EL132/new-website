@@ -2,7 +2,8 @@ import { useEffect, useRef } from 'react';
 import { motion } from 'react-magic-motion';
 import styles from '../../pages/styles/Photography.module.css';
 
-function PhotoLightbox({ photo, onClose, shouldReduceMotion }) {
+function PhotoLightbox({ photo, onClose, shouldReduceMotion, isMobile }) {
+    const dialogRef = useRef(null);
     const closeButtonRef = useRef(null);
 
     useEffect(() => {
@@ -11,6 +12,30 @@ function PhotoLightbox({ photo, onClose, shouldReduceMotion }) {
         const handleKeyDown = event => {
             if (event.key === 'Escape') {
                 onClose();
+                return;
+            }
+
+            if (isMobile && event.key === 'Tab') {
+                const focusableElements = dialogRef.current?.querySelectorAll(
+                    'button:not([disabled]), [href], [tabindex]:not([tabindex="-1"])'
+                );
+
+                if (!focusableElements?.length) {
+                    event.preventDefault();
+                    dialogRef.current?.focus();
+                    return;
+                }
+
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+
+                if (event.shiftKey && document.activeElement === firstElement) {
+                    event.preventDefault();
+                    lastElement.focus();
+                } else if (!event.shiftKey && document.activeElement === lastElement) {
+                    event.preventDefault();
+                    firstElement.focus();
+                }
             }
         };
 
@@ -19,7 +44,7 @@ function PhotoLightbox({ photo, onClose, shouldReduceMotion }) {
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
         };
-    }, [onClose]);
+    }, [isMobile, onClose]);
 
     const transition = shouldReduceMotion
         ? { duration: 0 }
@@ -27,10 +52,13 @@ function PhotoLightbox({ photo, onClose, shouldReduceMotion }) {
 
     return (
         <motion.div
+            ref={dialogRef}
             className={styles.lightboxBackdrop}
             role="dialog"
             aria-modal="true"
             aria-label={photo.title ? `Expanded photo: ${photo.title}` : 'Expanded photo'}
+            tabIndex={-1}
+            onPointerDown={isMobile ? event => event.stopPropagation() : undefined}
             onClick={event => {
                 if (event.target === event.currentTarget) {
                     onClose();

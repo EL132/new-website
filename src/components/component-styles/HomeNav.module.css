@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 1rem 0;
+    padding: max(1rem, env(safe-area-inset-top)) 0 1rem;
 }
 
 .travelNav {
@@ -25,6 +25,12 @@
 .homeLink {
     display: inline-flex;
     border-radius: 999px;
+}
+
+.homePicture {
+    display: block;
+    width: 48px;
+    height: 48px;
 }
 
 .homeImage {

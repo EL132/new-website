@@ -53,15 +53,70 @@ const workExperiences = [
     },
 ];
 
+const mobileTimelineQuery = '(max-width: 700px)';
+
+function useMobileTimelineLayout() {
+    const [isMobile, setIsMobile] = useState(() => (
+        typeof window !== 'undefined'
+        && typeof window.matchMedia === 'function'
+        && window.matchMedia(mobileTimelineQuery).matches
+    ));
+
+    useEffect(() => {
+        if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+            return undefined;
+        }
+
+        const mediaQuery = window.matchMedia(mobileTimelineQuery);
+        const handleChange = event => setIsMobile(event.matches);
+
+        setIsMobile(mediaQuery.matches);
+
+        if (typeof mediaQuery.addEventListener === 'function') {
+            mediaQuery.addEventListener('change', handleChange);
+            return () => mediaQuery.removeEventListener('change', handleChange);
+        }
+
+        mediaQuery.addListener(handleChange);
+        return () => mediaQuery.removeListener(handleChange);
+    }, []);
+
+    return isMobile;
+}
+
 function WorkTimeline() {
     const [activeId, setActiveId] = useState('google-apm');
+    const isMobile = useMobileTimelineLayout();
     const activeExperience = workExperiences.find(experience => experience.id === activeId) ?? workExperiences[workExperiences.length - 1];
+    const displayedExperiences = isMobile ? [...workExperiences].reverse() : workExperiences;
 
     return (
         <div className={styles.workTimeline}>
-            <div className={styles.timelineRail} aria-label="Work experience timeline">
-                {workExperiences.map(experience => {
+            <div
+                className={styles.timelineRail}
+                aria-label={`Work experience timeline${isMobile ? ', newest first' : ''}`}
+            >
+                {displayedExperiences.map(experience => {
                     const isActive = activeExperience.id === experience.id;
+                    const timelineContent = (
+                        <>
+                            <span className={styles.timelineYear}>{experience.year}</span>
+                            <span className={styles.timelineDot} aria-hidden="true" />
+                            <span className={styles.timelinePointLens}>{experience.lens}</span>
+                            <span className={styles.timelineMobileDetails} aria-hidden={!isMobile}>
+                                <span className={styles.timelineMobileRole}>{experience.role}</span>
+                                <span className={styles.timelineMobileCompany}>{experience.company}</span>
+                            </span>
+                        </>
+                    );
+
+                    if (isMobile) {
+                        return (
+                            <div key={experience.id} className={styles.timelinePoint}>
+                                {timelineContent}
+                            </div>
+                        );
+                    }
 
                     return (
                         <button
@@ -74,9 +129,7 @@ function WorkTimeline() {
                             aria-label={`${experience.role} at ${experience.company}, ${experience.year}`}
                             aria-pressed={isActive}
                         >
-                            <span className={styles.timelineYear}>{experience.year}</span>
-                            <span className={styles.timelineDot} aria-hidden="true" />
-                            <span className={styles.timelinePointLens}>{experience.lens}</span>
+                            {timelineContent}
                         </button>
                     );
                 })}

@@ -108,6 +108,10 @@
         transform 180ms ease;
 }
 
+.timelineMobileDetails {
+    display: none;
+}
+
 .timelinePoint:hover .timelineDot,
 .timelinePoint:focus-visible .timelineDot,
 .timelinePointActive .timelineDot {
@@ -307,11 +311,24 @@
 
 @media screen and (max-width: 768px) {
     .aboutContainer {
-        margin: 2.5rem auto;
+        width: 100%;
+        margin: 2.25rem auto 3.5rem;
+        padding: 0 1.25rem;
+        box-sizing: border-box;
     }
 
     .aboutTitle {
         font-size: 2.25rem;
+    }
+
+    .aboutIntro {
+        margin-bottom: 2.25rem;
+        font-size: 1.08rem;
+        line-height: 1.65;
+    }
+
+    .aboutSection {
+        margin-top: 2.5rem;
     }
 
     .builderCard {
@@ -333,39 +350,143 @@
 @media screen and (max-width: 700px) {
     .workTimeline {
         max-width: none;
+        margin-top: 2.25rem;
     }
 
     .timelineRail {
+        flex-direction: column;
+        align-items: stretch;
         justify-content: flex-start;
-        gap: 2.35rem;
-        margin: 0 -1.5rem;
-        padding: 1.65rem 1.5rem 1.35rem;
-        overflow-x: auto;
-        scroll-padding: 1.5rem;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
+        gap: 0.5rem;
+        margin: 0;
+        padding: 0.25rem 0;
     }
 
     .timelineRail::before {
-        left: 1.5rem;
+        top: 1.4rem;
+        bottom: 1.4rem;
+        left: 1.3rem;
         right: auto;
-        width: calc(6 * 7.75rem);
+        width: 1px;
+        height: auto;
     }
 
     .timelinePoint {
-        min-width: 5.8rem;
-        scroll-snap-align: center;
+        grid-template-columns: 1.05rem minmax(0, 1fr) auto;
+        grid-template-areas:
+            'dot details lens'
+            'dot year lens';
+        place-items: initial;
+        align-items: center;
+        gap: 0.25rem 0.8rem;
+        width: 100%;
+        min-width: 0;
+        min-height: 4.75rem;
+        padding: 0.75rem 0.8rem;
+        border: 1px solid transparent;
+        border-radius: 10px;
+        box-sizing: border-box;
+        text-align: left;
+        cursor: default;
+        transition:
+            background-color 180ms ease,
+            border-color 180ms ease;
+    }
+
+    .timelinePoint:hover .timelineDot {
+        box-shadow: none;
+        transform: scale(0.72);
+    }
+
+    .timelinePoint:hover .timelineYear {
+        color: #666;
+    }
+
+    .timelinePoint:hover .timelinePointLens {
+        color: #777;
+        transform: none;
+    }
+
+    .timelinePointActive {
+        border-color: rgba(0, 0, 0, 0.12);
+        background: rgba(0, 0, 0, 0.035);
+    }
+
+    .timelineYear {
+        grid-area: year;
+        justify-self: start;
+        font-size: 0.78rem;
+        line-height: 1.2;
+    }
+
+    .timelineDot {
+        grid-area: dot;
+        align-self: center;
+        justify-self: center;
+    }
+
+    .timelinePointLens {
+        grid-area: lens;
+        align-self: center;
+        justify-self: end;
+        padding: 0.35rem 0.48rem;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.055);
+        font-size: 0.62rem;
+        transform: none;
+    }
+
+    .timelinePointActive .timelinePointLens {
+        transform: none;
+    }
+
+    .timelineMobileDetails {
+        grid-area: details;
+        display: flex;
+        min-width: 0;
+        flex-direction: column;
+    }
+
+    .timelineMobileRole {
+        font-size: 0.98rem;
+        font-weight: 700;
+        line-height: 1.25;
+    }
+
+    .timelineMobileCompany {
+        margin-top: 0.1rem;
+        color: #555;
+        font-size: 0.84rem;
+        line-height: 1.25;
     }
 
     .timelineCard {
-        padding: 1.1rem 1.2rem;
+        display: none;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .aboutContainer {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+
+    .timelinePoint {
+        gap: 0.3rem 0.65rem;
+        padding-right: 0.65rem;
+        padding-left: 0.65rem;
+    }
+
+    .timelineRail::before {
+        left: 1.15rem;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
     .timelineYear,
     .timelineDot,
-    .timelinePointLens {
+    .timelinePointLens,
+    .timelinePoint {
         transition: none;
     }
 }

@@ -9,6 +9,8 @@ const rippleStages = [
     { label: 'nation', position: { '--x': '74%', '--y': '70%' } },
 ];
 
+const mobileRippleQuery = '(max-width: 640px)';
+
 const tutoringPostUrl = 'https://nextdoor.com/p/LzK5hQZhJz3x?utm_source=share&extras=Njc0MTIyMDQ%3D&utm_campaign=1780235089240&share_action_id=1a0d2c3d-db80-41d7-97e6-56c3cd0b2fc6';
 const learningPlusLectureUrl = 'https://docs.google.com/presentation/d/1CEUZE5kkTMOjXTteAYCwNuLRoGVvO8sN6_Xg2qut4sM/edit?usp=sharing';
 const cloudComputingLectureUrl = 'https://docs.google.com/presentation/d/13xCLsz5bCdRvmOiBrKQW3ttaI7W90Yi7IE7BwSDDmWk/edit?usp=sharing';
@@ -171,13 +173,46 @@ const educationExperiences = [
     },
 ];
 
-function useInView() {
+function useMobileRippleLayout() {
+    const [isMobile, setIsMobile] = useState(() => (
+        typeof window !== 'undefined'
+        && typeof window.matchMedia === 'function'
+        && window.matchMedia(mobileRippleQuery).matches
+    ));
+
+    useEffect(() => {
+        if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+            return undefined;
+        }
+
+        const mediaQuery = window.matchMedia(mobileRippleQuery);
+        const handleChange = event => setIsMobile(event.matches);
+
+        setIsMobile(mediaQuery.matches);
+        if (typeof mediaQuery.addEventListener === 'function') {
+            mediaQuery.addEventListener('change', handleChange);
+            return () => mediaQuery.removeEventListener('change', handleChange);
+        }
+
+        mediaQuery.addListener(handleChange);
+        return () => mediaQuery.removeListener(handleChange);
+    }, []);
+
+    return isMobile;
+}
+
+function useInView(observationTarget) {
     const ref = useRef(null);
     const [isInView, setIsInView] = useState(false);
 
     useEffect(() => {
         const node = ref.current;
         if (!node) return undefined;
+
+        if (typeof IntersectionObserver !== 'function') {
+            setIsInView(true);
+            return undefined;
+        }
 
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -192,7 +227,7 @@ function useInView() {
         observer.observe(node);
 
         return () => observer.disconnect();
-    }, []);
+    }, [observationTarget]);
 
     return [ref, isInView];
 }
@@ -211,11 +246,12 @@ function MetadataList({ items }) {
 }
 
 function RippleProgression() {
-    const [sectionRef, isActive] = useInView();
+    const isMobileLayout = useMobileRippleLayout();
+    const [triggerRef, isActive] = useInView(isMobileLayout ? 'stage' : 'section');
 
     return (
         <section
-            ref={sectionRef}
+            ref={isMobileLayout ? undefined : triggerRef}
             className={`${styles.rippleSection} ${isActive ? styles.rippleSectionActive : ''}`}
             aria-labelledby="ripple-title"
         >
@@ -229,7 +265,11 @@ function RippleProgression() {
                 </p>
             </div>
 
-            <div className={styles.rippleStage} aria-label="person to difference ripple progression">
+            <div
+                ref={isMobileLayout ? triggerRef : undefined}
+                className={styles.rippleStage}
+                aria-label="person to difference ripple progression"
+            >
                 <div className={styles.rippleRings} aria-hidden="true">
                     <span />
                     <span />

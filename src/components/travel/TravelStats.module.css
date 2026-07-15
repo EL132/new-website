@@ -46,3 +46,44 @@
         font-size: 0.65rem;
     }
 }
+
+@media screen and (max-width: 360px) {
+    .statsCard {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0;
+        padding: 0.5rem;
+        border-radius: 10px;
+    }
+
+    .statsCard div {
+        min-width: 0;
+        padding: 0.65rem 0.6rem;
+    }
+
+    .statsCard div:first-child {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        align-items: baseline;
+        gap: 0.6rem;
+        border-bottom: 1px solid rgba(17, 17, 17, 0.1);
+    }
+
+    .statsCard div:nth-child(2) {
+        border-right: 1px solid rgba(17, 17, 17, 0.1);
+    }
+
+    .statValue {
+        font-size: 1.4rem;
+    }
+
+    .statLabel {
+        margin-top: 0.28rem;
+        font-size: 0.58rem;
+        line-height: 1.25;
+        overflow-wrap: anywhere;
+    }
+
+    .statsCard div:first-child .statLabel {
+        margin-top: 0;
+    }
+}

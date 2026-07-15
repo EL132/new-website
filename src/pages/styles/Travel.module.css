@@ -95,3 +95,30 @@
         margin-bottom: 1rem;
     }
 }
+
+@media screen and (max-width: 360px) {
+    .travelPage {
+        padding: 1.25rem 0.75rem 2.75rem;
+    }
+
+    .hero {
+        margin-bottom: 1rem;
+    }
+
+    .eyebrow {
+        margin-bottom: 0.55rem;
+    }
+
+    .subtitle {
+        margin-top: 0.8rem;
+        line-height: 1.45;
+    }
+
+    .globePanel {
+        min-height: 540px;
+    }
+
+    .statsOverlay {
+        margin-bottom: 0.5rem;
+    }
+}

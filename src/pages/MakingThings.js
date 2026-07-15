@@ -460,9 +460,158 @@ function DetailsPane({ project }) {
     );
 }
 
+function MobileProjectDetails({ project }) {
+    const primaryAsset = getPrimaryAsset(project);
+    const primaryLink = project.links[0];
+
+    return (
+        <div className={styles.mobileProjectDetails} aria-label={`${project.title} project details`}>
+            <div className={styles.mobilePreviewBox}>
+                <AssetPreview asset={primaryAsset} controls />
+            </div>
+
+            <p className={styles.mobileDescription}>{project.description}</p>
+
+            <dl className={styles.mobileProjectMeta}>
+                <div>
+                    <dt>made</dt>
+                    <dd>{project.year}</dd>
+                </div>
+                <div>
+                    <dt>with</dt>
+                    <dd>{project.toolsMaterials.join(', ')}</dd>
+                </div>
+            </dl>
+
+            <div className={styles.mobileProjectActions}>
+                {primaryLink ? (
+                    <a
+                        className={styles.mobilePrimaryAction}
+                        href={primaryLink.href}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        open project <span aria-hidden="true">↗</span>
+                    </a>
+                ) : null}
+                <a
+                    className={primaryLink ? styles.mobileSecondaryAction : styles.mobilePrimaryAction}
+                    href={primaryAsset?.src || '#'}
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    view file <span aria-hidden="true">↗</span>
+                </a>
+            </div>
+
+            {project.links.length > 1 ? (
+                <div className={styles.mobileMoreLinks}>
+                    <p>more from this project</p>
+                    <ProjectLinks links={project.links.slice(1)} />
+                </div>
+            ) : null}
+        </div>
+    );
+}
+
+function MobileProjectBrowser({
+    activeLocationId,
+    expandedProjectId,
+    searchTerm,
+    visibleProjects,
+    onSelectLocation,
+    onSearchChange,
+    onToggleProject,
+}) {
+    return (
+        <div className={styles.mobileExplorer}>
+            <header className={styles.mobileExplorerHeader}>
+                <div>
+                    <p>elias / projects</p>
+                    <h2>Things I&apos;ve made</h2>
+                </div>
+                <span>{visibleProjects.length}</span>
+            </header>
+
+            <label className={styles.mobileSearchBox}>
+                <span className={styles.visuallyHidden}>Search projects</span>
+                <span aria-hidden="true">⌕</span>
+                <input
+                    type="search"
+                    placeholder="Search projects"
+                    value={searchTerm}
+                    onChange={event => onSearchChange(event.target.value)}
+                />
+            </label>
+
+            <div className={styles.mobileLocationTabs} aria-label="Project categories">
+                {locations.map(location => {
+                    const count = location.id === 'all'
+                        ? projects.length
+                        : projects.filter(project => project.category === location.id).length;
+                    const isActive = location.id === activeLocationId;
+
+                    return (
+                        <button
+                            key={`mobile-${location.id}`}
+                            type="button"
+                            className={isActive ? styles.mobileLocationTabActive : ''}
+                            onClick={() => onSelectLocation(location.id)}
+                            aria-pressed={isActive}
+                        >
+                            <span>{location.label}</span>
+                            <small>{count}</small>
+                        </button>
+                    );
+                })}
+            </div>
+
+            {visibleProjects.length ? (
+                <ul className={styles.mobileProjectList}>
+                    {visibleProjects.map(project => {
+                        const isSelected = project.id === expandedProjectId;
+
+                        return (
+                            <li
+                                key={`mobile-${project.id}`}
+                                className={isSelected ? styles.mobileProjectItemActive : ''}
+                            >
+                                <button
+                                    type="button"
+                                    className={styles.mobileProjectButton}
+                                    onClick={() => onToggleProject(project.id)}
+                                    aria-expanded={isSelected}
+                                >
+                                    <PixelIcon type={getProjectIcon(project)} />
+                                    <span className={styles.mobileProjectName}>
+                                        <strong>{project.title}</strong>
+                                        <small>{project.status} · {project.year}</small>
+                                    </span>
+                                    <span className={styles.mobileProjectToggle} aria-hidden="true">
+                                        {isSelected ? '−' : '+'}
+                                    </span>
+                                </button>
+
+                                {isSelected ? <MobileProjectDetails project={project} /> : null}
+                            </li>
+                        );
+                    })}
+                </ul>
+            ) : (
+                <div className={styles.mobileEmptyFolder}>
+                    <PixelIcon type="folder" />
+                    <p>No projects match this search.</p>
+                    <button type="button" onClick={() => onSearchChange('')}>clear search</button>
+                </div>
+            )}
+        </div>
+    );
+}
+
 function ExplorerWindow() {
     const [activeLocationId, setActiveLocationId] = useState('all');
     const [selectedProjectId, setSelectedProjectId] = useState(projects[0].id);
+    const [expandedProjectId, setExpandedProjectId] = useState(projects[0].id);
     const [searchTerm, setSearchTerm] = useState('');
 
     const activeLocation = locations.find(location => location.id === activeLocationId) ?? locations[0];
@@ -497,46 +646,72 @@ function ExplorerWindow() {
 
         setActiveLocationId(locationId);
         if (!nextProjects.some(project => project.id === selectedProjectId)) {
-            setSelectedProjectId(nextProjects[0]?.id ?? projects[0].id);
+            const nextProjectId = nextProjects[0]?.id ?? projects[0].id;
+            setSelectedProjectId(nextProjectId);
+            setExpandedProjectId(nextProjectId);
         }
+    };
+
+    const handleSelectProject = projectId => {
+        setSelectedProjectId(projectId);
+        setExpandedProjectId(projectId);
+    };
+
+    const handleToggleMobileProject = projectId => {
+        setSelectedProjectId(projectId);
+        setExpandedProjectId(currentProjectId => (
+            currentProjectId === projectId ? null : projectId
+        ));
     };
 
     return (
         <section className={styles.explorerWindow} aria-label="Projects file explorer">
-            <TitleBar />
-            <AddressBar
-                activeLocation={activeLocation}
-                searchTerm={searchTerm}
-                onSearchChange={setSearchTerm}
-            />
-            <CommandBar selectedProject={selectedProject} />
+            <div className={styles.desktopExplorer}>
+                <TitleBar />
+                <AddressBar
+                    activeLocation={activeLocation}
+                    searchTerm={searchTerm}
+                    onSearchChange={setSearchTerm}
+                />
+                <CommandBar selectedProject={selectedProject} />
 
-            <div className={styles.explorerBody}>
-                <Sidebar activeLocationId={activeLocationId} onSelectLocation={handleSelectLocation} />
-                <section className={styles.filePane} aria-label="Project files">
-                    <div className={styles.filePaneHeader}>
-                        <div>
-                            <p>{activeLocation.label}</p>
-                            <h2>Projects</h2>
+                <div className={styles.explorerBody}>
+                    <Sidebar activeLocationId={activeLocationId} onSelectLocation={handleSelectLocation} />
+                    <section className={styles.filePane} aria-label="Project files">
+                        <div className={styles.filePaneHeader}>
+                            <div>
+                                <p>{activeLocation.label}</p>
+                                <h2>Projects</h2>
+                            </div>
+                            <span>{visibleProjects.length} item{visibleProjects.length === 1 ? '' : 's'}</span>
                         </div>
-                        <span>{visibleProjects.length} item{visibleProjects.length === 1 ? '' : 's'}</span>
-                    </div>
 
-                    {visibleProjects.length ? (
-                        <ProjectRows
-                            projectsToShow={visibleProjects}
-                            selectedProjectId={selectedProject.id}
-                            onSelectProject={setSelectedProjectId}
-                        />
-                    ) : (
-                        <div className={styles.emptyFolder}>
-                            <PixelIcon type="folder" />
-                            <p>No projects match this search.</p>
-                        </div>
-                    )}
-                </section>
-                <DetailsPane project={selectedProject} />
+                        {visibleProjects.length ? (
+                            <ProjectRows
+                                projectsToShow={visibleProjects}
+                                selectedProjectId={selectedProject.id}
+                                onSelectProject={handleSelectProject}
+                            />
+                        ) : (
+                            <div className={styles.emptyFolder}>
+                                <PixelIcon type="folder" />
+                                <p>No projects match this search.</p>
+                            </div>
+                        )}
+                    </section>
+                    <DetailsPane project={selectedProject} />
+                </div>
             </div>
+
+            <MobileProjectBrowser
+                activeLocationId={activeLocationId}
+                expandedProjectId={expandedProjectId}
+                searchTerm={searchTerm}
+                visibleProjects={visibleProjects}
+                onSelectLocation={handleSelectLocation}
+                onSearchChange={setSearchTerm}
+                onToggleProject={handleToggleMobileProject}
+            />
         </section>
     );
 }
@@ -554,7 +729,7 @@ function MakingThings() {
                 <p className={styles.eyebrow}>next folder</p>
                 <h2>The next things I want to make probably won&apos;t live entirely on a screen.</h2>
                 <p>
-                    Lately, the most fulfilling projects are the ones that make me slower,
+                    Lately, the most fulfilling projects are the ones that make me work slower,
                     more patient, and more connected to materials. I want to keep learning
                     how to build with my hands.
                 </p>

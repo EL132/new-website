@@ -16,7 +16,10 @@ function PhotographyEnter({ onEnter, shouldReduceMotion }) {
             transition={transition}
         >
             <Link className={styles.enterHomeLink} to="/" aria-label="Go home">
-                <img src="/pixelated-image.png" alt="" className={styles.enterHomeImage} />
+                <picture>
+                    <source media="(max-width: 768px)" srcSet="/pixelated-image-128.png" />
+                    <img src="/pixelated-image.png" alt="" className={styles.enterHomeImage} />
+                </picture>
             </Link>
 
             <div className={styles.enterContent}>

@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useReducedMotion } from 'react-magic-motion';
 import Globe from 'react-globe.gl';
 import * as THREE from 'three';
 import { countryFeatures } from '../../data/worldCountries';
@@ -23,6 +24,9 @@ function FlightGlobe({ arcs, airports }) {
     const globeRef = useRef(null);
     const containerRef = useRef(null);
     const [dimensions, setDimensions] = useState({ width: 900, height: 640 });
+    const shouldReduceMotion = useReducedMotion();
+    const isCompact = dimensions.width <= 768;
+    const reduceMotionOnCompact = isCompact && shouldReduceMotion;
 
     const globeMaterial = useMemo(() => (
         new THREE.MeshPhongMaterial({
@@ -34,20 +38,23 @@ function FlightGlobe({ arcs, airports }) {
     ), []);
 
     const visualArcs = useMemo(() => (
-        arcs.flatMap(arc => ([
-            { ...arc, visualType: 'base' },
-            { ...arc, visualType: 'pulse' },
-        ]))
-    ), [arcs]);
+        arcs.flatMap(arc => {
+            const baseArc = { ...arc, visualType: 'base' };
 
-    useEffect(() => {
+            return reduceMotionOnCompact
+                ? [baseArc]
+                : [baseArc, { ...arc, visualType: 'pulse' }];
+        })
+    ), [arcs, reduceMotionOnCompact]);
+
+    useLayoutEffect(() => {
         const container = containerRef.current;
         if (!container) return undefined;
 
         const updateDimensions = () => {
             const { width, height } = container.getBoundingClientRect();
             setDimensions({
-                width: Math.max(320, Math.round(width)),
+                width: Math.max(1, Math.round(width)),
                 height: Math.max(420, Math.round(height)),
             });
         };
@@ -68,16 +75,23 @@ function FlightGlobe({ arcs, airports }) {
         if (!globeRef.current) return;
 
         const controls = globeRef.current.controls();
-        controls.autoRotate = true;
+        controls.autoRotate = !reduceMotionOnCompact;
         controls.autoRotateSpeed = 0.35;
-        controls.enableDamping = true;
+        controls.enableDamping = !reduceMotionOnCompact;
         controls.dampingFactor = 0.08;
+        controls.enableZoom = !isCompact;
 
-        globeRef.current.pointOfView({ lat: 24, lng: -44, altitude: 2.35 }, 800);
-    }, [arcs.length]);
+        globeRef.current.pointOfView(
+            { lat: 24, lng: -44, altitude: 2.35 },
+            reduceMotionOnCompact ? 0 : 800
+        );
+    }, [arcs.length, isCompact, reduceMotionOnCompact]);
 
     return (
         <div ref={containerRef} className={styles.globeFrame}>
+            <p className={styles.mobileHint} aria-hidden="true">
+                swipe sideways to rotate
+            </p>
             <Globe
                 ref={globeRef}
                 width={dimensions.width}
@@ -94,7 +108,7 @@ function FlightGlobe({ arcs, airports }) {
                 polygonStrokeColor={() => 'rgba(245, 238, 222, 0.34)'}
                 polygonAltitude={0.006}
                 polygonCapCurvatureResolution={5}
-                polygonsTransitionDuration={800}
+                polygonsTransitionDuration={reduceMotionOnCompact ? 0 : 800}
                 arcsData={visualArcs}
                 arcStartLat="startLat"
                 arcStartLng="startLng"
@@ -111,7 +125,7 @@ function FlightGlobe({ arcs, airports }) {
                 arcStroke={arc => arc.visualType === 'base' ? 0.38 : 0.7}
                 arcLabel="label"
                 arcCurveResolution={64}
-                arcsTransitionDuration={1000}
+                arcsTransitionDuration={reduceMotionOnCompact ? 0 : 1000}
                 pointsData={airports}
                 pointLat="lat"
                 pointLng="lng"
@@ -122,8 +136,8 @@ function FlightGlobe({ arcs, airports }) {
                 pointAltitude={0.035}
                 pointRadius={airport => Math.min(0.62, 0.34 + airport.flightCount * 0.025)}
                 pointResolution={14}
-                pointsTransitionDuration={1000}
-                ringsData={airports}
+                pointsTransitionDuration={reduceMotionOnCompact ? 0 : 1000}
+                ringsData={reduceMotionOnCompact ? [] : airports}
                 ringLat="lat"
                 ringLng="lng"
                 ringAltitude={0.041}
