@@ -7,7 +7,7 @@ export const thingsIveDoneItems = [
         kicker: 'adventure - 2026',
         href: 'https://www.strava.com/activities/18986473581',
         image: thingsAsset('eurovelo.jpg'),
-        description: 'My partner and I cycled along the EuroVelo 15 through France, Germany, and Switzerland.',
+        description: 'My partner and I cycled 301 km along the EuroVelo 15 through France, Germany, and Switzerland.',
         background: '#e5eadf',
     },
     {
