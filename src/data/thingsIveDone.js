@@ -3,6 +3,14 @@ const writingAsset = filename => `/assets/writing/${filename}`;
 
 export const thingsIveDoneItems = [
     {
+        title: 'Cycled the EuroVelo 15',
+        kicker: 'adventure - 2026',
+        href: 'https://www.strava.com/activities/18986473581',
+        image: thingsAsset('eurovelo.jpg'),
+        description: 'My partner and I cycled along the EuroVelo 15 through France, Germany, and Switzerland.',
+        background: '#e5eadf',
+    },
+    {
         title: 'Simi talent show',
         kicker: 'performance - 2026',
         href: 'https://photos.app.goo.gl/7MZ8jpjwqFD8G7tEA',
@@ -16,7 +24,7 @@ export const thingsIveDoneItems = [
         kicker: 'adventure - 2026',
         href: 'https://photos.app.goo.gl/3kTVWNGejmRhhivs7',
         image: thingsAsset('guatemala.jpg'),
-        description: 'I did a 4km hike in Guatemala.',
+        description: 'My partner and I did a 4km hike in Guatemala.',
         background: '#e5eadf',
     },
     {
