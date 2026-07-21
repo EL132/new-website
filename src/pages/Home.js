@@ -97,6 +97,9 @@ function Home() {
                     <ul className={styles.definitionLinks}>
                         <li><Link to="/friend/things-ive-done">things i've done</Link></li>
                     </ul>
+                    <Link className={styles.birthdayButton} to="/birthday">
+                        mason? birthday?
+                    </Link>
                 </div>
             </div>
 

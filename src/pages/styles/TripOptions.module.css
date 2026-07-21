@@ -1,0 +1,424 @@
+.optionsPage {
+    --cream: #fff6dd;
+    --gold: #f5c96b;
+    --ink: #10223a;
+    min-height: 100vh;
+    padding: 4.5rem clamp(1.1rem, 4vw, 4.5rem) 2.5rem;
+    overflow: hidden;
+    background: #081830;
+    color: var(--cream);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.optionsPage::before {
+    content: none;
+}
+
+.exit {
+    position: fixed;
+    top: 1.2rem;
+    right: 1.4rem;
+    z-index: 10;
+    display: grid;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid rgba(255, 246, 221, 0.24);
+    border-radius: 50%;
+    color: var(--cream);
+    font: 300 1.75rem/1 'Montserrat', sans-serif;
+    place-items: center;
+    text-decoration: none;
+    transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.exit:hover {
+    background: var(--cream);
+    color: var(--ink);
+    transform: rotate(4deg);
+}
+
+.intro,
+.revealStage,
+.tripNavigation,
+.promise {
+    position: relative;
+    z-index: 1;
+}
+
+.intro {
+    width: min(780px, 100%);
+    margin: 0 auto 2.25rem;
+    text-align: center;
+}
+
+.eyebrow,
+.country,
+.globeCaption span {
+    margin: 0;
+    color: var(--gold);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.19em;
+    text-transform: uppercase;
+}
+
+.intro h1 {
+    margin: 0.55rem 0 0.65rem;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(2.6rem, 6vw, 5.6rem);
+    font-weight: 400;
+    letter-spacing: -0.05em;
+    line-height: 0.96;
+}
+
+.intro > p:last-child {
+    max-width: 650px;
+    margin: 0 auto;
+    color: rgba(255, 246, 221, 0.67);
+    font-size: clamp(0.86rem, 1.4vw, 1rem);
+    line-height: 1.7;
+}
+
+.revealStage {
+    display: grid;
+    width: min(1460px, 100%);
+    margin: 0 auto;
+    border: 1px solid rgba(255, 246, 221, 0.13);
+    border-radius: 2rem;
+    background: rgba(5, 19, 40, 0.58);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.28);
+    grid-template-columns: minmax(0, 1.05fr) minmax(420px, 0.95fr);
+    overflow: hidden;
+}
+
+.globePanel {
+    position: relative;
+    display: grid;
+    min-width: 0;
+    place-items: center;
+}
+
+.globeCaption {
+    position: absolute;
+    bottom: 2.25rem;
+    left: 2.25rem;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.globeCaption span {
+    color: var(--gold);
+}
+
+.globeCaption strong {
+    color: var(--cream);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(1.6rem, 3vw, 2.8rem);
+    font-weight: 400;
+}
+
+.tripCard {
+    align-self: stretch;
+    min-width: 0;
+    border-left: 1px solid rgba(255, 246, 221, 0.13);
+    background: #fff6dd;
+    color: #10223a;
+    animation: cardIn 500ms ease both;
+}
+
+.imageFrame {
+    position: relative;
+    height: clamp(245px, 30vw, 390px);
+    overflow: hidden;
+}
+
+.imageFrame::after {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(8, 24, 48, 0.54), transparent 48%);
+    content: '';
+}
+
+.imageFrame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.counter {
+    position: absolute;
+    right: 1.4rem;
+    bottom: 1.1rem;
+    z-index: 1;
+    margin: 0;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+}
+
+.cardBody {
+    padding: clamp(1.5rem, 3vw, 2.6rem);
+}
+
+.tripMeta {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.4rem;
+    color: rgba(16, 34, 58, 0.6);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+
+.tripMeta span:last-child {
+    max-width: 74%;
+    text-align: right;
+}
+
+.country {
+    color: #a46424;
+}
+
+.cardBody h2 {
+    margin: 0.3rem 0 0.85rem;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(2.1rem, 4vw, 4rem);
+    font-weight: 400;
+    letter-spacing: -0.045em;
+    line-height: 0.98;
+}
+
+.summary {
+    margin: 0;
+    color: rgba(16, 34, 58, 0.76);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.02rem;
+    line-height: 1.65;
+}
+
+.itinerary {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(16, 34, 58, 0.14);
+}
+
+.itinerary h3 {
+    margin: 0 0 1.2rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+}
+
+.itinerary ol {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    gap: 1rem;
+    list-style: none;
+}
+
+.itinerary li {
+    position: relative;
+    display: grid;
+    padding-left: 1.25rem;
+    gap: 0.2rem;
+}
+
+.itinerary li::before {
+    position: absolute;
+    top: 0.45rem;
+    left: 0;
+    width: 0.42rem;
+    height: 0.42rem;
+    border: 1px solid #a46424;
+    border-radius: 50%;
+    background: #fff6dd;
+    content: '';
+}
+
+.itinerary li:not(:last-child)::after {
+    position: absolute;
+    top: 0.95rem;
+    bottom: -1rem;
+    left: 0.21rem;
+    width: 1px;
+    background: rgba(164, 100, 36, 0.25);
+    content: '';
+}
+
+.itinerary strong {
+    font-size: 0.76rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.itinerary span {
+    color: rgba(16, 34, 58, 0.67);
+    font-size: 0.78rem;
+    line-height: 1.55;
+}
+
+.tripNavigation {
+    display: grid;
+    width: min(920px, 100%);
+    margin: 2rem auto 0;
+    align-items: center;
+    grid-template-columns: 1fr auto 1fr;
+}
+
+.tripNavigation > button {
+    display: inline-flex;
+    align-items: center;
+    width: max-content;
+    padding: 0.75rem 1rem;
+    border: 0;
+    background: transparent;
+    color: var(--cream);
+    cursor: pointer;
+    font: 700 0.7rem/1 'Montserrat', sans-serif;
+    gap: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.tripNavigation > button:last-child {
+    justify-self: end;
+}
+
+.tripNavigation > button span {
+    color: var(--gold);
+    font-size: 1.35rem;
+    transition: transform 180ms ease;
+}
+
+.tripNavigation > button:first-child:hover span {
+    transform: translateX(-4px);
+}
+
+.tripNavigation > button:last-child:hover span {
+    transform: translateX(4px);
+}
+
+.dots {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+
+.dots button {
+    width: 0.46rem;
+    height: 0.46rem;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 246, 221, 0.28);
+    cursor: pointer;
+    transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.dots button:hover,
+.dots .activeDot {
+    background: var(--gold);
+    transform: scale(1.35);
+}
+
+.promise {
+    margin: 2.2rem auto 0;
+    color: rgba(255, 246, 221, 0.52);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 0.88rem;
+    font-style: italic;
+    text-align: center;
+}
+
+@keyframes cardIn {
+    from {
+        opacity: 0;
+        transform: translateX(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .revealStage {
+        grid-template-columns: 1fr;
+    }
+
+    .tripCard {
+        border-top: 1px solid rgba(255, 246, 221, 0.13);
+        border-left: 0;
+    }
+
+    .globeCaption {
+        bottom: 2rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .optionsPage {
+        padding: 4.6rem 0.85rem 2rem;
+    }
+
+    .intro {
+        margin-bottom: 1.5rem;
+        padding: 0 0.5rem;
+    }
+
+    .revealStage {
+        border-radius: 1.2rem;
+    }
+
+    .globeCaption {
+        bottom: 1.4rem;
+        left: 1.3rem;
+    }
+
+    .tripMeta {
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    .tripMeta span:last-child {
+        max-width: none;
+        text-align: left;
+    }
+
+    .tripNavigation {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .dots {
+        grid-row: 2;
+        grid-column: 1 / -1;
+        justify-content: center;
+        padding-top: 1rem;
+    }
+
+    .tripNavigation > button:first-child {
+        justify-self: start;
+    }
+
+    .imageFrame {
+        height: 250px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tripCard,
+    .exit,
+    .tripNavigation span,
+    .dots button {
+        animation: none;
+        transition: none;
+    }
+}

@@ -1,0 +1,25 @@
+.shell,
+.canvas {
+    position: fixed;
+    inset: 0;
+}
+
+.shell {
+    background: #8bcf4c;
+}
+
+.canvas canvas {
+    display: block;
+}
+
+.message {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    margin: 0;
+    place-items: center;
+    color: rgba(248, 242, 223, 0.72);
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}

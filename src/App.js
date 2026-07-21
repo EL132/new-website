@@ -5,6 +5,8 @@ import Travel from './pages/Travel';
 import MakingThings from './pages/MakingThings';
 import Education from './pages/Education';
 import ThingsIveDone from './pages/ThingsIveDone';
+import Birthday from './pages/Birthday';
+import TripOptions from './pages/TripOptions';
 import HomeNav from './components/HomeNav';
 import { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
@@ -13,7 +15,8 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 function App() {
     const location = useLocation();
     const isPhotographyPage = location.pathname === '/artist/photography';
-    const showHomeNav = location.pathname !== '/' && !isPhotographyPage;
+    const isBirthdayPage = location.pathname.startsWith('/birthday');
+    const showHomeNav = location.pathname !== '/' && !isPhotographyPage && !isBirthdayPage;
     const homeNavVariant = location.pathname === '/engineer/making-things' ? 'dark' : 'default';
 
     // function to wake up free-instance backend 
@@ -34,6 +37,8 @@ function App() {
                 <Route path="/engineer/making-things" element={<MakingThings />} />
                 <Route path="/engineer/education" element={<Education />} />
                 <Route path="/friend/things-ive-done" element={<ThingsIveDone />} />
+                <Route path="/birthday" element={<Birthday />} />
+                <Route path="/birthday/options" element={<TripOptions />} />
             </Routes>
         </>
     );

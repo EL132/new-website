@@ -1,0 +1,378 @@
+.gamePage {
+    min-height: 100svh;
+    color: #f9f2dc;
+    background: #0d213f;
+}
+
+.landing {
+    position: relative;
+    display: grid;
+    min-height: 100svh;
+    grid-template-rows: auto 1fr auto;
+    align-items: center;
+    overflow: hidden;
+    padding: clamp(2rem, 5vw, 4rem);
+    box-sizing: border-box;
+    color: #14213d;
+    background: #f9f2dc;
+}
+
+.landingExit,
+.gameExit,
+.modalClose {
+    display: grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    border: 1px solid rgba(249, 242, 220, 0.36);
+    border-radius: 50%;
+    color: #f9f2dc;
+    background: rgba(6, 15, 31, 0.62);
+    font: 300 1.8rem/1 system-ui, sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.landingExit {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    border-color: rgba(20, 33, 61, 0.3);
+    color: #14213d;
+    background: transparent;
+}
+
+.letter {
+    align-self: start;
+    max-width: 760px;
+    margin: 0 auto;
+    color: rgba(20, 33, 61, 0.68);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(0.78rem, 1.4vw, 0.95rem);
+    line-height: 1.65;
+    text-align: center;
+}
+
+.riverCard {
+    display: grid;
+    grid-template-columns: 128px minmax(120px, auto) 54px;
+    align-items: center;
+    justify-self: center;
+    gap: 1.25rem;
+    padding: 1rem 1.25rem 1rem 1rem;
+    border: 1px solid rgba(249, 242, 220, 0.38);
+    border-radius: 24px;
+    color: #f9f2dc;
+    background: rgba(5, 15, 31, 0.72);
+    box-shadow: 0 26px 80px rgba(0, 0, 0, 0.34), 5px 5px 0 #f1bd4a;
+    cursor: pointer;
+    text-align: left;
+    transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.riverCard:hover,
+.riverCard:focus-visible {
+    outline: none;
+    box-shadow: 0 26px 80px rgba(0, 0, 0, 0.34), 2px 2px 0 #f1bd4a;
+    transform: translate(3px, 3px);
+}
+
+.riverPortrait {
+    position: relative;
+    display: grid;
+    width: 128px;
+    height: 128px;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid rgba(249, 242, 220, 0.18);
+    border-radius: 16px;
+    background: #8bcf4c;
+    image-rendering: pixelated;
+}
+
+.riverSprite {
+    width: 16px;
+    height: 16px;
+    background-position: 0 -102px;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    transform: scale(5);
+}
+
+.riverCopy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.riverLabel,
+.enterHint,
+.modalEyebrow,
+.keyHint {
+    color: rgba(249, 242, 220, 0.58);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.riverCopy strong {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(2.3rem, 5vw, 4rem);
+    font-weight: 500;
+}
+
+.arrow {
+    color: #f1bd4a;
+    font-size: 2.5rem;
+    transition: transform 160ms ease;
+}
+
+.riverCard:hover .arrow {
+    transform: translateX(5px);
+}
+
+.enterHint {
+    margin: 0;
+    color: rgba(20, 33, 61, 0.58);
+    text-align: center;
+}
+
+.gamePage {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    overflow: hidden;
+}
+
+.progress {
+    position: fixed;
+    top: 1rem;
+    right: 4.9rem;
+    z-index: 120;
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 0.85rem;
+    border: 1px solid rgba(255, 255, 255, 0.46);
+    border-radius: 999px;
+    color: #fff8df;
+    background: rgba(7, 19, 41, 0.76);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
+}
+
+.gameExit {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 120;
+}
+
+.modalBackdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 140;
+    display: grid;
+    place-items: center;
+    padding: 1.25rem;
+    background: rgba(4, 11, 24, 0.66);
+    backdrop-filter: blur(7px);
+}
+
+.modal {
+    position: relative;
+    width: min(100%, 520px);
+    padding: clamp(1.5rem, 5vw, 2.5rem);
+    border: 1px solid rgba(249, 242, 220, 0.35);
+    border-radius: 24px;
+    box-sizing: border-box;
+    color: #14213d;
+    background: #f9f2dc;
+    box-shadow: 10px 10px 0 #f1bd4a, 0 30px 100px rgba(0, 0, 0, 0.42);
+}
+
+.modalClose {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    border-color: rgba(20, 33, 61, 0.2);
+    color: #14213d;
+    background: transparent;
+}
+
+.modalEyebrow {
+    margin: 0 3rem 0.7rem 0;
+    color: #9a6b0d;
+}
+
+.modal h1,
+.modal h2 {
+    max-width: 12ch;
+    margin: 0 3rem 1rem 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 500;
+    line-height: 1;
+}
+
+.modal p:not(.modalEyebrow):not(.keyHint) {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+.questionModal {
+    width: min(100%, 680px);
+    max-height: calc(100svh - 2.5rem);
+    overflow-y: auto;
+}
+
+.modal .question {
+    margin-bottom: 1.25rem;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(1.15rem, 2.6vw, 1.45rem);
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.answers {
+    display: grid;
+    gap: 0.65rem;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.answers legend {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.answerOption {
+    display: grid;
+    grid-template-columns: 20px minmax(0, 1fr);
+    align-items: start;
+    gap: 0.7rem;
+    padding: 0.8rem 0.9rem;
+    border: 1px solid rgba(20, 33, 61, 0.22);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.42);
+    cursor: pointer;
+    line-height: 1.35;
+    transition: border-color 140ms ease, background 140ms ease, transform 140ms ease;
+}
+
+.answerOption:hover {
+    border-color: #9a6b0d;
+    transform: translateX(2px);
+}
+
+.answerOption input {
+    width: 17px;
+    height: 17px;
+    margin: 0.08rem 0 0;
+    accent-color: #14213d;
+}
+
+.answerOptionSelected {
+    border-color: #14213d;
+    background: #f1bd4a;
+}
+
+.modal .answerFeedback {
+    margin-top: 1rem;
+    padding: 0.75rem 0.85rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.answerWrong {
+    color: #7d261d;
+    background: #f8d6ce;
+}
+
+.answerCorrect {
+    color: #24562e;
+    background: #d9ebce;
+}
+
+.keyHint {
+    margin: 1.5rem 0 0;
+    color: rgba(20, 33, 61, 0.62);
+}
+
+.continueButton {
+    min-height: 46px;
+    margin-top: 1.5rem;
+    padding: 0.65rem 1rem;
+    border: 1px solid #14213d;
+    border-radius: 999px;
+    color: #f9f2dc;
+    background: #14213d;
+    font: 700 0.82rem/1 system-ui, sans-serif;
+    cursor: pointer;
+}
+
+.continueButton:hover,
+.continueButton:focus-visible {
+    color: #14213d;
+    background: #f1bd4a;
+}
+
+.continueButton:disabled {
+    border-color: rgba(20, 33, 61, 0.25);
+    color: rgba(20, 33, 61, 0.45);
+    background: rgba(20, 33, 61, 0.08);
+    cursor: not-allowed;
+}
+
+.jokeModal {
+    text-align: center;
+}
+
+.modal .joke {
+    margin: 1rem auto 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(1.7rem, 5vw, 2.6rem);
+    line-height: 1.15;
+}
+
+@media (max-width: 600px) {
+    .landing {
+        padding: 4.5rem 1.25rem 2rem;
+    }
+
+    .riverCard {
+        grid-template-columns: 96px 1fr 32px;
+        width: 100%;
+        gap: 0.8rem;
+        border-radius: 20px;
+    }
+
+    .riverPortrait {
+        width: 96px;
+        height: 96px;
+    }
+
+    .arrow {
+        font-size: 1.8rem;
+    }
+
+    .progress {
+        right: 4.5rem;
+    }
+
+    .modal {
+        border-radius: 20px;
+        box-shadow: 6px 6px 0 #f1bd4a, 0 24px 80px rgba(0, 0, 0, 0.42);
+    }
+}
