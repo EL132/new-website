@@ -36,7 +36,7 @@ function TripOptions() {
 
             <header className={styles.intro}>
                 <h1>Pick where we go next.</h1>
-                <p>Your choice... and I’ll cover every expense except the flight. I’ll be flying business class though - you enjoy that 65F seat to Milan though xD</p>
+                <p>Your choice... and I’ll cover every expense except the flight. I’ll be flying business class - you enjoy that 65F seat to Milan though xD</p>
             </header>
 
             <section className={styles.revealStage} aria-label="Trip options">
