@@ -68,7 +68,13 @@ function GiftGlobe({ trip }) {
     const isFocusedCountry = (country) => trip.focusCountries.includes(country?.properties?.name);
 
     return (
-        <div ref={containerRef} className={styles.globeFrame} aria-label={`Globe focused on ${trip.displayCountry || trip.country}`}>
+        <div
+            ref={containerRef}
+            className={styles.globeFrame}
+            aria-label={`Globe focused on ${trip.displayCountry || trip.country}`}
+            data-umami-event="trip-globe-interact"
+            data-umami-event-trip={trip.id}
+        >
             <Globe
                 ref={globeRef}
                 width={dimensions.width}
@@ -111,4 +117,3 @@ function GiftGlobe({ trip }) {
 }
 
 export default GiftGlobe;
-

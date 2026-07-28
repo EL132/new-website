@@ -207,7 +207,7 @@ function AssetPreview({ asset, controls = false }) {
     );
 }
 
-function ProjectLinks({ links }) {
+function ProjectLinks({ links, projectId, context }) {
     if (!links.length) {
         return <p className={styles.noLinks}>No public link in this folder.</p>;
     }
@@ -216,7 +216,15 @@ function ProjectLinks({ links }) {
         <ul className={styles.linkList}>
             {links.map(link => (
                 <li key={`${link.label}-${link.href}`}>
-                    <a href={link.href} target="_blank" rel="noreferrer">
+                    <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        data-umami-event="project-link-open"
+                        data-umami-event-project={projectId}
+                        data-umami-event-link={link.label}
+                        data-umami-event-context={context}
+                    >
                         {link.label}
                     </a>
                 </li>
@@ -233,7 +241,15 @@ function TitleBar() {
                     <PixelIcon type="folder" />
                     <span>Projects</span>
                 </div>
-                <button type="button" aria-label="New tab" className={styles.newTabButton}>+</button>
+                <button
+                    type="button"
+                    aria-label="New tab"
+                    className={styles.newTabButton}
+                    data-umami-event="project-browser-control"
+                    data-umami-event-control="new-tab"
+                >
+                    +
+                </button>
             </div>
             <div className={styles.windowControls} aria-hidden="true">
                 <span />
@@ -248,10 +264,38 @@ function AddressBar({ activeLocation, searchTerm, onSearchChange }) {
     return (
         <div className={styles.addressRow}>
             <div className={styles.navigationButtons} aria-label="Explorer navigation controls">
-                <button type="button" aria-label="Back">&lt;</button>
-                <button type="button" aria-label="Forward">&gt;</button>
-                <button type="button" aria-label="Up one level">^</button>
-                <button type="button" aria-label="Refresh">R</button>
+                <button
+                    type="button"
+                    aria-label="Back"
+                    data-umami-event="project-browser-control"
+                    data-umami-event-control="back"
+                >
+                    &lt;
+                </button>
+                <button
+                    type="button"
+                    aria-label="Forward"
+                    data-umami-event="project-browser-control"
+                    data-umami-event-control="forward"
+                >
+                    &gt;
+                </button>
+                <button
+                    type="button"
+                    aria-label="Up one level"
+                    data-umami-event="project-browser-control"
+                    data-umami-event-control="up-one-level"
+                >
+                    ^
+                </button>
+                <button
+                    type="button"
+                    aria-label="Refresh"
+                    data-umami-event="project-browser-control"
+                    data-umami-event-control="refresh"
+                >
+                    R
+                </button>
             </div>
 
             <div className={styles.addressBar} aria-label="Current folder path">
@@ -270,6 +314,8 @@ function AddressBar({ activeLocation, searchTerm, onSearchChange }) {
                     placeholder="Search Projects"
                     value={searchTerm}
                     onChange={event => onSearchChange(event.target.value)}
+                    data-umami-event="project-search-click"
+                    data-umami-event-layout="desktop"
                 />
             </label>
         </div>
@@ -290,6 +336,9 @@ function CommandBar({ selectedProject }) {
                 onClick={event => {
                     if (!firstLink) event.preventDefault();
                 }}
+                data-umami-event="project-command"
+                data-umami-event-project={selectedProject.id}
+                data-umami-event-command="open"
             >
                 <span aria-hidden="true">[ ]</span>
                 Open
@@ -299,15 +348,30 @@ function CommandBar({ selectedProject }) {
                 href={getPrimaryAsset(selectedProject)?.src || '#'}
                 target="_blank"
                 rel="noreferrer"
+                data-umami-event="project-command"
+                data-umami-event-project={selectedProject.id}
+                data-umami-event-command="preview"
             >
                 <span aria-hidden="true">[]</span>
                 Preview
             </a>
-            <button type="button" className={styles.commandButton}>
+            <button
+                type="button"
+                className={styles.commandButton}
+                data-umami-event="project-command"
+                data-umami-event-project={selectedProject.id}
+                data-umami-event-command="sort"
+            >
                 <span aria-hidden="true">A-Z</span>
                 Sort
             </button>
-            <button type="button" className={styles.commandButton}>
+            <button
+                type="button"
+                className={styles.commandButton}
+                data-umami-event="project-command"
+                data-umami-event-project={selectedProject.id}
+                data-umami-event-command="details"
+            >
                 <span aria-hidden="true">list</span>
                 Details
             </button>
@@ -335,6 +399,9 @@ function Sidebar({ activeLocationId, onSelectLocation }) {
                             className={`${styles.sidebarItem} ${isActive ? styles.sidebarItemActive : ''}`}
                             onClick={() => onSelectLocation(location.id)}
                             aria-pressed={isActive}
+                            data-umami-event="project-folder-select"
+                            data-umami-event-folder={location.id}
+                            data-umami-event-layout="desktop"
                         >
                             <PixelIcon type={location.id === 'all' ? 'folder' : getProjectIcon({ category: location.id })} />
                             <span>{location.label}</span>
@@ -377,6 +444,9 @@ function ProjectRows({ projectsToShow, selectedProjectId, onSelectProject }) {
                                 }}
                                 tabIndex={0}
                                 aria-selected={isSelected}
+                                data-umami-event="project-select"
+                                data-umami-event-project={project.id}
+                                data-umami-event-layout="desktop"
                             >
                                 <td>
                                     <span className={styles.fileName}>
@@ -441,7 +511,11 @@ function DetailsPane({ project }) {
 
             <div className={styles.paneSection}>
                 <p>Project links</p>
-                <ProjectLinks links={project.links} />
+                <ProjectLinks
+                    links={project.links}
+                    projectId={project.id}
+                    context="desktop-details"
+                />
             </div>
 
             <div className={styles.paneSection}>
@@ -449,7 +523,15 @@ function DetailsPane({ project }) {
                 <ul className={styles.linkList}>
                     {fileLinks.map(link => (
                         <li key={`${project.id}-${link.href}`}>
-                            <a href={link.href} target="_blank" rel="noreferrer">
+                            <a
+                                href={link.href}
+                                target="_blank"
+                                rel="noreferrer"
+                                data-umami-event="project-file-open"
+                                data-umami-event-project={project.id}
+                                data-umami-event-file={link.label}
+                                data-umami-event-context="desktop-details"
+                            >
                                 {link.label}
                             </a>
                         </li>
@@ -490,6 +572,10 @@ function MobileProjectDetails({ project }) {
                         href={primaryLink.href}
                         target="_blank"
                         rel="noreferrer"
+                        data-umami-event="project-link-open"
+                        data-umami-event-project={project.id}
+                        data-umami-event-link={primaryLink.label}
+                        data-umami-event-context="mobile-primary-action"
                     >
                         open project <span aria-hidden="true">↗</span>
                     </a>
@@ -499,6 +585,10 @@ function MobileProjectDetails({ project }) {
                     href={primaryAsset?.src || '#'}
                     target="_blank"
                     rel="noreferrer"
+                    data-umami-event="project-file-open"
+                    data-umami-event-project={project.id}
+                    data-umami-event-file={primaryAsset?.alt || primaryAsset?.label || 'primary-asset'}
+                    data-umami-event-context="mobile-primary-action"
                 >
                     view file <span aria-hidden="true">↗</span>
                 </a>
@@ -507,7 +597,11 @@ function MobileProjectDetails({ project }) {
             {project.links.length > 1 ? (
                 <div className={styles.mobileMoreLinks}>
                     <p>more from this project</p>
-                    <ProjectLinks links={project.links.slice(1)} />
+                    <ProjectLinks
+                        links={project.links.slice(1)}
+                        projectId={project.id}
+                        context="mobile-more-links"
+                    />
                 </div>
             ) : null}
         </div>
@@ -541,6 +635,8 @@ function MobileProjectBrowser({
                     placeholder="Search projects"
                     value={searchTerm}
                     onChange={event => onSearchChange(event.target.value)}
+                    data-umami-event="project-search-click"
+                    data-umami-event-layout="mobile"
                 />
             </label>
 
@@ -558,6 +654,9 @@ function MobileProjectBrowser({
                             className={isActive ? styles.mobileLocationTabActive : ''}
                             onClick={() => onSelectLocation(location.id)}
                             aria-pressed={isActive}
+                            data-umami-event="project-folder-select"
+                            data-umami-event-folder={location.id}
+                            data-umami-event-layout="mobile"
                         >
                             <span>{location.label}</span>
                             <small>{count}</small>
@@ -581,6 +680,10 @@ function MobileProjectBrowser({
                                     className={styles.mobileProjectButton}
                                     onClick={() => onToggleProject(project.id)}
                                     aria-expanded={isSelected}
+                                    data-umami-event="project-toggle"
+                                    data-umami-event-project={project.id}
+                                    data-umami-event-action={isSelected ? 'collapse' : 'expand'}
+                                    data-umami-event-layout="mobile"
                                 >
                                     <PixelIcon type={getProjectIcon(project)} />
                                     <span className={styles.mobileProjectName}>
@@ -601,7 +704,14 @@ function MobileProjectBrowser({
                 <div className={styles.mobileEmptyFolder}>
                     <PixelIcon type="folder" />
                     <p>No projects match this search.</p>
-                    <button type="button" onClick={() => onSearchChange('')}>clear search</button>
+                    <button
+                        type="button"
+                        onClick={() => onSearchChange('')}
+                        data-umami-event="project-search-clear"
+                        data-umami-event-layout="mobile"
+                    >
+                        clear search
+                    </button>
                 </div>
             )}
         </div>

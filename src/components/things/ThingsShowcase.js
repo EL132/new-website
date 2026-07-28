@@ -67,6 +67,9 @@ function MobileOpenLink({ item }) {
         className: styles.mobileOpenLink,
         target: '_blank',
         rel: 'noreferrer',
+        'data-umami-event': 'thing-open',
+        'data-umami-event-item': item.title,
+        'data-umami-event-context': 'mobile-details',
     };
 
     if (isExternal) {
@@ -95,6 +98,16 @@ function ShowcaseControl({ item, index, isActive, isMobileShowcase, onActivate }
         onPointerEnter: isMobileShowcase ? undefined : onActivate,
         'aria-controls': isMobileShowcase ? `thing-details-${index}` : undefined,
         'aria-expanded': isMobileShowcase ? isActive : undefined,
+        'data-umami-event': isMobileShowcase
+            ? 'thing-toggle'
+            : item.href
+                ? 'thing-open'
+                : 'thing-select',
+        'data-umami-event-item': item.title,
+        'data-umami-event-action': isMobileShowcase
+            ? isActive ? 'collapse' : 'expand'
+            : item.href ? 'open' : 'select',
+        'data-umami-event-context': isMobileShowcase ? 'mobile-list' : 'desktop-list',
     };
 
     if (item.href) {

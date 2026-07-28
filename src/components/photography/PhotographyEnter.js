@@ -15,7 +15,14 @@ function PhotographyEnter({ onEnter, shouldReduceMotion }) {
             exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.98 }}
             transition={transition}
         >
-            <Link className={styles.enterHomeLink} to="/" aria-label="Go home">
+            <Link
+                className={styles.enterHomeLink}
+                to="/"
+                aria-label="Go home"
+                data-umami-event="navigation-click"
+                data-umami-event-destination="/"
+                data-umami-event-element="photography-landing-home"
+            >
                 <picture>
                     <source media="(max-width: 768px)" srcSet="/pixelated-image-128.png" />
                     <img src="/pixelated-image.png" alt="" className={styles.enterHomeImage} />
@@ -24,7 +31,12 @@ function PhotographyEnter({ onEnter, shouldReduceMotion }) {
 
             <div className={styles.enterContent}>
                 <p className={styles.enterKicker}>photography</p>
-                <button className={styles.enterButton} type="button" onClick={onEnter}>
+                <button
+                    className={styles.enterButton}
+                    type="button"
+                    onClick={onEnter}
+                    data-umami-event="photography-enter"
+                >
                     enter
                 </button>
             </div>

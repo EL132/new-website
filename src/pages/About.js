@@ -128,6 +128,9 @@ function WorkTimeline() {
                             onClick={() => setActiveId(experience.id)}
                             aria-label={`${experience.role} at ${experience.company}, ${experience.year}`}
                             aria-pressed={isActive}
+                            data-umami-event="about-timeline-select"
+                            data-umami-event-experience={experience.id}
+                            data-umami-event-company={experience.company}
                         >
                             {timelineContent}
                         </button>
@@ -159,13 +162,25 @@ function About() {
                 heyo :) i'd be smiling if i knew you were here (maybe i do...) - that's so cool that you are! anywho, 
                 my name is elias and i'm an artist, engineer, and friend - as the home page says ;)
                 i'm just starting out life - i'll be in the bay area starting sept 2026 as an associate product manager with google. 
-                there's so much i could say, but i'll leave it at that for now - please reach out to me via <a href="https://www.linkedin.com/in/elias-lind/overlay/contact-info/">email</a> if you want to chat :D
+                there's so much i could say, but i'll leave it at that for now - please reach out to me via <a
+                    href="https://www.linkedin.com/in/elias-lind/overlay/contact-info/"
+                    data-umami-event="outbound-link-click"
+                    data-umami-event-destination="linkedin-contact"
+                    data-umami-event-context="about-intro"
+                >email</a> if you want to chat :D
             </p>
 
             <section className={styles.aboutSection}>
                 <h2 className={styles.aboutSubheader}>personal</h2>
                 <p>
-                    i live for conversation and i adore learning about what the <a href="https://www.instagram.com/p/DSsSo11j-VB/" target="_blank" rel="noopener noreferrer">human experience</a> means to people. 
+                    i live for conversation and i adore learning about what the <a
+                        href="https://www.instagram.com/p/DSsSo11j-VB/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        data-umami-event="outbound-link-click"
+                        data-umami-event-destination="instagram-human-experience"
+                        data-umami-event-context="about-personal"
+                    >human experience</a> means to people.
                     <br></br>
                     <br></br>
                     i love to write, play sports, explore cultures, dance, and sing. 
@@ -185,7 +200,21 @@ function About() {
             <section className={styles.aboutSection}>
                 <h2 className={styles.aboutSubheader}>professional</h2>
                 <p>
-                    <a href="https://www.linkedin.com/in/elias-lind/" target="_blank" rel="noopener noreferrer">LinkedIn</a> &middot; <a href="https://docs.google.com/document/d/13Wd4prqkyKvrzrj67d02MHCoG8hQI6dPJgBCnbnMqtY/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a>. 
+                    <a
+                        href="https://www.linkedin.com/in/elias-lind/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        data-umami-event="outbound-link-click"
+                        data-umami-event-destination="linkedin-profile"
+                        data-umami-event-context="about-professional"
+                    >LinkedIn</a> &middot; <a
+                        href="https://docs.google.com/document/d/13Wd4prqkyKvrzrj67d02MHCoG8hQI6dPJgBCnbnMqtY/edit?usp=sharing"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        data-umami-event="outbound-link-click"
+                        data-umami-event-destination="resume"
+                        data-umami-event-context="about-professional"
+                    >Resume</a>.
                     I want to make a positive impact on spaces I care about: education and public transporation. To do so, I explored different types of work, companies, and parts of the world when possible. I found that I care less about the type of work and more about what I'm working towards. 
                     <br></br>
                     <br></br>

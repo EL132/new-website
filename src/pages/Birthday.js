@@ -82,7 +82,14 @@ function Birthday() {
     if (!isPlaying) {
         return (
             <main className={styles.landing}>
-                <Link className={styles.landingExit} to="/" aria-label="Exit Birthday experience">
+                <Link
+                    className={styles.landingExit}
+                    to="/"
+                    aria-label="Exit Birthday experience"
+                    data-umami-event="navigation-click"
+                    data-umami-event-destination="/"
+                    data-umami-event-element="birthday-landing-exit"
+                >
                     ×
                 </Link>
 
@@ -90,7 +97,13 @@ function Birthday() {
                     I’ve been thinking about doing this since the moment we traveled together. You’ve helped us explore the world, and now it’s my turn.
                 </p>
 
-                <button className={styles.riverCard} type="button" onClick={startGame}>
+                <button
+                    className={styles.riverCard}
+                    type="button"
+                    onClick={startGame}
+                    data-umami-event="birthday-game-start"
+                    data-umami-event-method="river-card"
+                >
                     <span className={styles.riverPortrait} aria-hidden="true">
                         <span
                             className={styles.riverSprite}
@@ -125,7 +138,14 @@ function Birthday() {
                 <strong>{activeStep}/{journeyStops.length}</strong>
             </div>
 
-            <button className={styles.gameExit} type="button" onClick={exitGame} aria-label="Exit game">
+            <button
+                className={styles.gameExit}
+                type="button"
+                onClick={exitGame}
+                aria-label="Exit game"
+                data-umami-event="birthday-game-exit"
+                data-umami-event-step={activeStep + 1}
+            >
                 ×
             </button>
 
@@ -137,6 +157,7 @@ function Birthday() {
                             type="button"
                             onClick={() => setShowInstructions(false)}
                             aria-label="Begin playing"
+                            data-umami-event="birthday-instructions-close"
                         >
                             ×
                         </button>
@@ -156,6 +177,8 @@ function Birthday() {
                             type="button"
                             onClick={closeEncounter}
                             aria-label="Close checkpoint"
+                            data-umami-event="birthday-checkpoint-close"
+                            data-umami-event-checkpoint={encounter.id}
                         >
                             ×
                         </button>
@@ -166,7 +189,7 @@ function Birthday() {
                         <form onSubmit={checkAnswer}>
                             <fieldset className={styles.answers}>
                                 <legend>Choose one answer</legend>
-                                {encounter.options.map((option) => (
+                                {encounter.options.map((option, optionIndex) => (
                                     <label
                                         className={`${styles.answerOption} ${selectedAnswer === option ? styles.answerOptionSelected : ''}`}
                                         key={option}
@@ -180,6 +203,9 @@ function Birthday() {
                                                 setSelectedAnswer(option);
                                                 setAnswerStatus('');
                                             }}
+                                            data-umami-event="birthday-answer-select"
+                                            data-umami-event-checkpoint={encounter.id}
+                                            data-umami-event-option={optionIndex + 1}
                                         />
                                         <span>{option}</span>
                                     </label>
@@ -199,11 +225,23 @@ function Birthday() {
                             )}
 
                             {answerStatus === 'correct' ? (
-                                <button className={styles.continueButton} type="button" onClick={completeStop}>
+                                <button
+                                    className={styles.continueButton}
+                                    type="button"
+                                    onClick={completeStop}
+                                    data-umami-event="birthday-checkpoint-continue"
+                                    data-umami-event-checkpoint={encounter.id}
+                                >
                                     Continue the journey
                                 </button>
                             ) : (
-                                <button className={styles.continueButton} type="submit" disabled={!selectedAnswer}>
+                                <button
+                                    className={styles.continueButton}
+                                    type="submit"
+                                    disabled={!selectedAnswer}
+                                    data-umami-event="birthday-answer-submit"
+                                    data-umami-event-checkpoint={encounter.id}
+                                >
                                     Lock it in
                                 </button>
                             )}
@@ -220,11 +258,19 @@ function Birthday() {
                             type="button"
                             onClick={() => setJoke('')}
                             aria-label="Close message"
+                            data-umami-event="birthday-joke-close"
+                            data-umami-event-element="close-button"
                         >
                             ×
                         </button>
                         <p className={styles.joke}>{joke}</p>
-                        <button className={styles.continueButton} type="button" onClick={() => setJoke('')}>
+                        <button
+                            className={styles.continueButton}
+                            type="button"
+                            onClick={() => setJoke('')}
+                            data-umami-event="birthday-joke-close"
+                            data-umami-event-element="continue-button"
+                        >
                             Fine.
                         </button>
                     </section>
@@ -236,7 +282,14 @@ function Birthday() {
                     <section className={styles.modal} role="dialog" aria-modal="true" aria-labelledby="complete-title">
                         <p className={styles.modalEyebrow}>All four stops complete</p>
                         <h2 id="complete-title">well loooook at you. you made it. let’s take a peek at what i got you</h2>
-                        <button className={styles.continueButton} type="button" onClick={() => navigate('/birthday/options')}>
+                        <button
+                            className={styles.continueButton}
+                            type="button"
+                            onClick={() => navigate('/birthday/options')}
+                            data-umami-event="navigation-click"
+                            data-umami-event-destination="/birthday/options"
+                            data-umami-event-element="birthday-complete"
+                        >
                             Continue
                         </button>
                     </section>

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { trackUmamiEvent } from '../utils/analytics';
 import styles from './styles/Education.module.css';
 
 const rippleStages = [
@@ -94,7 +95,14 @@ const educationExperiences = [
         ],
         narrative: [
             <>
-                I started as a private tutor and grew to love it. For around three years, I worked with 15-20 students year-round across subjects from kindergarten through college. I found my own <a href={tutoringPostUrl} target="_blank" rel="noopener noreferrer">clients</a>, tutored through various honor societies (English, Math, Science, Spanish), and worked with a tutoring company for staffing.
+                I started as a private tutor and grew to love it. For around three years, I worked with 15-20 students year-round across subjects from kindergarten through college. I found my own <a
+                    href={tutoringPostUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-umami-event="outbound-link-click"
+                    data-umami-event-destination="tutoring-post"
+                    data-umami-event-context="education-private-tutoring"
+                >clients</a>, tutored through various honor societies (English, Math, Science, Spanish), and worked with a tutoring company for staffing.
             </>,
             'It was during these experiences that I felt like I was immediately impacting people; I learned what it meant to truly touch a life.',
             'I learned two fundamental abilities: how to understand when the person you are speaking to does not understand something and how to rephrase the same ideas again and again and again.',
@@ -167,7 +175,14 @@ const educationExperiences = [
             'As for the projects, I built from scratch a RAG-system project for CS students to learn leading industry technologies first-hand.',
             'In my last semester as head TA, I also introduced, for the first time in GT history, a hackathon for students for our class. A hackathon is a weekend-long (often 48 hours) event where students build a project based on a prompt. We focused on building a website to teach design principles. It was a wonderful success: ~25 students participated, 3 teams won an exemption from the final, and we plan to use those student submissions as a tool to help us teach curriculum in the future. ',
             <>
-                In my tenure as head TA, I was privileged to receive the <a href={teachingAwardUrl} target="_blank" rel="noopener noreferrer">College of Computing&apos;s Outstanding Undergraduate Head Teaching Assistant Award</a>.
+                In my tenure as head TA, I was privileged to receive the <a
+                    href={teachingAwardUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-umami-event="outbound-link-click"
+                    data-umami-event-destination="teaching-award"
+                    data-umami-event-context="education-head-ta"
+                >College of Computing&apos;s Outstanding Undergraduate Head Teaching Assistant Award</a>.
             </>,
         ],
     },
@@ -324,6 +339,8 @@ function EducationExperienceCard({ experience, onOpen }) {
                 onClick={() => onOpen(experience)}
                 aria-haspopup="dialog"
                 aria-label={`Open story for ${experience.title}`}
+                data-umami-event="education-story-open"
+                data-umami-event-story={experience.id}
             />
         </article>
     );
@@ -335,6 +352,10 @@ function EducationStoryModal({ experience, onClose, modalRef }) {
     return (
         <div className={styles.modalBackdrop} onMouseDown={event => {
             if (event.target === event.currentTarget) {
+                trackUmamiEvent('education-story-close', {
+                    story: experience.id,
+                    element: 'backdrop',
+                });
                 onClose();
             }
         }}>
@@ -352,6 +373,9 @@ function EducationStoryModal({ experience, onClose, modalRef }) {
                     className={styles.modalClose}
                     onClick={onClose}
                     aria-label="Close education story"
+                    data-umami-event="education-story-close"
+                    data-umami-event-story={experience.id}
+                    data-umami-event-element="close-button"
                 >
                     close
                 </button>
@@ -384,7 +408,14 @@ function EducationStoryModal({ experience, onClose, modalRef }) {
                                             {experience.lectures.map(lecture => (
                                                 <li key={lecture.title}>
                                                     {lecture.href ? (
-                                                        <a href={lecture.href} target="_blank" rel="noopener noreferrer">
+                                                        <a
+                                                            href={lecture.href}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            data-umami-event="outbound-link-click"
+                                                            data-umami-event-destination={lecture.title}
+                                                            data-umami-event-context={experience.id}
+                                                        >
                                                             {lecture.title}
                                                         </a>
                                                     ) : (
@@ -544,6 +575,9 @@ function OrbitingContributionSphere({
                             onClick={() => onSelect(index)}
                             aria-label={`${path.label}: ${path.description}. Click to ${selectedIndex === index ? 'deselect' : 'select'}.`}
                             aria-pressed={selectedIndex === index}
+                            data-umami-event="education-contribution-toggle"
+                            data-umami-event-contribution={path.label}
+                            data-umami-event-action={selectedIndex === index ? 'deselect' : 'select'}
                         >
                             {path.label}
                         </button>
@@ -566,7 +600,13 @@ function ActiveContributionDetails({ path, isPinned, onDeselect }) {
             <h3>{path.label}</h3>
             <span>{path.description}</span>
             {isPinned ? (
-                <button type="button" onClick={onDeselect}>
+                <button
+                    type="button"
+                    onClick={onDeselect}
+                    data-umami-event="education-contribution-toggle"
+                    data-umami-event-contribution={path.label}
+                    data-umami-event-action="deselect"
+                >
                     deselect
                 </button>
             ) : null}
@@ -613,6 +653,9 @@ function EducationNextSection() {
                         href={contactUrl}
                         target="_blank"
                         rel="noopener noreferrer"
+                        data-umami-event="outbound-link-click"
+                        data-umami-event-destination="linkedin-contact"
+                        data-umami-event-context="education-next"
                     >
                         tell me what you think
                     </a>

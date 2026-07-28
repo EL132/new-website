@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { motion } from 'react-magic-motion';
+import { trackUmamiEvent } from '../../utils/analytics';
 import styles from '../../pages/styles/Photography.module.css';
 
 function PhotoLightbox({ photo, onClose, shouldReduceMotion, isMobile }) {
@@ -61,6 +62,10 @@ function PhotoLightbox({ photo, onClose, shouldReduceMotion, isMobile }) {
             onPointerDown={isMobile ? event => event.stopPropagation() : undefined}
             onClick={event => {
                 if (event.target === event.currentTarget) {
+                    trackUmamiEvent('photo-close', {
+                        photo: photo.id,
+                        element: 'backdrop',
+                    });
                     onClose();
                 }
             }}
@@ -75,6 +80,9 @@ function PhotoLightbox({ photo, onClose, shouldReduceMotion, isMobile }) {
                 className={styles.lightboxClose}
                 onClick={onClose}
                 aria-label="Close expanded photo"
+                data-umami-event="photo-close"
+                data-umami-event-photo={photo.id}
+                data-umami-event-element="close-button"
             >
                 X
             </button>

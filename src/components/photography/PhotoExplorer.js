@@ -346,6 +346,8 @@ function PhotoExplorer({ shouldReduceMotion, onExit }) {
             ref={surfaceRef}
             className={`${styles.explorer} ${isDragging ? styles.explorerDragging : ''}`}
             data-photo-explorer
+            data-umami-event="photography-wall-interact"
+            data-umami-event-layout={isMobile ? 'mobile' : 'desktop'}
             aria-label={isMobile
                 ? 'Interactive photography wall. Drag to explore and tap a photo to expand it.'
                 : 'Interactive photography explorer'}
@@ -364,6 +366,7 @@ function PhotoExplorer({ shouldReduceMotion, onExit }) {
                 onClick={onExit}
                 onPointerDown={event => event.stopPropagation()}
                 aria-label="Return to photography landing page"
+                data-umami-event="photography-exit"
             >
                 <span className={styles.visuallyHidden}>Return to photography landing page</span>
             </button>

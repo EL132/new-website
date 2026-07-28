@@ -88,7 +88,11 @@ function FlightGlobe({ arcs, airports }) {
     }, [arcs.length, isCompact, reduceMotionOnCompact]);
 
     return (
-        <div ref={containerRef} className={styles.globeFrame}>
+        <div
+            ref={containerRef}
+            className={styles.globeFrame}
+            data-umami-event="travel-globe-interact"
+        >
             <p className={styles.mobileHint} aria-hidden="true">
                 swipe sideways to rotate
             </p>

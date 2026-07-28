@@ -32,7 +32,16 @@ function TripOptions() {
 
     return (
         <main className={styles.optionsPage}>
-            <Link className={styles.exit} to="/" aria-label="Close gift options">×</Link>
+            <Link
+                className={styles.exit}
+                to="/"
+                aria-label="Close gift options"
+                data-umami-event="navigation-click"
+                data-umami-event-destination="/"
+                data-umami-event-element="trip-options-exit"
+            >
+                ×
+            </Link>
 
             <header className={styles.intro}>
                 <h1>Pick where we go next.</h1>
@@ -80,7 +89,14 @@ function TripOptions() {
             </section>
 
             <nav className={styles.tripNavigation} aria-label="Choose a trip">
-                <button type="button" onClick={showPrevious} aria-label="Previous trip">
+                <button
+                    type="button"
+                    onClick={showPrevious}
+                    aria-label="Previous trip"
+                    data-umami-event="trip-option-navigation"
+                    data-umami-event-direction="previous"
+                    data-umami-event-from={trip.id}
+                >
                     <span aria-hidden="true">←</span>
                     Previous
                 </button>
@@ -94,11 +110,20 @@ function TripOptions() {
                             onClick={() => setActiveIndex(index)}
                             aria-label={`Show ${option.displayCountry || option.country}: ${option.title}`}
                             aria-current={index === activeIndex ? 'true' : undefined}
+                            data-umami-event="trip-option-select"
+                            data-umami-event-trip={option.id}
                         />
                     ))}
                 </div>
 
-                <button type="button" onClick={showNext} aria-label="Next trip">
+                <button
+                    type="button"
+                    onClick={showNext}
+                    aria-label="Next trip"
+                    data-umami-event="trip-option-navigation"
+                    data-umami-event-direction="next"
+                    data-umami-event-from={trip.id}
+                >
                     Next
                     <span aria-hidden="true">→</span>
                 </button>

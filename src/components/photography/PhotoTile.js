@@ -7,6 +7,9 @@ function PhotoTile({ photo, isDragging, onPhotoClick, shouldReduceMotion }) {
             type="button"
             className={styles.photoTile}
             data-photo-id={photo.id}
+            data-umami-event="photo-open"
+            data-umami-event-photo={photo.id}
+            data-umami-event-title={photo.title || photo.alt}
             aria-label={`Open photo: ${photo.alt}`}
             onClick={event => onPhotoClick(photo, event)}
             style={{
