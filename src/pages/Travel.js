@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import FlightGlobe from '../components/travel/FlightGlobe';
 import TravelStats from '../components/travel/TravelStats';
+import AirportSecurityWaitTimes from '../components/travel/AirportSecurityWaitTimes';
 import {
     buildFlightArcs,
     getUniqueAirports,
@@ -102,6 +103,8 @@ function Travel() {
                     </>
                 )}
             </section>
+
+            <AirportSecurityWaitTimes />
         </main>
     );
 }

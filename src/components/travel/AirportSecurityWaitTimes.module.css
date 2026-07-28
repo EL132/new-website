@@ -1,0 +1,467 @@
+.waitTimesSection {
+    width: min(1200px, 100%);
+    margin: clamp(4rem, 9vw, 7rem) auto 0;
+    padding-top: clamp(2.5rem, 6vw, 4.5rem);
+    border-top: 1px solid rgba(17, 17, 17, 0.16);
+}
+
+.sectionHeader {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: end;
+}
+
+.eyebrow {
+    margin: 0 0 0.75rem;
+    color: rgba(17, 17, 17, 0.58);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.sectionHeader h2 {
+    max-width: 720px;
+    margin: 0;
+    font-size: clamp(2.35rem, 5.7vw, 5rem);
+    letter-spacing: -0.045em;
+    line-height: 0.96;
+}
+
+.headerDetails {
+    padding-bottom: 0.25rem;
+}
+
+.description {
+    max-width: 610px;
+    margin: 0;
+    color: rgba(17, 17, 17, 0.68);
+    font-size: clamp(1rem, 1.8vw, 1.18rem);
+    line-height: 1.55;
+}
+
+.recordCount {
+    margin: 1rem 0 0;
+    color: rgba(17, 17, 17, 0.48);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.filters {
+    margin-top: clamp(2rem, 5vw, 3.5rem);
+    padding: 1rem;
+    border: 1px solid rgba(17, 17, 17, 0.12);
+    border-radius: 10px;
+    background: #f7f1e8;
+}
+
+.filterHeading {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.filterHeading div {
+    display: flex;
+    gap: 0.75rem;
+    align-items: baseline;
+}
+
+.filterHeading p {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 750;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.filterHeading span {
+    color: rgba(17, 17, 17, 0.48);
+    font-size: 0.74rem;
+}
+
+.filterHeading button {
+    padding: 0.46rem 0.75rem;
+    border: 1px solid rgba(17, 17, 17, 0.18);
+    border-radius: 999px;
+    background: #fff;
+    color: #111;
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.filterHeading button:hover:not(:disabled) {
+    border-color: rgba(17, 17, 17, 0.4);
+}
+
+.filterHeading button:focus-visible,
+.filterField select:focus-visible {
+    outline: 3px solid rgba(30, 84, 122, 0.32);
+    outline-offset: 2px;
+}
+
+.filterHeading button:disabled {
+    cursor: default;
+    opacity: 0.4;
+}
+
+.filterGrid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+.filterField {
+    display: grid;
+    gap: 0.4rem;
+    min-width: 0;
+}
+
+.filterField > span {
+    color: rgba(17, 17, 17, 0.58);
+    font-size: 0.67rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.filterField select {
+    width: 100%;
+    min-width: 0;
+    height: 2.75rem;
+    padding: 0 2.2rem 0 0.75rem;
+    border: 1px solid rgba(17, 17, 17, 0.14);
+    border-radius: 7px;
+    background-color: #fff;
+    color: #111;
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.85rem;
+}
+
+.insights {
+    margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.insightsHeading {
+    display: flex;
+    gap: 0.75rem;
+    align-items: baseline;
+    margin-bottom: 0.8rem;
+}
+
+.insightsHeading h3 {
+    margin: 0;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.insightsHeading span {
+    color: rgba(17, 17, 17, 0.48);
+    font-size: 0.72rem;
+}
+
+.insightGrid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    border: 1px solid rgba(17, 17, 17, 0.12);
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 14px 44px rgba(17, 17, 17, 0.06);
+    overflow: hidden;
+}
+
+.insightCard {
+    display: grid;
+    align-content: start;
+    min-width: 0;
+    min-height: 116px;
+    padding: 1rem;
+    border-right: 1px solid rgba(17, 17, 17, 0.1);
+}
+
+.insightCard:last-child {
+    border-right: 0;
+}
+
+.insightCard p {
+    margin: 0 0 0.8rem;
+    color: rgba(17, 17, 17, 0.5);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.insightCard strong {
+    font-size: clamp(1.2rem, 2.1vw, 1.65rem);
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+    overflow-wrap: anywhere;
+}
+
+.insightCard span {
+    margin-top: 0.55rem;
+    color: rgba(17, 17, 17, 0.56);
+    font-size: 0.74rem;
+    line-height: 1.4;
+}
+
+.tableFrame {
+    margin-top: 1.25rem;
+    border: 1px solid rgba(17, 17, 17, 0.14);
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 20px 60px rgba(17, 17, 17, 0.07);
+    overflow: hidden;
+}
+
+.tableScroller {
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+}
+
+.tableScroller:focus-visible {
+    outline: 3px solid rgba(30, 84, 122, 0.38);
+    outline-offset: -3px;
+}
+
+.waitTimesTable {
+    width: 100%;
+    min-width: 810px;
+    border-collapse: collapse;
+    color: #111;
+    font-size: 0.9rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.waitTimesTable thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    padding: 0.9rem 1rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.14);
+    background: #111;
+    color: #fff;
+    font-size: 0.68rem;
+    letter-spacing: 0.11em;
+    text-align: left;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.waitTimesTable thead th:last-child {
+    border-right: 0;
+}
+
+.waitTimesTable thead span {
+    color: rgba(255, 255, 255, 0.58);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-transform: none;
+}
+
+.screeningRow th {
+    padding: 1.15rem 1rem;
+    border-top: 1px solid rgba(17, 17, 17, 0.14);
+    border-bottom: 1px solid rgba(17, 17, 17, 0.1);
+    background: #f7f1e8;
+    text-align: left;
+}
+
+.screeningRow:first-child th {
+    border-top: 0;
+}
+
+.screeningRow span {
+    font-size: 1.05rem;
+    font-weight: 750;
+}
+
+.screeningRow small {
+    margin-left: 0.75rem;
+    color: rgba(17, 17, 17, 0.48);
+    font-size: 0.68rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+
+.dayRow th {
+    padding: 0.62rem 1rem;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+    background: #fcfaf6;
+    color: rgba(17, 17, 17, 0.58);
+    font-size: 0.69rem;
+    letter-spacing: 0.15em;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.dataRow th,
+.dataRow td {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+    text-align: left;
+    vertical-align: middle;
+}
+
+.dataRow th {
+    font-weight: 650;
+    white-space: nowrap;
+}
+
+.dataRow:hover {
+    background: rgba(247, 241, 232, 0.42);
+}
+
+.waitValue {
+    color: #1e547a;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.96rem;
+    font-weight: 750;
+    white-space: nowrap;
+}
+
+.airportValue {
+    min-width: 150px;
+    font-weight: 600;
+}
+
+.timeValue {
+    white-space: nowrap;
+}
+
+.flightBadge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.45rem;
+    padding: 0.12rem 0.5rem;
+    border: 1px solid rgba(17, 17, 17, 0.12);
+    border-radius: 999px;
+    background: rgba(111, 159, 196, 0.12);
+    color: rgba(17, 17, 17, 0.7);
+    font-size: 0.67rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.notRecorded {
+    color: rgba(17, 17, 17, 0.3);
+}
+
+.emptyState {
+    padding: 3rem 1rem;
+    color: rgba(17, 17, 17, 0.5);
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .waitTimesSection {
+        margin-top: 3.5rem;
+        padding-top: 2.5rem;
+    }
+
+    .sectionHeader {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        align-items: start;
+    }
+
+    .sectionHeader h2 {
+        max-width: 600px;
+        font-size: clamp(2.2rem, 10vw, 4rem);
+    }
+
+    .description {
+        line-height: 1.5;
+    }
+
+    .filterGrid,
+    .insightGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .insightCard:nth-child(2n) {
+        border-right: 0;
+    }
+
+    .insightCard:nth-child(-n + 4) {
+        border-bottom: 1px solid rgba(17, 17, 17, 0.1);
+    }
+
+    .insightCard:last-child {
+        grid-column: 1 / -1;
+        border-right: 0;
+    }
+
+    .waitTimesTable {
+        min-width: 760px;
+        font-size: 0.85rem;
+    }
+
+    .waitTimesTable thead th,
+    .dataRow th,
+    .dataRow td {
+        padding-right: 0.8rem;
+        padding-left: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .waitTimesSection {
+        margin-top: 2.75rem;
+        padding-top: 2rem;
+    }
+
+    .eyebrow {
+        margin-bottom: 0.55rem;
+    }
+
+    .recordCount {
+        font-size: 0.66rem;
+    }
+
+    .filterHeading {
+        align-items: flex-start;
+    }
+
+    .filterHeading div {
+        display: grid;
+        gap: 0.3rem;
+    }
+
+    .filterGrid,
+    .insightGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .insightCard {
+        min-height: 0;
+        grid-column: auto;
+        border-right: 0;
+        border-bottom: 1px solid rgba(17, 17, 17, 0.1);
+    }
+
+    .insightCard:nth-child(3) {
+        border-bottom: 1px solid rgba(17, 17, 17, 0.1);
+    }
+
+    .insightCard:last-child {
+        border-bottom: 0;
+    }
+
+    .tableFrame {
+        border-radius: 8px;
+    }
+}
