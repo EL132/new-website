@@ -1,1319 +1,198 @@
 .educationPage {
-    min-height: calc(100vh - 80px);
-    overflow-x: hidden;
-    background: #fff;
+    --education-content-width: 60%;
+    width: 100%;
+    padding-bottom: 4rem;
     color: #111;
 }
 
-.introSection,
-.rippleSection,
-.experienceSection,
-.nextEducationSection {
-    width: min(1120px, calc(100vw - 3rem));
+.educationSection {
+    width: var(--education-content-width);
+    max-width: 900px;
     margin: 0 auto;
+    padding: 3.5rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.18);
 }
 
-.introSection {
-    display: grid;
-    align-content: center;
-    min-height: min(72vh, 620px);
-    padding: clamp(3rem, 7vw, 6rem) 0 clamp(2rem, 5vw, 4rem);
+.educationSection:first-child {
+    padding-top: 2.5rem;
 }
 
-.eyebrow {
-    margin: 0 0 0.85rem;
-    color: rgba(17, 17, 17, 0.55);
-    font-size: 0.74rem;
-    font-weight: 750;
-    letter-spacing: 0.17em;
-    line-height: 1;
-    text-transform: uppercase;
+.educationSection:last-child {
+    border-bottom: 0;
 }
 
-.introSection h1 {
-    max-width: 15ch;
-    margin: 0;
-    font-size: clamp(3rem, 8.6vw, 7.8rem);
-    letter-spacing: 0;
-    line-height: 0.9;
-    text-transform: lowercase;
-}
-
-.introSection p:not(.eyebrow) {
-    max-width: 650px;
-    margin: 1.6rem 0 0;
-    color: rgba(17, 17, 17, 0.68);
-    font-size: clamp(1.02rem, 1.7vw, 1.22rem);
-    line-height: 1.62;
-}
-
-.rippleSection {
-    display: grid;
-    grid-template-columns: minmax(260px, 0.34fr) minmax(0, 1fr);
-    gap: clamp(2rem, 6vw, 5rem);
-    align-items: center;
-    min-height: min(calc(100vh - 80px), 700px);
-    padding: clamp(0.75rem, 2.5vw, 2rem) 0 clamp(2.5rem, 6vw, 5rem);
-}
-
-.rippleCopy {
-    display: grid;
-    gap: 1rem;
-}
-
-.rippleCopy h2 {
-    max-width: 12ch;
-    margin: 0;
-    font-size: clamp(2rem, 4.6vw, 4.2rem);
-    line-height: 0.94;
-    text-transform: lowercase;
-}
-
-.rippleCopy p:not(.eyebrow) {
-    margin: 0;
-    color: rgba(17, 17, 17, 0.66);
+.educationSection h1,
+.educationSection h2 {
+    margin: 0 0 1rem;
     font-size: 1rem;
-    line-height: 1.55;
-}
-
-.rippleStage {
-    position: relative;
-    display: grid;
-    place-items: center;
-    min-height: clamp(360px, 58vw, 620px);
-    isolation: isolate;
-}
-
-.rippleRings {
-    position: absolute;
-    inset: 4%;
-    z-index: 0;
-    pointer-events: none;
-}
-
-.rippleRings span {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: calc(20% + (var(--ring-index) * 16%));
-    aspect-ratio: 1;
-    border: 1px solid rgba(17, 17, 17, 0.13);
-    border-radius: 999px;
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.88);
-}
-
-.rippleRings span:nth-child(1) {
-    --ring-index: 0;
-}
-
-.rippleRings span:nth-child(2) {
-    --ring-index: 1;
-}
-
-.rippleRings span:nth-child(3) {
-    --ring-index: 2;
-}
-
-.rippleRings span:nth-child(4) {
-    --ring-index: 3;
-}
-
-.rippleRings span:nth-child(5) {
-    --ring-index: 4;
-}
-
-.rippleWords {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.rippleWord {
-    position: absolute;
-    left: var(--x);
-    top: var(--y);
-    color: rgba(17, 17, 17, 0.58);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: clamp(0.74rem, 1.4vw, 0.9rem);
     font-weight: 700;
-    letter-spacing: 0.12em;
-    opacity: 0;
-    text-transform: uppercase;
-    transform: translate(-50%, -50%) translateY(10px);
+    line-height: 1.3;
 }
 
-.differenceWord {
-    position: relative;
-    z-index: 2;
+.educationSection > p {
+    max-width: 760px;
     margin: 0;
-    color: #111;
-    font-size: clamp(3.4rem, 10.5vw, 10rem);
-    font-weight: 850;
-    letter-spacing: 0;
-    line-height: 0.78;
-    opacity: 0;
-    text-transform: lowercase;
-    transform: translateY(18px) scale(0.96);
+    font-size: 1rem;
+    line-height: 1.7;
 }
 
-.rippleSectionActive .rippleRings span {
-    animation: ringReveal 3200ms ease-out forwards;
-    animation-delay: calc(var(--ring-index) * 600ms);
-}
-
-.rippleSectionActive .rippleWord {
-    animation: wordReveal 1800ms ease-out forwards;
-    animation-delay: calc(var(--stage-index) * 760ms + 900ms);
-}
-
-.rippleSectionActive .differenceWord {
-    animation: differenceReveal 2400ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-    animation-delay: 5200ms;
-}
-
-.experienceSection {
-    padding: clamp(4rem, 8vw, 7rem) 0 clamp(3.5rem, 7vw, 6rem);
-}
-
-.experienceHeader {
-    display: grid;
-    grid-template-columns: minmax(150px, 0.22fr) minmax(0, 1fr);
-    gap: clamp(1.5rem, 5vw, 4rem);
-    align-items: start;
-    margin-bottom: clamp(1.6rem, 4vw, 3rem);
-}
-
-.experienceHeader h2 {
-    max-width: 11ch;
-    margin: 0;
-    font-size: clamp(2.7rem, 7.4vw, 6.9rem);
-    line-height: 0.9;
-    text-transform: lowercase;
-}
-
-.experienceHeader div > p {
-    max-width: 620px;
-    margin: 1rem 0 0;
-    color: rgba(17, 17, 17, 0.62);
-    font-size: clamp(1rem, 1.45vw, 1.12rem);
-    line-height: 1.58;
-}
-
-.experienceGrid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(1rem, 2.4vw, 1.45rem);
-}
-
-.experienceCard {
-    position: relative;
-    display: grid;
-    align-content: start;
-    gap: 1.1rem;
-    min-height: 430px;
-    width: 100%;
-    padding: clamp(1.1rem, 2.4vw, 1.55rem);
-    overflow: hidden;
-    border: 1px solid rgba(17, 17, 17, 0.14);
-    border-radius: 20px;
-    background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 250, 241, 0.74)),
-        #f8f4ed;
-    box-shadow: 0 12px 34px rgba(17, 17, 17, 0.055);
-    color: #111;
-    transition:
-        border-color 260ms ease,
-        box-shadow 260ms ease,
-        transform 260ms ease;
-}
-
-.experienceCard::before {
-    content: '';
-    position: absolute;
-    inset: 0 0 auto;
-    height: 4px;
-    background: var(--experience-accent);
-    opacity: 0.52;
-}
-
-.experienceCard::after {
-    content: '';
-    position: absolute;
-    inset: 0.8rem;
-    border: 1px solid rgba(17, 17, 17, 0.08);
-    border-radius: 14px;
-    opacity: 0;
-    pointer-events: none;
-    transform: scale(0.985);
-    transition:
-        opacity 260ms ease,
-        transform 260ms ease;
-}
-
-.experienceCard:hover,
-.experienceCard:focus-within {
-    border-color: rgba(17, 17, 17, 0.34);
-    box-shadow:
-        0 18px 44px rgba(17, 17, 17, 0.1),
-        0 0 0 5px rgba(183, 138, 85, 0.08);
-    transform: translateY(-7px) scale(1.012);
-}
-
-.experienceCard:hover::after,
-.experienceCard:focus-within::after {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.experienceCard:focus-within {
-    outline: 2px solid #111;
-    outline-offset: 4px;
-}
-
-.cardHitArea {
-    appearance: none;
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    border: 0;
-    border-radius: inherit;
-    background: transparent;
-    cursor: pointer;
-}
-
-.cardHitArea:focus {
-    outline: none;
-}
-
-.cardNumber {
-    color: var(--experience-accent);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.8rem;
-    font-weight: 750;
-    letter-spacing: 0.14em;
-}
-
-.cardTitleGroup {
-    display: grid;
-    gap: 0.35rem;
-}
-
-.cardTitleGroup h3 {
-    margin: 0;
-    font-size: clamp(1.7rem, 3vw, 2.55rem);
-    line-height: 0.96;
-    text-transform: lowercase;
-}
-
-.cardTitleGroup p {
-    margin: 0;
-    color: rgba(17, 17, 17, 0.58);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.75rem;
-    line-height: 1.35;
-}
-
-.cardSummary {
-    margin: 0;
-    color: rgba(17, 17, 17, 0.72);
-    font-size: 0.98rem;
-    line-height: 1.55;
-}
-
-.cardThemes,
-.modalThemes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.cardThemes li,
-.modalThemes li {
-    border: 1px solid rgba(17, 17, 17, 0.12);
-    border-radius: 999px;
-    color: rgba(17, 17, 17, 0.62);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    line-height: 1;
-    text-transform: uppercase;
-}
-
-.cardThemes li {
-    padding: 0.42rem 0.55rem;
-    background: rgba(255, 255, 255, 0.46);
-}
-
-.cardAction {
-    align-self: end;
-    justify-self: start;
-    margin-top: auto;
-    padding-top: 0.9rem;
-    border-top: 1px solid rgba(17, 17, 17, 0.1);
-    color: rgba(17, 17, 17, 0.72);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.74rem;
-    font-weight: 750;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-}
-
-.modalBackdrop {
-    position: fixed;
-    inset: 0;
-    z-index: 50;
-    display: grid;
-    place-items: center;
-    padding: clamp(1rem, 3vw, 2rem);
-    background: rgba(17, 17, 17, 0.46);
-}
-
-.storyModal {
-    position: relative;
-    width: min(960px, 100%);
-    max-height: min(86vh, 780px);
-    overflow: auto;
-    padding: clamp(1.2rem, 4vw, 2.4rem);
-    border: 1px solid rgba(17, 17, 17, 0.16);
-    border-radius: 24px;
-    background:
-        linear-gradient(180deg, #fff 0%, #fffaf1 100%);
-    box-shadow: 0 28px 90px rgba(17, 17, 17, 0.28);
-    outline: none;
-    animation: modalReveal 220ms ease-out both;
-}
-
-.modalClose {
-    appearance: none;
-    position: absolute;
-    right: clamp(1rem, 3vw, 1.5rem);
-    top: clamp(1rem, 3vw, 1.5rem);
-    border: 1px solid rgba(17, 17, 17, 0.16);
-    border-radius: 999px;
-    background: #fff;
-    color: rgba(17, 17, 17, 0.72);
-    cursor: pointer;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.72rem;
-    font-weight: 750;
-    letter-spacing: 0.12em;
-    padding: 0.55rem 0.75rem;
-    text-transform: uppercase;
-}
-
-.modalClose:hover,
-.modalClose:focus-visible {
-    border-color: rgba(17, 17, 17, 0.36);
-    color: #111;
-    outline: none;
-}
-
-.modalHeader {
-    display: grid;
-    gap: 0.9rem;
-    padding-right: 5.6rem;
-}
-
-.modalHeader h2 {
-    max-width: 10ch;
-    margin: 0;
-    font-size: clamp(2.6rem, 7vw, 6.2rem);
-    line-height: 0.88;
-    text-transform: lowercase;
-}
-
-.modalHeader > p:not(.eyebrow) {
-    max-width: 700px;
-    margin: 0;
-    color: rgba(17, 17, 17, 0.68);
-    font-size: clamp(1rem, 1.5vw, 1.14rem);
-    line-height: 1.55;
-}
-
-.modalMetaLine {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 1rem;
-    color: rgba(17, 17, 17, 0.58);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-}
-
-.modalThemes {
-    margin-top: clamp(1.3rem, 3vw, 2rem);
-}
-
-.modalThemes li {
-    padding: 0.5rem 0.62rem;
-    background: rgba(248, 244, 237, 0.78);
-}
-
-.modalLayout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(210px, 0.32fr);
-    gap: clamp(1.4rem, 4vw, 3rem);
-    align-items: start;
-    margin-top: clamp(1.4rem, 4vw, 2.5rem);
-    padding-top: clamp(1.2rem, 3vw, 2rem);
-    border-top: 1px solid rgba(17, 17, 17, 0.1);
-}
-
-.modalNarrative {
-    display: grid;
-    gap: 1rem;
-}
-
-.modalNarrative p {
-    margin: 0;
-    color: rgba(17, 17, 17, 0.72);
-    font-size: clamp(1rem, 1.35vw, 1.09rem);
-    line-height: 1.68;
-}
-
-.modalNarrative a {
-    color: inherit;
-    font-weight: 750;
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.2em;
-}
-
-.lectureList {
-    display: grid;
-    gap: 0.65rem;
+.educationSection > p + p {
     margin-top: 1rem;
-    padding: 0.95rem 1rem;
-    border: 1px solid rgba(17, 17, 17, 0.1);
-    border-radius: 14px;
-    background: rgba(248, 244, 237, 0.52);
 }
 
-.lectureList p {
-    color: rgba(17, 17, 17, 0.52);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.72rem;
-    font-weight: 750;
-    letter-spacing: 0.12em;
-    line-height: 1;
-    text-transform: uppercase;
+.experienceList {
+    max-width: 760px;
+    margin-top: 2.5rem;
 }
 
-.lectureList ul {
-    display: grid;
-    gap: 0.45rem;
+.experience {
+    margin-top: 2rem;
+}
+
+.experience:first-child {
+    margin-top: 0;
+}
+
+.experience h3,
+.involvement h3 {
     margin: 0;
-    padding-left: 1.1rem;
-    color: rgba(17, 17, 17, 0.74);
-    font-size: 0.98rem;
+    font-size: 1rem;
+    font-weight: 650;
     line-height: 1.45;
 }
 
-.modalFacts {
+.experience p,
+.involvement p,
+.involvement li {
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.experience > p:not(.detail):not(.linkList) {
+    margin: 0.55rem 0 0;
+}
+
+.detail {
+    margin: 0.2rem 0 0;
+    color: rgba(0, 0, 0, 0.58);
+    font-size: 0.82rem !important;
+}
+
+.linkList {
+    margin: 0.55rem 0 0;
+}
+
+.educationPage a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+}
+
+.educationPage a:hover {
+    opacity: 0.65;
+}
+
+.educationPage a:focus-visible {
+    outline: 3px solid rgba(29, 78, 216, 0.32);
+    outline-offset: 3px;
+}
+
+.noteList {
     display: grid;
-    gap: 0.9rem;
-    padding: 1rem;
-    border: 1px solid rgba(17, 17, 17, 0.1);
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.55);
-}
-
-.modalFacts > p {
-    margin: 0;
-    color: rgba(17, 17, 17, 0.48);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.72rem;
-    font-weight: 750;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-}
-
-.metadataList {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.85rem;
-    margin: 0;
-}
-
-.metadataList div {
-    display: grid;
-    gap: 0.22rem;
-}
-
-.metadataList dt {
-    color: rgba(17, 17, 17, 0.48);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.7rem;
-    font-weight: 750;
-    letter-spacing: 0.11em;
-    text-transform: uppercase;
-}
-
-.metadataList dd {
-    margin: 0;
-    color: rgba(17, 17, 17, 0.74);
-    font-size: 0.92rem;
-    line-height: 1.45;
-}
-
-.nextEducationSection {
-    display: grid;
-    gap: clamp(1.1rem, 2.6vw, 2rem);
-    margin-bottom: clamp(4rem, 8vw, 7rem);
-    padding: clamp(0.75rem, 2vw, 1.5rem) 0 clamp(2.5rem, 6vw, 4.8rem);
-    border-top: 1px solid rgba(17, 17, 17, 0.12);
-    border-bottom: 1px solid rgba(17, 17, 17, 0.12);
-    background:
-        radial-gradient(circle at 72% 42%, rgba(248, 244, 237, 0.86), transparent 34%),
-        #fff;
-}
-
-.nextEducationHeader {
-    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.75rem;
-    justify-items: center;
-    text-align: center;
+    max-width: 760px;
+    margin-top: 2.5rem;
 }
 
-.nextEducationHeader h2 {
-    max-width: 10ch;
-    margin: 0;
-    font-size: clamp(3rem, 8vw, 7rem);
-    line-height: 0.9;
-    text-transform: lowercase;
+.noteCard {
+    min-height: 150px;
+    padding: 1rem;
+    border: 1px solid transparent;
+    color: inherit;
+    text-decoration: none !important;
+    transition: border-color 150ms ease;
 }
 
-.nextEducationLayout {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: clamp(0.35rem, 1.2vw, 0.9rem);
-    align-items: start;
-    justify-items: center;
-}
-
-.nextEducationCopy {
-    position: relative;
-    z-index: 10;
-    display: grid;
-    gap: clamp(1rem, 2vw, 1.35rem);
-    align-content: start;
-    justify-items: center;
-    width: min(840px, 100%);
-    text-align: center;
-}
-
-.nextEducationCopy p {
-    margin: 0;
-    color: rgba(17, 17, 17, 0.68);
-    font-size: clamp(1rem, 1.45vw, 1.12rem);
-    line-height: 1.6;
-}
-
-.nextQuestion {
-    margin: 0;
-    color: #111 !important;
-    width: min(75vw, 840px);
-    max-width: 100%;
-    font-size: clamp(2rem, 4.4vw, 3.65rem) !important;
-    font-weight: 850;
-    line-height: 1.05 !important;
-}
-
-.contactLink {
-    position: relative;
-    z-index: 11;
-    justify-self: center;
-    margin-top: clamp(0.1rem, 0.8vw, 0.45rem);
-    margin-bottom: 0;
-    color: #111;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.78rem;
-    font-weight: 750;
-    letter-spacing: 0.12em;
-    text-decoration: underline;
-    text-underline-offset: 0.22em;
-    text-transform: uppercase;
-}
-
-.orbitColumn {
-    display: grid;
-    place-items: center;
-    width: 100%;
-    min-width: 0;
-}
-
-.orbitShowcase {
-    position: relative;
-    display: grid;
-    place-items: center;
-    width: min(800px, 100%);
-    min-height: clamp(420px, 52vw, 620px);
-    margin: clamp(-3.25rem, -4.4vw, -1.5rem) auto 0;
-}
-
-.orbitSphere {
-    position: relative;
-    display: grid;
-    place-items: center;
-    width: 100%;
-    min-height: clamp(390px, 50vw, 590px);
-    perspective: 980px;
-    isolation: isolate;
-}
-
-.orbitCore {
-    position: absolute;
-    z-index: 2;
-    display: grid;
-    place-items: center;
-    width: clamp(5.4rem, 11vw, 8rem);
-    aspect-ratio: 1;
-    border: 1px solid rgba(17, 17, 17, 0.16);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.72);
-    box-shadow:
-        0 18px 60px rgba(17, 17, 17, 0.08),
-        inset 0 0 0 10px rgba(248, 244, 237, 0.52);
-    color: rgba(17, 17, 17, 0.86);
-    font-size: clamp(4.4rem, 9vw, 7rem);
-    font-weight: 850;
-    line-height: 1;
-    transition:
-        box-shadow 240ms ease,
-        transform 240ms ease,
-        opacity 240ms ease;
-}
-
-.orbitSphere:hover .orbitCore,
-.orbitSphere:focus-within .orbitCore {
-    box-shadow:
-        0 22px 72px rgba(17, 17, 17, 0.13),
-        inset 0 0 0 10px rgba(248, 244, 237, 0.72);
-    opacity: 0.94;
-    transform: scale(1.035);
-}
-
-.orbitShell {
-    position: relative;
-    z-index: 3;
-    width: clamp(310px, 48vw, 530px);
-    aspect-ratio: 1;
-    transform-style: preserve-3d;
-    animation: orbitTurn 34s linear infinite;
-}
-
-.orbitSphere:hover .orbitShell,
-.orbitSphere:focus-within .orbitShell {
-    animation-play-state: running;
-}
-
-.orbitRing {
-    position: absolute;
-    inset: 14%;
-    border: 4px solid rgba(17, 17, 17, 0.11);
-    border-radius: 999px;
-    pointer-events: none;
-}
-
-.orbitRing:nth-child(1) {
-    border-color: rgba(183, 138, 85, 0.3);
-    transform: rotateX(72deg);
-}
-
-.orbitRing:nth-child(2) {
-    border-color: rgba(138, 114, 93, 0.28);
-    transform: rotateY(67deg);
-}
-
-.orbitRing:nth-child(3) {
-    inset: 9%;
-    border-color: rgba(110, 119, 99, 0.26);
-    transform: rotateX(18deg) rotateY(38deg);
-}
-
-.orbitChip {
-    position: absolute;
-    z-index: 4;
-    left: 50%;
-    top: 50%;
-    transform:
-        translate(-50%, -50%)
-        rotateY(var(--orbit-y))
-        rotateX(var(--orbit-x))
-        translateZ(var(--orbit-depth));
-    transform-style: preserve-3d;
-}
-
-.orbitChipButton {
-    appearance: none;
-    display: block;
-    max-width: 11rem;
-    padding: 0.58rem 0.72rem;
-    border: 1px solid rgba(17, 17, 17, 0.18);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.82);
-    box-shadow: 0 12px 32px rgba(17, 17, 17, 0.075);
-    color: rgba(17, 17, 17, 0.78);
-    cursor: pointer;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: clamp(0.68rem, 1.15vw, 0.78rem);
-    font-weight: 750;
-    letter-spacing: 0.08em;
-    line-height: 1.15;
-    opacity: var(--chip-opacity);
-    text-align: center;
-    text-transform: uppercase;
-    transform: scale(var(--chip-scale));
-    transition:
-        border-color 200ms ease,
-        box-shadow 200ms ease,
-        opacity 200ms ease,
-        transform 200ms ease;
-    white-space: normal;
-}
-
-.orbitChipButton:hover,
-.orbitChipButton:focus-visible,
-.orbitChipButtonActive {
-    border-color: rgba(17, 17, 17, 0.42);
-    box-shadow:
-        0 16px 38px rgba(17, 17, 17, 0.12),
-        0 0 0 5px rgba(248, 244, 237, 0.95);
-    color: #111;
+.educationPage .noteCard:hover {
+    border-color: rgba(0, 0, 0, 0.38);
     opacity: 1;
-    outline: none;
-    transform: scale(calc(var(--chip-scale) + 0.12));
 }
 
-.orbitDetails {
-    position: absolute;
-    left: 50%;
-    bottom: clamp(0.5rem, 4vw, 2.3rem);
-    z-index: 8;
-    display: grid;
-    gap: 0.35rem;
-    width: min(390px, calc(100% - 2rem));
-    min-height: 8.3rem;
-    padding: 1rem 1.1rem;
-    border: 1px solid rgba(17, 17, 17, 0.12);
-    border-radius: 18px;
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 18px 54px rgba(17, 17, 17, 0.1);
-    pointer-events: none;
-    transform: translateX(-50%);
-    animation: orbitDetailsIn 180ms ease-out both;
+.educationPage .noteCard:focus-visible {
+    border-color: rgba(0, 0, 0, 0.38);
+    outline: 3px solid rgba(29, 78, 216, 0.32);
+    outline-offset: 2px;
 }
 
-.orbitDetailsPinned {
-    pointer-events: auto;
+.noteCard .detail {
+    margin: 0 0 0.6rem;
 }
 
-.orbitDetails p,
-.orbitDetails h3,
-.orbitDetails span {
+.noteCard h3 {
     margin: 0;
+    font-size: 1rem;
+    font-weight: 650;
+    line-height: 1.45;
 }
 
-.orbitDetails p {
-    color: rgba(17, 17, 17, 0.48);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.72rem;
-    font-weight: 750;
-    letter-spacing: 0.12em;
-    line-height: 1;
-    text-transform: uppercase;
+.involvement {
+    max-width: 760px;
+    margin-top: 3rem;
 }
 
-.orbitDetails h3 {
-    font-size: clamp(1.45rem, 3vw, 2.3rem);
-    line-height: 1;
-    text-transform: lowercase;
-}
-
-.orbitDetails span {
-    color: rgba(17, 17, 17, 0.68);
-    font-size: 0.98rem;
-    line-height: 1.5;
-}
-
-.orbitDetails button {
-    appearance: none;
-    justify-self: start;
-    margin-top: 0.4rem;
+.involvement ul {
+    margin: 0.75rem 0 0 1.1rem;
     padding: 0;
-    border: 0;
-    background: transparent;
-    color: #111;
-    cursor: pointer;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.72rem;
-    font-weight: 750;
-    letter-spacing: 0.12em;
-    text-decoration: underline;
-    text-underline-offset: 0.22em;
-    text-transform: uppercase;
 }
 
-.orbitDetails button:focus-visible {
-    outline: 1px solid #111;
-    outline-offset: 4px;
+.involvement li + li {
+    margin-top: 0.55rem;
 }
 
-@keyframes orbitDetailsIn {
-    from {
-        opacity: 0;
-        transform: translate(-50%, 8px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translate(-50%, 0);
-    }
+.involvement > p {
+    margin: 1rem 0 0;
 }
 
-@keyframes ringReveal {
-    0% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.82);
+@media screen and (max-width: 768px) {
+    .educationPage {
+        --education-content-width: calc(100% - 2.5rem);
+        padding-bottom: 2rem;
     }
 
-    70% {
-        opacity: 1;
+    .educationSection {
+        padding: 2.5rem 0;
     }
 
-    100% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-    }
-}
-
-@keyframes wordReveal {
-    from {
-        opacity: 0;
-        transform: translate(-50%, -50%) translateY(10px);
+    .educationSection:first-child {
+        padding-top: 1.75rem;
     }
 
-    to {
-        opacity: 1;
-        transform: translate(-50%, -50%) translateY(0);
-    }
-}
-
-@keyframes differenceReveal {
-    from {
-        opacity: 0;
-        transform: translateY(18px) scale(0.96);
+    .educationSection > p,
+    .experience p,
+    .note p,
+    .involvement p,
+    .involvement li {
+        font-size: 1rem;
+        line-height: 1.65;
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-@keyframes mobileRippleWordReveal {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
+    .experienceList,
+    .noteList {
+        margin-top: 2rem;
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes mobileDifferenceReveal {
-    from {
-        opacity: 0;
-        transform: translateY(14px) scale(0.96);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-@keyframes modalReveal {
-    from {
-        opacity: 0;
-        transform: translateY(14px) scale(0.985);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-@keyframes orbitTurn {
-    from {
-        transform: rotateX(8deg) rotateY(0deg);
-    }
-
-    to {
-        transform: rotateX(8deg) rotateY(360deg);
-    }
-}
-
-@media screen and (max-width: 900px) {
-    .rippleSection,
-    .experienceHeader {
+    .noteList {
         grid-template-columns: 1fr;
     }
 
-    .rippleCopy {
-        max-width: 560px;
-    }
-
-    .experienceGrid,
-    .modalLayout,
-    .nextEducationLayout,
-    .orbitColumn {
-        grid-template-columns: 1fr;
-    }
-
-    .experienceCard {
-        min-height: auto;
-    }
-
-    .modalFacts {
-        max-width: none;
-    }
-
-    .orbitShowcase {
-        min-height: clamp(390px, 76vw, 560px);
-    }
-
-    .orbitSphere {
-        min-height: clamp(360px, 70vw, 520px);
-    }
-}
-
-@media screen and (max-width: 640px) {
-    .introSection,
-    .rippleSection,
-    .experienceSection,
-    .nextEducationSection {
-        width: min(100% - 2rem, 520px);
-    }
-
-    .introSection {
-        min-height: auto;
-        padding-top: 2rem;
-    }
-
-    .introSection h1 {
-        max-width: 12ch;
-        font-size: clamp(2.75rem, 13vw, 4.65rem);
-    }
-
-    .rippleSection {
-        gap: 1.4rem;
-        min-height: auto;
-        padding-top: 0.75rem;
-    }
-
-    .rippleStage {
-        position: relative;
-        display: block;
+    .noteCard {
         min-height: 0;
-        overflow: hidden;
-        padding: 1rem;
-        border: 1px solid rgba(17, 17, 17, 0.1);
-        border-radius: 16px;
-        background:
-            radial-gradient(circle at 84% 12%, rgba(183, 138, 85, 0.12), transparent 32%),
-            #fbf8f2;
-        box-sizing: border-box;
-    }
-
-    .rippleRings {
-        left: 50%;
-        right: auto;
-        top: auto;
-        bottom: -5.5rem;
-        display: block;
-        width: min(82vw, 310px);
-        aspect-ratio: 1;
-        opacity: 0.72;
-        transform: translateX(-50%);
-    }
-
-    .rippleWords {
-        position: relative;
-        inset: auto;
-        display: grid;
-        gap: 0.25rem;
-        counter-reset: ripple-stage;
-    }
-
-    .rippleStage .rippleWord {
-        position: relative;
-        left: auto;
-        top: auto;
-        display: flex;
-        align-items: center;
-        gap: 0.7rem;
-        min-height: 34px;
-        color: rgba(17, 17, 17, 0.68);
-        font-size: 0.7rem;
-        letter-spacing: 0.09em;
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    .rippleStage .rippleWord::before {
-        content: counter(ripple-stage, decimal-leading-zero);
-        display: grid;
-        flex: 0 0 auto;
-        place-items: center;
-        width: 28px;
-        height: 28px;
-        border: 1px solid rgba(17, 17, 17, 0.13);
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.72);
-        color: #8a725d;
-        counter-increment: ripple-stage;
-        font-size: 0.62rem;
-    }
-
-    .rippleStage .differenceWord {
-        margin: 0.8rem 0 0;
-        padding-top: 0.85rem;
-        border-top: 1px solid rgba(17, 17, 17, 0.1);
-        font-size: clamp(2.65rem, 14vw, 4.6rem);
-        line-height: 0.88;
-        opacity: 0;
-        text-align: center;
-        transform: translateY(14px) scale(0.96);
-    }
-
-    .rippleSectionActive .rippleWord {
-        animation: mobileRippleWordReveal 520ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        animation-delay: calc(var(--stage-index) * 220ms + 180ms);
-    }
-
-    .rippleSectionActive .rippleRings span {
-        animation: ringReveal 950ms ease-out forwards;
-        animation-delay: calc(var(--ring-index) * 110ms + 820ms);
-    }
-
-    .rippleSectionActive .differenceWord {
-        animation: mobileDifferenceReveal 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        animation-delay: 1350ms;
-    }
-
-    .experienceSection {
-        padding-top: 3.25rem;
-    }
-
-    .experienceHeader h2 {
-        font-size: clamp(2.7rem, 13vw, 4.6rem);
-    }
-
-    .experienceCard {
-        width: 100%;
-        max-width: 100%;
-        padding: 1.15rem;
-        border-radius: 16px;
-        box-sizing: border-box;
-    }
-
-    .modalBackdrop {
-        align-items: flex-end;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    .storyModal {
-        width: 100%;
-        max-width: 100%;
-        max-height: 92vh;
-        max-height: 92dvh;
-        padding: 1.1rem;
-        padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
-        border-radius: 20px 20px 0 0;
-        box-sizing: border-box;
-        overscroll-behavior: contain;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .modalClose {
-        position: sticky;
-        right: auto;
-        top: 0.5rem;
-        z-index: 2;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: max-content;
-        min-width: 76px;
-        min-height: 44px;
-        margin-bottom: -44px;
-        margin-left: auto;
-        padding: 0.6rem 0.8rem;
-        box-sizing: border-box;
-    }
-
-    .modalHeader {
-        padding-top: 2.8rem;
-        padding-right: 0;
-    }
-
-    .modalHeader h2 {
-        max-width: 11ch;
-        font-size: clamp(2.25rem, 12vw, 4rem);
-    }
-
-    .nextEducationSection {
-        gap: 1.6rem;
-        padding-bottom: 3rem;
-    }
-
-    .nextEducationHeader h2 {
-        font-size: clamp(2.75rem, 13vw, 4.7rem);
-    }
-
-    .nextQuestion {
-        width: 100%;
-        font-size: clamp(2rem, 10vw, 3.25rem) !important;
-    }
-
-    .orbitShowcase {
-        width: 100%;
-        min-height: auto;
-    }
-
-    .orbitSphere {
-        justify-items: stretch;
-        min-height: auto;
-        perspective: none;
-    }
-
-    .orbitCore {
-        position: relative;
-        justify-self: center;
-        width: 6.1rem;
-        margin: 0 0 1rem;
-        font-size: 5rem;
-    }
-
-    .orbitShell {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.55rem;
-        width: 100%;
-        aspect-ratio: auto;
-        animation: none;
-        transform: none;
-    }
-
-    .orbitRing {
-        display: none;
-    }
-
-    .orbitChip {
-        position: static;
-        transform: none;
-    }
-
-    .orbitChipButton {
-        max-width: none;
-        min-height: 44px;
-        padding: 0.7rem 0.8rem;
-        box-sizing: border-box;
-        opacity: 1;
-        transform: none;
-    }
-
-    .orbitChipButton:hover,
-    .orbitChipButton:focus-visible,
-    .orbitChipButtonActive {
-        transform: translateY(-2px);
-    }
-
-    .orbitDetails {
-        position: static;
-        width: 100%;
-        max-width: 100%;
-        min-height: auto;
-        margin-top: 1rem;
-        box-sizing: border-box;
-        pointer-events: auto;
-        transform: none;
-        animation: none;
-    }
-
-    .orbitDetails button {
-        display: inline-flex;
-        align-items: center;
-        min-height: 44px;
-        margin-top: 0.2rem;
-        padding: 0 0.2rem;
-    }
-
-    .contactLink {
-        display: inline-flex;
-        align-items: center;
-        min-height: 44px;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .rippleSectionActive .rippleRings span,
-    .rippleSectionActive .rippleWord,
-    .rippleSectionActive .differenceWord {
-        animation: none;
-    }
-
-    .rippleRings span,
-    .rippleWord,
-    .differenceWord {
-        opacity: 1;
-        transform: translate(-50%, -50%);
-    }
-
-    .differenceWord {
-        transform: none;
-    }
-
-    .rippleStage .rippleWord,
-    .rippleStage .differenceWord {
-        opacity: 1;
-        transform: none;
-    }
-
-    .experienceCard,
-    .experienceCard::after,
-    .orbitDetails,
-    .orbitChipButton,
-    .storyModal {
-        animation: none;
+    .noteCard {
         transition: none;
-    }
-
-    .orbitShell {
-        animation: none;
-    }
-
-    .experienceCard:hover,
-    .experienceCard:focus-within,
-    .orbitChipButton:hover,
-    .orbitChipButton:focus-visible,
-    .orbitChipButtonActive {
-        transform: none;
     }
 }

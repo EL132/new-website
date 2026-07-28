@@ -4,6 +4,7 @@ import Photography from './pages/Photography';
 import Travel from './pages/Travel';
 import MakingThings from './pages/MakingThings';
 import Education from './pages/Education';
+import EducationThought from './pages/EducationThought';
 import ThingsIveDone from './pages/ThingsIveDone';
 import Birthday from './pages/Birthday';
 import TripOptions from './pages/TripOptions';
@@ -36,6 +37,7 @@ function App() {
                 <Route path="/artist/travel" element={<Travel />} />
                 <Route path="/engineer/making-things" element={<MakingThings />} />
                 <Route path="/engineer/education" element={<Education />} />
+                <Route path="/engineer/education/thoughts/:slug" element={<EducationThought />} />
                 <Route path="/friend/things-ive-done" element={<ThingsIveDone />} />
                 <Route path="/birthday" element={<Birthday />} />
                 <Route path="/birthday/options" element={<TripOptions />} />

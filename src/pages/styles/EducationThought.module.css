@@ -1,0 +1,91 @@
+.thoughtPage {
+    width: 60%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2.5rem 0 5rem;
+    color: #111;
+}
+
+.thoughtPage article {
+    max-width: 760px;
+}
+
+.backLink {
+    display: inline-block;
+    margin-bottom: 3rem;
+    color: inherit;
+    font-size: 0.82rem;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+}
+
+.detail {
+    margin: 0 0 0.45rem;
+    color: rgba(0, 0, 0, 0.58);
+    font-size: 0.82rem;
+}
+
+.thoughtPage h1 {
+    margin: 0;
+    font-size: clamp(1.5rem, 3vw, 2.4rem);
+    line-height: 1.2;
+}
+
+.articleBody {
+    min-height: 12rem;
+    margin-top: 2.5rem;
+}
+
+.articleBody p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.articleBody p + p {
+    margin-top: 1.35rem;
+}
+
+.articleBody h2 {
+    margin: 3.25rem 0 1rem;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.articleFigure {
+    width: min(90vw, 1100px);
+    margin: 2.5rem 0 2.5rem 50%;
+    transform: translateX(-50%);
+}
+
+.articleFigure img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.sourceLink {
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+.thoughtPage a {
+    color: inherit;
+    text-underline-offset: 0.18em;
+}
+
+.thoughtPage a:hover {
+    opacity: 0.65;
+}
+
+.thoughtPage a:focus-visible {
+    outline: 3px solid rgba(29, 78, 216, 0.32);
+    outline-offset: 3px;
+}
+
+@media screen and (max-width: 768px) {
+    .thoughtPage {
+        width: calc(100% - 2.5rem);
+        padding-top: 1.75rem;
+    }
+}
