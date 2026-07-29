@@ -161,7 +161,7 @@ function MobileRowDetails({ item, detailsId }) {
                 <img
                     className={styles.mobileRowImage}
                     src={item.mobileImage || image}
-                    alt=""
+                    alt={item.imageAlt}
                     style={{ aspectRatio: item.mobileAspect || '4 / 5' }}
                     loading="eager"
                     decoding="async"
@@ -217,7 +217,7 @@ function ThingsShowcase({ items }) {
                                             <img
                                                 className={styles.previewImage}
                                                 src={image}
-                                                alt=""
+                                                alt={item.imageAlt}
                                                 loading={isActive ? 'eager' : 'lazy'}
                                             />
                                         ) : null}

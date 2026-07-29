@@ -21,7 +21,11 @@ const projects = [
         description: 'A startup contracted me to build their website from scratch: a full-stack web application for exploring events, artists, and people in Athens, GA. I had no web development knowledge when I started, so I taught myself by building through it and taking a Udemy web development course.',
         toolsMaterials: ['contract work', 'full-stack web', 'self-taught', 'Udemy course'],
         assets: [
-            { type: 'image', src: projectAsset('know-athens/cover.png'), alt: 'Know Athens cover' },
+            {
+                type: 'image',
+                src: projectAsset('know-athens/cover.png'),
+                alt: 'A Know Athens graphic announcing a weekly music update for March 27 through April 2.',
+            },
         ],
         links: [
             {
@@ -40,7 +44,11 @@ const projects = [
         description: 'An AI-powered search tool I built with one friend to study technical interviews using our own notes. We made our own vector database from those notes and had an LLM query it for relevant chunks.',
         toolsMaterials: ['vector database', 'LLM retrieval', 'notes', 'React'],
         assets: [
-            { type: 'image', src: projectAsset('memory-assistant/cover.png'), alt: 'Memory Assistant cover' },
+            {
+                type: 'image',
+                src: projectAsset('memory-assistant/cover.png'),
+                alt: 'An orange presentation slide introducing Memory Assistant as an AI-powered search tool built from personal notes.',
+            },
         ],
         links: [
             { label: 'website', href: 'https://memory-assistant-97ft.vercel.app/' },
@@ -57,7 +65,11 @@ const projects = [
         description: 'A 2D platformer built in Python with Pygame. It was a long-form exercise in mechanics, level design, iteration, and the patience required to make a small world feel responsive.',
         toolsMaterials: ['Python', 'Pygame', 'game design', 'GitHub'],
         assets: [
-            { type: 'image', src: projectAsset('platformer/cover.png'), alt: 'Platformer cover' },
+            {
+                type: 'image',
+                src: projectAsset('platformer/cover.png'),
+                alt: 'Illustrated Platformer title art showing a red-haired character holding an axe in a dark forest.',
+            },
         ],
         links: [
             { label: 'website', href: 'https://el132.github.io/platformer/' },
@@ -74,7 +86,11 @@ const projects = [
         description: 'A project that sits between software thinking, documentation, and physical build work. The archive is a final documentation record and presentation rather than a clean app screen.',
         toolsMaterials: ['documentation', 'presentation', 'prototyping', 'systems'],
         assets: [
-            { type: 'image', src: projectAsset('velox.png'), alt: 'Velox cover' },
+            {
+                type: 'image',
+                src: projectAsset('velox.png'),
+                alt: 'A Velox mobile timer screen over a bicycle camera view, showing total time, lap times, and workout controls.',
+            },
         ],
         links: [
             {
@@ -101,7 +117,11 @@ const projects = [
         description: 'A 2-way communication device made for my partner to help us introduce novelty into our relationship at distance.',
         toolsMaterials: ['Design', 'CAD', 'embedded systems', 'laser cutting'],
         assets: [
-            { type: 'image', src: projectAsset('pigeon-post.jpg'), alt: 'Pigeon Post' },
+            {
+                type: 'image',
+                src: projectAsset('pigeon-post.jpg'),
+                alt: 'Two laser-cut wooden Pigeon Post devices, one with a green screen reading “Something to share!”',
+            },
         ],
         links: [
             {
@@ -121,7 +141,11 @@ const projects = [
         description: 'A hands-on embroidery experiment and a gift for my partner. It was part of my growing interest in physical making: thread, fabric, slower decisions, and visible iteration.',
         toolsMaterials: ['thread', 'fabric', 'embroidery', 'patience'],
         assets: [
-            { type: 'image', src: projectAsset('embroidered_sweatshirt.jpg'), alt: 'Embroidered sweatshirt' },
+            {
+                type: 'image',
+                src: projectAsset('embroidered_sweatshirt.jpg'),
+                alt: 'A burgundy sweatshirt on a workbench with three yellow embroidered patches, chalk guide lines, and a ruler.',
+            },
         ],
         links: [],
     },
@@ -135,7 +159,11 @@ const projects = [
         description: 'Another small step into making with my hands. I messed up a good bit, which made it a useful lesson in patience, repetition, and working with simple materials.',
         toolsMaterials: ['thread', 'textiles', 'embroidery', 'household objects'],
         assets: [
-            { type: 'image', src: projectAsset('kitchen_towels.jpeg'), alt: 'Embroidered kitchen towels' },
+            {
+                type: 'image',
+                src: projectAsset('kitchen_towels.jpeg'),
+                alt: 'Four white kitchen towels embroidered with geese, footprints, and the words “Happy birthday Divya.”',
+            },
         ],
         links: [],
     },

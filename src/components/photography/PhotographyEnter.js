@@ -25,7 +25,7 @@ function PhotographyEnter({ onEnter, shouldReduceMotion }) {
             >
                 <picture>
                     <source media="(max-width: 768px)" srcSet="/pixelated-image-128.png" />
-                    <img src="/pixelated-image.png" alt="" className={styles.enterHomeImage} />
+                    <img src="/pixelated-image.png" alt="Go home" className={styles.enterHomeImage} />
                 </picture>
             </Link>
 

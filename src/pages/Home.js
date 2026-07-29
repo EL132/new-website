@@ -22,14 +22,38 @@ function Home() {
     // pick random image from public folder
     const randomImage = useMemo(() => {
         const images = [
-            "/assets/home/option_two.jpg",
-            "/assets/home/option_three.jpg",
-            "/assets/home/amor.JPG",
-            "/assets/home/elias-thomas.jpg",
-            "/assets/home/grad.jpg",
-            "/assets/home/lecture.jpg",
-            "/assets/home/mason-elias.jpg",
-            "/assets/home/mason-simi-elias.JPG"
+            {
+                src: '/assets/home/option_two.jpg',
+                alt: 'Close-up mirror selfie of Elias with curly hair.',
+            },
+            {
+                src: '/assets/home/option_three.jpg',
+                alt: 'Elias smiling in round tortoiseshell glasses.',
+            },
+            {
+                src: '/assets/home/amor.JPG',
+                alt: 'Elias and Simi smiling together in formal clothes.',
+            },
+            {
+                src: '/assets/home/elias-thomas.jpg',
+                alt: 'Elias and Thomas grinning with their arms around each other.',
+            },
+            {
+                src: '/assets/home/grad.jpg',
+                alt: 'Elias smiling outdoors in glasses and a graduation gown.',
+            },
+            {
+                src: '/assets/home/lecture.jpg',
+                alt: 'Elias speaking into a microphone during a lecture hall presentation.',
+            },
+            {
+                src: '/assets/home/mason-elias.jpg',
+                alt: 'Mason and Elias wearing bandanas over their faces in a desert.',
+            },
+            {
+                src: '/assets/home/mason-simi-elias.JPG',
+                alt: 'Elias, Simi, and Mason smiling together at graduation.',
+            },
         ];
         return images[Math.floor(Math.random() * images.length)];
     }, []);
@@ -39,8 +63,8 @@ function Home() {
             <div className={styles.headerWrapper}>
 
                 <img 
-                    src={randomImage}
-                    alt="Elias portrait"
+                    src={randomImage.src}
+                    alt={randomImage.alt}
                     className={styles.headerImage}
                     width="180"
                     height="180"
