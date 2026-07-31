@@ -3,6 +3,228 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import { educationThoughts } from '../data/educationThoughts';
 import styles from './styles/EducationThought.module.css';
 
+const reddingSources = {
+    dissertation: 'https://dash.harvard.edu/server/api/core/bitstreams/fd7fab1a-5634-4bd4-a197-5ca5366e6e5c/content',
+    facultyProfile: 'https://www.gse.harvard.edu/directory/faculty/alexis-redding',
+    presidentialScholarship: 'https://osa.gse.harvard.edu/resource/handbookfinalversionpdf',
+    fieldWork: 'https://www.gse.harvard.edu/ideas/ed-magazine/25/05/faculty-take-field',
+    lonelinessSurvey: 'https://www.acha.org/news/statement-on-the-elimination-of-campus-dei-offices/',
+    belongingResearch: 'https://digitalcommons.sacredheart.edu/psych_fac/183/',
+    wCurveResearch: 'https://doi.org/10.1111/j.1540-4560.1963.tb00447.x',
+    wCurveImage: 'https://gopherguide.umn.edu/your-transition',
+};
+
+function ReddingSourceLink({ href, destination, children }) {
+    return (
+        <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-umami-event="outbound-link-click"
+            data-umami-event-destination={destination}
+            data-umami-event-context="education-thought-college-student-loneliness"
+        >
+            {children}
+        </a>
+    );
+}
+
+function CollegeStudentLonelinessEssay() {
+    return (
+        <>
+            <p>
+                HGSE has a podcast channel that I try to listen to regularly and,
+                unfortunately, doesn&apos;t always have content that I find applicable or
+                interesting. This time, however, I found this topic not only interesting, but
+                also incredibly well delivered. I hadn&apos;t heard of Alexis Redding before,
+                but throughout this podcast she was very articulate and verbalized her research
+                in a very digestible way. In particular, there were three topics that I found
+                interesting: interpersonal and large-scale changes, the hat expression, and the
+                W-curve.
+            </p>
+
+            <h2>Interpersonal and large-scale change</h2>
+
+            <p>
+                When I think about educational changes that need to be made, I most often think
+                about how we are going to measure the success of those changes. Metrics are a
+                recurring thought in my mind; they are often key to the longevity of a solution.
+                Clear metrics mean clear indicators of success, which mean clear allocation and
+                justification for funding. All of which, hopefully, ultimately results in more
+                success for students.
+            </p>
+
+            <p>
+                I say this because this is exactly what Dr. Redding&apos;s work lacks. Her work is
+                not clearly measurable (or, at least, it wasn&apos;t mentioned in the episode). Or
+                so I thought before doing some research. I don&apos;t know much about research, so
+                this is news to me, but I&apos;ve come to learn that measurement is defined based
+                on the claim; and there are a lot of types of claims. A prevalence claim needs a
+                representative survey. A mechanism claim may need interviews. An intervention
+                claim needs outcome evaluation. A reach claim needs adoption and participation
+                data. Etc.
+            </p>
+
+            <p>
+                For Dr. Redding&apos;s work, she instead mentioned that success means more people
+                at various places all over America and the world adopting her key concepts and
+                slightly tweaking their approach in conversations. In other words: dissemination
+                of the learnings that spawn from her work. Spreading ideas by placing strong
+                distributors across the world. HGSE&apos;s account of her field work gives this
+                idea some scale: it reports alumni in student-affairs roles at{' '}
+                <ReddingSourceLink
+                    href={reddingSources.fieldWork}
+                    destination="redding-field-work"
+                >
+                    more than 150 institutions around the world
+                </ReddingSourceLink>
+                . It&apos;s an interesting, almost idealistic, approach to justifying education
+                work.
+            </p>
+
+            <p
+                className={styles.theoryOfChange}
+                aria-label="Research leads to practitioner translation, which leads to local policy and conversations, which leads to student impact."
+            >
+                Research <span aria-hidden="true">→</span> practitioner translation{' '}
+                <span aria-hidden="true">→</span> local policy and conversations{' '}
+                <span aria-hidden="true">→</span> student impact
+            </p>
+
+            <p>
+                Because this journey is a bit convoluted, I naturally wanted to research how she
+                justifies her research and who supplies her funding.
+            </p>
+
+            <p>
+                Don&apos;t get me wrong, I&apos;m woefully ignorant about how research funding works.
+                I know the basics about grants, foundations, scholarships, etc., but I don&apos;t
+                know the nuances of how lump-sum funds get allocated to which programs, how often
+                check-ins happen, how often funding revolves around contracts, etc. That being
+                said, two publicly verifiable sources of support are the{' '}
+                <ReddingSourceLink
+                    href={reddingSources.dissertation}
+                    destination="redding-dissertation"
+                >
+                    Germanacos Foundation, which supported her dissertation travel
+                </ReddingSourceLink>
+                , and the Presidential Scholarship that{' '}
+                <ReddingSourceLink
+                    href={reddingSources.facultyProfile}
+                    destination="redding-faculty-profile"
+                >
+                    Harvard says she received
+                </ReddingSourceLink>
+                . The relevant{' '}
+                <ReddingSourceLink
+                    href={reddingSources.presidentialScholarship}
+                    destination="hgse-presidential-scholarship"
+                >
+                    HGSE handbook describes that scholarship as doctoral tuition, fee, and stipend
+                    support
+                </ReddingSourceLink>
+                . I couldn&apos;t find a public source naming the sponsor or terms for her current{' '}
+                <ReddingSourceLink
+                    href={reddingSources.facultyProfile}
+                    destination="redding-transition-to-adulthood-lab"
+                >
+                    Transition to Adulthood research
+                </ReddingSourceLink>
+                .
+            </p>
+
+            <p>
+                Getting back to how she justifies her work, what might be some useful metrics for
+                her work? Naturally, there are different metrics based on the aspect of success of
+                her work you&apos;re trying to gauge: reach, impact, accessibility, etc. are all
+                going to have different metrics (e.g.{' '}
+                <ReddingSourceLink
+                    href={reddingSources.lonelinessSurvey}
+                    destination="acha-loneliness-survey"
+                >
+                    self-identification of loneliness
+                </ReddingSourceLink>
+                , rating of a current support system, how college is perceived by a student upon
+                entry, etc.). I&apos;m curious if she has plans for implementing specific policies
+                at select universities and monitoring the impact on faculty verbiage, students&apos;
+                felt support, and overall success of the initiative. It&apos;d be neat to implement
+                policies and have a control group; there is already a growing body of{' '}
+                <ReddingSourceLink
+                    href={reddingSources.belongingResearch}
+                    destination="college-belonging-interventions"
+                >
+                    controlled research on college-belonging interventions
+                </ReddingSourceLink>
+                . I&apos;d bet that the biggest difference would be the quantity of participation
+                in mental-wellness resources; after which, all other indicators would improve.
+            </p>
+
+            <h2>Hat, haircut, or a tattoo</h2>
+
+            <p>
+                This point is very simple; I just thought this was an interesting way to think
+                about things. Is a change, decision, path, etc. a hat (something you can just take
+                off), a haircut (something you can grow into), or a tattoo (something permanent)?
+                Nothing crazy to say here, I just found it interesting.
+            </p>
+
+            <h2>W-curve</h2>
+
+            <p>
+                Also a simple point: Dr. Redding mentions that she has introduced her graduate
+                students to the idea of a W-curve that explains how undergraduate students
+                experience college and their sense of belonging. The model{' '}
+                <ReddingSourceLink
+                    href={reddingSources.wCurveResearch}
+                    destination="w-curve-original-research"
+                >
+                    predates Dr. Redding&apos;s work
+                </ReddingSourceLink>{' '}
+                and grew out of research on cultural adjustment.
+            </p>
+
+            <figure className={styles.articleFigure}>
+                <a
+                    href={reddingSources.wCurveImage}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-umami-event="outbound-link-click"
+                    data-umami-event-destination="university-of-minnesota-w-curve"
+                    data-umami-event-context="education-thought-college-student-loneliness"
+                >
+                    <img
+                        src="/assets/education/w-curve.png"
+                        alt="W-curve diagram showing five stages of the college transition: honeymoon, culture shock, initial adjustment, mental isolation, and acceptance and integration."
+                        loading="lazy"
+                        decoding="async"
+                    />
+                </a>
+                <figcaption>
+                    W-curve model of college transition. Source:{' '}
+                    <ReddingSourceLink
+                        href={reddingSources.wCurveImage}
+                        destination="university-of-minnesota-w-curve-caption"
+                    >
+                        University of Minnesota Gopher Guide
+                    </ReddingSourceLink>
+                    .
+                </figcaption>
+            </figure>
+
+            <p>
+                The initial peak of novelty when you come to a new location, the feeling of
+                loneliness that comes from not having anyone, the resurgence of finding friends, a
+                loss of self, and a rediscovery of purpose. Dr. Redding mentioned that, after
+                sharing the idea with her graduate students, it gave them the opportunity to say,
+                “wait, me too.” Doing so gave them the vocabulary to discuss these topics and a lack
+                of belonging in new spaces. They quickly found that this curve applies with any new
+                experience in life: a new career, moving cities, etc. It&apos;ll be fun to be another
+                “disciple” of this information.
+            </p>
+        </>
+    );
+}
+
 function CollegeSystemCollapseEssay() {
     return (
         <>
@@ -233,7 +455,9 @@ function EducationThought() {
                 ) : null}
 
                 <div className={styles.articleBody}>
-                    {thought.slug === 'college-system-collapse' ? (
+                    {thought.slug === 'college-student-loneliness' ? (
+                        <CollegeStudentLonelinessEssay />
+                    ) : thought.slug === 'college-system-collapse' ? (
                         <CollegeSystemCollapseEssay />
                     ) : (
                         <p>Essay coming soon.</p>

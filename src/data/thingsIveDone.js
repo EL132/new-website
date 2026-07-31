@@ -27,7 +27,7 @@ export const thingsIveDoneItems = [
         href: 'https://photos.app.goo.gl/3kTVWNGejmRhhivs7',
         image: thingsAsset('guatemala.jpg'),
         imageAlt: 'Two hikers hug at sunrise on a rocky summit overlooking a volcano above the clouds in Guatemala.',
-        description: 'My partner and I did a 4km hike in Guatemala.',
+        description: 'My partner and I completed the 14 km Acatenango hike in Guatemala.',
         background: '#e5eadf',
     },
     {

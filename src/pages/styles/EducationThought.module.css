@@ -64,6 +64,23 @@
     height: auto;
 }
 
+.articleFigure figcaption {
+    max-width: 760px;
+    margin: 0.65rem auto 0;
+    color: rgba(0, 0, 0, 0.58);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.theoryOfChange {
+    margin-top: 1.35rem !important;
+    padding: 1rem 1.15rem;
+    border-left: 3px solid rgba(0, 0, 0, 0.72);
+    background: rgba(0, 0, 0, 0.035);
+    font-weight: 650;
+}
+
 .sourceLink {
     display: inline-block;
     margin-top: 1rem;

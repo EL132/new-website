@@ -1,5 +1,14 @@
 export const educationThoughts = [
     {
+        slug: 'college-student-loneliness',
+        type: 'Podcast',
+        date: '7/30/26',
+        title: 'Why Half of College Students Feel Alone and How to Fix It | Alexis Redding',
+        sourceLabel: 'Listen to the original podcast',
+        sourceUrl: 'https://open.spotify.com/episode/42vp5xuK8B9EPoMYPfup1r',
+        sourceDestination: 'college-student-loneliness-podcast',
+    },
+    {
         slug: 'college-system-collapse',
         type: 'Video',
         date: 'July 28th, 2026',
