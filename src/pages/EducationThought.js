@@ -171,12 +171,8 @@ function AffordableNewEducationalInstitutionEssay() {
             </p>
 
             <p>
-                WEL → World Education Lab → the lab that the NEI exists in.
-            </p>
-
-            <p>
-                Comprises of educators, technologists, policymakers, societal leaders, employers,
-                and employees.
+                WEL → World Education Lab → the lab that the NEI exists in. Comprises of educators,
+                technologists, policymakers, societal leaders, employers, and employees.
             </p>
         </>
     );
