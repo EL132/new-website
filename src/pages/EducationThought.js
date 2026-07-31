@@ -43,6 +43,145 @@ function ReddingSourceLink({ href, destination, children }) {
     );
 }
 
+function AffordableNewEducationalInstitutionEssay() {
+    const thoughtSlug = 'affordable-new-educational-institution';
+
+    return (
+        <>
+            <p>
+                I originally discovered NEI because of one of my professors,{' '}
+                <EducationCitationLink
+                    href="https://en.wikipedia.org/wiki/Aaron_Hillegass"
+                    thoughtSlug={thoughtSlug}
+                    citation="aaron-hillegass"
+                >
+                    Aaron Hillegass
+                </EducationCitationLink>
+                . Aaron is a colleague of the professor I worked with in Fall 2026 ({' '}
+                <EducationCitationLink
+                    href="https://www.pfeijoo.com/"
+                    thoughtSlug={thoughtSlug}
+                    citation="dr-feijoo-garcia"
+                >
+                    Dr. Feijoo-Garcia
+                </EducationCitationLink>
+                ) and the three of us had a conversation in the elevator about the work that
+                Aaron was about to pursue at MIT working with NEI. Naturally, it piqued my interest,
+                so I began doing some research.
+            </p>
+
+            <h2>So, what is NEI and why did it pique my interest?</h2>
+
+            <p>
+                NEI is pretty neat. It’s essentially an experiment that MIT is running to identify a
+                successful, alternative university structure. It is based on a white paper written
+                in 2022 that only recently received sufficient funding to be realized, and Aaron is
+                a part of that process as the Director of Curriculum and Instruction. Some key parts
+                of this initiative are microcredentials that are stacked, flipped classrooms,
+                teachers focused purely on teaching, team teaching, a focus on interpersonal
+                character development, guaranteed co-ops, and designed extracurricular options. I
+                got the chance to grab lunch and speak with Aaron about some of my questions on the
+                project and am very glad I did.
+            </p>
+
+            <p>
+                As for why it piqued my interest, NEI is a prime example of what I’d want people with
+                lots of money to do: use it to experiment on how we can make society a better place.
+                Experiments involve risk and designing what our education system will look like in
+                the future isn’t exactly a risk-free venture. In fact, it’s quite the opposite:
+                there’s very little hope that this “investment” turns out to be anything more than
+                data for what we shouldn’t do. Despite that, money has been poured into NEI and
+                everyone in society will benefit from that in some way, shape, or form.
+            </p>
+
+            <h2>Why does NEI matter to me?</h2>
+
+            <p>
+                NEI matters to me because it’s what every dreamer and theorist wants. NEI’s white
+                paper is the culmination of decades of thought, research, and intentional effort put
+                forth towards education. NEI being realized is hope distilled. It makes me believe
+                that the thought I want to put into improving and developing educational systems has
+                a chance of being realized, too.
+            </p>
+
+            <p>
+                I sometimes get concerned when I read people’s research that discusses important,
+                interpersonal ideas (i.e. instead of scientific discoveries and facts); e.g.,
+                research that focuses on how people <em>should</em> behave in the future is hard.
+                Someone might reach an epiphany for how people should behave to create a euphoria in
+                a thought experiment, but the thoughts are too far removed from implementation and
+                instead focus too much on ideal scenarios. If I would’ve read the white paper when
+                it came out in 2022, I would’ve been concerned about exactly that: these thoughts are
+                good, but what will come of it? Now, that fear is gone and it’s been replaced with
+                hope that thoughts can amount to something more. Something that really impacts
+                people.
+            </p>
+
+            <h2>Random thoughts from the paper</h2>
+
+            <p>
+                This will be a sort of stream of consciousness of thoughts I had while reading the
+                paper.
+            </p>
+
+            <p>
+                I like the idea that microcredentials are offered by the university; normally,
+                they’re always online sources.
+            </p>
+
+            <p>
+                “The coaching should also develop generosity, kindness, and social aptitude.” → What
+                does this mean?
+            </p>
+
+            <p>
+                “Team teaching will help alleviate another persistent tension: competitive dynamics
+                between fields (i.e., ‘My field is more important than your field’).” Since I’m not
+                in the field, I’ve never stopped to think about these dynamics, but I can easily
+                believe that they exist. Always refreshing to hear about problems you’ve never
+                thought of.
+            </p>
+
+            <p>
+                “Runs the risk of ignoring the intangible benefits of college—unless colleges make
+                those benefits more directly visible.” → Veryyyyyy interesting. To provide a bit
+                more context: this paragraph is discussing how ROI rankings of universities devalues
+                the parts of a degree that are intangible. Essentially: the more we lean towards
+                ROI-favored rankings, the farther we get from valuing the intangibles. Reminds me of{' '}
+                <em>Oryx and Crake</em>. I don’t think we can fault our society for wanting proof that
+                something is valuable to keep it alive and well—that’s a natural desire. What I can
+                fault our society for is for not striving to better articulate and measure the
+                benefits of intangibles like well-being, sociability, etc. We’re faulting a system
+                for not believing the statement of “trust me, bro”; instead, we should be faulting a
+                system for not fighting to establish metrics.
+            </p>
+
+            <p>
+                “Dropout rates in higher education over six years hover in the 40 percent range.”
+                Yeah, that’s a staggering number. I did a research deep dive on how US News makes
+                their rankings of universities since I was curious. Was a pretty interesting system
+                and, fun fact, US News changed how they do their rankings in September 2023, causing
+                many universities to rapidly drop and rise. That being said, retention rates were a
+                large part of this, which I found to be an interesting connection to this quote.
+            </p>
+
+            <p>
+                Australia liberal arts degrees cost twice as much as STEM. Woah. Policy and
+                legislation really can define what a country’s culture is like.
+            </p>
+
+            <p>
+                WEL → World Education Lab → the lab that the NEI exists in.
+            </p>
+
+            <p>
+                Comprises of educators, technologists, policymakers, societal leaders, employers,
+                and employees.
+            </p>
+        </>
+    );
+}
+
 function CollegeStudentLonelinessEssay() {
     return (
         <>
@@ -422,6 +561,7 @@ function EducationThought() {
 
     useEffect(() => {
         const publishedEssaySlugs = [
+            'affordable-new-educational-institution',
             'college-student-loneliness',
             'college-system-collapse',
         ];
@@ -509,6 +649,8 @@ function EducationThought() {
                         <CollegeStudentLonelinessEssay />
                     ) : thought.slug === 'college-system-collapse' ? (
                         <CollegeSystemCollapseEssay />
+                    ) : thought.slug === 'affordable-new-educational-institution' ? (
+                        <AffordableNewEducationalInstitutionEssay />
                     ) : (
                         <p>Essay coming soon.</p>
                     )}

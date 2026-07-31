@@ -2,7 +2,7 @@ export const educationThoughts = [
     {
         slug: 'college-student-loneliness',
         type: 'Podcast',
-        date: '7/30/26',
+        date: 'July 30th, 2026',
         title: 'Why Half of College Students Feel Alone and How to Fix It | Alexis Redding',
         sourceLabel: 'Listen to the original podcast',
         sourceUrl: 'https://open.spotify.com/episode/42vp5xuK8B9EPoMYPfup1r',
@@ -20,10 +20,10 @@ export const educationThoughts = [
     {
         slug: 'affordable-new-educational-institution',
         type: 'White paper',
-        date: 'April 2026',
+        date: 'February 13th, 2026',
         title: 'Ideas for Designing an Affordable New Educational Institution',
         sourceLabel: 'Read the original white paper',
-        sourceUrl: 'https://openlearning.mit.edu/ideas-designing-affordable-new-educational-institution',
+        sourceUrl: 'https://openlearning.mit.edu/sites/default/files/2022-10/An-Affordable-New-Educational-Institution-NEI-MIT-JWEL-2022%20%28Final%209-27%29.pdf',
         sourceDestination: 'nei-white-paper',
     },
 ];
