@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { educationThoughts } from '../data/educationThoughts';
+import { trackUmamiEvent } from '../utils/analytics';
 import styles from './styles/EducationThought.module.css';
 
 const reddingSources = {
@@ -14,18 +15,31 @@ const reddingSources = {
     wCurveImage: 'https://gopherguide.umn.edu/your-transition',
 };
 
-function ReddingSourceLink({ href, destination, children }) {
+function EducationCitationLink({ href, thoughtSlug, citation, children }) {
     return (
         <a
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            data-umami-event="outbound-link-click"
-            data-umami-event-destination={destination}
-            data-umami-event-context="education-thought-college-student-loneliness"
+            onClick={() => trackUmamiEvent('education-citation-open', {
+                slug: thoughtSlug,
+                citation,
+            })}
         >
             {children}
         </a>
+    );
+}
+
+function ReddingSourceLink({ href, destination, children }) {
+    return (
+        <EducationCitationLink
+            href={href}
+            thoughtSlug="college-student-loneliness"
+            citation={destination}
+        >
+            {children}
+        </EducationCitationLink>
     );
 }
 
@@ -184,13 +198,10 @@ function CollegeStudentLonelinessEssay() {
             </p>
 
             <figure className={styles.articleFigure}>
-                <a
+                <EducationCitationLink
                     href={reddingSources.wCurveImage}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-umami-event="outbound-link-click"
-                    data-umami-event-destination="university-of-minnesota-w-curve"
-                    data-umami-event-context="education-thought-college-student-loneliness"
+                    thoughtSlug="college-student-loneliness"
+                    citation="university-of-minnesota-w-curve"
                 >
                     <img
                         src="/assets/education/w-curve.png"
@@ -198,7 +209,7 @@ function CollegeStudentLonelinessEssay() {
                         loading="lazy"
                         decoding="async"
                     />
-                </a>
+                </EducationCitationLink>
                 <figcaption>
                     W-curve model of college transition. Source:{' '}
                     <ReddingSourceLink
@@ -270,38 +281,29 @@ function CollegeSystemCollapseEssay() {
                 I believe that AI is taking away this luxury. That is, if we continue on our current
                 path. No longer will students be able to explore as they once did because they can’t
                 afford it. In the same way that{' '}
-                <a
+                <EducationCitationLink
                     href="https://www.education.gouv.fr/reussir-au-lycee/la-voie-generale-au-lycee-9749"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-umami-event="outbound-link-click"
-                    data-umami-event-destination="france-lycee-specialization"
-                    data-umami-event-context="education-thought-college-system-collapse"
+                    thoughtSlug="college-system-collapse"
+                    citation="france-lycee-specialization"
                 >
                     France
-                </a>
+                </EducationCitationLink>
                 ,{' '}
-                <a
+                <EducationCitationLink
                     href="https://www.skillsforcareers.education.gov.uk/pages/training-choice/a-levels"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-umami-event="outbound-link-click"
-                    data-umami-event-destination="england-a-levels"
-                    data-umami-event-context="education-thought-college-system-collapse"
+                    thoughtSlug="college-system-collapse"
+                    citation="england-a-levels"
                 >
                     England
-                </a>
+                </EducationCitationLink>
                 , and{' '}
-                <a
+                <EducationCitationLink
                     href="https://www.government.nl/themes/education/secondary-education/different-types-of-secondary-education/senior-general-secondary-education-havo-and-pre-university-education-vwo"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-umami-event="outbound-link-click"
-                    data-umami-event-destination="netherlands-havo-vwo-profiles"
-                    data-umami-event-context="education-thought-college-system-collapse"
+                    thoughtSlug="college-system-collapse"
+                    citation="netherlands-havo-vwo-profiles"
                 >
                     the Netherlands
-                </a>{' '}
+                </EducationCitationLink>{' '}
                 narrow their studies through subject specialties or academic profiles, our
                 university programs might similarly demand the same in the future.
             </p>
@@ -314,16 +316,13 @@ function CollegeSystemCollapseEssay() {
                 considerations that prevent one system’s structure from being broadly applied to
                 another country. Still, successful practices often travel: after Shanghai, Singapore,
                 and Hong Kong achieved world-leading mathematics results,{' '}
-                <a
+                <EducationCitationLink
                     href="https://www.gov.uk/government/news/south-asian-method-of-teaching-maths-to-be-rolled-out-in-schools"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-umami-event="outbound-link-click"
-                    data-umami-event-destination="england-maths-mastery-investment"
-                    data-umami-event-context="education-thought-college-system-collapse"
+                    thoughtSlug="college-system-collapse"
+                    citation="england-maths-mastery-investment"
                 >
                     England invested
-                </a>{' '}
+                </EducationCitationLink>{' '}
                 £41 million to help more than 8,000 primary schools adopt an East Asian-style “maths
                 mastery” approach.
             </p>
@@ -415,9 +414,58 @@ function CollegeSystemCollapseEssay() {
 function EducationThought() {
     const { slug } = useParams();
     const thought = educationThoughts.find(entry => entry.slug === slug);
+    const articleBodyRef = useRef(null);
 
     useEffect(() => {
         document.title = thought ? `${thought.title} · Education` : 'Education';
+    }, [thought]);
+
+    useEffect(() => {
+        const publishedEssaySlugs = [
+            'college-student-loneliness',
+            'college-system-collapse',
+        ];
+
+        if (!thought || !publishedEssaySlugs.includes(thought.slug)) {
+            return undefined;
+        }
+
+        const sentMilestones = new Set();
+        const milestones = [50, 90];
+
+        const trackReadingProgress = () => {
+            const articleBody = articleBodyRef.current;
+
+            if (!articleBody) {
+                return;
+            }
+
+            const articleBounds = articleBody.getBoundingClientRect();
+            const visibleArticleHeight = window.innerHeight - articleBounds.top;
+            const progress = Math.max(
+                0,
+                Math.min(100, (visibleArticleHeight / articleBounds.height) * 100)
+            );
+
+            milestones.forEach(milestone => {
+                if (progress >= milestone && !sentMilestones.has(milestone)) {
+                    sentMilestones.add(milestone);
+                    trackUmamiEvent('education-thought-progress', {
+                        slug: thought.slug,
+                        milestone,
+                    });
+                }
+            });
+        };
+
+        trackReadingProgress();
+        window.addEventListener('scroll', trackReadingProgress, { passive: true });
+        window.addEventListener('resize', trackReadingProgress);
+
+        return () => {
+            window.removeEventListener('scroll', trackReadingProgress);
+            window.removeEventListener('resize', trackReadingProgress);
+        };
     }, [thought]);
 
     if (!thought) {
@@ -430,9 +478,9 @@ function EducationThought() {
                 <Link
                     className={styles.backLink}
                     to="/engineer/education"
-                    data-umami-event="navigation-click"
-                    data-umami-event-destination="/engineer/education"
-                    data-umami-event-element="education-thought-back"
+                    onClick={() => trackUmamiEvent('education-back', {
+                        slug: thought.slug,
+                    })}
                 >
                     ← Education
                 </Link>
@@ -446,15 +494,17 @@ function EducationThought() {
                         href={thought.sourceUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        data-umami-event="outbound-link-click"
-                        data-umami-event-destination={thought.sourceDestination}
-                        data-umami-event-context={`education-thought-${thought.slug}`}
+                        onClick={() => trackUmamiEvent('education-source-open', {
+                            slug: thought.slug,
+                            source: thought.sourceDestination,
+                            mediaType: thought.type,
+                        })}
                     >
                         {thought.sourceLabel}
                     </a>
                 ) : null}
 
-                <div className={styles.articleBody}>
+                <div className={styles.articleBody} ref={articleBodyRef}>
                     {thought.slug === 'college-student-loneliness' ? (
                         <CollegeStudentLonelinessEssay />
                     ) : thought.slug === 'college-system-collapse' ? (

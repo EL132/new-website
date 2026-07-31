@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { educationThoughts } from '../data/educationThoughts';
+import { trackUmamiEvent } from '../utils/analytics';
 import styles from './styles/Education.module.css';
 
 const tutoringPostUrl = 'https://nextdoor.com/p/LzK5hQZhJz3x?utm_source=share&extras=Njc0MTIyMDQ%3D&utm_campaign=1780235089240&share_action_id=1a0d2c3d-db80-41d7-97e6-56c3cd0b2fc6';
@@ -134,9 +135,11 @@ function Education() {
                             className={styles.noteCard}
                             key={note.slug}
                             to={`/engineer/education/thoughts/${note.slug}`}
-                            data-umami-event="navigation-click"
-                            data-umami-event-destination={`/engineer/education/thoughts/${note.slug}`}
-                            data-umami-event-element="education-thought"
+                            onClick={() => trackUmamiEvent('education-thought-open', {
+                                slug: note.slug,
+                                title: note.title,
+                                mediaType: note.type,
+                            })}
                         >
                             <p className={styles.detail}>{note.type} · {note.date}</p>
                             <h3>{note.title}</h3>

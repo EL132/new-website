@@ -2,6 +2,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ParticleName from '../components/home/ParticleName';
+import { trackUmamiEvent } from '../utils/analytics';
 import styles from './styles/Home.module.css';
 
 function Home() {
@@ -149,9 +150,9 @@ function Home() {
                         <li>
                             <Link
                                 to="/engineer/education"
-                                data-umami-event="navigation-click"
-                                data-umami-event-destination="/engineer/education"
-                                data-umami-event-element="education"
+                                onClick={() => trackUmamiEvent('education-page-open', {
+                                    source: 'home',
+                                })}
                             >
                                 education
                             </Link>
