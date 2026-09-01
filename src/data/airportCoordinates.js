@@ -19,6 +19,7 @@ export const airportCoordinates = {
     GDL: { lat: 20.5218, lng: -103.3112, label: 'Guadalajara' },
     GUA: { lat: 14.5833, lng: -90.5275, label: 'Guatemala City' },
     HEL: { lat: 60.3172, lng: 24.9633, label: 'Helsinki' },
+    HND: { lat: 35.5494, lng: 139.7798, label: 'Tokyo' },
     IAD: { lat: 38.9531, lng: -77.4565, label: 'Washington, DC' },
     IAH: { lat: 29.9902, lng: -95.3368, label: 'Houston' },
     ICN: { lat: 37.4602, lng: 126.4407, label: 'Seoul' },
