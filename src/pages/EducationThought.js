@@ -15,6 +15,15 @@ const reddingSources = {
     wCurveImage: 'https://gopherguide.umn.edu/your-transition',
 };
 
+const k12ShowcaseSources = {
+    brianJohnsrud: 'https://www.linkedin.com/in/brianjohnsrud/',
+    patrickGittisriboongul: 'https://www.linkedin.com/in/pgittis/',
+    gautamSethi: 'https://www.linkedin.com/in/educio/',
+    superintendentGender: 'https://www.aasa.org/resources/resource/salary-gender-2024',
+    teacherGender: 'https://nces.ed.gov/programs/coe/indicator/clr/public-school-teachers?tid=4',
+    educationForCountries: 'https://openai.com/index/edu-for-countries/',
+};
+
 function EducationCitationLink({ href, thoughtSlug, citation, children }) {
     return (
         <a
@@ -40,6 +49,184 @@ function ReddingSourceLink({ href, destination, children }) {
         >
             {children}
         </EducationCitationLink>
+    );
+}
+
+function K12ShowcaseSourceLink({ href, destination, children }) {
+    return (
+        <EducationCitationLink
+            href={href}
+            thoughtSlug="k12-showcase-lessons-from-teachers-and-administrators"
+            citation={destination}
+        >
+            {children}
+        </EducationCitationLink>
+    );
+}
+
+function K12ShowcaseEssay() {
+    return (
+        <>
+            <p>
+                Worth the watch because it gave me hope.{' '}
+                <K12ShowcaseSourceLink
+                    href={k12ShowcaseSources.brianJohnsrud}
+                    destination="brian-johnsrud-linkedin"
+                >
+                    Brian Johnsrud
+                </K12ShowcaseSourceLink>
+                ,{' '}
+                <K12ShowcaseSourceLink
+                    href={k12ShowcaseSources.patrickGittisriboongul}
+                    destination="patrick-gittisriboongul-linkedin"
+                >
+                    Patrick Gittisriboongul
+                </K12ShowcaseSourceLink>
+                ,{' '}
+                <K12ShowcaseSourceLink
+                    href={k12ShowcaseSources.gautamSethi}
+                    destination="gautam-sethi-linkedin"
+                >
+                    Gautam Sethi
+                </K12ShowcaseSourceLink>
+                , and Francesca Summers (couldn’t find LinkedIn) were the primary speakers, and each
+                brought some neat slices of thought. Before I dive into their thoughts, I want to
+                share my miscellaneous thoughts that came up while watching:
+            </p>
+
+            <ol className={styles.introList}>
+                <li>
+                    The two superintendents were male and the teacher was female. An almost absurdly
+                    clear example of gender imbalance in an industry that made me look up the numbers:
+                    <ol className={styles.introSublist}>
+                        <li>
+                            <K12ShowcaseSourceLink
+                                href={k12ShowcaseSources.superintendentGender}
+                                destination="aasa-superintendent-gender-2024"
+                            >
+                                Men hold approximately 71% to 73% of K-12 school superintendent
+                                positions in America, while women hold roughly 27% to 29%
+                            </K12ShowcaseSourceLink>
+                        </li>
+                        <li>
+                            <K12ShowcaseSourceLink
+                                href={k12ShowcaseSources.teacherGender}
+                                destination="nces-public-school-teacher-gender"
+                            >
+                                Women make up about 77% of K-12 public school teachers, while men
+                                account for about 23%
+                            </K12ShowcaseSourceLink>
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    The superintendent and district CITO were from Lynwood (CA) and Fairfax County
+                    (VA), respectively. Fairfax (as you may know if you’re either from America or
+                    familiar with wealthy districts) is an incredibly privileged area (median
+                    household income is $153,637) and Lynwood is below the national median household
+                    income average at $74,844. OpenAI did a good job diversifying their selection
+                    here; I’m curious what their actual distribution is across all the schools they
+                    work with (i.e how many school districts do they work with where their median
+                    income is lower than the US average?).
+                </li>
+                <li>
+                    When I saw this talk, my first thought was a connection to an age-old question
+                    (to me): is it a better use of resources to pioneer education in a developed
+                    country or invest in establishing equal infrastructure in developing countries?
+                    Which produces a larger positive impact? I’m curious on how they’re tracking
+                    success on their{' '}
+                    <K12ShowcaseSourceLink
+                        href={k12ShowcaseSources.educationForCountries}
+                        destination="openai-education-for-countries"
+                    >
+                        Education for Countries
+                    </K12ShowcaseSourceLink>
+                    {' '}project; it might just produce the answer.
+                </li>
+            </ol>
+
+            <p>
+                As with any panel discussion, there were a couple truly interesting ideas: one from
+                Patrick/Gautam and one from Francesca. Try to see if you reach the same connection as
+                I did while you read through.
+            </p>
+
+            <p>
+                Patrick mentioned that he pushes teachers to break their workflows up into steps,
+                identify the specific problems that consume time, and then take time to redesign
+                those problems using AI. The available drop-in steps have now expanded; imagine it’s
+                a Scratch drag-and-drop library of options, but the options just doubled. Teachers
+                can now redesign their workflows with these new and enhanced options, making their
+                final flow optimized and efficient.
+            </p>
+
+            <figure className={styles.articleFigure}>
+                <img
+                    src="/assets/education/k12-ai-workflow.png"
+                    alt="Side-by-side block-based workflows: before AI has fewer options and a repetitive bottleneck, while with AI has an expanded library and a shorter path to completion."
+                    loading="lazy"
+                    decoding="async"
+                />
+            </figure>
+
+            <p>
+                Gautum built off this point and mentioned how these problem/time-consuming areas are
+                different for every teacher and often teachers don’t have ways to solve their
+                issues. They do, however, have time to articulate what the issues are. Fairfax has
+                created an “idea catcher” tool (effectively a customer intake form) that allows
+                teachers to submit their desires/needs/problems. They have then hired forward
+                deployed interns to build these solutions. What an opportunity–I’d be{' '}
+                <strong>
+                    <em>THROUGH THE MOON</em>
+                </strong>{' '}
+                if I’d had the opportunity to do this as a college student :( Then again maybe I
+                just didn’t look hard enough…
+            </p>
+
+            <p>
+                All right, connection time! Isn’t education starting to sound a bitttt like corporate?
+                Having a user requests backlog, forward deployed engineers, and breaking work into
+                steps then applying AI to specific steps of that workflow. Let’s say that education
+                (and government at large) operates how corporations operated ~10 years ago. I’d then
+                say AI has closed that gap to be ~3 years (or less). AI is leveling the playing
+                field. That’s very exciting.
+            </p>
+
+            <p>Now for Francesca’s point, she shared her workflow:</p>
+
+            <figure className={styles.articleFigure}>
+                <img
+                    src="/assets/education/k12-actual-workflow.png"
+                    alt="Flowchart titled My Actual Workflow: Standard, Learning Target, Success Criteria, Student Writing, Identify the Need, Use OpenAI for Support, Teacher Decision, and Student Growth."
+                    loading="lazy"
+                    decoding="async"
+                />
+            </figure>
+
+            <p>
+                Let’s take a moment to look at it. I think it’s pretty interesting to wonder about
+                what would change if she instead used AI for identifying the need and then she
+                generates the solution. How do we establish which step of this process would be best
+                (and worst) handled by AI?
+            </p>
+
+            <p>
+                Here’s my take: AI is worst suited for the task it has the least context in. I’d
+                argue that a solution requires more personal context than the identification of a
+                need. Put another way: I think it would have been better suited for identifying the
+                need and she can think about the solution for each group of kids. Regardless, I
+                really enjoy that they seem to be driving home the key point of “identify where AI
+                should be used, then apply it; don’t simply apply it broadly/for the whole process”
+                to a broader audience of school teachers.
+            </p>
+
+            <p>
+                A small post-credit thought: they mentioned CER (claim, evidence, reasoning) and tied
+                it to how parents need to be filled with confidence that students are still thinking.
+                While that’s true, I think the biggest priority should be making students - not
+                parents - feel like they’re still thinking.
+            </p>
+        </>
     );
 }
 
@@ -557,6 +744,7 @@ function EducationThought() {
 
     useEffect(() => {
         const publishedEssaySlugs = [
+            'k12-showcase-lessons-from-teachers-and-administrators',
             'affordable-new-educational-institution',
             'college-student-loneliness',
             'college-system-collapse',
@@ -641,7 +829,9 @@ function EducationThought() {
                 ) : null}
 
                 <div className={styles.articleBody} ref={articleBodyRef}>
-                    {thought.slug === 'college-student-loneliness' ? (
+                    {thought.slug === 'k12-showcase-lessons-from-teachers-and-administrators' ? (
+                        <K12ShowcaseEssay />
+                    ) : thought.slug === 'college-student-loneliness' ? (
                         <CollegeStudentLonelinessEssay />
                     ) : thought.slug === 'college-system-collapse' ? (
                         <CollegeSystemCollapseEssay />

@@ -52,6 +52,64 @@
     line-height: 1.4;
 }
 
+.introList,
+.introSublist {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.introList {
+    margin-top: 1.35rem;
+    counter-reset: intro-item;
+}
+
+.introList > li,
+.introSublist > li {
+    position: relative;
+    padding-left: 2.25rem;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.introList > li {
+    counter-increment: intro-item;
+}
+
+.introList > li::before {
+    position: absolute;
+    left: 0;
+    content: counter(intro-item) ")";
+}
+
+.introList > li + li {
+    margin-top: 1.35rem;
+}
+
+.introSublist {
+    margin-top: 1rem;
+    padding-left: 2rem;
+    counter-reset: intro-subitem;
+}
+
+.introSublist > li {
+    counter-increment: intro-subitem;
+}
+
+.introSublist > li::before {
+    position: absolute;
+    left: 0;
+    content: counter(intro-subitem, lower-alpha) ")";
+}
+
+.introSublist > li + li {
+    margin-top: 0.8rem;
+}
+
+.articleBody .introList + p {
+    margin-top: 1.35rem;
+}
+
 .articleFigure {
     width: min(90vw, 1100px);
     margin: 2.5rem 0 2.5rem 50%;
@@ -104,5 +162,14 @@
     .thoughtPage {
         width: calc(100% - 2.5rem);
         padding-top: 1.75rem;
+    }
+
+    .introList > li,
+    .introSublist > li {
+        padding-left: 1.8rem;
+    }
+
+    .introSublist {
+        padding-left: 0.75rem;
     }
 }
