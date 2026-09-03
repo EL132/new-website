@@ -9,7 +9,6 @@ import ThingsIveDone from './pages/ThingsIveDone';
 import Birthday from './pages/Birthday';
 import TripOptions from './pages/TripOptions';
 import HomeNav from './components/HomeNav';
-import { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 
@@ -19,13 +18,6 @@ function App() {
     const isBirthdayPage = location.pathname.startsWith('/birthday');
     const showHomeNav = location.pathname !== '/' && !isPhotographyPage && !isBirthdayPage;
     const homeNavVariant = location.pathname === '/engineer/making-things' ? 'dark' : 'default';
-
-    // function to wake up free-instance backend 
-    useEffect(() => {
-            fetch("https://new-website-backend-j4bh.onrender.com/")
-                .then(() => console.log("Backend pinged"))
-                .catch(() => console.log("Backend not reachable"));
-    }, []);
 
     return (
         <>

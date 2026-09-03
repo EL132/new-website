@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: new-website
+    runtime: node
+    buildCommand: npm ci && npm run build
+    startCommand: npm run serve
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SUPABASE_DATABASE_URL
+        sync: false

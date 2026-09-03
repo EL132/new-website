@@ -1,6 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
+import BlogComments from '../components/BlogComments';
 import { educationThoughts } from '../data/educationThoughts';
+import { getBlogPost } from '../services/blogApi';
 import { trackUmamiEvent } from '../utils/analytics';
 import styles from './styles/EducationThought.module.css';
 
@@ -733,24 +735,55 @@ function CollegeSystemCollapseEssay() {
     );
 }
 
+export const educationEssayComponents = {
+    'k12-showcase-lessons-from-teachers-and-administrators': K12ShowcaseEssay,
+    'college-student-loneliness': CollegeStudentLonelinessEssay,
+    'college-system-collapse': CollegeSystemCollapseEssay,
+    'affordable-new-educational-institution': AffordableNewEducationalInstitutionEssay,
+};
+
 function EducationThought() {
     const { slug } = useParams();
-    const thought = educationThoughts.find(entry => entry.slug === slug);
+    const localThought = educationThoughts.find(entry => entry.slug === slug);
+    const [remoteThought, setRemoteThought] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
     const articleBodyRef = useRef(null);
+    const thought = remoteThought?.slug === slug ? remoteThought : localThought;
+    const LocalEssay = educationEssayComponents[slug];
+    const hasRemoteContent = Boolean(
+        remoteThought?.slug === slug && remoteThought.contentHtml
+    );
+
+    useEffect(() => {
+        let isActive = true;
+        setIsLoading(true);
+
+        getBlogPost(slug)
+            .then(post => {
+                if (isActive) {
+                    setRemoteThought(post);
+                }
+            })
+            .catch(() => {
+                // The checked-in article remains available if the API is offline.
+            })
+            .finally(() => {
+                if (isActive) {
+                    setIsLoading(false);
+                }
+            });
+
+        return () => {
+            isActive = false;
+        };
+    }, [slug]);
 
     useEffect(() => {
         document.title = thought ? `${thought.title} · Education` : 'Education';
     }, [thought]);
 
     useEffect(() => {
-        const publishedEssaySlugs = [
-            'k12-showcase-lessons-from-teachers-and-administrators',
-            'affordable-new-educational-institution',
-            'college-student-loneliness',
-            'college-system-collapse',
-        ];
-
-        if (!thought || !publishedEssaySlugs.includes(thought.slug)) {
+        if (!thought) {
             return undefined;
         }
 
@@ -790,7 +823,28 @@ function EducationThought() {
             window.removeEventListener('scroll', trackReadingProgress);
             window.removeEventListener('resize', trackReadingProgress);
         };
-    }, [thought]);
+    }, [slug, thought]);
+
+    const handleRemoteArticleClick = event => {
+        const anchor = event.target.closest?.('a[href]');
+
+        if (!anchor) {
+            return;
+        }
+
+        trackUmamiEvent('education-citation-open', {
+            slug,
+            citation: anchor.href,
+        });
+    };
+
+    if (!thought && isLoading) {
+        return (
+            <main className={styles.thoughtPage}>
+                <p className={styles.loadingPost}>Loading post…</p>
+            </main>
+        );
+    }
 
     if (!thought) {
         return <Navigate to="/engineer/education" replace />;
@@ -828,19 +882,20 @@ function EducationThought() {
                     </a>
                 ) : null}
 
-                <div className={styles.articleBody} ref={articleBodyRef}>
-                    {thought.slug === 'k12-showcase-lessons-from-teachers-and-administrators' ? (
-                        <K12ShowcaseEssay />
-                    ) : thought.slug === 'college-student-loneliness' ? (
-                        <CollegeStudentLonelinessEssay />
-                    ) : thought.slug === 'college-system-collapse' ? (
-                        <CollegeSystemCollapseEssay />
-                    ) : thought.slug === 'affordable-new-educational-institution' ? (
-                        <AffordableNewEducationalInstitutionEssay />
-                    ) : (
-                        <p>Essay coming soon.</p>
-                    )}
-                </div>
+                {hasRemoteContent ? (
+                    <div
+                        className={styles.articleBody}
+                        ref={articleBodyRef}
+                        onClick={handleRemoteArticleClick}
+                        dangerouslySetInnerHTML={{ __html: remoteThought.contentHtml }}
+                    />
+                ) : (
+                    <div className={styles.articleBody} ref={articleBodyRef}>
+                        {LocalEssay ? <LocalEssay /> : <p>Essay coming soon.</p>}
+                    </div>
+                )}
+
+                <BlogComments slug={thought.slug} styles={styles} />
             </article>
         </main>
     );

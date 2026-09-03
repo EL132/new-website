@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { educationThoughts } from '../data/educationThoughts';
+import { getBlogPosts } from '../services/blogApi';
 import { trackUmamiEvent } from '../utils/analytics';
 import styles from './styles/Education.module.css';
 
@@ -77,8 +78,28 @@ function OutboundLink({ href, destination, context, children }) {
 }
 
 function Education() {
+    const [thoughts, setThoughts] = useState(educationThoughts);
+
     useEffect(() => {
         document.title = 'Education';
+    }, []);
+
+    useEffect(() => {
+        let isActive = true;
+
+        getBlogPosts()
+            .then(posts => {
+                if (isActive && posts.length) {
+                    setThoughts(posts);
+                }
+            })
+            .catch(() => {
+                // Keep the checked-in post index available if the API is offline.
+            });
+
+        return () => {
+            isActive = false;
+        };
     }, []);
 
     return (
@@ -212,7 +233,7 @@ function Education() {
                 </p>
 
                 <div className={styles.noteList}>
-                    {educationThoughts.map(note => (
+                    {thoughts.map(note => (
                         <Link
                             className={styles.noteCard}
                             key={note.slug}

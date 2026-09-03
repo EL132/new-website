@@ -53,76 +53,92 @@
 }
 
 .introList,
-.introSublist {
+.introSublist,
+.articleBody :global(.introList),
+.articleBody :global(.introSublist) {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-.introList {
+.introList,
+.articleBody :global(.introList) {
     margin-top: 1.35rem;
     counter-reset: intro-item;
 }
 
 .introList > li,
-.introSublist > li {
+.introSublist > li,
+.articleBody :global(.introList) > li,
+.articleBody :global(.introSublist) > li {
     position: relative;
     padding-left: 2.25rem;
     font-size: 1rem;
     line-height: 1.7;
 }
 
-.introList > li {
+.introList > li,
+.articleBody :global(.introList) > li {
     counter-increment: intro-item;
 }
 
-.introList > li::before {
+.introList > li::before,
+.articleBody :global(.introList) > li::before {
     position: absolute;
     left: 0;
     content: counter(intro-item) ")";
 }
 
-.introList > li + li {
+.introList > li + li,
+.articleBody :global(.introList) > li + li {
     margin-top: 1.35rem;
 }
 
-.introSublist {
+.introSublist,
+.articleBody :global(.introSublist) {
     margin-top: 1rem;
     padding-left: 2rem;
     counter-reset: intro-subitem;
 }
 
-.introSublist > li {
+.introSublist > li,
+.articleBody :global(.introSublist) > li {
     counter-increment: intro-subitem;
 }
 
-.introSublist > li::before {
+.introSublist > li::before,
+.articleBody :global(.introSublist) > li::before {
     position: absolute;
     left: 0;
     content: counter(intro-subitem, lower-alpha) ")";
 }
 
-.introSublist > li + li {
+.introSublist > li + li,
+.articleBody :global(.introSublist) > li + li {
     margin-top: 0.8rem;
 }
 
-.articleBody .introList + p {
+.articleBody .introList + p,
+.articleBody :global(.introList) + p {
     margin-top: 1.35rem;
 }
 
-.articleFigure {
+.articleFigure,
+.articleBody :global(.articleFigure) {
     width: min(90vw, 1100px);
     margin: 2.5rem 0 2.5rem 50%;
     transform: translateX(-50%);
 }
 
-.articleFigure img {
+.articleFigure img,
+.articleBody :global(.articleFigure) img {
     display: block;
     width: 100%;
     height: auto;
 }
 
-.articleFigure figcaption {
+.articleFigure figcaption,
+.articleBody :global(.articleFigure) figcaption {
     max-width: 760px;
     margin: 0.65rem auto 0;
     color: rgba(0, 0, 0, 0.58);
@@ -131,7 +147,8 @@
     text-align: center;
 }
 
-.theoryOfChange {
+.theoryOfChange,
+.articleBody :global(.theoryOfChange) {
     margin-top: 1.35rem !important;
     padding: 1rem 1.15rem;
     border-left: 3px solid rgba(0, 0, 0, 0.72);
@@ -142,6 +159,157 @@
 .sourceLink {
     display: inline-block;
     margin-top: 1rem;
+}
+
+.loadingPost {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.commentsSection {
+    max-width: 760px;
+    margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.18);
+}
+
+.commentsSection > h2 {
+    margin: 0 0 0.65rem;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.commentsSection > p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.commentForm {
+    position: relative;
+    margin-top: 1.5rem;
+}
+
+.commentField + .commentField {
+    margin-top: 1rem;
+}
+
+.commentField label {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-size: 0.88rem;
+    font-weight: 650;
+}
+
+.commentField input,
+.commentField textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.7rem 0.75rem;
+    border: 1px solid rgba(0, 0, 0, 0.34);
+    border-radius: 0;
+    background: #fff;
+    color: #111;
+    font: inherit;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.commentField input:focus,
+.commentField textarea:focus {
+    border-color: #111;
+    outline: 2px solid rgba(29, 78, 216, 0.24);
+    outline-offset: 2px;
+}
+
+.commentField textarea {
+    resize: vertical;
+}
+
+.characterCount {
+    display: block;
+    margin-top: 0.25rem;
+    color: rgba(0, 0, 0, 0.58);
+    font-size: 0.78rem;
+    text-align: right;
+}
+
+.commentButton {
+    margin-top: 0.75rem;
+    padding: 0.65rem 0.9rem;
+    border: 1px solid #111;
+    border-radius: 0;
+    background: #111;
+    color: #fff;
+    font: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.commentButton:hover:not(:disabled) {
+    background: #fff;
+    color: #111;
+}
+
+.commentButton:focus-visible {
+    outline: 3px solid rgba(29, 78, 216, 0.32);
+    outline-offset: 3px;
+}
+
+.commentButton:disabled {
+    cursor: wait;
+    opacity: 0.58;
+}
+
+.commentStatus {
+    min-height: 1.4rem;
+    margin: 0.55rem 0 0;
+    font-size: 0.82rem;
+    line-height: 1.4;
+}
+
+.commentHoneypot {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.commentList {
+    margin: 2rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.commentList > li {
+    padding: 1rem 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.commentMeta {
+    display: flex;
+    gap: 0.75rem;
+    align-items: baseline;
+    justify-content: space-between;
+    font-size: 0.88rem;
+}
+
+.commentMeta time {
+    color: rgba(0, 0, 0, 0.58);
+    font-size: 0.78rem;
+}
+
+.commentList p {
+    margin: 0.45rem 0 0;
+    font-size: 1rem;
+    line-height: 1.65;
+    white-space: pre-wrap;
+}
+
+.commentsSection .noComments {
+    margin-top: 2rem;
+    color: rgba(0, 0, 0, 0.58);
 }
 
 .thoughtPage a {
@@ -165,11 +333,19 @@
     }
 
     .introList > li,
-    .introSublist > li {
+    .introSublist > li,
+    .articleBody :global(.introList) > li,
+    .articleBody :global(.introSublist) > li {
         padding-left: 1.8rem;
     }
 
-    .introSublist {
+    .introSublist,
+    .articleBody :global(.introSublist) {
         padding-left: 0.75rem;
+    }
+
+    .commentsSection {
+        margin-top: 3rem;
+        padding-top: 2rem;
     }
 }
