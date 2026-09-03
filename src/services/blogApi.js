@@ -15,16 +15,6 @@ async function requestJson(path, options = {}) {
     return payload;
 }
 
-export async function getBlogPosts() {
-    const payload = await requestJson('/api/posts');
-    return payload.posts || [];
-}
-
-export async function getBlogPost(slug) {
-    const payload = await requestJson(`/api/posts/${encodeURIComponent(slug)}`);
-    return payload.post;
-}
-
 export async function getBlogComments(slug) {
     const payload = await requestJson(`/api/posts/${encodeURIComponent(slug)}/comments`);
     return payload.comments || [];

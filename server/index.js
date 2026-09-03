@@ -5,9 +5,7 @@ const path = require('path');
 const express = require('express');
 const {
     createComment,
-    getPostBySlug,
     listComments,
-    listPosts,
 } = require('./blogRepository');
 const { isDatabaseConfigured, sql } = require('./db');
 const commentRateLimit = require('./commentRateLimit');
@@ -45,38 +43,6 @@ app.get('/api/health', async (request, response) => {
             databaseConfigured: true,
             databaseConnected: false,
         });
-    }
-});
-
-app.get('/api/posts', async (request, response, next) => {
-    try {
-        response.setHeader('Cache-Control', 'public, max-age=60');
-        response.json({ posts: await listPosts() });
-    } catch (error) {
-        next(error);
-    }
-});
-
-app.get('/api/posts/:slug', async (request, response, next) => {
-    try {
-        const { slug } = request.params;
-
-        if (!slugPattern.test(slug)) {
-            response.status(400).json({ error: 'Invalid post slug.' });
-            return;
-        }
-
-        const post = await getPostBySlug(slug);
-
-        if (!post) {
-            response.status(404).json({ error: 'Post not found.' });
-            return;
-        }
-
-        response.setHeader('Cache-Control', 'public, max-age=60');
-        response.json({ post });
-    } catch (error) {
-        next(error);
     }
 });
 

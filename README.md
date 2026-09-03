@@ -10,16 +10,18 @@ The site is built around personal storytelling: large editorial typography, inte
 
 Note for future reference: the domain is linked through Squarespace.
 
-## Blog database and comments
+## Blog comments
 
-Blog posts and public comments are served by the Node API in `server/`. In production, that same
-server also serves the React build, so the frontend and API can run as one Render web service.
+Blog posts and images remain part of the React application in this repository. Only public comments
+are stored in Supabase. The Node API in `server/` provides the comment endpoints, and `api/index.js`
+exposes it as a Vercel Function so the frontend and API run on the same domain.
 
 1. Copy the Supabase session-pooler connection string into `SUPABASE_DATABASE_URL` in `.env`.
-2. Run `npm run db:setup` once to create the tables and seed the existing posts.
+2. Run `npm run db:setup` once to create or update the comments schema.
 3. Run `npm run server` for the API on port 3001 and `npm start` for the React development server.
-4. For production, run `npm run build` followed by `npm run serve`.
+4. In Vercel, add `SUPABASE_DATABASE_URL` using Supabase's transaction-pooler connection string
+   (port 6543) for Production and any Preview environments that should use the database.
+5. Redeploy after adding or changing the Vercel environment variable.
 
-The checked-in `server/data/blog-posts.json` file is the migration source and local fallback. Blog
-images stay in `public/assets/` and only their repository paths are stored in Supabase. The browser
-never receives the database connection string.
+The checked-in post data provides the comment API's allowed list of post slugs. The browser never
+receives the database connection string.

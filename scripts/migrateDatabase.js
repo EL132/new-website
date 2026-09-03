@@ -1,20 +1,22 @@
 require('dotenv').config({ quiet: true });
 
+const fs = require('fs');
 const path = require('path');
 const { requireDatabase } = require('../server/db');
 
 async function migrateDatabase() {
     const sql = requireDatabase();
-    const migrationPath = path.join(
-        process.cwd(),
-        'supabase',
-        'migrations',
-        '202609030001_blog_posts_and_comments.sql'
-    );
+    const migrationDirectory = path.join(process.cwd(), 'supabase', 'migrations');
+    const migrationFiles = fs.readdirSync(migrationDirectory)
+        .filter(fileName => fileName.endsWith('.sql'))
+        .sort();
 
     try {
-        await sql.file(migrationPath);
-        console.log('Supabase blog schema is ready.');
+        for (const migrationFile of migrationFiles) {
+            await sql.file(path.join(migrationDirectory, migrationFile));
+        }
+
+        console.log('Supabase comments schema is ready.');
     } finally {
         await sql.end({ timeout: 5 });
     }
