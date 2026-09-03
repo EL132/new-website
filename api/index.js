@@ -1,4 +1,4 @@
-const app = require('../server/index');
+const app = require('../server/app');
 
 function handler(request, response) {
     const requestUrl = new URL(request.url, 'http://localhost');

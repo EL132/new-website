@@ -1,6 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "create-react-app",
+  "functions": {
+    "api/index.js": {
+      "excludeFiles": "build/**"
+    }
+  },
   "rewrites": [
     {
       "source": "/api/:path*",
