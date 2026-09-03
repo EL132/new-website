@@ -71,8 +71,16 @@ function BlogComments({ slug, styles }) {
         <section className={styles.commentsSection} aria-labelledby="comments-title">
             <h2 id="comments-title">Comments</h2>
             <p>
-                Although it&apos;s not required, it&apos;s fun! It&apos;s always fun to see who has read
-                and cares enough to comment on the post ᵕ̈
+                seeing a comment on a blog post is like a little letter written to me and anyone else
+                who will read this, and aren&apos;t letters so fun? if you&apos;re inclined to share your
+                thoughts, i&apos;d love to hear them ᵕ̈ and if you want to get in touch please contact me{' '}
+                <a
+                    href="https://www.linkedin.com/in/elias-lind/overlay/contact-info/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    via email
+                </a>
             </p>
 
             <form className={styles.commentForm} onSubmit={handleSubmit}>
