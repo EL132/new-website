@@ -296,7 +296,7 @@ function AmericasEducationCrisisEssay() {
                 matched pairs of students into college and found that graduates of the experimental schools
                 earned slightly higher grades and more honors, demonstrated greater intellectual curiosity and
                 resourcefulness, and participated more actively in campus life. Graduates of the most
-                experimental schools were “strikingly more successful” than their matched peers (
+                experimental schools were strikingly more successful than their matched peers (
                 <CrisisSourceLink href={sources.eightYearStudy} citation="eight-year-study">
                     link
                 </CrisisSourceLink>
