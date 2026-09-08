@@ -1,6 +1,6 @@
-const localPosts = require('./data/blog-posts.json');
+const commentablePostSlugs = require('./data/commentable-post-slugs.json');
 const { requireDatabase, sql } = require('./db');
-const knownPostSlugs = new Set(localPosts.map(post => post.slug));
+const knownPostSlugs = new Set(commentablePostSlugs);
 
 function isKnownPostSlug(slug) {
     return knownPostSlugs.has(slug);

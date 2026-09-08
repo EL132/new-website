@@ -1,8 +1,9 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import BlogComments from '../components/BlogComments';
 import { educationThoughts } from '../data/educationThoughts';
 import { trackUmamiEvent } from '../utils/analytics';
+import AmericasEducationCrisisEssay from './educationEssays/AmericasEducationCrisisEssay';
 import styles from './styles/EducationThought.module.css';
 
 const reddingSources = {
@@ -735,6 +736,7 @@ function CollegeSystemCollapseEssay() {
 }
 
 export const educationEssayComponents = {
+    'americas-education-crisis': AmericasEducationCrisisEssay,
     'k12-showcase-lessons-from-teachers-and-administrators': K12ShowcaseEssay,
     'college-student-loneliness': CollegeStudentLonelinessEssay,
     'college-system-collapse': CollegeSystemCollapseEssay,
@@ -746,6 +748,10 @@ function EducationThought() {
     const thought = educationThoughts.find(entry => entry.slug === slug);
     const articleBodyRef = useRef(null);
     const LocalEssay = educationEssayComponents[slug];
+
+    useLayoutEffect(() => {
+        window.scrollTo(0, 0);
+    }, [slug]);
 
     useEffect(() => {
         document.title = thought ? `${thought.title} · Education` : 'Education';

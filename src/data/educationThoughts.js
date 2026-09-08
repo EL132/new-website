@@ -1,5 +1,14 @@
 export const educationThoughts = [
     {
+        slug: 'americas-education-crisis',
+        type: 'Essay',
+        date: 'September 7th, 2026',
+        publishedAt: '2026-09-07',
+        title: 'Education\'s push for curiosity & bravery',
+        previewImage: '/assets/education/education-crisis-path.png',
+        previewAlt: 'Past, hopeful present, and future paths between a dinosaur and a star',
+    },
+    {
         slug: 'k12-showcase-lessons-from-teachers-and-administrators',
         type: 'Video',
         date: 'August 24th, 2026',

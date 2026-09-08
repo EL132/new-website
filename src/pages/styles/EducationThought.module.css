@@ -48,8 +48,72 @@
 
 .articleBody h2 {
     margin: 3.25rem 0 1rem;
-    font-size: 1rem;
+    font-size: 1.25rem;
     line-height: 1.4;
+}
+
+.crisisFigure {
+    width: 100%;
+    margin: 2rem 0 3rem;
+}
+
+.crisisFigure img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.crisisBulletList,
+.crisisChoiceList,
+.crisisNumberList {
+    margin: 1.35rem 0;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.crisisBulletList {
+    padding: 0;
+    list-style: none;
+}
+
+.crisisBulletList li {
+    position: relative;
+    padding-left: 1.8rem;
+}
+
+.crisisBulletList li::before {
+    position: absolute;
+    left: 0.45rem;
+    content: '-';
+}
+
+.crisisBulletList > li + li {
+    margin-top: 0.9rem;
+}
+
+.crisisBulletList ul {
+    margin: 0.65rem 0 0;
+    padding: 0 0 0 1.8rem;
+    list-style: none;
+}
+
+.crisisBulletList ul li + li {
+    margin-top: 0.65rem;
+}
+
+.crisisChoiceList,
+.crisisNumberList {
+    padding-left: 3.6rem;
+}
+
+.crisisNumberList li + li {
+    margin-top: 0.25rem;
+}
+
+.articleBody .crisisPattern {
+    max-width: 680px;
+    margin: 1.35rem auto 0;
+    text-align: center;
 }
 
 .introList,
